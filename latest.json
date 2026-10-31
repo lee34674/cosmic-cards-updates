@@ -1,11 +1,11 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "game": {
-    "file": "game-1.1.0.html",
-    "sha256": "86faa880854e3fcb2ed8b1b8c3470628c9c8abf5975a4d2abfacc6b7c66ee1f1",
-    "size": 4374444
+    "file": "game-1.2.0.html",
+    "sha256": "ba5485246b910704b4d10c52df2541671248b9d181d60aff401d5c5574734c1b",
+    "size": 4386858
   },
-  "notes": "New: packs open as a face-down spread you can flip in any order, pack bundles in the shop (open them from the Packs tab), binder covers for every series, a set symbol on every card, and keyword tips when you hover with a mouse.",
-  "date": "2026-10-31T19:22:03.284Z",
-  "sig": "ZKa3++8VeXcc757ynPHrl5oXw8Kxj63MhoPFN/XsORRKbzjqpfdUsdSg1ewkQmFFJoxRvYzQAXg7eIPB9vc0CA=="
+  "notes": "New: open 3 or 5 packs at once, the Shop has pages with packs and bundles for each series, and a smoother Set Complete celebration.",
+  "date": "2026-10-31T20:33:40.161Z",
+  "sig": "eXPHo5i9JFquXHcXWO9hg03gJwcArodkdP6WZ0yG/w1IvUPbIXdioq3B2ayUrM0CLV8bEfMJcJEx6rTqM4SsCg=="
 }

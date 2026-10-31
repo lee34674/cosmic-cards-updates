@@ -310,9 +310,21 @@ details.odds summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--m
 @keyframes glossin{from{opacity:0}}
 @keyframes ghout{to{opacity:0}}
 @keyframes landring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.26)}}
-.slot.wave{animation:wavegold 1s ease-in-out var(--w,0ms) both}
-.slot.wave .card{animation:wavelift 1s cubic-bezier(.3,.8,.3,1) var(--w,0ms) both}
-@keyframes wavegold{0%,100%{box-shadow:none}35%{box-shadow:0 0 0 2px rgba(255,214,120,.95),0 0 24px rgba(255,200,90,.75)}}
+/* completion wave: only transform + opacity animate (compositor-friendly); the gold ring is a static glow that fades */
+.slot.wave{animation:wavelift 1s cubic-bezier(.3,.8,.3,1) var(--w,0ms) both;will-change:transform;z-index:3}
+.slot.wave::before{content:"";position:absolute;inset:-2px;border-radius:6.5cqw;border:2px solid rgba(255,214,120,.95);box-shadow:0 0 24px rgba(255,200,90,.75);opacity:0;z-index:7;pointer-events:none;will-change:opacity;animation:wavering 1s ease-in-out var(--w,0ms) both}
+@keyframes wavering{35%{opacity:1}100%{opacity:0}}
+/* while celebrating, the cards' own shimmer loops pause so the wave and ceremony get the frames */
+.book.celebrating .card .tilt,.book.celebrating .card .front,.book.celebrating .card .spark,.book.celebrating .card .holo{animation-play-state:paused!important}
+/* the ceremony covers the whole screen: stop painting what is underneath */
+body.finon>main,body.finon>.top,body.finon>.setbar,body.finon>#bg{visibility:hidden}
+.d-rays,.d-seal,.d-card{will-change:transform}
+/* ceremony: the rotating rays only need to cover the screen (much smaller layer), and the fan cards hold still
+   (their shimmer loops repainted every frame); the whole fan floats gently instead */
+.fin .d-rays{width:165vmax;height:165vmax;margin:-82.5vmax 0 0 -82.5vmax}
+.d-card .card *{animation:none!important}
+.d-fan{animation:fanfloat 4s ease-in-out 2s infinite;will-change:transform}
+@keyframes fanfloat{50%{transform:translateY(-6px)}}
 @keyframes wavelift{0%,100%{transform:none}35%{transform:translateY(-9px) scale(1.07)}}
 .cover{position:absolute;top:0;bottom:0;left:50%;width:50%;transform-origin:left center;transform-style:preserve-3d;z-index:10;cursor:pointer;border-radius:6px 16px 16px 6px;
   transition:transform 1s cubic-bezier(.5,0,.2,1),opacity .3s .72s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;
@@ -1106,6 +1118,35 @@ body{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 html,body,*{scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{display:none;width:0;height:0}
 .o-hint{left:16px;right:16px;text-align:center}
+/* ───────── several packs at once ───────── */
+.qtyopt{display:flex;align-items:center;justify-content:center;gap:10px;margin:-6px 0 -4px}.qtyopt>span{font:500 11px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.qtyopt .seg button{min-width:52px;font-family:var(--f-mono);font-weight:700}
+.cn .cnx{font:800 .95em var(--f-mono);color:inherit;opacity:.9}
+.pack.multi::after{content:attr(data-n);position:absolute;top:-10px;right:-12px;z-index:9;font:800 clamp(16px,6cqw,22px) var(--f-mono);padding:6px 11px;border-radius:99px;background:linear-gradient(180deg,#ffe08a,#ffb13b);color:#3a1f00;box-shadow:0 0 18px rgba(255,190,70,.7),0 4px 10px rgba(0,0,0,.4)}
+.pack.multi{box-shadow:10px -10px 0 -2px rgba(255,255,255,.08),20px -20px 0 -4px rgba(255,255,255,.05);border-radius:14px}
+.sgrid.many{gap:10px}
+@media (max-width:640px){.sgrid.many{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 8px;width:100%}.sgrid.many .sc .badge{font-size:8.5px;padding:3px 6px}}
+
+/* ───────── shop pages + packs by series ───────── */
+.shnav{width:max-content;max-width:100%;margin:6px auto 18px;flex-wrap:nowrap}.shnav button{white-space:nowrap}
+@media (max-width:420px){.shnav button{padding:8px 10px;font-size:12.5px}}
+.psh-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.psh-tab{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(20,17,58,.6);text-align:left;color:var(--muted);transition:background .2s,border-color .2s}
+.psh-tab b{font:700 13.5px var(--f-display);color:var(--text);display:flex;align-items:center}.psh-tab .sg{margin-right:6px}.psh-tab span{font:500 10.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.psh-tab.on{background:var(--panel2);border-color:color-mix(in srgb,var(--accent) 65%,transparent)}
+.psh-tab.on.s-cosmos{border-color:#ffb454}.psh-tab.on.s-const{border-color:#7fe9ff}.psh-tab.on.s-explore{border-color:#ff9a5a}.psh-tab.on.s-vistas{border-color:#c8a0ff}
+@media (max-width:640px){.psh-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.psh-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:2px 0 12px}.psh-top .sub{margin:0;text-align:left}.psh-top .ghost{padding:7px 12px;font-size:12.5px}
+.psh-any{margin:-4px 0 12px;font-size:13px;color:#7dffc4}
+.psh-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.psh{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:rgba(20,17,58,.7);border:1px solid var(--line)}
+.psh.t-prem{border-color:rgba(255,200,110,.35)}.psh.t-col{border-color:rgba(255,215,106,.55);background:radial-gradient(120% 100% at 0 0,rgba(255,200,90,.12),transparent 60%),rgba(20,17,58,.7)}
+.psh-art{display:flex;justify-content:center;padding:6px 0 2px;cursor:pointer}.psh-art .pack{width:min(140px,60%);animation:floaty 5s ease-in-out infinite}
+.psh-h{display:flex;flex-direction:column;gap:2px}.psh-h b{font:700 16px var(--f-display)}.psh-h span{font-size:12.5px;color:var(--muted)}
+.psh-h em{font:600 11px var(--f-mono);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px}.psh-h em.has{color:#7dffc4}
+@media (max-width:760px){.psh-grid{grid-template-columns:1fr}.psh{display:grid;grid-template-columns:118px 1fr;column-gap:14px;align-items:center}.psh-art{grid-row:1/3}.psh-art .pack{width:104px}.psh .bnd-b{grid-column:2}}
+@media (max-width:420px){.psh .buy{padding:9px 10px;font-size:13px}.psh .buy .sv{font-size:8.5px;padding:2px 5px}.psh .buy .bq{gap:6px}}
+
 /* ───────── shop: pack bundles ───────── */
 .bnd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:22px}
 .bnd{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:rgba(20,17,58,.7);border:1px solid var(--line)}
@@ -1432,6 +1473,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
   <section id="viewPacks" class="home">
     <div class="series" id="series"></div>
     <h1 id="h1"></h1>
+    <div class="qtyopt"><span>Open</span><div class="seg" id="qtyOpt" role="radiogroup" aria-label="Packs to open at a time"><button role="radio" data-n="1">×1</button><button role="radio" data-n="3">×3</button><button role="radio" data-n="5">×5</button></div><span>at a time</span></div>
     <div class="packrow">
       <div class="pk"><div class="stagePack" id="homePack" role="button" tabindex="0" aria-label="Open a standard card pack"></div><button class="cta" id="openBtn">Standard pack</button><span class="pkn">Normal odds</span></div>
       <div class="pk"><div class="stagePack" id="homePackPrem" role="button" tabindex="0" aria-label="Open a Singularity pack"></div><button class="cta prem" id="openPrem">Singularity pack</button><span class="pkn gold">Boosted odds</span></div>
@@ -1515,19 +1557,26 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
     </div>
   </section>
   <section id="viewShop" hidden>
-    <div class="sh-hero"><div class="series">Stardust Shop · Exclusive cards</div><h1>The <span>Stardust</span> Vault</h1>
+    <div class="sh-hero"><div class="series">Stardust Shop · Packs, exclusive cards and more</div><h1>The <span>Stardust</span> Vault</h1>
       <div class="dustbal"><svg class="dusti" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2l1.9 5.6L18.5 9.5l-5.6 1.9L11 17l-1.9-5.6L3.5 9.5l5.6-1.9z" fill="currentColor"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/><circle cx="5" cy="19.5" r="1.3" fill="currentColor"/></svg><b id="dustBal">0</b><span>Stardust</span></div>
       <p class="sub">Every duplicate you pull melts into Stardust, and rarer duplicates give more. Battles and challenges earn it too. Spend it on packs, on exclusive cards you can't pull, and on sleeves. <span class="muted">Lifetime earned: <b id="dustEarned">0</b></span></p>
       <div class="chips dustrates" id="dustRates"></div></div>
-    <div class="sh-row"><h3>Pack bundles</h3><span class="dk-m">Bundled packs go into your pack stock. Open them from the Packs tab in any series. Bigger bundles cost less per pack.</span></div>
-    <div class="bnd-grid" id="shBundles"></div>
-    <div class="sh-feat" id="shFeat"></div>
-    <div class="sh-row"><h3>All exclusives</h3><span id="shOwned" class="dk-m"></span><button class="ghost" id="shBinder">Open the Exclusives binder</button></div>
-    <div class="sh-grid" id="shGrid"></div>
-    <div class="sh-row"><h3>Card sleeves</h3><span class="dk-m">Cosmetic. Your sleeves show on your deck, hand and units in battle, and online opponents see them too.</span></div>
-    <div id="shSleeves"></div>
-    <div class="sh-row"><h3>Binder covers</h3><span class="dk-m">Two covers for each series, made from its own card art. Buy once, then switch covers any time.</span></div>
-    <div id="shCovers"></div>
+    <div class="seg shnav" id="shNav" role="radiogroup" aria-label="Shop pages"><button role="radio" data-p="packs">Packs</button><button role="radio" data-p="cards">Exclusive cards</button><button role="radio" data-p="style">Sleeves &amp; covers</button></div>
+    <div class="shp" data-p="packs">
+      <div class="sh-row"><h3>Packs</h3><span class="dk-m">Each series has its own packs. Bigger bundles cost less per pack.</span></div>
+      <div id="shPacks"></div>
+    </div>
+    <div class="shp" data-p="cards" hidden>
+      <div class="sh-feat" id="shFeat"></div>
+      <div class="sh-row"><h3>All exclusives</h3><span id="shOwned" class="dk-m"></span><button class="ghost" id="shBinder">Open the Exclusives binder</button></div>
+      <div class="sh-grid" id="shGrid"></div>
+    </div>
+    <div class="shp" data-p="style" hidden>
+      <div class="sh-row"><h3>Card sleeves</h3><span class="dk-m">Cosmetic. Your sleeves show on your deck, hand and units in battle, and online opponents see them too.</span></div>
+      <div id="shSleeves"></div>
+      <div class="sh-row"><h3>Binder covers</h3><span class="dk-m">Two covers for each series, made from its own card art. Buy once, then switch covers any time.</span></div>
+      <div id="shCovers"></div>
+    </div>
   </section>
 </main>
 
@@ -1579,7 +1628,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.1.0';
+const CC_VERSION='1.2.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -2569,7 +2618,7 @@ const SHINY_RATE={std:1/70,prem:1/24,col:1/10};
 const PACK_PRICE={std:250,prem:900,col:2500},ECON_GRANT=1000;
 const freeAvail=()=>S.freeDay!==todayKey();
 const battle0=()=>({deck:[],starter:false,wins:0,losses:0,streak:0,best:0,diff:1});
-const fresh0=()=>({v:2,cur:'cosmos',sets:Object.fromEntries(SETIDS.map(id=>[id,setBlank()])),battle:battle0(),dust:0,dustInit:false,dustEarned:0,chal:{done:{},claimed:{},daily:{d:'',p:{},c:{}}},sl:{own:['classic'],eq:'classic'},nick:'',freeDay:'',econ:false,gifts:[],inv:{std:0,prem:0,col:0},bnd:{own:[],eq:{}}});
+const fresh0=()=>({v:2,cur:'cosmos',sets:Object.fromEntries(SETIDS.map(id=>[id,setBlank()])),battle:battle0(),dust:0,dustInit:false,dustEarned:0,chal:{done:{},claimed:{},daily:{d:'',p:{},c:{}}},sl:{own:['classic'],eq:'classic'},nick:'',freeDay:'',econ:false,gifts:[],inv:{any:{std:0,prem:0,col:0}},bnd:{own:[],eq:{}}});
 /* Stardust: duplicates are melted down; rarer duplicates give more, shiny duplicates four times as much */
 const DUST=[5,12,30,80,200,1000],DUST_SHINY=4,PRICE=[100,250,400,1000,2500,6000],PRICE_SHINY=3;
 const DUSTI='<svg class="dusti" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2l1.9 5.6L18.5 9.5l-5.6 1.9L11 17l-1.9-5.6L3.5 9.5l5.6-1.9z" fill="currentColor"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/><circle cx="5" cy="19.5" r="1.3" fill="currentColor"/></svg>';
@@ -2577,7 +2626,7 @@ const fmt=n=>Math.round(n).toLocaleString('en-US');
 /* v1 saves held one set. Oort Cloud was inserted as #18, so older numbers shift up by one. */
 function migrate(d){
   const out=fresh0();if(!d||typeof d!=='object')return out;
-  if(d.sets){out.cur=SETS[d.cur]&&!SETS[d.cur].shop?d.cur:'cosmos';SETIDS.forEach(id=>Object.assign(out.sets[id],d.sets[id]||{}));Object.assign(out.battle,d.battle||{});out.dust=d.dust||0;out.dustInit=!!d.dustInit;out.dustEarned=d.dustEarned||0;if(d.chal&&d.chal.done)out.chal={done:d.chal.done||{},claimed:d.chal.claimed||{},daily:d.chal.daily&&d.chal.daily.p?d.chal.daily:{d:'',p:{},c:{}}};if(d.sl&&Array.isArray(d.sl.own))out.sl={own:[...new Set(['classic',...d.sl.own])],eq:d.sl.own.includes(d.sl.eq)||d.sl.eq==='classic'?d.sl.eq:'classic'};if(d.inv&&typeof d.inv==='object')out.inv={std:Math.max(0,d.inv.std|0),prem:Math.max(0,d.inv.prem|0),col:Math.max(0,d.inv.col|0)};if(d.bnd&&Array.isArray(d.bnd.own)){const own=d.bnd.own.filter(x=>typeof x==='string'),eq={};for(const k in (d.bnd.eq||{}))if(own.includes(d.bnd.eq[k]))eq[k]=d.bnd.eq[k];out.bnd={own,eq}}out.nick=typeof d.nick==='string'?d.nick:'';out.freeDay=typeof d.freeDay==='string'?d.freeDay:'';out.econ=!!d.econ;out.gifts=Array.isArray(d.gifts)?d.gifts.filter(x=>typeof x==='string'):[];return out}
+  if(d.sets){out.cur=SETS[d.cur]&&!SETS[d.cur].shop?d.cur:'cosmos';SETIDS.forEach(id=>Object.assign(out.sets[id],d.sets[id]||{}));Object.assign(out.battle,d.battle||{});out.dust=d.dust||0;out.dustInit=!!d.dustInit;out.dustEarned=d.dustEarned||0;if(d.chal&&d.chal.done)out.chal={done:d.chal.done||{},claimed:d.chal.claimed||{},daily:d.chal.daily&&d.chal.daily.p?d.chal.daily:{d:'',p:{},c:{}}};if(d.sl&&Array.isArray(d.sl.own))out.sl={own:[...new Set(['classic',...d.sl.own])],eq:d.sl.own.includes(d.sl.eq)||d.sl.eq==='classic'?d.sl.eq:'classic'};if(d.inv&&typeof d.inv==='object'){const I={},cl=t=>({std:Math.max(0,(t&&t.std)|0),prem:Math.max(0,(t&&t.prem)|0),col:Math.max(0,(t&&t.col)|0)});if(typeof d.inv.std==='number'||typeof d.inv.prem==='number'||typeof d.inv.col==='number')I.any=cl(d.inv);else for(const k in d.inv)if(k==='any'||(SETS[k]&&!SETS[k].shop))I[k]=cl(d.inv[k]);if(!I.any)I.any=cl({});out.inv=I}if(d.bnd&&Array.isArray(d.bnd.own)){const own=d.bnd.own.filter(x=>typeof x==='string'),eq={};for(const k in (d.bnd.eq||{}))if(own.includes(d.bnd.eq[k]))eq[k]=d.bnd.eq[k];out.bnd={own,eq}}out.nick=typeof d.nick==='string'?d.nick:'';out.freeDay=typeof d.freeDay==='string'?d.freeDay:'';out.econ=!!d.econ;out.gifts=Array.isArray(d.gifts)?d.gifts.filter(x=>typeof x==='string'):[];return out}
   const sh=n=>n>=18?n+1:n,o=out.sets.cosmos;
   o.owned=[...new Set((d.owned||[]).map(sh))].sort(num);o.fresh=(d.fresh||[]).map(sh).filter(n=>o.owned.includes(n));
   o.packs=d.packs||0;o.dupes=d.dupes||0;o.best=d.best||0;o.bestN=d.bestN?sh(d.bestN):0;return out;
@@ -2615,7 +2664,7 @@ async function initCloud(){
         a.fresh=[...new Set([...a.fresh,...(b.fresh||[])])].filter(n=>a.owned.includes(n));
         a.celebrated=a.celebrated||!!b.celebrated;S.dust=Math.max(S.dust,d.dust||0);S.dustEarned=Math.max(S.dustEarned||0,d.dustEarned||0);S.dustInit=S.dustInit||d.dustInit;a.shiny=[...new Set([...(a.shiny||[]),...(b.shiny||[])])].sort(num);a.sfresh=[...new Set([...(a.sfresh||[]),...(b.sfresh||[])])].filter(n=>a.shiny.includes(n));a.celebratedShiny=a.celebratedShiny||!!b.celebratedShiny});
       const C1=chal(),C2=d.chal;Object.assign(C1.done,C2.done);Object.assign(C1.claimed,C2.claimed);if(C2.daily&&C2.daily.d===C1.daily.d){for(const k in C2.daily.p)C1.daily.p[k]=Math.max(C1.daily.p[k]||0,C2.daily.p[k]);Object.assign(C1.daily.c,C2.daily.c)}
-      const L1=sl();L1.own=[...new Set([...L1.own,...d.sl.own])];if(d.inv){const I=S.inv=S.inv||{std:0,prem:0,col:0};for(const k of ['std','prem','col'])I[k]=Math.max(I[k]|0,d.inv[k]|0)}if(d.bnd){const B=S.bnd=S.bnd||{own:[],eq:{}};B.own=[...new Set([...(B.own||[]),...d.bnd.own])];B.eq=Object.assign({},d.bnd.eq||{},B.eq||{})}if(!S.nick&&d.nick)S.nick=d.nick;S.econ=S.econ||!!d.econ;if((d.freeDay||'')===todayKey())S.freeDay=d.freeDay;
+      const L1=sl();L1.own=[...new Set([...L1.own,...d.sl.own])];if(d.inv){const A=inv(),B=migrate({sets:{},inv:d.inv}).inv||{};for(const k in B){A[k]=A[k]||{std:0,prem:0,col:0};for(const t of ['std','prem','col'])A[k][t]=Math.max(A[k][t]|0,B[k][t]|0)}}if(d.bnd){const B=S.bnd=S.bnd||{own:[],eq:{}};B.own=[...new Set([...(B.own||[]),...d.bnd.own])];B.eq=Object.assign({},d.bnd.eq||{},B.eq||{})}if(!S.nick&&d.nick)S.nick=d.nick;S.econ=S.econ||!!d.econ;if((d.freeDay||'')===todayKey())S.freeDay=d.freeDay;
       const A=S.battle,Bb=d.battle;A.wins=Math.max(A.wins,Bb.wins||0);A.losses=Math.max(A.losses,Bb.losses||0);A.best=Math.max(A.best,Bb.best||0);if(!A.deck.length&&Bb.deck&&Bb.deck.length)A.deck=Bb.deck.slice();
       S.gifts=[...new Set([...(S.gifts||[]),...(d.gifts||[])])];
     }
@@ -2827,7 +2876,7 @@ const Snd=(()=>{
       tone({f:N(-29),f2:N(-17),dur:2.2,a:1,g:.16,type:'sine',rev:.5});tone({f:N(-5),f2:N(7),dur:1.6,a:.9,g:.03,type:'triangle',lp:1800,rev:.9});
       [24,31,36,40,43].forEach((s,i)=>tone({f:N(s),t:.95+i*.07,dur:1.6,g:.022,type:'sine',rev:1}));sparkle(16,1.8,2600,4200)},
     chime(){[0,4,7,12,16,19,24,28,31].forEach((s,i)=>bell(N(12+s),i*.1,.1))},
-    complete(){chord([-12,0,7,12,16,19],0,3.8,.045,2400);[12,16,19,24,28,31,36,40,43,48].forEach((s,i)=>bell(N(s),.15+i*.11,.15));tone({f:55,f2:30,dur:1.6,g:.6});sparkle(70,3.4,2200,5800);[0,.6,1.2,1.8,2.4].forEach(t=>{tone({f:N(36),t:t+.3,dur:1.2,g:.04,rev:.8});sparkle(10,.4,3000,3000)})},
+    complete(){chord([-12,0,7,12,16,19],0,3.8,.045,2400);[12,16,19,24,28,31,36,40,43,48].forEach((s,i)=>bell(N(s),.15+i*.11,.15));tone({f:55,f2:30,dur:1.6,g:.6});sparkle(40,3.4,2200,5800);[0,.6,1.2,1.8,2.4].forEach(t=>{tone({f:N(36),t:t+.3,dur:1.2,g:.04,rev:.8});sparkle(10,.4,3000,3000)})},
     turn(){[0,7,12].forEach((s,i)=>tone({f:N(12+s),t:i*.07,dur:.35,g:.08,type:'triangle',rev:.4}));noise({type:'highpass',f:1500,f2:6000,dur:.4,g:.06})},
     swing(){noise({type:'bandpass',f:600,f2:2600,q:1,dur:.28,g:.18,a:.08})},
     hit(r){tone({f:120,f2:50,dur:.22,g:.45});noise({type:'lowpass',f:1800,f2:300,dur:.2,g:.35});if(r>=2)sparkle(4+r*2,.3,2400,2600)},
@@ -2999,10 +3048,12 @@ function refreshHome(){
   const b=X.best?cardOf(set.id,X.bestN):null;$('#stBest').textContent=b?b.name+' · '+RAR[b.r].name:'None yet';
   buildOdds();fillArt($('#viewPacks'));
 }
-function paintPackBtn(b,set,k){const dv=typeof DEV!=='undefined'&&DEV.on&&DEV.free,free=!dv&&k==='std'&&freeAvail(),pr=PACK_PRICE[k],el=$(b),stk=!dv&&!free&&S.inv?S.inv[k]|0:0;
-  const nm=set[k].name,m=/^(.*?)( pack)$/i.exec(nm);el.innerHTML=`<span class="cn">${m?m[1]+'<span class="cnp">'+m[2]+'</span>':nm}</span><span class="cp">${dv?'<b class="free">Dev · free</b>':free?'<b class="free">Free today</b>':stk?`<b class="free stk">${stk} in stock</b>`:DUSTI+fmt(pr)}</span>`;el.classList.toggle('poor',!dv&&!free&&!stk&&S.dust<pr);
+function paintPackBtn(b,set,k){const dv=typeof DEV!=='undefined'&&DEV.on&&DEV.free,free=!dv&&k==='std'&&freeAvail(),pr=PACK_PRICE[k],el=$(b),stk=dv?0:invOf(set.id,k),N=packN,plan=packPlan(set.id,k,N);
+  const nm=set[k].name,m=/^(.*?)( pack)$/i.exec(nm);
+  const cp=dv?'<b class="free">Dev · free</b>':plan.cost?DUSTI+fmt(plan.cost):plan.free&&!plan.stock?'<b class="free">Free today</b>':plan.free?'<b class="free">Free + stock</b>':`<b class="free stk">${N>1?'From stock':stk+' in stock'}</b>`;
+  el.innerHTML=`<span class="cn">${N>1?(m?m[1]:nm)+` <span class="cnx">×${N}</span>`:m?m[1]+'<span class="cnp">'+m[2]+'</span>':nm}</span><span class="cp">${cp}</span>`;el.classList.toggle('poor',!dv&&S.dust<plan.cost);
   /* pack stock badge on the pack art */
-  const pk=el.closest('.pk');if(pk){let bd=pk.querySelector('.stkb');if(stk&&!bd){bd=document.createElement('span');bd.className='stkb';pk.appendChild(bd)}if(bd){if(stk)bd.textContent='×'+stk;else bd.remove()}}}
+  const pk=el.closest('.pk');if(pk){let bd=pk.querySelector('.stkb');if(stk&&!bd){bd=document.createElement('span');bd.className='stkb';pk.appendChild(bd)}if(bd){if(stk)bd.textContent=stk+' in stock';else bd.remove()}}}
 function buildOdds(){
   const set=cs(),f=(w,i)=>{const t=w.reduce((x,y)=>x+y,0);return w[i]?(w[i]/t*100).toFixed(w[i]/t<.01?2:1)+'%':'–'};
   const tbl=(title,cols)=>`<h4 class="oddsH">${title}</h4><div class="tblwrap"><table class="oddsTable"><thead><tr><th>Rarity</th>${cols.map(c=>`<th>${c[0]}</th>`).join('')}</tr></thead><tbody>`+RAR.map((r,i)=>`<tr><td><span class="dot" style="--c:${r.col}"></span>${r.name} <span class="muted">(${set.cards.filter(c=>c.r===i).length})</span></td>${cols.map(c=>`<td>${f(c[1],i)}</td>`).join('')}</tr>`).join('')+'</tbody></table></div>';
@@ -3022,29 +3073,39 @@ function switchSet(id){
 /* ───────────── pack opening flow ───────────── */
 const O={pulls:[],cur:0,mode:'idle',lock:false,busy:false,set:'cosmos'};
 const oEl=$('#open');
-async function startPack(kind){
-  kind=TIERS.includes(kind)?kind:'std';const prem=kind!=='std',set=cs(),X=st();
-  if(O.busy||placing||celebrating||cs().shop)return;
-  const devFree=typeof DEV!=='undefined'&&DEV.on&&DEV.free,price=devFree?0:PACK_PRICE[kind],free=!devFree&&kind==='std'&&freeAvail();
-  const stock=!devFree&&!free&&S.inv&&S.inv[kind]>0;
-  if(!free&&!stock&&S.dust<price){Snd.init();Snd.deal();toast(`${set[kind].name}s cost ${fmt(price)} Stardust and you have ${fmt(S.dust)}. Win battles, finish challenges and pull duplicates to earn more.`,3600);return}
-  if(free)S.freeDay=todayKey();else if(stock)S.inv[kind]--;else S.dust-=price;O.cost=free||stock?0:price;O.free=free;O.stock=stock;O.busy=true;Snd.duck(true);O.kind=kind;O.set=set.id;O.combo=0;Snd.init();Snd.click();if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
-  const pulls=typeof devPack==='function'?devPack(takePack(set.id,kind),set.id):takePack(set.id,kind);const newly=[];
-  /* paint any art that is not cached yet while the pack shakes, one card per frame */
-  document.body.classList.add('opening');
-  const warmP=(ARTW.ok?Promise.all(pulls.map(c=>artAsync(c).then(decodeImg))):(async()=>{for(const c of pulls){if(!artCache[artKey(c)]){artURL(c);await sleep(16)}await decodeImg(artURL(c))}})());
-  const snewly=[];
+/* opening several packs at once: how many (×1/×3/×5, remembered per device) and how they are paid:
+   the free daily pack first, then this series' stock (then any-series stock), then Stardust */
+let packN=1;try{const v=+localStorage.getItem('cc-packn');if([1,3,5].includes(v))packN=v}catch(e){}
+function packPlan(setId,kind,n){if(typeof DEV!=='undefined'&&DEV.on&&DEV.free)return {n,free:0,stock:0,paid:0,cost:0,dev:true};
+  const free=kind==='std'&&freeAvail()?1:0,stock=Math.min(n-free,invOf(setId,kind)),paid=n-free-stock;return {n,free,stock,paid,cost:paid*PACK_PRICE[kind]}}
+/* one pack's cards into the collection (newness carries across packs opened together) */
+function absorbPack(pulls,X){const newly=[],snewly=[];
   pulls.forEach(c=>{c._snew=!!c.shiny&&!X.shiny.includes(c.n)&&!snewly.includes(c.n);if(c._snew)snewly.push(c.n);if(X.owned.includes(c.n)||newly.includes(c.n)){c._new=false;if(!c._snew){X.dupes++;c._dust=DUST[c.r]*(c.shiny?DUST_SHINY:1)}}else{c._new=true;newly.push(c.n)}});
-  O.dust=pulls.reduce((a,c)=>a+(c._dust||0),0);O.dust0=S.dust;S.dust+=O.dust;S.dustEarned=(S.dustEarned||0)+O.dust;
   X.owned=[...X.owned,...newly].sort(num);X.fresh=[...new Set([...X.fresh,...newly])];X.packs++;
   X.shiny=[...X.shiny,...snewly].sort(num);X.sfresh=[...new Set([...X.sfresh,...snewly])];
   pulls.forEach(c=>{if(c.r>X.best||(c.r===X.best&&!X.bestN)){X.best=c.r;X.bestN=c.n}});
+  return pulls.reduce((a,c)=>a+(c._dust||0),0)}
+const warmPack=pulls=>ARTW.ok?Promise.all(pulls.map(c=>artAsync(c).then(decodeImg))):(async()=>{for(const c of pulls){if(!artCache[artKey(c)]){artURL(c);await sleep(16)}await decodeImg(artURL(c))}})();
+async function startPack(kind,nOverride){
+  kind=TIERS.includes(kind)?kind:'std';const prem=kind!=='std',set=cs(),X=st();
+  if(O.busy||placing||celebrating||cs().shop)return;
+  const n=[1,3,5].includes(nOverride)?nOverride:packN,plan=packPlan(set.id,kind,n);
+  if(S.dust<plan.cost){Snd.init();Snd.deal();
+    const covered=[plan.free?'your free daily pack':'',plan.stock?`${plan.stock} from your stock`:''].filter(Boolean).join(' and ');
+    toast(n>1?`${n} ${set[kind].name}s cost ${fmt(plan.cost)} Stardust${covered?` after ${covered}`:''}, and you have ${fmt(S.dust)}. Try fewer at a time, or buy packs in the Shop.`:`${set[kind].name}s cost ${fmt(PACK_PRICE[kind])} Stardust and you have ${fmt(S.dust)}. Win battles, finish challenges and pull duplicates to earn more.`,4200);return}
+  if(plan.free)S.freeDay=todayKey();if(plan.stock)takeInv(set.id,kind,plan.stock);S.dust-=plan.cost;
+  O.cost=plan.cost;O.free=!!plan.free;O.stock=plan.stock;O.plan=plan;O.n=n;O.pi=0;O.busy=true;Snd.duck(true);O.kind=kind;O.set=set.id;O.combo=0;Snd.init();Snd.click();if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+  const packs=[];for(let i=0;i<n;i++)packs.push(typeof devPack==='function'?devPack(takePack(set.id,kind),set.id):takePack(set.id,kind));
+  /* paint art that is not cached yet while the pack shakes: the first pack now, the others one after another */
+  document.body.classList.add('opening');
+  O.warm=[];let chain=warmPack(packs[0]);O.warm[0]=chain;for(let i=1;i<n;i++){const pl=packs[i];chain=chain.then(()=>warmPack(pl));O.warm[i]=chain}const warmP=O.warm[0];
+  O.dust0=S.dust;O.dust=packs.reduce((a,pl)=>a+absorbPack(pl,X),0);S.dust+=O.dust;S.dustEarned=(S.dustEarned||0)+O.dust;
   save();refreshAll();
-  O.pulls=pulls;O.cur=0;O.mode='idle';O.lock=true;
+  const pulls=packs.flat();O.packs=packs;O.pulls=packs[0];O.cur=0;O.mode='idle';O.lock=true;
   const pal=pickPal(set,kind);$('#combo').hidden=true;
   oEl.hidden=false;$('#oSum').hidden=true;$('#oInfo').innerHTML='';$('#oHint').textContent='';$('#counter').textContent='';$('#skip').hidden=true;$('#skip').textContent='Skip to summary';$('#skipLow').hidden=true;
   resetHalo();$('#oStage').innerHTML=packHTML(set,kind,pal);fillArt($('#oStage'));
-  const pk=$('#oStage .pack');pk.classList.add('enter');
+  const pk=$('#oStage .pack');pk.classList.add('enter');if(n>1){pk.classList.add('multi');pk.dataset.n='×'+n}
   await sleep(REDUCED?200:kind==='col'?60:650);pk.classList.remove('enter');
   await packIntro(pk,set,kind);
   const best=pulls.reduce((a,c)=>Math.max(a,c.r),0),leak=best>=2?RAR[best].col:(prem?set.fx.flash:'#fff4d6');
@@ -3077,7 +3138,7 @@ const POINTS=[1,2,5,12,30,100];
 function tier(s){return s<25?['Decent pull',0]:s<45?['Nice haul',1]:s<80?['Big haul',2]:s<130?['Stellar haul',3]:['COSMIC JACKPOT',4]}
 function runScore(score){
   const n=$('#scNum'),t=$('#scTitle'),dur=REDUCED?10:1400,t0=performance.now();let last=-1,tk=0;
-  const done=()=>{const nm=tier(score);t.textContent=nm[0];t.className='sc-t on lv'+nm[1];n.classList.add('done');
+  const done=()=>{const nm=tier(score/(O.n||1));t.textContent=nm[0];t.className='sc-t on lv'+nm[1];n.classList.add('done');
     if(nm[1]>=2){Snd.fanfare();burst(innerWidth/2,innerHeight*.22,Object.assign({},FXSET[nm[1]>=3?5:4]))}
     if(nm[1]>=3){setTimeout(()=>burst(innerWidth*.2,innerHeight*.3,Object.assign({},FXSET[4])),250);setTimeout(()=>burst(innerWidth*.8,innerHeight*.3,Object.assign({},FXSET[4])),450)}};
   const step=now=>{const k=Math.min(1,(now-t0)/dur),v=Math.round(score*(1-Math.pow(1-k,3)));n.textContent=v;if(v!==last&&now-tk>55){Snd.tick(Math.min(24,v/Math.max(1,score)*24|0));tk=now}last=v;if(k<1)requestAnimationFrame(step);else done()};
@@ -3086,15 +3147,16 @@ function runScore(score){
 /* the face-down spread (buildDeck, flipAt, showcase, onTap, jumpLow, skipToSummary…) lives in spread.js */
 const doneToast={};
 function showSummary(){
+  if(O.packs&&O.n>1)O.pulls=O.packs.flat();const NP=O.n||1,NC=O.pulls.length;
   O.mode='sum';O.lock=false;resetHalo();$('#oHint').textContent='';$('#oInfo').innerHTML='';
   const set=SETS[O.set],X=st(O.set),total=set.cards.length;
   const nn=O.pulls.filter(c=>c._new||c._snew).length;
   const sum=$('#oSum');
   const score=O.pulls.reduce((a,c)=>a+POINTS[c.r]+(c.shiny?60:0),0),nsh=O.pulls.filter(c=>c.shiny).length;$('#combo').hidden=true;
   const complete=X.owned.length===total&&!X.celebrated;
-  sum.innerHTML=`<h2>${set[O.kind].name} opened</h2><div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">Pack score</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${10-nn} duplicate${10-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${O.free?'Your free daily pack':O.stock?`From your pack stock · ${(S.inv&&S.inv[O.kind])|0} ${TIERN[O.kind]} left`:`Pack cost ${DUSTI}${fmt(O.cost)}`}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid">`+
+  sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2><div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
    O.pulls.map((c,i)=>`<div class="sc${c._new||c._snew?'':' dupe'}${c.shiny?' shy':''}" data-n="${c.n}" data-shiny="${c.shiny?1:''}" style="animation-delay:${i*60}ms">${cardHTML(c)}<span class="badge ${c._snew?'shiny':c._new?'new':'dupe'}">${c._snew?'✦ Shiny':c._new?'New':c.shiny?'Shiny dupe':'Duplicate'}</span></div>`).join('')+
-   `</div><div class="actions"><button class="btn2 primary" id="again">Open another pack</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="closeSum">Close</button></div>`;
+   `</div><div class="actions"><button class="btn2 primary" id="again">${NP>1?`Open ${NP} more`:'Open another pack'}</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="closeSum">Close</button></div>`;
   sum.hidden=false;sum.scrollTop=0;runScore(score);if(O.dust)dustCount(O.dust,O.dust0);$('#skip').hidden=true;$('#skipLow').hidden=true;$('#counter').textContent='';
   O.pulls.forEach((c,i)=>setTimeout(()=>Snd.good(c._new),i*60));
   if(complete&&!doneToast[set.id]){doneToast[set.id]=1;setTimeout(()=>{Snd.fanfare();burst(innerWidth/2,innerHeight/2,Object.assign({},FXSET[5]))},700)}
@@ -3247,8 +3309,8 @@ async function turn(dir,opt){
 async function celebrate(replay,mode){
   if(celebrating)return;celebrating=true;navLock=true;updateNav();
   mode=mode||bk().mode;const sh=mode==='shiny';
-  const set=cs(),X=st(),o=$('#done');Snd.init();o.classList.toggle('shinyfin',sh);
-  try{
+  const set=cs(),X=st(),o=$('#done'),book=$('#book');Snd.init();o.classList.toggle('shinyfin',sh);
+  try{book.classList.add('celebrating');
     const slots=[...document.querySelectorAll('#pages .slot.filled')];
     slots.forEach((s,i)=>{s.style.setProperty('--w',(i*55)+'ms');s.classList.add('wave')});
     Snd.chime&&Snd.chime();
@@ -3260,14 +3322,15 @@ async function celebrate(replay,mode){
       `<div class="d-kick">${set.series} · ${set.name}</div><h2 class="d-title">${(sh?'SHINY SET COMPLETE':'SET COMPLETE').split('').map((ch,i)=>`<span style="--i:${i}">${ch===' '?'&nbsp;':ch}</span>`).join('')}</h2>`+
       `<div class="d-fan">${fan.map((c,i)=>`<div class="d-card" style="--r:${rot[i]}deg;--i:${i}">${cardHTML(c)}</div>`).join('')}</div>`+
       `<p class="d-line">${set.cards.length} / ${set.cards.length} ${sh?'shiny ':''}cards · ${X.packs} pack${X.packs===1?'':'s'} opened · ${X.dupes} duplicate${X.dupes===1?'':'s'} removed</p><button class="btn2 primary" id="doneBtn">Back to the binder</button></div>`;
-    o.hidden=false;void o.offsetWidth;o.classList.add('on');Snd.complete();
-    const bursts=REDUCED?3:14;
-    for(let i=0;i<bursts;i++)setTimeout(()=>{if(o.hidden)return;burst(innerWidth*(.12+Math.random()*.76),innerHeight*(.14+Math.random()*.5),Object.assign({},FXSET[i%3===0?5:4],{count:70+Math.random()*60|0}))},300+i*260);
+    o.hidden=false;void o.offsetWidth;o.classList.add('on');setTimeout(()=>{if(!o.hidden)document.body.classList.add('finon')},460);Snd.complete();
+    /* fewer, lighter fireworks spread over time: smooth on phones */
+    const bursts=REDUCED?3:MOBILE?7:9;
+    for(let i=0;i<bursts;i++)setTimeout(()=>{if(o.hidden)return;burst(innerWidth*(.12+Math.random()*.76),innerHeight*(.14+Math.random()*.5),Object.assign({},FXSET[i%3===0?5:4],{count:(MOBILE?40:55)+Math.random()*30|0}))},350+i*380);
     await new Promise(res=>{$('#doneBtn').onclick=()=>res();o.onkeydown=e=>{if(e.key==='Escape'||e.key==='Enter')res()};$('#doneBtn').focus({preventScroll:true})});
-    o.classList.remove('on');await sleep(REDUCED?0:450);o.hidden=true;o.innerHTML='';
+    document.body.classList.remove('finon');o.classList.remove('on');await sleep(REDUCED?0:450);o.hidden=true;o.innerHTML='';
     if(sh){if(!X.celebratedShiny){X.celebratedShiny=true;save()}}else if(!X.celebrated){X.celebrated=true;save()}
     renderBinder();renderSetBar();
-  }finally{celebrating=false;navLock=false;updateNav()}
+  }finally{celebrating=false;navLock=false;updateNav();document.body.classList.remove('finon');const bk2=$('#book');if(bk2)bk2.classList.remove('celebrating')}
 }
 
 /* zoom */
@@ -3326,6 +3389,9 @@ function init(){
     if(view==='binder'&&bk().open&&!navLock){if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1)}
   });
   initMenu();initShopExtras();
+  /* how many packs to open at a time */
+  const paintQty=()=>document.querySelectorAll('#qtyOpt button').forEach(b=>b.setAttribute('aria-checked',+b.dataset.n===packN));paintQty();
+  $('#qtyOpt').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;packN=+b.dataset.n;try{localStorage.setItem('cc-packn',String(packN))}catch(x){}paintQty();Snd.init();Snd.click();refreshHome()});
   /* home packs lean toward the pointer */
   document.querySelectorAll('.stagePack').forEach(sp=>{
     sp.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const b=sp.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;sp.style.setProperty('--prx',(-y*16).toFixed(1)+'deg');sp.style.setProperty('--pry',(x*20).toFixed(1)+'deg');sp.style.setProperty('--psx',((x+.5)*100).toFixed(0)+'%');sp.style.setProperty('--tx',x.toFixed(3));sp.style.setProperty('--ty',y.toFixed(3));sp.classList.add('lean')});
@@ -3383,7 +3449,7 @@ function buildDeck(){resetHalo();O.skipped=0;O.combo=0;SP.flipped=new Set();
     if(SP.flipped.size>=10)spDone();else $('#oHint').textContent='Tap any card to flip it';
   },REDUCED?100:75*10+520);
 }
-function spPaint(){$('#counter').textContent=`${SP.flipped.size} / 10 flipped`;
+function spPaint(){$('#counter').textContent=`${O.n>1?`Pack ${O.pi+1}/${O.n} · `:''}${SP.flipped.size} / 10 flipped`;
   const lowLeft=SP.order.some(pi=>!SP.flipped.has(pi)&&O.pulls[pi].r<2);const b=$('#skipLow');b.textContent='Flip Common/Uncommon';b.hidden=!(lowLeft&&O.mode==='spread')}
 function spMark(pi){const c=O.pulls[pi],el=spEl(pi);if(!el)return;const [cls,txt]=badgeFor(c);el.classList.remove('hint-2','hint-3','hint-4','hint-5','hint-shiny');el.classList.add('up');
   const b=el.querySelector('.sp-b');b.className='sp-b '+cls;b.innerHTML=cls==='dupe'?`${txt} ${DUSTI}`:txt;el.setAttribute('aria-label',`${c.name}, ${RAR[c.r].name}${c.shiny?', Shiny':''}`)}
@@ -3432,12 +3498,19 @@ function showcase(pi){return new Promise(async res=>{
 })}
 /* tapping a card: flip it, or look at it up close once it's face up */
 function spClick(pi){if(SP.flipped.has(pi)){if(!O.lock&&(O.mode==='spread'||O.mode==='done')){const c=O.pulls[pi];openZoom(O.set,c.n,!!c.shiny)}return}flipAt(pi)}
-function spDone(){O.mode='done';O.lock=false;spPaint();$('#skip').textContent='See results';$('#oHint').textContent='Tap to see your results'}
+function spDone(){O.mode='done';O.lock=false;spPaint();const more=O.n>1&&O.pi<O.n-1;
+  $('#skip').textContent=more?'Skip to summary':'See results';$('#oHint').textContent=more?`Tap for the next pack (${O.pi+2} of ${O.n})`:'Tap to see your results'}
+/* several packs at once: the finished spread sweeps away and the next pack's cards deal in */
+async function nextPack(){if(O.lock)return;O.lock=true;$('#oHint').textContent='';$('#combo').hidden=true;$('#oInfo').innerHTML='';
+  const els=[...document.querySelectorAll('#spread .sp')];Snd.deal();
+  if(!REDUCED)await Promise.all(els.map((el,k)=>el.animate([{transform:'none',opacity:1},{transform:`translateY(-${innerHeight*.6}px) rotate(${(k%5-2)*8}deg) scale(.6)`,opacity:0}],{duration:420,delay:k*25,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}).finished));
+  O.pi++;O.pulls=O.packs[O.pi];O.combo=0;$('#oInfo').innerHTML=`<div class="skipnote">Pack ${O.pi+1} of ${O.n}</div>`;
+  await O.warm[O.pi];buildDeck()}
 function onTap(){
   if(O.lock&&!SP.close)return;if(oEl.hidden||!$('#oSum').hidden)return;
   if(SP.close){if(document.querySelector('#showc.ready'))SP.close();return}
   if(O.mode==='spread'){const next=SP.order.find(pi=>!SP.flipped.has(pi));if(next!=null)flipAt(next);return}
-  if(O.mode==='done')showSummary();
+  if(O.mode==='done'){if(O.n>1&&O.pi<O.n-1)nextPack();else showSummary()}
 }
 async function jumpLow(){if(O.lock||O.mode!=='spread')return;O.lock=true;$('#oHint').textContent='';
   const low=SP.order.filter(pi=>!SP.flipped.has(pi)&&O.pulls[pi].r<2);O.skipped=(O.skipped||0)+low.length;await quickFlip(low);O.lock=false;
@@ -3544,7 +3617,7 @@ function renderShop(){
   const d=CARDS4[dealIdx()];$('#shFeat').innerHTML=shopItem(d,true);
   $('#shGrid').innerHTML=CARDS4.filter(c=>c!==d).slice().sort((a,b)=>a.r-b.r||a.n-b.n).map(c=>shopItem(c)).join('');
   $('#shOwned').textContent=`${X.owned.length} / ${CARDS4.length} owned · ${X.shiny.length} shiny`;
-  $('#shSleeves').innerHTML=sleeveShop();$('#shBundles').innerHTML=bundleShop();$('#shCovers').innerHTML=coverShop();fillCoverArt($('#shCovers'));
+  $('#shSleeves').innerHTML=sleeveShop();renderPackShop();$('#shCovers').innerHTML=coverShop();fillCoverArt($('#shCovers'));
 }
 let buyBusy=false;
 function disarm(b){if(!b.dataset.arm)return;delete b.dataset.arm;b.classList.remove('arm');if(b._orig!=null){b.innerHTML=b._orig;b._orig=null}}
@@ -3590,25 +3663,44 @@ function setShopPreview(n,sh){if(!!SHOPV[n]===sh)return;SHOPV[n]=sh;const c=card
     if(!REDUCED)nu.animate([{transform:'rotateY(90deg) scale(.92)',opacity:.4},{transform:'none',opacity:1}],{duration:320,easing:'cubic-bezier(.2,.9,.3,1.1)'})});
   if(sh)Snd.shinyHint();else Snd.flip()
 }
-/* ───────────── Shop extras: pack bundles and binder covers ─────────────
-   Pack bundles: 1, 3 or 5 packs of one tier (Standard, Boosted, Collector), cheaper per pack in bigger bundles.
-   They go into the pack stock (S.inv) and are opened from the Packs tab in any series, before Stardust is spent
-   (the free daily pack is still used first).
+/* ───────────── Shop extras: packs by series, pack stock, binder covers, shop pages ─────────────
+   Shop pages (#shNav): Packs · Exclusive cards · Sleeves & covers (last page remembered, localStorage cc-shp).
+   Packs page: a tab per series; each shows its Standard / Boosted / Collector packs (the real pack art) with
+   1, 3 or 5-pack bundles (cheaper per pack in bigger bundles). Bought packs go into that series' stock and are
+   opened from the Packs tab (free daily pack first, then stock, then Stardust).
+   Stock: S.inv = {<setId>:{std,prem,col}, any:{std,prem,col}}. 'any' holds packs from the v1.1.0 any-series
+   bundles; they still work in every series and are used after the series' own stock.
    Binder covers: two per series, built from that series' own card art. Bought once, then equipped per series
    (S.bnd = {own:[ids], eq:{setId:id}}); "Classic" switches back to the original cover. */
 const TIERN={std:'Standard',prem:'Boosted',col:'Collector'};
 const BUNDLES={std:[[1,250],[3,700],[5,1100]],prem:[[1,900],[3,2500],[5,4000]],col:[[1,2500],[3,7000],[5,11000]]};
-const inv=()=>{if(!S.inv)S.inv={std:0,prem:0,col:0};return S.inv};
-function miniPacks(k){const ids=['const','cosmos','explore'];return ids.map((id,i)=>`<i class="mp t-${k}" style="--i:${i-1}">${glyph(id,...(SETCOL[id]||['#fff','#fff']))}</i>`).join('')}
-function bundleShop(){const I=inv();return TIERS.map(k=>`<div class="bnd t-${k}"><div class="bnd-art">${miniPacks(k)}</div>`+
-  `<div class="bnd-h"><b>${TIERN[k]} packs</b><span>${k==='col'?'Legendary or better guaranteed':k==='prem'?'Boosted odds':'Normal odds'} · any series</span><em class="${I[k]?'has':''}">${I[k]||0} in stock</em></div>`+
-  `<div class="bnd-b">${BUNDLES[k].map(([n,p])=>{const save=PACK_PRICE[k]*n-p;return `<button class="buy bnb${S.dust<p?' poor':''}" data-k="${k}" data-q="${n}" data-p="${p}"><span class="bq">${n} pack${n>1?'s':''}${save>0?`<i class="sv">Save ${fmt(save)}</i>`:''}</span><span class="pr">${DUSTI}${fmt(p)}</span></button>`}).join('')}</div></div>`).join('')}
-async function buyBundle(k,n,p,btn){
+const PSERIES=()=>SETIDS.filter(id=>!SETS[id].shop);
+const tier0=()=>({std:0,prem:0,col:0});
+function inv(){let I=S.inv;if(!I||typeof I!=='object')I={};if(typeof I.std==='number'||typeof I.prem==='number'||typeof I.col==='number')I={any:{std:I.std|0,prem:I.prem|0,col:I.col|0}};
+  if(!I.any)I.any=tier0();PSERIES().forEach(id=>{if(!I[id])I[id]=tier0()});S.inv=I;return I}
+const invOf=(set,k)=>{const I=inv();return ((I[set]&&I[set][k])|0)+(I.any[k]|0)};
+function takeInv(set,k,n){const I=inv();let got=0;const a=Math.min(n,(I[set]&&I[set][k])|0);if(a){I[set][k]-=a;got+=a}const b=Math.min(n-got,I.any[k]|0);if(b){I.any[k]-=b;got+=b}return got}
+let SHP={page:'packs',set:null};try{SHP.page=localStorage.getItem('cc-shp')||'packs'}catch(e){}
+function shopPage(p){SHP.page=p;try{localStorage.setItem('cc-shp',p)}catch(e){}
+  document.querySelectorAll('#shNav button').forEach(b=>b.setAttribute('aria-checked',b.dataset.p===p));
+  document.querySelectorAll('#viewShop .shp').forEach(x=>x.hidden=x.dataset.p!==p)}
+const ODDS={std:'Normal odds',prem:'Boosted odds',col:'Highest odds · Legendary+ guaranteed'};
+function packShop(){const ser=PSERIES();if(!SHP.set||!ser.includes(SHP.set))SHP.set=ser.includes(S.cur)?S.cur:ser[0];
+  const set=SETS[SHP.set],I=inv(),anyN=TIERS.reduce((a,k)=>a+(I.any[k]|0),0);
+  const tabs=`<div class="psh-tabs" role="tablist">${ser.map(id=>`<button class="psh-tab s-${id}${id===SHP.set?' on':''}" data-set="${id}" role="tab" aria-selected="${id===SHP.set}">${setMark(id)}<b>${SETS[id].tab}</b><span>${SETS[id].series}</span></button>`).join('')}</div>`;
+  const tiles=TIERS.map(k=>{const own=(I[set.id][k]|0);return `<div class="psh t-${k}"><div class="psh-art" data-set="${set.id}" data-k="${k}">${packHTML(set,k,set[k].pals[0])}</div>`+
+    `<div class="psh-h"><b>${set[k].name}</b><span>${ODDS[k]}</span><em class="${own?'has':''}">${own} in stock</em></div>`+
+    `<div class="bnd-b">${BUNDLES[k].map(([n,p])=>{const save=PACK_PRICE[k]*n-p;return `<button class="buy bnb${S.dust<p?' poor':''}" data-set="${set.id}" data-k="${k}" data-q="${n}" data-p="${p}"><span class="bq">${n} pack${n>1?'s':''}${save>0?`<i class="sv">Save ${fmt(save)}</i>`:''}</span><span class="pr">${DUSTI}${fmt(p)}</span></button>`}).join('')}</div></div>`}).join('');
+  return tabs+`<div class="psh-top"><p class="sub">Packs you buy go into your <b>${set.tab}</b> stock. Open them from the Packs tab, one at a time or several at once.</p><button class="ghost" id="shGoPacks" data-set="${set.id}">Open ${set.tab} packs →</button></div>`+
+    (anyN?`<p class="psh-any">You also have ${anyN} any-series pack${anyN===1?'':'s'} from earlier bundles (${TIERS.filter(k=>I.any[k]).map(k=>`${I.any[k]} ${TIERN[k]}`).join(', ')}). They work in every series.</p>`:'')+
+    `<div class="psh-grid s-${set.id}">${tiles}</div>`}
+function renderPackShop(){const el=$('#shPacks');if(!el)return;el.innerHTML=packShop();fillArt(el)}
+async function buyBundle(set,k,n,p,btn){
   if(S.dust<p){toast(`You need ${fmt(p-S.dust)} more Stardust.`,2200);Snd.deal();return}
   if(!btn.dataset.arm){armBtn(btn);return}
-  S.dust-=p;inv()[k]+=n;save();paintDust();Snd.init();Snd.reveal(k==='col'?4:k==='prem'?3:2);
-  const r=btn.closest('.bnd').querySelector('.bnd-art').getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,{count:30+n*14,colors:['#ffd76a','#fff2c0','#ffffff','#ff9ad9'],speed:6,life:.9,size:3.4,ring:0});
-  toast(`+${n} ${TIERN[k]} pack${n>1?'s':''} added to your stock. Open ${n>1?'them':'it'} from the Packs tab.`,3200);renderShop();refreshHome()}
+  S.dust-=p;inv()[set][k]+=n;save();paintDust();Snd.init();Snd.reveal(k==='col'?4:k==='prem'?3:2);
+  const r=btn.closest('.psh').querySelector('.psh-art').getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,{count:30+n*14,colors:['#ffd76a','#fff2c0','#ffffff','#ff9ad9'],speed:6,life:.9,size:3.4,ring:0});
+  toast(`+${n} ${SETS[set][k].name}${n>1?'s':''} added to your ${SETS[set].tab} stock. Open ${n>1?'them':'it'} from the Packs tab.`,3400);renderShop();refreshHome()}
 
 /* ── binder covers ── */
 const BCOVERS={
@@ -3646,8 +3738,13 @@ function applyCover(set){const c=$('#cover'),b=$('#book');if(!c||!b)return;const
   else{delete c.dataset.cvart;['--cart','--cink','--crim'].forEach(k=>c.style.removeProperty(k));['--pg1','--pg2'].forEach(k=>b.style.removeProperty(k))}
 }
 function initShopExtras(){
+  shopPage(SHP.page);
   $('#viewShop').addEventListener('click',e=>{const t=e.target;
-    const bb=t.closest('.bnb');if(bb){e.stopImmediatePropagation();buyBundle(bb.dataset.k,+bb.dataset.q,+bb.dataset.p,bb);return}
+    const nv=t.closest('#shNav button');if(nv){e.stopImmediatePropagation();Snd.init();Snd.click();shopPage(nv.dataset.p);window.scrollTo({top:0});return}
+    const tb=t.closest('.psh-tab');if(tb){e.stopImmediatePropagation();Snd.init();Snd.click();SHP.set=tb.dataset.set;renderPackShop();return}
+    const gp=t.closest('#shGoPacks');if(gp){e.stopImmediatePropagation();if(S.cur!==gp.dataset.set)switchSet(gp.dataset.set);setView('packs');return}
+    const pa=t.closest('.psh-art');if(pa){e.stopImmediatePropagation();const b=pa.closest('.psh').querySelector('.bnb');if(b)b.focus();return}
+    const bb=t.closest('.bnb');if(bb){e.stopImmediatePropagation();buyBundle(bb.dataset.set,bb.dataset.k,+bb.dataset.q,+bb.dataset.p,bb);return}
     const cb=t.closest('.cvb');if(cb){e.stopImmediatePropagation();buyCover(cb.dataset.cv,cb);return}
     const ce=t.closest('.cveq');if(ce){e.stopImmediatePropagation();const cv=coverById(ce.dataset.cv);if(cv)equipCover(cv.set,cv.id);return}
     const cc=t.closest('.cvclassic');if(cc){e.stopImmediatePropagation();equipCover(cc.dataset.set,null);return}},true);
