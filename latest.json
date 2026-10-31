@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "game": {
+    "file": "game-1.0.0.html",
+    "sha256": "7612c57babbd4a7e9d0579d7eab7092e41df23db99f41714ea2bb65fae10812f",
+    "size": 4326353
+  },
+  "notes": "First release of Cosmic Cards for Windows.",
+  "date": "2026-10-31T17:39:16.021Z",
+  "sig": "Wpus+JYPTw55yXF5V1EwQ2TzyD31pmyWH6scRhyEYwpAWkaoliV7WNHbc2wBl1R/z6IMe6bYfeN3/l2JTk/SCQ=="
+}
