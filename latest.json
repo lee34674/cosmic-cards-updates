@@ -1,11 +1,11 @@
 {
-  "version": "1.0.2",
+  "version": "1.1.0",
   "game": {
-    "file": "game-1.0.2.html",
-    "sha256": "fbcd095de411c6ebdfdb4128e192475d01d075cd7addcfed6a53af177e4f9597",
-    "size": 4347716
+    "file": "game-1.1.0.html",
+    "sha256": "86faa880854e3fcb2ed8b1b8c3470628c9c8abf5975a4d2abfacc6b7c66ee1f1",
+    "size": 4374444
   },
-  "notes": "New: drag cards to play and attack (orange outline when attacking), Shiny preview in the shop, set bonuses under Keywords, tutorial battles at 10 Life, livelier battle music and an intro swoosh. Fix: buying a Shiny no longer also adds the regular card.",
-  "date": "2026-10-31T18:43:28.784Z",
-  "sig": "Bm9oQjW9oIahak/69kxlq8cN2mvVvudvePcWVY6UWvX+zi+pPlF+g8q9ECai357b1GwQ0BQ1lMlTgA9WCDjQDg=="
+  "notes": "New: packs open as a face-down spread you can flip in any order, pack bundles in the shop (open them from the Packs tab), binder covers for every series, a set symbol on every card, and keyword tips when you hover with a mouse.",
+  "date": "2026-10-31T19:22:03.284Z",
+  "sig": "ZKa3++8VeXcc757ynPHrl5oXw8Kxj63MhoPFN/XsORRKbzjqpfdUsdSg1ewkQmFFJoxRvYzQAXg7eIPB9vc0CA=="
 }
