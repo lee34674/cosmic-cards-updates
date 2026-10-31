@@ -519,7 +519,7 @@ body[data-set="const"] .cover .cs{color:#a8cdf5}
 .arena::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(transparent 49.6%,rgba(127,233,255,.12) 50%,transparent 50.4%),radial-gradient(40% 30% at 50% 50%,rgba(127,233,255,.08),transparent 70%)}
 body.noscroll{overflow:hidden}
 #arBody{position:relative;min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(6px,1.2vh,14px);padding:max(8px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) max(8px,env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));max-width:980px;margin:0 auto}
-.ar-top{display:flex;justify-content:space-between;align-items:center;width:100%}.ar-top .ghost{padding:6px 12px;font-size:12px}.ar-t{font:600 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.ar-top{display:flex;justify-content:space-between;align-items:center;width:100%}.ar-tr{display:flex;align-items:center;gap:10px}.ar-top .devbtn{padding:5px 10px;font:800 11px var(--f-mono);letter-spacing:.12em;color:#fff;background:#ff5a7a;border-color:#ff5a7a}#arTurn{cursor:default;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}.ar-top .ghost{padding:6px 12px;font-size:12px}.ar-t{font:600 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .sb{display:flex;align-items:center;gap:10px;width:100%;padding:6px 10px;border-radius:14px;background:rgba(14,12,44,.75);border:1px solid var(--line)}
 .sb .sp{flex:1}
 .core{position:relative;display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.04);cursor:default;transition:box-shadow .2s}
@@ -760,7 +760,9 @@ body[data-set="vistas"] .cover .cs{color:#c8b8d8}
 .buy.sh{color:#fff;background:linear-gradient(120deg,#2a1450,#3a1a6a);border:1px solid rgba(255,190,240,.5);box-shadow:0 4px 0 #160a2e,0 0 16px rgba(255,150,230,.25)}.buy.sh .pr .dusti{color:#ffd76a}
 .buy.poor{filter:grayscale(.7) brightness(.7)}
 .buy.arm{animation:premglow .8s ease-in-out infinite;outline:2px solid #fff}.buy .cf{margin-right:auto}
-.buy.owned{background:rgba(77,255,160,.1);color:#7dffc4;border:1px solid rgba(77,255,160,.3);box-shadow:none;justify-content:center;cursor:default}
+.buy.owned{background:rgba(77,255,160,.1);color:#7dffc4;border:1px solid rgba(77,255,160,.3);box-shadow:none;justify-content:center;cursor:pointer}
+.buy.cur{outline:2px solid rgba(255,255,255,.75);outline-offset:2px}
+.scard{position:relative;perspective:900px}.svtag{position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);z-index:9;font:700 10px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:#1b1750;color:var(--muted);border:1px solid var(--line);white-space:nowrap}.svtag.sh{color:#fff;background:linear-gradient(120deg,#ff9ad9,#ffd76a 50%,#9ad0ff);color:#2a0f3a;border:0}
 .sitem.feat{display:grid;grid-template-columns:220px 1fr;grid-template-rows:auto auto 1fr auto;column-gap:22px;padding:20px;border-color:rgba(255,215,106,.5);background:radial-gradient(120% 120% at 0% 0%,rgba(255,200,90,.16),rgba(20,17,58,.85) 60%);box-shadow:0 0 40px rgba(255,200,90,.15)}
 .sitem.feat .scard{grid-row:1/5;width:220px}.sitem.feat .smeta{flex-direction:column;align-items:flex-start;margin-top:26px}.sitem.feat .smeta b{font-size:22px;white-space:normal}
 .slore{margin:0;color:#cfcaf2;font-size:14px;line-height:1.5}
@@ -1095,6 +1097,25 @@ body.devon .brand::after{content:"DEV";font:800 9px/1 var(--f-mono);letter-spaci
 @media (max-width:640px){.tslot{width:24px;height:34px;border-radius:5px}.tslot .ti{width:13px;height:13px;font-size:12px}.traps{gap:4px}.syn{font-size:8.5px;padding:1px 6px 1px 3px}.syn i{width:11px;height:11px}.trapbadge{font-size:14px}}
 .arena{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
 body{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+
+.kw-h{margin:14px 0 2px;font:700 14px var(--f-display);grid-column:1/-1}.kw-p{margin:0 0 6px;font-size:13.5px;line-height:1.5;color:var(--muted);grid-column:1/-1}.kw-p b{color:var(--text)}
+.kw-syn em{display:block;font:600 10.5px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--accent);margin-bottom:2px}
+.kw-syn.s-cosmos em{color:#ffb454}.kw-syn.s-const em{color:#7fe9ff}.kw-syn.s-explore em{color:#ff9a5a}.kw-syn.s-vistas em{color:#c8a0ff}
+
+/* ───────── battle drag and drop ───────── */
+.hand .hc,.board.me .u{touch-action:none}
+.dragghost{position:fixed;left:0;top:0;z-index:60;pointer-events:none;will-change:transform;transform-origin:50% 40%;filter:drop-shadow(0 18px 22px rgba(0,0,0,.55)) drop-shadow(0 0 2px rgba(190,180,255,.9));transition:filter .15s}
+.dragghost.ok{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55)) drop-shadow(0 0 2px #7dffc4) drop-shadow(0 0 2px #7dffc4) drop-shadow(0 0 12px rgba(77,255,160,.8))}
+/* attacking: the card's outline turns orange */
+.dragghost.atk{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55)) drop-shadow(0 0 2px #ff9a2e) drop-shadow(0 0 2px #ff9a2e) drop-shadow(0 0 14px rgba(255,140,40,.85))}
+.dragghost.atk.ok{filter:drop-shadow(0 18px 22px rgba(0,0,0,.55)) drop-shadow(0 0 3px #ffb347) drop-shadow(0 0 3px #ff8a1e) drop-shadow(0 0 22px rgba(255,130,30,1))}
+.dragghost .u,.dragghost .hc{box-shadow:none!important;animation:none!important}
+.dragghost.atk .u,.dragghost.atk .hc{border-color:#ff9a2e!important}
+.dragsrc{opacity:.28!important;filter:grayscale(.5)}
+.dropok{outline:3px solid #7dffc4;outline-offset:2px;box-shadow:0 0 22px rgba(77,255,160,.6)!important}
+.dropatk{outline:3px solid #ff9a2e;outline-offset:2px;box-shadow:0 0 26px rgba(255,140,40,.85)!important}
+.dropbad{outline:3px dashed #ff5a6a;outline-offset:2px}
+body.dragging,body.dragging *{cursor:grabbing!important;user-select:none;-webkit-user-select:none}
 
 /* ───────── menu ───────── */
 /* phones: the music and sound buttons live in the menu, so the top bar keeps one row */
@@ -1474,7 +1495,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.0.1';
+const CC_VERSION='1.0.2';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -2571,7 +2592,12 @@ const Snd=(()=>{
         if(s===0&&bar%2===0){const dur=sd*32;ch.forEach((n,i)=>mt({f:N(n-12),at:t,dur:dur+2,a:2.6,g:.038,type:i%2?'triangle':'sine',lp:1400,detune:i%2?7:-7,rev:.8}));mt({f:N(ch[0]-24),at:t,dur:dur+1.5,a:2,g:.09,type:'sine'});mn({type:'lowpass',f:500,f2:900,at:t,dur:dur,a:dur*.5,g:.02,q:.4})}
         if(s%2===0&&Math.random()<.3){const n=ch[Math.random()*ch.length|0]+12+(Math.random()<.35?12:0);mbell(N(n),t,.048)}
         if(s===12&&bar%4===3)for(let k=0;k<5;k++)mt({f:N(36+[0,4,7,11,14][k]),at:t+k*.09,dur:.9,g:.012,rev:1})}},
-    battle:{bpm:138,chords:[[2,5,9],[-2,2,5],[5,9,12],[0,4,7]],roots:[-22,-26,-19,-24],
+    battle:{bpm:138,
+      /* tempo breathes: a slow drift of ±2%, and every 32 bars it eases down to ~80% for a few half-time bars
+         (lighter hats), then pushes back up a touch past full speed before settling. Smoothstep curves keep it natural. */
+      tempo(step){const b=step/16,c=b%32,ss=x=>x<=0?0:x>=1?1:x*x*(3-2*x);let k=1;
+        if(c>=22&&c<24)k=1-.2*ss((c-22)/2);else if(c>=24&&c<29)k=.8;else if(c>=29&&c<31)k=.8+.24*ss((c-29)/2);else if(c>=31)k=1.04-.04*ss(c-31);
+        this.slow=k<.9;return this.bpm*k*(1+.02*Math.sin(b/12*Math.PI*2))},chords:[[2,5,9],[-2,2,5],[5,9,12],[0,4,7]],roots:[-22,-26,-19,-24],
       arp:[0,1,2,1,0,2,1,2],
       mel:[14,null,17,null,21,null,19,17,14,null,12,null,14,null,null,null, 10,null,14,null,17,null,19,null,17,null,14,null,12,null,null,null,
            17,null,21,null,24,null,21,null,19,null,17,null,19,null,21,null, 19,null,17,null,16,null,12,null,14,null,null,null,null,null,null,null],
@@ -2579,7 +2605,7 @@ const Snd=(()=>{
         // drums
         if(s%4===0||(s===14&&bar%2===1))mt({f:160,f2:40,at:t,dur:.2,g:.36});
         if(!intro&&(s===4||s===12)){mn({type:'bandpass',f:1700,q:.8,at:t,dur:.18,g:.17});mn({type:'highpass',f:4000,at:t,dur:.08,g:.06});mt({f:190,f2:130,at:t,dur:.1,g:.08,type:'triangle'})}
-        if(s%4===2)mn({type:'highpass',f:6500,at:t,dur:.14,g:.05});else mn({type:'highpass',f:9000,at:t,dur:.03,g:s%2?.02:.035});
+        if(s%4===2)mn({type:'highpass',f:6500,at:t,dur:.14,g:.05});else if(!this.slow)mn({type:'highpass',f:9000,at:t,dur:.03,g:s%2?.02:.035});
         if(bar%8===7&&s>=12){mt({f:[220,180,150,120][s-12],f2:[150,120,100,80][s-12],at:t,dur:.16,g:.16,type:'sine'})}
         // galloping bass
         if(!intro||s<8)mt({f:N(root+(s%4===3?12:0)+(s%8===6?7:0)),at:t,dur:sd*.9,a:.004,g:.08,type:'sawtooth',lp:620+(ph%4)*60});
@@ -2636,7 +2662,7 @@ const Snd=(()=>{
         if(s===0&&bar%2===0){const dur=sd*32;ch.forEach((n,i)=>mt({f:N(n),at:t,dur:dur+1.5,a:2.2,g:.03,type:i%2?'triangle':'sine',lp:1200,detune:i%2?6:-6,rev:.9}));mt({f:N(root),at:t,dur:dur+1,a:1.6,g:.11,type:'sine'});mn({type:'lowpass',f:380,f2:220,at:t,dur:dur,a:dur*.5,g:.03,q:.5})}
         if(s===0||s===3)mt({f:55,f2:40,at:t,dur:.25,g:s?.1:.16,type:'sine'});
         if(s%2===0){const m=this.mel[(bar%4)*8+s/2];if(m!=null&&bar>=1)mbell(N(m),t,.05)}}}};
-  function mTick(){if(!ctx||!mTrack)return;const tr=TR[mTrack],sd=60/tr.bpm/4;while(mNext<ctx.currentTime+.25){tr.play(mStep,mNext,sd);mNext+=sd;mStep++}}
+  function mTick(){if(!ctx||!mTrack)return;const tr=TR[mTrack];while(mNext<ctx.currentTime+.25){const sd=60/(tr.tempo?tr.tempo(mStep):tr.bpm)/4;tr.play(mStep,mNext,sd);mNext+=sd;mStep++}}
   function mLevel(){return mOn&&!document.hidden?MVOL*mDuck:0}
   function mApply(){if(!mbus)return;mbus.gain.cancelScheduledValues(ctx.currentTime);mbus.gain.setTargetAtTime(mLevel(),ctx.currentTime,.5)}
   function mSwitch(){if(!ctx||!mOn)return;initMusic();if(mWant===mTrack&&mTimer)return;const gen=++mGen;
@@ -2711,6 +2737,11 @@ const Snd=(()=>{
     shinyHint(){for(let i=0;i<10;i++)tone({f:N(36+[0,4,7,11,14][i%5]+(i>4?12:0)),t:i*.035,dur:.4,g:.04,type:'sine',rev:.8})},
     shiny(){chord([0,4,7,11,14],0,2.6,.04,3000);[24,28,31,35,36,40,43,47,48,52,55,59].forEach((s,i)=>bell(N(s),.05+i*.045,.12));sparkle(60,2.4,2600,6000);noise({type:'highpass',f:4000,f2:12000,dur:1.4,g:.08,a:.2});tone({f:N(-12),f2:N(-24),dur:.8,g:.3})},
     land(i,r){tone({f:140,f2:70,dur:.12,g:.2});noise({f:2200,q:1.5,dur:.05,g:.05});const sc=[0,2,4,7,9,12,14,16,19];bell(N(12+sc[i%9]+(r>=3?7:0)),.02,.06+r*.012);if(r>=2)sparkle(3+r*2,.35,2400,3000)},
+    /* intro: a wide cosmic whoosh (rising then falling filtered noise), a deep swell and a shimmering tail */
+    swoosh(){noise({type:'bandpass',f:260,f2:2800,q:.8,dur:1.05,a:.7,g:.32,rev:.7});noise({type:'bandpass',f:2800,f2:420,q:.9,t:.95,dur:1.3,a:.03,g:.26,rev:.8});
+      noise({type:'highpass',f:3000,f2:9000,t:.55,dur:.9,a:.4,g:.06,rev:.9});
+      tone({f:N(-29),f2:N(-17),dur:2.2,a:1,g:.16,type:'sine',rev:.5});tone({f:N(-5),f2:N(7),dur:1.6,a:.9,g:.03,type:'triangle',lp:1800,rev:.9});
+      [24,31,36,40,43].forEach((s,i)=>tone({f:N(s),t:.95+i*.07,dur:1.6,g:.022,type:'sine',rev:1}));sparkle(16,1.8,2600,4200)},
     chime(){[0,4,7,12,16,19,24,28,31].forEach((s,i)=>bell(N(12+s),i*.1,.1))},
     complete(){chord([-12,0,7,12,16,19],0,3.8,.045,2400);[12,16,19,24,28,31,36,40,43,48].forEach((s,i)=>bell(N(s),.15+i*.11,.15));tone({f:55,f2:30,dur:1.6,g:.6});sparkle(70,3.4,2200,5800);[0,.6,1.2,1.8,2.4].forEach(t=>{tone({f:N(36),t:t+.3,dur:1.2,g:.04,rev:.8});sparkle(10,.4,3000,3000)})},
     turn(){[0,7,12].forEach((s,i)=>tone({f:N(12+s),t:i*.07,dur:.35,g:.08,type:'triangle',rev:.4}));noise({type:'highpass',f:1500,f2:6000,dur:.4,g:.06})},
@@ -3366,9 +3397,12 @@ async function packIntro(pk,set,kind){
 /* ───────────── Stardust shop ───────────── */
 const dealIdx=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5)%CARDS4.length;
 function priceOf(c,shiny){let p=PRICE[c.r]*(shiny?PRICE_SHINY:1);if(dealIdx()===c.n-1)p=Math.round(p*.7/10)*10;return p}
-function shopItem(c,feat){const X=st('promo'),own=X.owned.includes(c.n),shOwn=X.shiny.includes(c.n),p=priceOf(c,false),ps=priceOf(c,true),deal=dealIdx()===c.n-1;
-  const btn=(sh,price,owned)=>owned?`<button class="buy owned" disabled>${sh?'✦ Shiny owned':'Owned'} ✓</button>`:`<button class="buy${sh?' sh':''}${S.dust<price?' poor':''}" data-n="${c.n}" data-sh="${sh?1:''}" data-p="${price}">${sh?'<span class="shtxt">✦ Shiny</span> ':'Buy '}<span class="pr">${DUSTI}${fmt(price)}</span></button>`;
-  return `<div class="sitem r-${RAR[c.r].id}${feat?' feat':''}${own?' has':''}">${deal?`<span class="dealtag">Deal of the day · 30% off</span>`:''}<div class="scard">${cardHTML(c)}</div>`+
+/* which version each shop card is previewing (n → true for Shiny); tapping a buy button switches it */
+const SHOPV={};
+const shopPreview=(c,sh)=>`<div class="scard${sh?' shv':''}" data-n="${c.n}">${cardHTML(sh?Object.assign({},c,{shiny:true}):c)}<span class="svtag${sh?' sh':''}">${sh?'✦ Shiny':'Regular'}</span></div>`;
+function shopItem(c,feat){const X=st('promo'),own=X.owned.includes(c.n),shOwn=X.shiny.includes(c.n),p=priceOf(c,false),ps=priceOf(c,true),deal=dealIdx()===c.n-1,pv=!!SHOPV[c.n];
+  const btn=(sh,price,owned)=>owned?`<button class="buy owned${pv===sh?' cur':''}" data-n="${c.n}" data-sh="${sh?1:''}" title="You own this. Tap to preview it.">${sh?'✦ Shiny owned':'Owned'} ✓</button>`:`<button class="buy${sh?' sh':''}${S.dust<price?' poor':''}${pv===sh?' cur':''}" data-n="${c.n}" data-sh="${sh?1:''}" data-p="${price}">${sh?'<span class="shtxt">✦ Shiny</span> ':'Buy '}<span class="pr">${DUSTI}${fmt(price)}</span></button>`;
+  return `<div class="sitem r-${RAR[c.r].id}${feat?' feat':''}${own||shOwn?' has':''}" data-n="${c.n}">${deal?`<span class="dealtag">Deal of the day · 30% off</span>`:''}${shopPreview(c,pv)}`+
    `<div class="smeta"><b>${c.name}</b><span style="color:${RAR[c.r].col}">${RAR[c.r].name}</span></div>${abilityHTML(c)}${feat?`<p class="slore">${c.lore}</p>`:''}<div class="sbtns">${btn(false,p,own)}${btn(true,ps,shOwn)}</div></div>`}
 function renderShop(){
   paintDust();const X=st('promo');$('#dustEarned').textContent=fmt(S.dustEarned||0);
@@ -3387,8 +3421,9 @@ async function buy(n,sh,btn){
   if(S.dust<price){toast(`You need ${fmt(price-S.dust)} more Stardust. Duplicates from packs give Stardust.`,2600);Snd.deal();return}
   if(!btn.dataset.arm){armBtn(btn);return}
   buyBusy=true;S.dust-=price;
-  if(!X.owned.includes(n)){X.owned=[...X.owned,n].sort(num);X.fresh=[...new Set([...X.fresh,n])]}
+  /* you get exactly the version you bought: Shiny only adds the Shiny card */
   if(sh){X.shiny=[...X.shiny,n].sort(num);X.sfresh=[...new Set([...X.sfresh,n])]}
+  else{X.owned=[...X.owned,n].sort(num);X.fresh=[...new Set([...X.fresh,n])]}
   save();paintDust();paintBadge();renderSetBar();
   try{await buyFx(sh?Object.assign({},c,{shiny:true}):c,price)}finally{buyBusy=false;renderShop()}
 }
@@ -3410,9 +3445,16 @@ async function buyFx(c,price){
 }
 function initShop(){
   $('#viewShop').addEventListener('click',e=>{const sb=e.target.closest('.buy.slb');if(sb){buySleeve(sb.dataset.sl,sb);return}const eb=e.target.closest('.buy.eqb');if(eb){equipSleeve(eb.dataset.sl);return}
-    const b=e.target.closest('.buy:not(.owned)');if(b){buy(+b.dataset.n,!!b.dataset.sh,b);return}
+    const b=e.target.closest('.buy[data-n]');if(b){const n=+b.dataset.n,sh=!!b.dataset.sh;setShopPreview(n,sh);if(!b.classList.contains('owned'))buy(n,sh,b);return}
     if(e.target.closest('#shBinder')){S.cur='promo';save();setView('binder');return}
-    const sc=e.target.closest('.scard');if(sc){const n=+sc.querySelector('.card').dataset.n;openZoom('promo',n,false)}});
+    const sc=e.target.closest('.scard');if(sc){const n=+sc.dataset.n;openZoom('promo',n,!!SHOPV[n])}});
+}
+/* swap a shop card's preview between Regular and Shiny */
+function setShopPreview(n,sh){if(!!SHOPV[n]===sh)return;SHOPV[n]=sh;const c=cardOf('promo',n);
+  document.querySelectorAll(`#viewShop .sitem[data-n="${n}"]`).forEach(it=>{const old=it.querySelector('.scard');const tmp=document.createElement('div');tmp.innerHTML=shopPreview(c,sh);const nu=tmp.firstChild;
+    old.replaceWith(nu);it.querySelectorAll('.buy[data-n]').forEach(x=>x.classList.toggle('cur',!!x.dataset.sh===sh));
+    if(!REDUCED)nu.animate([{transform:'rotateY(90deg) scale(.92)',opacity:.4},{transform:'none',opacity:1}],{duration:320,easing:'cubic-bezier(.2,.9,.3,1.1)'})});
+  if(sh)Snd.shinyHint();else Snd.flip()
 }
 /* ───────────── Battle rewards, challenges, sleeves ───────────── */
 const WIN_DUST=[40,90,180],ONLINE_WIN=150,ONLINE_LOSS=30,LOSS_DUST=10;
@@ -3730,7 +3772,7 @@ function renderArena(){
   const g=BT.g;if(!g)return;const me=g.me,s=BT.sel;BT.pvCur=g.over?null:pvNow();
   const n=me.hand.length;
   $('#arBody').innerHTML=
-   `<div class="ar-top"><button class="ghost" id="arQuit">${BT.quitArm?'Tap again to forfeit':'Forfeit'}</button>${BT.online?'<span class="ol-t" id="olTimer"></span>':''}<span class="ar-t">Turn ${Math.max(1,Math.ceil(g.turnNo/2))}</span></div>`+
+   `<div class="ar-top"><button class="ghost" id="arQuit">${BT.quitArm?'Tap again to forfeit':'Forfeit'}</button>${BT.online?'<span class="ol-t" id="olTimer"></span>':''}<span class="ar-tr">${DEV.on?'<button class="ghost devbtn" id="arDev" title="Developer Mode">DEV</button>':''}<span class="ar-t" id="arTurn">Turn ${Math.max(1,Math.ceil(g.turnNo/2))}</span></span></div>`+
    sideHTML('ai')+boardHTML('ai')+
    `<div class="ar-mid"><div class="ar-info">${infoHTML()}</div><button class="endturn${g.turn==='me'&&!BT.busy&&!canAct()?' nudge':''}" id="endTurn" ${g.turn!=='me'||BT.busy||g.over?'disabled':''}>${g.turn==='me'?'End turn':BT.online?'Their turn':'Enemy turn'}</button></div>`+
    boardHTML('me')+sideHTML('me')+
@@ -3865,7 +3907,7 @@ async function playCard(side,uid,slot,target){
   else if(!d.ev){if(slot==null||slot<0||p.board[slot])slot=p.board.findIndex(x=>!x);if(slot<0)return false}
   if(d.ev&&d.play.dmg&&!target)return false;
   if(side==='me'){stat(d.ev?'events':'units',1);if(d.shiny)stat('shiny',1);onlineRec('p'+uid+'.'+(slot==null?'':slot)+'.'+tcode(target))}
-  const fromEl=side==='me'?elH(uid):(document.querySelector(`#aiHand [data-hid="${uid}"]`)||$('#aiHand')||elCore('ai')),from=rc(fromEl);
+  const fromEl=side==='me'?elH(uid):(document.querySelector(`#aiHand [data-hid="${uid}"]`)||$('#aiHand')||elCore('ai')),from=side==='me'&&BT.dragFrom?BT.dragFrom:rc(fromEl);BT.dragFrom=null;
   p.E-=d.cost;p.hand.splice(i,1);BT.sel=null;BT.peek=null;
   if(d.trap){p.traps[slot]={d,uid};renderArena();const el=elTrap(side,slot),to=rc(el);Snd.deal();
     if(!BT.fast){await flyTo(flyer(side==='me'?`<div class="fl3"><div class="ff">${hcHTML(d)}</div><div class="fb cb sl-${slOf(side)}"></div></div>`:`<div class="cb sl-${slOf(side)}"></div>`,from),from,to,{dur:480,arc:side==='me'?60:-40,mid:.9});
@@ -3977,6 +4019,9 @@ function aiChoose(u,side,diff){
 function arenaClick(e){
   const g=BT.g;if(!g)return;const t=e.target;
   if(t.closest('#arQuit')){if(BT.quitArm){BT.quitArm=false;onlineRec('f');g.over=true;endBattle('lose',true)}else{BT.quitArm=true;renderArena();setTimeout(()=>{if(BT.quitArm){BT.quitArm=false;renderArena()}},3000)}return}
+  /* Developer Mode from the battle screen: the DEV button once unlocked, or tap "Turn" 5 times to unlock */
+  if(t.closest('#arDev')){openDev();return}
+  if(t.closest('#arTurn')){devTap();return}
   if(t.closest('#endTurn')){if(!BT.busy&&g.turn==='me'){Snd.click();endTurn('me')}return}
   if(g.over)return;
   const myTurn=g.turn==='me'&&!BT.busy,s=BT.sel;
@@ -4008,7 +4053,7 @@ async function startBattle(o){
   Snd.init();Snd.music('battle');const diff=tut?0:S.battle.diff;BT.rng=Math.random;BT.order=['me','ai'];BT.online=null;BT.uid=0;const mine=tut?STARTER.slice():deckForPlay();
   BT.g={me:mkPlayer(mine),ai:mkPlayer(botDeck(diff)),turn:null,over:false,diff,turnNo:0,t0:Date.now(),st:stats0(),deckIds:mine,botSl:['classic','nebula','void'][diff]};BT.sel=null;BT.peek=null;BT.busy=true;BT.quitArm=false;
   const ar=$('#arena');ar.hidden=false;document.body.classList.add('noscroll');$('#bfx').innerHTML='';renderArena();
-  const first=tut?'me':Math.random()<.5?'me':'ai';if(tut)tutStack(BT.g.me);
+  const first=tut?'me':Math.random()<.5?'me':'ai';if(tut){tutStack(BT.g.me);BT.g.me.life=BT.g.ai.life=TUT_LIFE;renderArena()}
   await banner(tut?'Tutorial battle':'Battle start',tut?'Practice · no rewards':first==='me'?'You go first':`${BOT[diff].name} goes first`);
   for(let i=0;i<4;i++){await drawCard('me',true);await drawCard('ai',true)}
   await drawCard(opp(first),true);
@@ -4177,7 +4222,10 @@ function renderDeckEd(){
 function toggleDeck(id){const B=S.battle,i=B.deck.indexOf(id);if(i>=0)B.deck.splice(i,1);else if(B.deck.length<DECK)B.deck.push(id);else{toast('Your deck is full. Remove a card first.');return}
   if(B.deck.length===DECK)B.starter=false;Snd.init();Snd.click();save();renderBattleHome()}
 function initBattle(){
-  $('#kwList').innerHTML=Object.keys(KWN).map(k=>`<div><i class="kw k-${k}">${ICON[k]}</i><span><b>${KWN[k][0]}:</b> ${KWN[k][1]}</span></div>`).join('');
+  $('#kwList').innerHTML=Object.keys(KWN).map(k=>`<div><i class="kw k-${k}">${ICON[k]}</i><span><b>${KWN[k][0]}:</b> ${KWN[k][1]}</span></div>`).join('')+
+    /* set bonuses, one per series */
+    `<h4 class="kw-h">Set bonuses</h4><p class="kw-p">Control <b>${SYN_N} or more units from the same series</b> on your board to switch on that series' bonus. It stays on while you have ${SYN_N} of them, and a chip on the board shows it. Shop exclusives don't count toward any series.</p>`+
+    Object.keys(SYN).map(k=>`<div class="kw-syn s-${k}"><i class="kw k-${SYN[k].ic}">${ICON[SYN[k].ic]}</i><span><em>${SETS[k].tab} · ${SETS[k].series}</em><b>${SYN[k].n}:</b> ${SYN[k].d}</span></div>`).join('');
   $('#btDiff').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.battle.diff=+b.dataset.d;save();Snd.init();Snd.click();renderBattleHome()});
   $('#btStart').onclick=()=>startBattle();
   $('#viewBattle').addEventListener('click',e=>{const t=e.target;
@@ -4193,7 +4241,7 @@ function initBattle(){
     const c=t.closest('#deGrid .hc,#deList .dl');if(c)toggleDeck(c.dataset.id);
   });
   $('#btChal').addEventListener('click',e=>{const t=e.target.closest('.ch-tabs button');if(t){renderChallenges.tab=t.dataset.t;Snd.init();Snd.click();renderChallenges();return}const c=e.target.closest('.ch-claim');if(c)claimChal(c.dataset.k,c.dataset.id,c)});
-  wireOnline();initTutorial();
+  wireOnline();initTutorial();initDrag();
   $('#arena').addEventListener('click',arenaClick);$('#arena').addEventListener('pointerover',arenaHover);
   addEventListener('resize',()=>{if(BT.g)layoutHand()});
   document.addEventListener('keydown',e=>{if(!BT.g||$('#arena').hidden)return;if((e.key==='e'||e.key==='E')&&!BT.busy&&BT.g.turn==='me'){endTurn('me')}if(e.key==='Escape'&&(BT.sel||BT.peek)){BT.sel=null;BT.peek=null;renderArena()}});
@@ -4245,6 +4293,91 @@ function dOfEl(el){const g=BT.g;if(!g||!el)return null;if(el.classList.contains(
     const pv=e.target.closest('.pv');if(pv&&O._list){const side=O.querySelector('h3').textContent.startsWith('Your')?'me':'ai',d=O._list[+pv.dataset.id];inspect(d,null);O._back=side}});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!O.hidden){e.stopImmediatePropagation();O._back=null;closeInsp()}},true);
 })();
+/* ───────────── Cosmic Clash: drag and drop ─────────────
+   Taps still work exactly as before; a drag starts once the pointer moves 10px (the same distance that
+   cancels long-press inspect).
+   - Hand cards you can afford: drag a unit onto one of your board slots (or anywhere on your board: nearest
+     free slot), a trap onto a trap slot (or your board), a damage event onto an enemy unit or the enemy
+     Core, and any other event onto the battlefield to cast it.
+   - Ready units: drag onto an enemy unit or the enemy Core to attack (Guard rules apply).
+   While a drag is an attack the card's outline turns orange. Drops reuse playCard/attack, so online
+   play, traps and animations behave exactly as they do for taps. */
+const DRG={on:false,eat:0};
+function initDrag(){const A=$('#arena');
+  A.addEventListener('pointerdown',dragDown);
+  /* the click that follows a drag must not also select or play something */
+  A.addEventListener('click',e=>{if(DRG.eat&&performance.now()-DRG.eat<450){e.stopPropagation();e.preventDefault();DRG.eat=0}},true);
+}
+function dragDown(e){const g=BT.g;if(DRG.on||!g||g.over||g.turn!=='me'||BT.busy||(e.button!=null&&e.button>0))return;
+  const co=$('#coach');if(co&&!co.hidden)return;
+  const hc=e.target.closest('.hand .hc'),un=e.target.closest('.board.me .u');let src=null;
+  if(hc){const h=g.me.hand.find(x=>x.uid===+hc.dataset.hid);if(!h||!canPlay(g.me,h.d))return;src={kind:'hand',h,d:h.d,el:hc}}
+  else if(un){const u=findU('me',+un.dataset.uid);if(!u||!u.ready||uAtk('me',u)<=0)return;src={kind:'unit',u,el:un}}
+  else return;
+  Object.assign(DRG,{src,x0:e.clientX,y0:e.clientY,id:e.pointerId,on:false,tgt:null,hl:null});
+  addEventListener('pointermove',dragMove,{passive:false});addEventListener('pointerup',dragUp);addEventListener('pointercancel',dragEnd);
+}
+function dragStart(){const s=DRG.src,r=s.el.getBoundingClientRect();DRG.on=true;
+  try{clearTimeout(INS.lp)}catch(e){}
+  /* the ghost: a copy of the card that follows the pointer */
+  const gh=document.createElement('div');gh.className='dragghost'+(s.kind==='unit'?' atk':'');
+  gh.style.cssText=`width:${r.width}px;height:${r.height}px;--tw:${r.width}px;--hw:${r.width}px;--sw:${r.width}px`;
+  const cl=s.el.cloneNode(true);cl.classList.remove('sel','ok','can','tgt');cl.style.margin='0';cl.style.transform='none';if(s.kind==='unit'){cl.style.position='absolute';cl.style.inset='0'}
+  gh.appendChild(cl);document.body.appendChild(gh);
+  DRG.ghost=gh;DRG.ox=DRG.x0-r.left;DRG.oy=DRG.y0-r.top;DRG.rect=r;DRG.lastX=DRG.x0;DRG.tilt=0;
+  BT.sel=s.kind==='hand'?{hid:s.h.uid}:{unit:s.u.uid};BT.peek=null;renderArena();markSrc();
+  document.body.classList.add('dragging');Snd.click();
+}
+function markSrc(){const s=DRG.src;const el=s.kind==='hand'?elH(s.h.uid):elU(s.u.uid);if(el)el.classList.add('dragsrc')}
+function dragMove(e){if(e.pointerId!==DRG.id)return;
+  if(!DRG.on){if(Math.hypot(e.clientX-DRG.x0,e.clientY-DRG.y0)<10)return;dragStart()}
+  e.preventDefault();const x=e.clientX,y=e.clientY;
+  DRG.tilt=Math.max(-14,Math.min(14,DRG.tilt*.8+(x-DRG.lastX)*.9));DRG.lastX=x;
+  DRG.ghost.style.transform=`translate(${x-DRG.ox}px,${y-DRG.oy}px) rotate(${DRG.tilt.toFixed(1)}deg) scale(1.06)`;
+  const t=dropTarget(document.elementFromPoint(x,y),x);DRG.tgt=t;
+  const hl=t&&t.el||null;if(DRG.hl!==hl){if(DRG.hl)DRG.hl.classList.remove('dropok','dropatk','dropbad');DRG.hl=hl;if(hl)hl.classList.add(t.type==='bad'?'dropbad':t.atk?'dropatk':'dropok')}
+  DRG.ghost.classList.toggle('atk',DRG.src.kind==='unit'||!!(t&&t.atk));
+  DRG.ghost.classList.toggle('ok',!!t&&t.type!=='bad');
+}
+/* what is under the pointer, and what dropping there would do */
+function dropTarget(el,x){const g=BT.g;if(!el||!g)return null;const s=DRG.src;
+  const eu=el.closest('#arBody .u[data-side="ai"]'),ec=el.closest('#arBody .core[data-core="ai"]');
+  const enemy=eu?{uid:+eu.dataset.uid}:ec?{core:true}:null,eEl=eu||ec;
+  if(s.kind==='unit'){if(!enemy)return null;return legalAttack('me',enemy)?{type:'atk',tgt:enemy,el:eEl,atk:true}:{type:'bad',el:eEl,msg:'Guard first'}}
+  const d=s.d,field=el.closest('#arBody .board,#arBody .ar-mid,#arBody .sb.me .traps,#arBody .sb.ai');
+  if(d.trap){const ts=el.closest('#arBody .tslot[data-trap^="me:"]');
+    if(ts){const k=+ts.dataset.trap.split(':')[1];return g.me.traps[k]?null:{type:'slot',k,el:ts}}
+    if(field){const k=g.me.traps.findIndex(t=>!t);return k<0?null:{type:'slot',k,el:elTrap('me',k)}}return null}
+  if(!d.ev){const bs=el.closest('#arBody .bslot[data-slot^="me:"]');
+    if(bs&&!bs.querySelector('.u')){const k=+bs.dataset.slot.split(':')[1];return {type:'slot',k,el:bs}}
+    if(el.closest('#arBody .board.me')){let best=-1,bd=1e9;document.querySelectorAll('#arBody .board.me .bslot').forEach((b,k)=>{if(g.me.board[k])return;const r=b.getBoundingClientRect(),dd=Math.abs(r.left+r.width/2-x);if(dd<bd){bd=dd;best=k}});
+      return best<0?null:{type:'slot',k:best,el:document.querySelector(`#arBody .bslot[data-slot="me:${best}"]`)}}return null}
+  if(d.play&&d.play.dmg)return enemy?{type:'tgt',tgt:enemy,el:eEl,atk:true}:null;
+  return field?{type:'cast',el:document.querySelector('#arBody .board.me')}:null;
+}
+function dragUp(e){if(e.pointerId!==DRG.id)return;
+  if(!DRG.on){dragEnd();return}
+  DRG.eat=performance.now();const t=DRG.tgt,s=DRG.src,g=BT.g,gh=DRG.ghost;
+  if(t&&t.type!=='bad'&&g&&!g.over&&g.turn==='me'&&!BT.busy){
+    const gr=gh.getBoundingClientRect();BT.dragFrom={left:gr.left,top:gr.top,width:gr.width,height:gr.height};
+    dragEnd(true);
+    if(s.kind==='unit'){const k=g.me.board.findIndex(x=>x&&x.uid===s.u.uid);BT.dragFrom=null;if(k>=0)act(()=>attack('me',k,t.tgt))}
+    else if(t.type==='slot')act(()=>playCard('me',s.h.uid,t.k,null));
+    else if(t.type==='tgt')act(()=>playCard('me',s.h.uid,null,t.tgt));
+    else act(()=>playCard('me',s.h.uid,null,null));
+    return}
+  if(t&&t.type==='bad'){floatAt(t.el,t.msg,'blk');Snd.deal()}
+  /* no valid target: the card glides back */
+  const r=DRG.rect;DRG.ghost=null;
+  if(gh&&!REDUCED){gh.animate([{transform:gh.style.transform,opacity:1},{transform:`translate(${r.left}px,${r.top}px) rotate(0deg) scale(1)`,opacity:.2}],{duration:260,easing:'cubic-bezier(.3,.7,.3,1)',fill:'forwards'}).finished.then(()=>gh.remove())}else if(gh)gh.remove();
+  dragEnd(false);BT.sel=null;BT.peek=null;if(BT.g)renderArena();
+}
+function dragEnd(keep){removeEventListener('pointermove',dragMove);removeEventListener('pointerup',dragUp);removeEventListener('pointercancel',dragEnd);
+  if(DRG.hl)DRG.hl.classList.remove('dropok','dropatk','dropbad');
+  if(DRG.ghost){const gh=DRG.ghost;if(keep===true)gh.remove();else{gh.remove();if(DRG.on){BT.sel=null;if(BT.g)renderArena()}}}
+  document.querySelectorAll('.dragsrc').forEach(x=>x.classList.remove('dragsrc'));
+  document.body.classList.remove('dragging');Object.assign(DRG,{on:false,src:null,ghost:null,tgt:null,hl:null,id:null});
+}
 /* ───────────── Gyroscope tilt for inspected cards ─────────────
    Tilting a phone moves the light, holo and shine on whichever card is being
    inspected: binder zoom, battle inspector, the card just revealed from a pack,
@@ -4386,11 +4519,11 @@ function resetCollection(){
    unit that can attack, and your first trap card. Reached from the menu, the battle home callout and
    "How to play". localStorage cc-tut: '1' = finished or skipped once (hides the first-visit callout),
    cc-tut-hide: '1' = callout dismissed. */
-const TUT_KEY='cc-tut',TUT_HIDE='cc-tut-hide';
+const TUT_KEY='cc-tut',TUT_HIDE='cc-tut-hide',TUT_LIFE=10; // tutorial Cores start at 10 Life (normal battles: START_LIFE, 20)
 const tutGet=k=>{try{return localStorage.getItem(k)==='1'}catch(e){return false}},tutSet=k=>{try{localStorage.setItem(k,'1')}catch(e){}};
 const TUT_INTRO=[
-  {t:'Welcome to Cosmic Clash',x:`This is a practice battle against <b>Cadet Nova</b>, the easiest bot. There are no rewards and it won't count in your record, so try anything. Tap <b>Next</b> for a quick tour.`},
-  {sel:'.sb.ai .core',t:'The enemy Core',x:`Your goal: bring the enemy Core from <b>${START_LIFE} Life to 0</b>. Attack it with your units and damaging events.`},
+  {t:'Welcome to Cosmic Clash',x:`This is a practice battle against <b>Cadet Nova</b>, the easiest bot. It's a short one: both Cores start at <b>${TUT_LIFE} Life</b>. There are no rewards and it won't count in your record, so try anything. Tap <b>Next</b> for a quick tour.`},
+  {sel:'.sb.ai .core',t:'The enemy Core',x:`Your goal: bring the enemy Core from <b>${TUT_LIFE} Life to 0</b>. Attack it with your units and damaging events. In a normal battle, both Cores start at <b>${START_LIFE} Life</b>.`},
   {sel:'.sb.me .core',t:'Your Core',x:`This is your Core. If its Life hits 0, you lose. Units on your board stand between it and the enemy.`},
   {sel:'.sb.me .energy',t:'Energy',x:`Cards cost Energy, shown in the <b>blue gem</b> on each card. You start with 1 Energy and get 1 more each turn, up to 10. It refills at the start of every turn.`},
   {sel:'#hand',t:'Your hand',x:`Cards that <b>glow</b> can be played now. Tap a card to select it, then tap it again, or tap a glowing board slot, to play it. On units, <b>orange</b> is Power and <b>red</b> is Health.`},
@@ -4499,10 +4632,11 @@ function titleShow(){
     const k=e=>{if(['Enter',' ','Escape'].includes(e.key)){e.preventDefault();e.stopPropagation();leave(true)}};
     const leave=skip=>{if(left)return;left=true;removeEventListener('keydown',k,true);intro.classList.add('out');if(skip)intro.classList.add('skip');reveal();setTimeout(()=>intro.remove(),skip?350:850)};
     intro.addEventListener('click',()=>leave(true));addEventListener('keydown',k,true);
-    if(window.ccDesktop){try{Snd.init();setTimeout(()=>{if(Snd.running&&!left)Snd.shinyHint()},Math.max(0,900-performance.now()))}catch(e){}}
     /* time it from when the intro animation really started (it may not paint until the game script has loaded) */
     const an=$('.in-word').getAnimations?$('.in-word').getAnimations()[0]:null,since=an&&an.currentTime!=null?an.currentTime:0;
     setTimeout(()=>leave(false),Math.max(400,(REDUCED?900:3600)-since));
+    /* cosmic swoosh as the name arrives, wherever the browser lets sound play before a tap (the desktop app always does) */
+    try{Snd.init();setTimeout(()=>{if(Snd.running&&!left)Snd.swoosh()},Math.max(60,250-since))}catch(e){}
   }else reveal();
   chip.addEventListener('click',e=>{e.stopPropagation();
     if(chipState==='wait')Snd.musicStart();else{Snd.musicToggle();if(window.paintMusBtn)paintMusBtn()}
@@ -4554,7 +4688,7 @@ function devTap(){const now=Date.now();DEV.taps=DEV.taps.filter(t=>now-t<1800);D
   if(DEV.taps.length>=5){DEV.taps=[];if(DEV.on)openDev();else devGate()}}
 function devModal(html,onclick){const o=$('#devm');o.innerHTML=`<div class="xf-box dev-box" role="dialog" aria-modal="true" aria-label="Developer Mode"><button class="is-x" data-dv="close" aria-label="Close">✕</button>${html}</div>`;o.hidden=false;
   o.onclick=e=>{const t=e.target;if(t===o||t.closest('[data-dv="close"]')){closeDev();return}onclick&&onclick(e)}}
-function closeDev(){const o=$('#devm');o.hidden=true;o.innerHTML=''}
+function closeDev(){const o=$('#devm');o.hidden=true;o.innerHTML='';if(typeof BT!=='undefined'&&BT.g&&!$('#arena').hidden)renderArena()}
 function devGate(){
   devModal(`<h3>Developer Mode</h3><p class="sub">Enter the access code.</p><form id="dvForm" class="xf-row" autocomplete="off"><input id="dvCode" type="password" inputmode="text" autocapitalize="off" spellcheck="false" placeholder="Code" aria-label="Access code"><button class="btn2 primary" type="submit">Unlock</button></form><p class="xf-msg" id="dvMsg"></p>`);
   const f=$('#dvForm'),i=$('#dvCode');setTimeout(()=>i.focus(),50);
@@ -4571,7 +4705,7 @@ function openDev(){
    <h4>Packs</h4>
    <div class="dv-g">${tog('free','Free packs')}${tog('forceUR','Ultra Rare in every pack')}${tog('allShiny','All cards Shiny')}<button data-dv="daily">Reset free daily pack</button></div>
    <h4>Battle ${online?'<span class="muted">off during online matches</span>':inBattle?'':'<span class="muted">start a bot battle to use these</span>'}</h4>
-   <div class="dv-g"><button data-dv="win"${inBattle&&!online?'':' disabled'}>Win this battle</button><button data-dv="energy"${inBattle&&!online?'':' disabled'}>Max Energy + draw 3</button><button data-dv="chal">Complete all challenges</button><button data-dv="chalR">Reset challenges</button></div>
+   <div class="dv-g"><button data-dv="win"${inBattle&&!online?'':' disabled'}>Win this battle</button><button data-dv="energy"${inBattle&&!online?'':' disabled'}>Max Energy + draw 3</button><button data-dv="ready"${inBattle&&!online?'':' disabled'}>Ready all my units</button><button data-dv="wipe"${inBattle&&!online?'':' disabled'}>Clear enemy board</button><button data-dv="core1"${inBattle&&!online?'':' disabled'}>Enemy Core to 1</button><button data-dv="heal"${inBattle&&!online?'':' disabled'}>Refill my Core</button><button data-dv="lose"${inBattle&&!online?'':' disabled'}>Lose this battle</button><button data-dv="chal">Complete all challenges</button><button data-dv="chalR">Reset challenges</button></div>
    <h4>Danger zone</h4>
    <div class="dv-g"><button data-dv="reset" class="dv-warn">Reset entire save</button><button data-dv="exit">Exit Developer Mode</button></div>
    <p class="xf-msg" id="dvMsg"></p>`,devClick)}
@@ -4583,6 +4717,12 @@ async function devClick(e){const b=e.target.closest('[data-dv]');if(!b||b.disabl
   if(a==='clear'){if(!b.dataset.arm){b.dataset.arm='1';b.textContent='Tap again to clear';return}Object.assign(S.sets[S.cur],setBlank());devRefresh();openDev();msg('Series cleared on this device. Your cloud save may restore cards on next load.');return}
   if(a.startsWith('t:')){const k=a.slice(2);DEV[k]=!DEV[k];if(typeof paintDust==='function')paintDust();openDev();msg(`${b.textContent}: ${DEV[k]?'on':'off'}`);return}
   if(a==='daily'){S.freeDay='';devRefresh();openDev();msg('Free daily pack is available again');return}
+  {const g=BT.g,ok=g&&!g.over&&!BT.online;
+    if(a==='ready'){if(!ok)return;g.me.board.forEach(u=>{if(u){u.ready=true;u.frozen=false}});closeDev();renderArena();return}
+    if(a==='wipe'){if(!ok)return;g.ai.board=g.ai.board.map(()=>null);g.ai.traps=[null,null];closeDev();renderArena();return}
+    if(a==='core1'){if(!ok)return;g.ai.life=1;closeDev();renderArena();return}
+    if(a==='heal'){if(!ok)return;g.me.life=Math.max(g.me.life,BT.tut?TUT_LIFE:START_LIFE);closeDev();renderArena();return}
+    if(a==='lose'){if(!ok)return;closeDev();g.me.life=0;renderArena();checkWin();return}}
   if(a==='win'){const g=BT.g;if(!g||g.over||BT.online)return;closeDev();g.ai.life=0;renderArena();checkWin();return}
   if(a==='energy'){const g=BT.g;if(!g||g.over||BT.online)return;g.me.maxE=10;g.me.E=10;closeDev();renderArena();for(let i=0;i<3&&g.me.deck.length&&g.me.hand.length<HANDMAX;i++)await drawCard('me',true);renderArena();return}
   if(a==='chal'){const C=chal();ACH.forEach(x=>C.done[x.id]=true);dailyToday().forEach(d=>C.daily.p[d.id]=d.goal);devRefresh();openDev();msg('All challenges complete. Claim the rewards in Battle.');return}
