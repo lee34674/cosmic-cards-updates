@@ -1118,6 +1118,25 @@ body{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
 html,body,*{scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{display:none;width:0;height:0}
 .o-hint{left:16px;right:16px;text-align:center}
+#flipAll{border-color:color-mix(in srgb,var(--accent) 60%,transparent);color:var(--text)}
+#skipLow .sm{display:none}
+.o-top .ghost{white-space:nowrap}
+@media (max-width:520px){#skipLow .lg{display:none}#skipLow .sm{display:inline}.o-top{padding-left:12px;padding-right:12px}.o-top .grp{gap:5px}.o-top .ghost{padding:7px 9px;font-size:11.5px}.o-top .cnt{font-size:11px;letter-spacing:.06em}}
+
+/* ───────── What's New ───────── */
+.wn-btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(20,17,58,.65);font:600 12.5px var(--f-body);color:var(--muted);transition:color .2s,border-color .2s,background .2s;margin-bottom:-8px}
+.wn-btn svg{width:14px;height:14px;color:var(--accent)}.wn-btn b{font:700 11px var(--f-mono);color:var(--text)}
+.wn-btn:hover{color:var(--text);background:rgba(30,26,80,.8)}
+.wn-btn.fresh{color:var(--text);border-color:color-mix(in srgb,var(--accent) 70%,transparent);box-shadow:0 0 18px color-mix(in srgb,var(--accent) 35%,transparent)}
+.wn-dot{position:absolute;top:-3px;right:-3px;width:11px;height:11px;border-radius:50%;background:#ff5a7a;box-shadow:0 0 0 2px var(--void),0 0 10px #ff5a7a;animation:wnpulse 1.6s ease-in-out infinite}
+@keyframes wnpulse{50%{transform:scale(1.25)}}
+.wn-box{width:min(520px,100%);max-height:calc(100dvh - 32px);overflow-y:auto;gap:12px}.wn-box .sub b{color:var(--text)}
+.wn-v{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.wn-v h4{display:flex;align-items:baseline;gap:8px;margin:0 0 6px;font:700 15px var(--f-display)}.wn-v h4 em{font:700 10px var(--f-mono);font-style:normal;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:99px;background:var(--accent);color:var(--accent-ink)}.wn-v h4 span{margin-left:auto;font:500 11px var(--f-mono);color:var(--muted)}
+.wn-v ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:14px;line-height:1.45;color:#d6d2f6}
+.wn-box .btn2.primary{align-self:center;margin-top:2px}
+.mn-ver button{font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;margin-left:6px;letter-spacing:inherit;text-transform:inherit}
+
 /* ───────── several packs at once ───────── */
 .qtyopt{display:flex;align-items:center;justify-content:center;gap:10px;margin:-6px 0 -4px}.qtyopt>span{font:500 11px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .qtyopt .seg button{min-width:52px;font-family:var(--f-mono);font-weight:700}
@@ -1471,6 +1490,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 
 <main>
   <section id="viewPacks" class="home">
+    <button class="wn-btn" id="wnBtn" hidden></button>
     <div class="series" id="series"></div>
     <h1 id="h1"></h1>
     <div class="qtyopt"><span>Open</span><div class="seg" id="qtyOpt" role="radiogroup" aria-label="Packs to open at a time"><button role="radio" data-n="1">×1</button><button role="radio" data-n="3">×3</button><button role="radio" data-n="5">×5</button></div><span>at a time</span></div>
@@ -1585,7 +1605,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
   <div class="rays" id="rays"></div>
   <div class="flash" id="flash"></div>
   <div class="combo" id="combo" hidden></div>
-  <div class="o-top"><span class="cnt" id="counter"></span><div class="grp"><button class="ghost" id="skipLow" hidden>Jump to Rare+</button><button class="ghost" id="skip">Skip to summary</button></div></div>
+  <div class="o-top"><span class="cnt" id="counter"></span><div class="grp"><button class="ghost" id="flipAll" hidden title="Flip every card at once">Flip all</button><button class="ghost" id="skipLow" hidden title="Flip every Common and Uncommon card"><span class="lg">Flip Common/Uncommon</span><span class="sm">Flip C/U</span></button><button class="ghost" id="skip">Skip to summary</button></div></div>
   <div class="o-stage" id="oStage"></div>
   <div class="o-info" id="oInfo"></div>
   <div class="o-hint" id="oHint"></div>
@@ -1593,6 +1613,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 </div>
 
 <div class="xfer" id="xfer" hidden></div>
+<div class="xfer" id="wn" hidden></div>
 <div class="xfer" id="menu" hidden>
   <div class="xf-box mn-box" role="dialog" aria-modal="true" aria-labelledby="mnTitle">
     <button class="is-x" id="mnClose" aria-label="Close the menu">✕</button>
@@ -1628,7 +1649,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.2.0';
+const CC_VERSION='1.3.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -3103,7 +3124,7 @@ async function startPack(kind,nOverride){
   save();refreshAll();
   const pulls=packs.flat();O.packs=packs;O.pulls=packs[0];O.cur=0;O.mode='idle';O.lock=true;
   const pal=pickPal(set,kind);$('#combo').hidden=true;
-  oEl.hidden=false;$('#oSum').hidden=true;$('#oInfo').innerHTML='';$('#oHint').textContent='';$('#counter').textContent='';$('#skip').hidden=true;$('#skip').textContent='Skip to summary';$('#skipLow').hidden=true;
+  oEl.hidden=false;$('#oSum').hidden=true;$('#oInfo').innerHTML='';$('#oHint').textContent='';$('#counter').textContent='';$('#skip').hidden=true;$('#skip').textContent='Skip to summary';$('#skipLow').hidden=true;$('#flipAll').hidden=true;
   resetHalo();$('#oStage').innerHTML=packHTML(set,kind,pal);fillArt($('#oStage'));
   const pk=$('#oStage .pack');pk.classList.add('enter');if(n>1){pk.classList.add('multi');pk.dataset.n='×'+n}
   await sleep(REDUCED?200:kind==='col'?60:650);pk.classList.remove('enter');
@@ -3157,7 +3178,7 @@ function showSummary(){
   sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2><div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
    O.pulls.map((c,i)=>`<div class="sc${c._new||c._snew?'':' dupe'}${c.shiny?' shy':''}" data-n="${c.n}" data-shiny="${c.shiny?1:''}" style="animation-delay:${i*60}ms">${cardHTML(c)}<span class="badge ${c._snew?'shiny':c._new?'new':'dupe'}">${c._snew?'✦ Shiny':c._new?'New':c.shiny?'Shiny dupe':'Duplicate'}</span></div>`).join('')+
    `</div><div class="actions"><button class="btn2 primary" id="again">${NP>1?`Open ${NP} more`:'Open another pack'}</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="closeSum">Close</button></div>`;
-  sum.hidden=false;sum.scrollTop=0;runScore(score);if(O.dust)dustCount(O.dust,O.dust0);$('#skip').hidden=true;$('#skipLow').hidden=true;$('#counter').textContent='';
+  sum.hidden=false;sum.scrollTop=0;runScore(score);if(O.dust)dustCount(O.dust,O.dust0);$('#skip').hidden=true;$('#skipLow').hidden=true;$('#flipAll').hidden=true;$('#counter').textContent='';
   O.pulls.forEach((c,i)=>setTimeout(()=>Snd.good(c._new),i*60));
   if(complete&&!doneToast[set.id]){doneToast[set.id]=1;setTimeout(()=>{Snd.fanfare();burst(innerWidth/2,innerHeight/2,Object.assign({},FXSET[5]))},700)}
   O.busy=false;
@@ -3366,7 +3387,7 @@ function init(){
   $('#openBtn').onclick=()=>startPack('std');$('#openPrem').onclick=()=>startPack('prem');$('#openCol').onclick=()=>startPack('col');
   [['#homePack','std'],['#homePackPrem','prem'],['#homePackCol','col']].forEach(([sel,k])=>{const el=$(sel);el.onclick=()=>startPack(k);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();startPack(k)}}});
   oEl.addEventListener('click',e=>{const sp=e.target.closest('#spread .sp');if(sp&&!SP.close){spClick(+sp.dataset.i);return}if(e.target.closest('button')||e.target.closest('#oSum'))return;onTap()});
-  $('#skip').onclick=e=>{e.stopPropagation();skipToSummary()};$('#skipLow').onclick=e=>{e.stopPropagation();jumpLow()};
+  $('#skip').onclick=e=>{e.stopPropagation();skipToSummary()};$('#flipAll').onclick=e=>{e.stopPropagation();flipAll()};$('#skipLow').onclick=e=>{e.stopPropagation();jumpLow()};
   paintSkip();$('#skipOpt').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;skipMode=b.dataset.mode;try{localStorage.setItem(SKIPKEY,skipMode)}catch(x){}paintSkip();Snd.init();Snd.click()});
   $('#oSum').addEventListener('click',e=>{
     const t=e.target;
@@ -3388,7 +3409,7 @@ function init(){
     if(!oEl.hidden){if(e.key===' '||e.key==='Enter'||e.key==='ArrowRight'){if(e.target.closest&&e.target.closest('button'))return;e.preventDefault();onTap()}return}
     if(view==='binder'&&bk().open&&!navLock){if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1)}
   });
-  initMenu();initShopExtras();
+  initMenu();initShopExtras();initWhatsNew();
   /* how many packs to open at a time */
   const paintQty=()=>document.querySelectorAll('#qtyOpt button').forEach(b=>b.setAttribute('aria-checked',+b.dataset.n===packN));paintQty();
   $('#qtyOpt').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;packN=+b.dataset.n;try{localStorage.setItem('cc-packn',String(packN))}catch(x){}paintQty();Snd.init();Snd.click();refreshHome()});
@@ -3450,7 +3471,7 @@ function buildDeck(){resetHalo();O.skipped=0;O.combo=0;SP.flipped=new Set();
   },REDUCED?100:75*10+520);
 }
 function spPaint(){$('#counter').textContent=`${O.n>1?`Pack ${O.pi+1}/${O.n} · `:''}${SP.flipped.size} / 10 flipped`;
-  const lowLeft=SP.order.some(pi=>!SP.flipped.has(pi)&&O.pulls[pi].r<2);const b=$('#skipLow');b.textContent='Flip Common/Uncommon';b.hidden=!(lowLeft&&O.mode==='spread')}
+  const lowLeft=SP.order.some(pi=>!SP.flipped.has(pi)&&O.pulls[pi].r<2),anyLeft=SP.flipped.size<10;const b=$('#skipLow');b.hidden=!(lowLeft&&O.mode==='spread');$('#flipAll').hidden=!(anyLeft&&O.mode==='spread')}
 function spMark(pi){const c=O.pulls[pi],el=spEl(pi);if(!el)return;const [cls,txt]=badgeFor(c);el.classList.remove('hint-2','hint-3','hint-4','hint-5','hint-shiny');el.classList.add('up');
   const b=el.querySelector('.sp-b');b.className='sp-b '+cls;b.innerHTML=cls==='dupe'?`${txt} ${DUSTI}`:txt;el.setAttribute('aria-label',`${c.name}, ${RAR[c.r].name}${c.shiny?', Shiny':''}`)}
 /* flip several low cards quickly (no showcase) */
@@ -3459,7 +3480,9 @@ async function quickFlip(list){for(const pi of list){if(SP.flipped.has(pi))conti
   await sleep(REDUCED?20:300);spPaint()}
 async function flipAt(pi){
   if(O.lock||O.mode!=='spread'||SP.flipped.has(pi)||oEl.hidden)return;
-  O.lock=true;$('#oHint').textContent='';const c=O.pulls[pi],el=spEl(pi),card=el.querySelector('.card'),t=c.r,big=t>=2||c.shiny;
+  O.lock=true;$('#oHint').textContent='';const c=O.pulls[pi],el=spEl(pi),card=el.querySelector('.card'),t=c.r,
+    /* only NEW Rare+ cards (and new Shinies) pop out to the big showcase; duplicates flip in place on the spread */
+    big=c.shiny?!!c._snew:(t>=2&&!!c._new);
   el.classList.remove('hint-2','hint-3','hint-4','hint-5','hint-shiny');el.classList.add('flipping');
   if(c.shiny&&!REDUCED){oEl.classList.add('sdim');el.classList.add('prism');Snd.shinyBuild();card.classList.add('charge-4');await sleep(1400);card.classList.remove('charge-4');el.classList.remove('prism');oEl.classList.remove('sdim')}
   else if(t>=2){const wait=REDUCED?150:[0,0,350,650,950,1500][t];card.classList.add('charge-'+t);if(t>=3)Snd.riser(wait/1000);else Snd.hint(t);await sleep(wait);card.classList.remove('charge-'+t)}
@@ -3468,12 +3491,28 @@ async function flipAt(pi){
   if(O.kind!=='std'){if(t>=2){O.combo++;if(O.combo>=2){showCombo(O.combo);Snd.combo(O.combo)}}else{O.combo=0;$('#combo').hidden=true}}
   spPaint();
   if(big)await showcase(pi);
-  else{const r=el.getBoundingClientRect();if(t===1)burst(r.left+r.width/2,r.top+r.height/2,{count:12,colors:[RAR[1].col,'#ffffff'],speed:3,life:.6,size:2.6,ring:0});
-    $('#oInfo').innerHTML=`<div class="nm2">${c.name}</div><div class="rl2" style="--c:${RAR[t].col}">${RAR[t].name.toUpperCase()}</div>`}
+  else{spPop(pi);
+    $('#oInfo').innerHTML=`<div class="nm2">${c.name}</div><div class="rl2" style="--c:${RAR[t].col}">${c.shiny?'✦ SHINY ':''}${RAR[t].name.toUpperCase()}</div>`+(c._new?'':`<div class="badge dupe">${c.shiny?'Shiny duplicate':'Duplicate'} · <span class="dustamt">+${fmt(c._dust||0)} ${DUSTI}</span></div>`)}
   O.lock=false;
   if(SP.flipped.size>=10)spDone();else{O.mode='spread';$('#oHint').textContent='Tap any card to flip it'}
 }
-/* the big reveal for Rare and up: the card pops out of the spread to the middle */
+/* in-place reveal on the spread (duplicates, Common/Uncommon): a rarity-coloured pop on the card itself */
+function spPop(pi){const c=O.pulls[pi],t=c.r,el=spEl(pi);if(!el)return;const r=el.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,col=RAR[t].col;
+  if(t>=1)burst(x,y,{count:t===1?12:10+t*8,colors:c.shiny?['#ff9ad9','#ffe27a','#8dffc0','#8fd8ff','#ffffff']:[col,'#ffffff'],speed:2.6+t*.7,life:.6+t*.08,size:2.6+t*.3,ring:t>=2?60+t*25:0});
+  if(t>=2&&!REDUCED)el.animate([{transform:'scale(1.12)',filter:'brightness(1.6)'},{transform:'scale(1)',filter:'brightness(1)'}],{duration:420,easing:'cubic-bezier(.3,1.4,.5,1)'})}
+/* Flip all: every face-down card turns over at once (a quick ripple across the grid), revealed in place */
+async function flipAll(){if(O.lock||O.mode!=='spread'||oEl.hidden)return;const left=SP.order.filter(pi=>!SP.flipped.has(pi));if(!left.length)return;
+  O.lock=true;$('#oHint').textContent='';$('#oInfo').innerHTML='';$('#skipLow').hidden=true;$('#flipAll').hidden=true;
+  left.forEach((pi,k)=>setTimeout(()=>{const el=spEl(pi);if(!el)return;el.classList.remove('hint-2','hint-3','hint-4','hint-5','hint-shiny');el.querySelector('.card').classList.remove('down');if(k%2===0)Snd.flip()},REDUCED?0:k*60));
+  left.forEach(pi=>SP.flipped.add(pi));
+  await sleep(REDUCED?120:left.length*60+380);
+  const best=left.reduce((a,pi)=>Math.max(a,O.pulls[pi].r),0),newN=left.filter(pi=>O.pulls[pi]._new||O.pulls[pi]._snew).length;
+  left.forEach((pi,k)=>{spMark(pi);setTimeout(()=>spPop(pi),REDUCED?0:k*40)});
+  Snd.reveal(best);if(newN)Snd.good(true);if(left.some(pi=>O.pulls[pi].shiny))Snd.shiny();
+  if(best>=4){flash(RAR[best].col);if(!REDUCED){oEl.classList.remove('shake-s');void oEl.offsetWidth;oEl.classList.add('shake-s')}}
+  $('#oInfo').innerHTML=`<div class="skipnote">${left.length} card${left.length===1?'':'s'} flipped · ${newN} new</div>`;
+  await sleep(REDUCED?60:450);O.lock=false;spDone()}
+/* the big reveal for new Rare and up: the card pops out of the spread to the middle */
 function showcase(pi){return new Promise(async res=>{
   const c=O.pulls[pi],t=c.r,el=spEl(pi),from=el.getBoundingClientRect(),col=RAR[t].col;O.mode='show';
   const s=document.createElement('div');s.className='showc';s.id='showc';
@@ -4754,7 +4793,7 @@ function paintMenu(fromSlider){
   const row=(id,on,v)=>{const r=$('#'+id).closest('.mn-row');r.classList.toggle('off',!on);const sl=$('#'+id);if(!fromSlider||document.activeElement!==sl)sl.value=v;sl.style.setProperty('--v',v+'%');
     $('#'+id+'T').setAttribute('aria-checked',on);$('#'+id+'V').textContent=on?v+'%':'Off'};
   row('mnMus',mus,mv);row('mnSfx',sfx,sv);
-  $('#mnVer').textContent=`Cosmic Cards v${typeof CC_VERSION!=='undefined'?CC_VERSION:'dev'}${DESK.app?` · Desktop app v${DESK.app}`:''}`;
+  $('#mnVer').innerHTML=`Cosmic Cards v${typeof CC_VERSION!=='undefined'?CC_VERSION:'dev'}${DESK.app?` · Desktop app v${DESK.app}`:''}<button id="mnWn">What’s new</button>`;$('#mnWn').onclick=()=>{closeMenu();openWhatsNew()};
 }
 
 /* desktop app only (window.ccDesktop from desktop/app/preload.js): version + check for updates / restart to update */
@@ -4882,6 +4921,65 @@ function initTutorial(){
   $('#tutNo').onclick=()=>{Snd.click();tutSet(TUT_HIDE);renderTutCta()};
   $('#btTut').onclick=()=>{Snd.init();Snd.click();startTutorial()};
 }
+/* ───────────── What's New ─────────────
+   A button on the home screen (and a link in the Menu) lists what changed between the version this player had
+   before and the version they have now, so they only see the updates they haven't read.
+   Per device: localStorage cc-ver (version last run), cc-ver-from (version before the latest update),
+   cc-wn-seen (version whose notes were opened; the button shows a dot until then).
+   A brand-new player sees only the current version's notes, without a dot. A player who already had a save from
+   before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
+   Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
+const CHANGELOG=[
+  {v:'1.3.0',d:'31 Oct 2026',items:[
+    'What’s New: this button. It lists everything that changed since the version you last played.',
+    'Flip all: turn over every card in a pack at once.',
+    'Duplicates now flip in place on the spread. Only new Rare+ cards and new Shinies pop out big.']},
+  {v:'1.2.0',d:'31 Oct 2026',items:[
+    'Open 3 or 5 packs at a time from the Packs tab: one rip, a spread for each pack, then one combined summary.',
+    'The Shop has pages: Packs, Exclusive cards, and Sleeves & covers. Every series has its own packs and 1, 3 or 5-pack bundles.',
+    'A smoother Set Complete celebration.']},
+  {v:'1.1.0',d:'31 Oct 2026',items:[
+    'Packs open as a face-down spread of 10 cards, sorted by rarity. Flip them in any order.',
+    'Pack bundles in the Shop, and a pack stock you open from the Packs tab.',
+    'Binder covers: two for each series, made from its own card art.',
+    'Every card shows which set it belongs to.',
+    'Hover over a keyword with a mouse to see what it does.',
+    'No more scrollbar down the side of the screen.']},
+  {v:'1.0.2',d:'31 Oct 2026',items:[
+    'Drag cards from your hand to play them, and drag units onto enemies to attack (the card outline turns orange).',
+    'Shop cards preview as Regular or Shiny when you tap a button, and buying a Shiny now gives only the Shiny.',
+    'Set bonuses are explained under Keywords on the Battle screen.',
+    'Tutorial battles start at 10 Life. Battle music now slows down and speeds back up, and the intro has a cosmic swoosh.']},
+  {v:'1.0.1',d:'31 Oct 2026',items:['A “Created by Crymsin” intro before the title screen.']},
+  {v:'1.0.0',d:'31 Oct 2026',items:[
+    'A title screen with its own theme song.',
+    'The Menu: volume, transfer save and reset collection.',
+    'A guided Battle tutorial.',
+    'Buffs show as green numbers in battle.',
+    'Cosmic Cards for Windows, with automatic updates.']}];
+const WN={cur:typeof CC_VERSION!=='undefined'?CC_VERSION:'dev'};
+const wnGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}},wnSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+function vcmpWN(a,b){const x=String(a).split('.').map(n=>parseInt(n,10)||0),y=String(b).split('.').map(n=>parseInt(n,10)||0);for(let i=0;i<3;i++){if((x[i]||0)!==(y[i]||0))return (x[i]||0)>(y[i]||0)?1:-1}return 0}
+/* the notes to show: every version after the one this player had before, up to the one they have now */
+function wnEntries(){const from=wnGet('cc-ver-from')||'',cur=WN.cur;
+  const known=from&&from!=='?';let list=CHANGELOG.filter(e=>vcmpWN(e.v,cur)<=0&&(known?vcmpWN(e.v,from)>0:e.v===cur));
+  if(!list.length)list=[CHANGELOG.find(e=>e.v===cur)||CHANGELOG[0]];return {from,list}}
+function wnPaint(){const b=$('#wnBtn');if(!b)return;const fresh=!!wnGet('cc-ver-from')&&wnGet('cc-wn-seen')!==WN.cur;
+  b.hidden=false;b.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z" fill="currentColor"/></svg>What’s new <b>v${WN.cur}</b>${fresh?'<i class="wn-dot" aria-label="Unread"></i>':''}`;
+  b.classList.toggle('fresh',fresh)}
+function openWhatsNew(){const {from,list}=wnEntries(),o=$('#wn');
+  o.innerHTML=`<div class="xf-box wn-box" role="dialog" aria-modal="true" aria-labelledby="wnT"><button class="is-x" id="wnX" aria-label="Close">✕</button>`+
+    `<h3 id="wnT">What’s new</h3><p class="sub">${from&&from!=='?'&&from!==WN.cur?`Everything that changed since <b>v${from}</b>, the version you played before.`:`In version <b>${WN.cur}</b>.`}</p>`+
+    list.map(e=>`<section class="wn-v"><h4><b>v${e.v}</b>${e.v===WN.cur?'<em>Installed</em>':''}<span>${e.d}</span></h4><ul>${e.items.map(i=>`<li>${i}</li>`).join('')}</ul></section>`).join('')+
+    `<button class="btn2 primary" id="wnOk">Got it</button></div>`;
+  o.hidden=false;wnSet('cc-wn-seen',WN.cur);wnPaint();Snd.init();Snd.click();
+  const close=()=>{o.hidden=true;o.innerHTML=''};o.onclick=e=>{if(e.target===o||e.target.closest('#wnX,#wnOk'))close()};
+  try{$('#wnOk').focus({preventScroll:true})}catch(e){}}
+function initWhatsNew(){const last=wnGet('cc-ver');
+  if(last!==WN.cur){const returning=!last&&(SETIDS.some(id=>st(id).packs>0||st(id).owned.length)||(S.battle&&(S.battle.wins||S.battle.losses)));
+    wnSet('cc-ver-from',last||(returning?'?':''));wnSet('cc-ver',WN.cur);wnSet('cc-wn-seen','')}
+  wnPaint();$('#wnBtn').onclick=openWhatsNew;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#wn').hidden){$('#wn').hidden=true;$('#wn').innerHTML=''}})}
 /* ───────────── title screen ─────────────
    The markup lives at the top of a.html so it paints while the big script is still loading.
    titleShow() runs at the end of init(): it deals a fan of showcase cards, starts the title theme

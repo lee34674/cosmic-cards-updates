@@ -1,11 +1,11 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "game": {
-    "file": "game-1.2.0.html",
-    "sha256": "ba5485246b910704b4d10c52df2541671248b9d181d60aff401d5c5574734c1b",
-    "size": 4386858
+    "file": "game-1.3.0.html",
+    "sha256": "3c02e245d5961dec184286bc4d2ed893f679989a708a8804df06fd46cb5ad170",
+    "size": 4397165
   },
-  "notes": "New: open 3 or 5 packs at once, the Shop has pages with packs and bundles for each series, and a smoother Set Complete celebration.",
-  "date": "2026-10-31T20:33:40.161Z",
-  "sig": "eXPHo5i9JFquXHcXWO9hg03gJwcArodkdP6WZ0yG/w1IvUPbIXdioq3B2ayUrM0CLV8bEfMJcJEx6rTqM4SsCg=="
+  "notes": "New: What's New button on the home screen, Flip all when opening packs, and duplicates now flip in place (new Rare+ cards still get the big reveal).",
+  "date": "2026-10-31T21:12:08.962Z",
+  "sig": "FItwdeC8/xNscbPhrGEON0/xC7cvWijovaLzda6/TjzpdfyEMAXiUawOmVTwgJegWzwEP+QcEcL+Y+D4Ou1oDg=="
 }
