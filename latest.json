@@ -1,11 +1,11 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "game": {
-    "file": "game-1.0.0.html",
-    "sha256": "7612c57babbd4a7e9d0579d7eab7092e41df23db99f41714ea2bb65fae10812f",
-    "size": 4326353
+    "file": "game-1.0.1.html",
+    "sha256": "a0ab42b730eea06b2ec482005ea1e34c794e5ecd5a9777251597600f21247d9f",
+    "size": 4333230
   },
-  "notes": "First release of Cosmic Cards for Windows.",
-  "date": "2026-10-31T17:39:16.021Z",
-  "sig": "Wpus+JYPTw55yXF5V1EwQ2TzyD31pmyWH6scRhyEYwpAWkaoliV7WNHbc2wBl1R/z6IMe6bYfeN3/l2JTk/SCQ=="
+  "notes": "New: a 'Created by Crymsin' intro before the title screen.",
+  "date": "2026-10-31T18:05:44.094Z",
+  "sig": "ZQaVK8oL4rRLZ2yO/usp8OavSZwFmaAYZdvriAQS7mohclKYVjjK52RH8Y9p2oQQ8xm0pHr9qofsZU52SxFGCQ=="
 }
