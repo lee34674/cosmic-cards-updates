@@ -1,11 +1,11 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "game": {
-    "file": "game-1.4.0.html",
-    "sha256": "5422e8c155559d3631846194cff2a60042ac3f64a057981ab99e087d3969bfb2",
-    "size": 4417191
+    "file": "game-1.5.0.html",
+    "sha256": "da477865904862ecc7e17d0218ed6fe5514b2851424b2067ff9516ab7b193475",
+    "size": 6028461
   },
-  "notes": "Smoother card dragging in battle, a livelier battlefield, and violins, cellos, electric guitar, harp, timpani and horns in all the music.",
-  "date": "2026-11-01T08:23:40.571Z",
-  "sig": "LkfYRF/CkB7CmWkcLJLLVv9BtimgHbIRbwP4aFfCKN3Zaajd9LkPk9sj/+cCgMm0hE/Y/EKh9lS9cUTrD+JvBw=="
+  "notes": "Series 3 re-rendered with more realism, coal-black Comet 67P, Europa chaos terrain, sharper pack art, phone pack row fix, battle Developer Mode via the top-left corner.",
+  "date": "2026-11-01T16:34:11.016Z",
+  "sig": "8FL+2W02Sy4eXf2Di5JmRMhB6271JpPm3KyJkcYbFM1r8P3PqTGAxQatCK/rAtVIc30YXIXfFyoMlRdoVoVpBw=="
 }
