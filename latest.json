@@ -1,11 +1,11 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "game": {
-    "file": "game-1.3.0.html",
-    "sha256": "3c02e245d5961dec184286bc4d2ed893f679989a708a8804df06fd46cb5ad170",
-    "size": 4397165
+    "file": "game-1.4.0.html",
+    "sha256": "5422e8c155559d3631846194cff2a60042ac3f64a057981ab99e087d3969bfb2",
+    "size": 4417191
   },
-  "notes": "New: What's New button on the home screen, Flip all when opening packs, and duplicates now flip in place (new Rare+ cards still get the big reveal).",
-  "date": "2026-10-31T21:12:08.962Z",
-  "sig": "FItwdeC8/xNscbPhrGEON0/xC7cvWijovaLzda6/TjzpdfyEMAXiUawOmVTwgJegWzwEP+QcEcL+Y+D4Ou1oDg=="
+  "notes": "Smoother card dragging in battle, a livelier battlefield, and violins, cellos, electric guitar, harp, timpani and horns in all the music.",
+  "date": "2026-11-01T08:23:40.571Z",
+  "sig": "LkfYRF/CkB7CmWkcLJLLVv9BtimgHbIRbwP4aFfCKN3Zaajd9LkPk9sj/+cCgMm0hE/Y/EKh9lS9cUTrD+JvBw=="
 }
