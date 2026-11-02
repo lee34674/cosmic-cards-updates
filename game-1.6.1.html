@@ -1495,7 +1495,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 @keyframes npdawn{0%{opacity:.75}100%{opacity:1}}
 @keyframes npflare{0%,100%{opacity:.75;transform:scaleX(.9)}50%{opacity:1;transform:scaleX(1.12)}}
 @keyframes npglow{0%,100%{box-shadow:0 0 0 1px rgba(255,215,120,.55),0 0 14px rgba(255,200,100,.35)}50%{box-shadow:0 0 0 1px rgba(255,230,150,.9),0 0 26px rgba(255,200,100,.7)}}
-@keyframes npring{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+@keyframes npring{0%,100%{opacity:.25}50%{opacity:1}}
 @keyframes npspin{to{transform:rotate(360deg)}}
 @keyframes npsheen{0%,30%{background-position:160% 0}70%,100%{background-position:-60% 0}}
 @keyframes nptw{0%,100%{opacity:.35}50%{opacity:1}}
@@ -1526,7 +1526,8 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .np-bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%) 0 0/250% 100%;animation:npsheen 2.8s ease-in-out infinite;border-radius:inherit}
 .np-xp-m{margin-top:8px;font:600 11px var(--f-mono);letter-spacing:.06em;color:#8f88c4}
 .np-next{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:#d8d2ff}.np-next>span{font:700 10px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:#ffd9a0}.np-next>i{font-style:normal;color:#968fc8}
-.np-next .npi{height:30px;width:auto;transform:none}.np-next .npi .dusti{font-size:20px}.np-next .npi .mpk{width:18px;height:26px;border-radius:3px}.np-next .npi .mpk.bk2,.np-next .npi em{display:none}.np-next .npi.sleeve .slv-prev{width:21px}.np-next .npi.sleeve .cb{border-width:1.5px;border-radius:4px}.np-next .npi.cover{width:22px;height:30px}.np-next .np-cvw{width:22px;height:29px}.np-next .np-cvw .bcv{transform:scale(.1834)}
+.np-next .npi{height:30px;width:auto;transform:none}.np-next .npi .dusti{font-size:20px}.np-next .mpk-s{width:18px;height:26px}.np-next .mpk{border-radius:3px}.np-next .mpk-s .bk2,.np-next .npi em{display:none}.np-next .mpk-s .fr{transform:none!important}.np-next .npi-sl .slv-prev{width:21px}.np-next .npi-sl .cb{border-width:1.5px;border-radius:4px}.np-next .npi-cv{width:22px;height:30px}.np-next .np-cvw{width:22px;height:29px}.np-next .np-cvw .bcv{transform:scale(.1834)}
+.np-nx{display:inline-flex;align-items:center;gap:8px;padding:3px 10px 3px 4px;border-radius:99px;font:inherit;color:inherit;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);cursor:zoom-in}.np-nx b{font-weight:700}.np-nx:hover{background:rgba(255,255,255,.1)}
 .np-prem{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:18px;background:linear-gradient(160deg,rgba(255,110,200,.18),rgba(120,80,255,.16) 50%,rgba(255,200,120,.12)),rgba(14,10,40,.78);border:1px solid rgba(255,160,220,.38);box-shadow:0 12px 34px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .np-prem b{font:800 16px var(--f-display);color:#fff}.np-prem>span{font-size:12.5px;line-height:1.45;color:#d6cff5}
 .np-pb{align-self:flex-start;font:800 10px var(--f-mono);letter-spacing:.24em;padding:4px 9px;border-radius:99px;color:#2a0a24;background:linear-gradient(90deg,#ffd27a,#ff9ad9,#9ad0ff,#ffd27a);background-size:200% 100%;animation:npfoil 5s linear infinite}
@@ -1536,18 +1537,24 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .np-tag.f{color:#bfe0ff;background:rgba(80,140,255,.12);border-color:rgba(120,180,255,.3)}.np-tag.p{color:#ffc8ee;background:rgba(255,100,200,.12);border-color:rgba(255,140,220,.35)}
 .np-acts{display:flex;gap:8px;align-items:center}.np-acts .btn2{padding:10px 16px;font-size:14px}.np-acts .btn2 b{display:inline-block;min-width:20px;margin-left:6px;padding:0 6px;border-radius:99px;background:rgba(42,22,0,.2);font:800 12px/20px var(--f-mono)}
 .np-acts .ghost{white-space:nowrap}
-.np-track{position:relative;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:12px 6px 18px;margin:0 -6px;scrollbar-width:thin;scrollbar-color:rgba(255,210,150,.35) transparent;-webkit-mask:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent);mask:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent)}
+.np-trk{position:relative}
+.np-track{position:relative;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:12px 6px 18px;margin:0 -6px;scrollbar-width:thin;scrollbar-color:rgba(255,210,150,.35) transparent;-webkit-overflow-scrolling:touch}
+@media (min-width:601px){.np-trk::before,.np-trk::after{content:"";position:absolute;top:0;bottom:0;width:22px;z-index:3;pointer-events:none}.np-trk::before{left:-6px;background:linear-gradient(90deg,var(--void),transparent)}.np-trk::after{right:-6px;background:linear-gradient(270deg,var(--void),transparent)}}
+.np-rail{position:absolute;left:0;top:0;height:4px;width:0;border-radius:99px;background:rgba(255,255,255,.09);z-index:0;pointer-events:none}
+.np-rail i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:inherit;background:linear-gradient(90deg,#ffd27a,#ff9ad9 45%,#b9a8ff 75%,#9ad0ff) 0 0/var(--rw,100%) 100% no-repeat;box-shadow:0 0 10px rgba(255,180,190,.55);transition:width .9s cubic-bezier(.2,.9,.3,1)}
+.np-rail i::after{content:"";position:absolute;right:-5px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:#fff;box-shadow:0 0 8px #ffd27a,0 0 16px #ff9ad9}
 .np-col{flex:none;width:122px;display:grid;grid-template-rows:176px 48px 176px;gap:8px;scroll-snap-align:center}
-.np-node{position:relative;display:grid;place-items:center;isolation:isolate}
-.np-node::before{content:"";position:absolute;left:-5px;right:-5px;top:50%;height:4px;transform:translateY(-50%);background:rgba(255,255,255,.1);z-index:-1}
-.np-col:first-child .np-node::before{left:50%}.np-col.last .np-node::before{right:-5px}
-.np-col.got .np-node::before{background:linear-gradient(90deg,#ffd27a,#ff9ad9);box-shadow:0 0 10px rgba(255,180,170,.6)}
-.np-col.next .np-node::before{background:linear-gradient(90deg,#ffd27a,#ff9ad9 calc(var(--fr)*100%),rgba(255,255,255,.1) calc(var(--fr)*100%))}
+.np-node{position:relative;z-index:1;display:grid;place-items:center}
+.np-slot{display:flex;min-height:0;min-width:0}.np-slot>.np-tile{flex:1;min-width:0}
+
+
+
+
 .np-node b{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:800 14px var(--f-display);color:#8f88c4;background:#151140;border:2px solid rgba(255,255,255,.16)}
 .np-col.mile .np-node b{width:44px;height:44px;font-size:15px;border-color:rgba(255,214,150,.4);color:#cfc6ff}
 .np-col.got .np-node b{color:#2a1400;background:radial-gradient(circle at 40% 30%,#fff3c8,#ffd27a 45%,#ff9ad9);border-color:#fff2c8;box-shadow:0 0 16px rgba(255,190,140,.7)}
 .np-col.next .np-node b{color:#fff;border-color:#ffd27a;background:#241b5a}
-.np-col.next .np-node b::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,214,140,.8);animation:npring 1.8s ease-out infinite}
+.np-col.next .np-node b::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,214,140,.85);box-shadow:0 0 12px rgba(255,200,120,.5);animation:npring 1.8s ease-in-out infinite}
 .np-tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:6px;padding:12px 8px 10px;border-radius:16px;text-align:center;background:linear-gradient(180deg,rgba(54,64,150,.42),rgba(12,12,44,.9));border:1px solid rgba(140,170,255,.22);transition:transform .15s}
 .np-tile.prem{background:linear-gradient(180deg,rgba(140,46,128,.45),rgba(30,8,40,.92));border-color:rgba(255,140,220,.28)}
 .np-col.mile .np-tile{border-color:rgba(255,214,150,.4);box-shadow:inset 0 0 22px rgba(255,200,120,.08)}
@@ -1555,7 +1562,10 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .np-tile.t-sleeve::before,.np-tile.t-cover::before{content:"EXCLUSIVE";position:absolute;top:-8px;left:50%;transform:translateX(-50%);font:800 8.5px var(--f-mono);letter-spacing:.18em;padding:3px 7px;border-radius:99px;color:#2a1400;background:linear-gradient(90deg,#ffe08a,#ffb0d8);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 .np-n{display:flex;align-items:center;justify-content:center;min-height:30px;font:600 12px/1.2 var(--f-body);color:#dcd6ff}
 .np-tile.lock .npi,.np-tile.plock .npi{opacity:.62;filter:saturate(.7)}.np-tile.lock .np-n{color:#9a94c8}
-.np-tile.ready{border-color:rgba(255,220,140,.8);animation:npglow 1.6s ease-in-out infinite}
+.np-tile.ready{border-color:rgba(255,220,140,.8)}
+.np-tile.ready::after{content:"";position:absolute;inset:-1px;border-radius:inherit;box-shadow:0 0 0 1px rgba(255,230,150,.9),0 0 22px rgba(255,200,100,.65);opacity:.3;animation:npring 1.6s ease-in-out infinite;pointer-events:none}
+.np-tile{cursor:zoom-in;-webkit-tap-highlight-color:transparent;outline:none}.np-tile:focus-visible{box-shadow:0 0 0 2px #fff}
+@media (hover:hover){.np-tile:hover{transform:translateY(-2px)}}
 .np-tile.done .npi{opacity:.8}.np-tile.done{border-color:rgba(77,255,160,.28)}
 .np-claim{font:800 12.5px var(--f-body);padding:7px 16px;border-radius:99px;color:#2a1a00;background:linear-gradient(180deg,#ffe08a,#ffb83a);box-shadow:0 3px 0 #a8701a,0 0 16px rgba(255,200,90,.45)}
 .np-claim:active{transform:translateY(2px);box-shadow:0 1px 0 #a8701a}
@@ -1563,19 +1573,20 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .np-use{font:700 12px var(--f-body);padding:6px 14px;border-radius:99px;color:#e9e6ff;background:rgba(255,255,255,.08);border:1px solid var(--line)}
 .np-ok,.np-eq{font:800 12px var(--f-mono);color:#7dffc4;padding:6px 0}.np-lk{font:700 10.5px var(--f-mono);letter-spacing:.04em;color:#ffb0e0;padding:6px 0}
 .npi{position:relative;display:grid;place-items:center;height:96px;width:100%}
-.npi.dust .dusti{font-size:44px;color:#ffd76a;filter:drop-shadow(0 0 10px rgba(255,200,90,.6))}.npi.dust.mid .dusti{font-size:52px}.npi.dust.big .dusti{font-size:60px;color:#ffe9a8;filter:drop-shadow(0 0 14px rgba(255,170,220,.75))}
+.npi-d .dusti{font-size:44px;color:#ffd76a;filter:drop-shadow(0 0 10px rgba(255,200,90,.6))}.npi-d.mid .dusti{font-size:52px}.npi-d.big .dusti{font-size:60px;color:#ffe9a8;filter:drop-shadow(0 0 14px rgba(255,170,220,.75))}
 .mpk{position:relative;width:52px;height:74px;border-radius:6px;overflow:hidden;background:var(--mpb);box-shadow:0 8px 16px rgba(0,0,0,.5),inset 0 0 0 1.5px var(--mpr)}
 .mpk::before{content:"";position:absolute;inset:0;background:var(--sllogo) 50% 45%/70% no-repeat,linear-gradient(180deg,rgba(255,255,255,.25),transparent 18%,transparent 82%,rgba(0,0,0,.3))}
 .mpk i{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%) 0 0/250% 100%;animation:npsheen 3.6s ease-in-out infinite}
-.mpk.bk2{position:absolute;transform:translate(9px,-5px) rotate(9deg);opacity:.75}
-.npi.pack .mpk:not(.bk2){transform:rotate(-4deg)}
+.mpk-s{position:relative;width:52px;height:74px}.mpk-s .mpk{position:absolute;inset:0}.mpk-s .fr{transform:rotate(-4deg)}
+.mpk-s.two .fr{transform:translateX(-7px) rotate(-6deg)}.mpk-s.two .bk2{transform:translate(8px,-3px) rotate(8deg);opacity:.8}
+
 .k-std{--mpb:linear-gradient(160deg,#5a6cff,#2a2a8a 55%,#14123f);--mpr:rgba(170,190,255,.7)}
 .k-prem{--mpb:linear-gradient(160deg,#ff7ad0,#8a2a9a 55%,#2a0f3f);--mpr:rgba(255,190,240,.8)}
 .k-col{--mpb:conic-gradient(from 210deg,#fff3c4,#c99a2e,#ffe08a,#8a5a12,#fff0b8,#b07a1c,#fff3c4);--mpr:rgba(255,240,200,.95)}
-.npi.pack em{position:absolute;right:6px;bottom:4px;font:800 13px var(--f-display);font-style:normal;color:#fff;text-shadow:0 2px 6px #000,0 0 10px rgba(255,200,120,.7)}
-.npi.sleeve .slv-prev{width:60px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}.npi.sleeve .cb{border-width:2.5px;border-radius:7px}
+.npi-pk em{position:absolute;left:calc(50% + 14px);bottom:2px;font:800 14px var(--f-display);font-style:normal;color:#fff;text-shadow:0 2px 6px #000,0 0 10px rgba(255,200,120,.7)}
+.npi-sl .slv-prev{width:60px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}.npi-sl .cb{border-width:2.5px;border-radius:7px}
 .np-cvw{position:relative;flex:none;width:60px;height:80px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}.np-cvw .bcv{position:absolute;left:0;top:0;width:120px;transform-origin:0 0;transform:scale(.5)}
-.npi.cover .np-cvw{width:66px;height:88px}.npi.cover .np-cvw .bcv{transform:scale(.55)}
+.npi-cv .np-cvw{width:66px;height:88px}.npi-cv .np-cvw .bcv{transform:scale(.55)}
 .np-col.hyper{width:290px;grid-template-rows:1fr}
 .np-hx{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 18px;border-radius:20px;text-align:center;border:1px solid rgba(255,160,230,.45);background:radial-gradient(circle at 50% 30%,rgba(255,240,210,.35),transparent 30%),radial-gradient(circle at 50% 30%,rgba(255,90,190,.35),transparent 60%),linear-gradient(180deg,#2a0a40,#0a0420)}
 .np-hx::before{content:"";position:absolute;left:50%;top:30%;width:520px;height:520px;margin:-260px 0 0 -260px;z-index:-1;background:repeating-conic-gradient(rgba(255,230,180,.16) 0 3deg,transparent 3deg 14deg);animation:npspin 50s linear infinite;-webkit-mask:radial-gradient(circle,#000 10%,transparent 60%);mask:radial-gradient(circle,#000 10%,transparent 60%)}
@@ -1591,8 +1602,9 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .np-earn li{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid rgba(190,180,255,.08);font-size:13.5px;color:#d8d2ff}.np-earn li:last-child{border:0}
 .np-earn li span{flex:1;min-width:0}.np-earn li b{font:800 13px var(--f-mono);color:#ffe2a0;white-space:nowrap}.np-earn li b::before{content:"✧ ";color:#ffd27a}.np-earn li em{font:700 11px var(--f-mono);font-style:normal;color:#7dffc4;white-space:nowrap}
 .np-note{margin:10px 0 0;font-size:12.5px;line-height:1.45;color:var(--muted)}.np-card h3+.np-note{margin:-4px 0 12px}
-.np-ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px}
-.np-exi{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,214,150,.18);text-align:center}
+.np-ex{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.np-ex>.np-exi{width:calc((100% - 30px)/4)}
+@media (max-width:600px){.np-ex>.np-exi{width:calc((100% - 20px)/3)}}
+.np-exi{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,214,150,.18);text-align:center;font:inherit;color:inherit;cursor:zoom-in;transition:transform .15s,background .15s}.np-exi:hover{background:rgba(255,255,255,.07)}.np-exi:active{transform:scale(.97)}
 .np-exi .slv-prev{width:50px}.np-exi .slv-prev .cb{border-width:2px;border-radius:6px}
 .np-exi .np-cvw{width:52px;height:70px}.np-exi .np-cvw .bcv{transform:scale(.4334)}
 .np-exi b{font:700 12px/1.15 var(--f-display);color:#fff}.np-exi span{font:600 9.5px var(--f-mono);letter-spacing:.04em;color:#bdb5ec}
@@ -1654,11 +1666,67 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
   .np-stat{gap:14px}.np-orb{width:96px}.np-orb-in{inset:7px}.np-orb-in b{font-size:32px}.np-orb-in span{font-size:8.5px}.np-orb-in em{font-size:9.5px}
   .np-xp-t{font-size:12.5px}.np-xp-t b{font-size:16px}.np-xp-t span{display:block}.np-xp-m{font-size:10px}
   .np-prem{padding:14px}
-  .np-col{width:112px;grid-template-rows:166px 46px 166px}.npi{height:88px}
   .np-bar2{justify-content:center}.np-acts .btn2,.np-acts .ghost{padding:9px 13px;font-size:13px}
   .np-pop{top:calc(env(safe-area-inset-top,0px) + 62px)}
 }
+@media (max-width:600px){.np-col{width:calc((100% - 20px)/3);grid-template-rows:174px 46px 174px}.npi{height:80px}.npi-sl .slv-prev{width:52px}.npi-cv .np-cvw{width:58px;height:77px}.npi-cv .np-cvw .bcv{transform:scale(.4834)}.mpk-s{width:48px;height:68px}.np-track{padding-top:16px}.np-col.hyper{width:calc(100% - 40px)}.np-tile{padding:12px 6px 10px}.np-n{font-size:11.5px}}
+.np-hint{align-self:center;font:600 11px var(--f-mono);letter-spacing:.04em;color:#8f88c4}
+@media (max-width:600px){.np-tl{justify-content:center;width:100%}.np-hint{width:100%;text-align:center}}
 @media (prefers-reduced-motion:reduce){.np-sky i,.np-orb::before,.np-hx::before,.mpk i,.np-bar i::after,.np-tile.ready,.bcv.pass::before,.cover.skin.pass::after{animation:none!important}}
+/* Nova Pass reward preview (zoomed view with the item's own animation, drag-to-tilt, glare, starburst) */
+.np-pv{z-index:88;opacity:0;transition:opacity .22s;background:radial-gradient(70% 55% at 50% 40%,rgba(40,20,90,.55),transparent 70%),rgba(3,2,16,.88)}
+.np-pv.on{opacity:1}
+.npv-box{--npc:#ffd27a;position:relative;width:min(440px,100%);display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 18px 20px;border-radius:26px;text-align:center;background:linear-gradient(180deg,rgba(26,20,70,.9),rgba(8,6,28,.95));border:1px solid color-mix(in srgb,var(--npc) 45%,transparent);box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 60px color-mix(in srgb,var(--npc) 18%,transparent);transform:translateY(14px) scale(.96);transition:transform .3s cubic-bezier(.2,1.2,.4,1)}
+.np-pv.on .npv-box{transform:none}
+.np-pv .npv-x{position:absolute;top:10px;right:10px;z-index:5}
+.npv-stage{position:relative;width:100%;height:min(46vh,360px);min-height:250px;display:grid;place-items:center;perspective:900px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden;border-radius:20px}
+.npv-burst{position:absolute;left:50%;top:50%;width:760px;height:760px;margin:-380px 0 0 -380px;background:repeating-conic-gradient(color-mix(in srgb,var(--npc) 30%,transparent) 0 3deg,transparent 3deg 13deg);-webkit-mask:radial-gradient(circle,#000 6%,transparent 52%);mask:radial-gradient(circle,#000 6%,transparent 52%);animation:npspin 36s linear infinite;opacity:.8}
+.npv-halo{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--npc) 40%,transparent),transparent 55%);animation:npdawn 3s ease-in-out infinite alternate}
+.npv-sp i{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:#fff;box-shadow:0 0 6px #fff,0 0 12px var(--npc);animation:nptw 2.4s ease-in-out var(--d) infinite}
+.npv-fl{position:relative;animation:npvfl 6s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes npvfl{0%,100%{transform:translateY(-5px) rotateY(-9deg) rotateX(4deg)}50%{transform:translateY(6px) rotateY(9deg) rotateX(-3deg)}}
+.npv-tilt{--rx:0deg;--ry:0deg;--gx:30%;--gy:20%;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .5s cubic-bezier(.2,.9,.3,1);transform-style:preserve-3d}
+.npv-tilt.aim{transition:transform .08s linear}
+.npv-it{position:relative;animation:npvin .45s cubic-bezier(.2,1.3,.4,1)}
+.npv-it.in-r{animation:npvr .35s cubic-bezier(.2,1,.4,1)}.npv-it.in-l{animation:npvl .35s cubic-bezier(.2,1,.4,1)}
+.npv-it.pop{animation:npvpop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes npvin{from{transform:scale(.6) rotate(-6deg);opacity:0}}
+@keyframes npvr{from{transform:translateX(70px) rotateY(-30deg);opacity:0}}
+@keyframes npvl{from{transform:translateX(-70px) rotateY(30deg);opacity:0}}
+@keyframes npvpop{40%{transform:scale(1.12)}}
+.npv-gl{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--gx) var(--gy),rgba(255,255,255,.5),rgba(255,255,255,.12) 22%,transparent 48%),linear-gradient(115deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%) 0 0/250% 100%;mix-blend-mode:screen;animation:npsheen 4s ease-in-out infinite;z-index:3}
+/* the item itself */
+.npv-sl{position:relative;width:min(56vw,214px);aspect-ratio:5/7;border-radius:16px;overflow:hidden;filter:drop-shadow(0 22px 34px rgba(0,0,0,.6)) drop-shadow(0 0 26px color-mix(in srgb,var(--slr,#fff) 45%,transparent))}
+.npv-sl .cb{border-width:6px;border-radius:16px}
+.npv-cv{position:relative;width:216px;height:288px;border-radius:10px 22px 22px 10px;filter:drop-shadow(0 22px 34px rgba(0,0,0,.6)) drop-shadow(0 0 24px rgba(255,214,150,.35))}
+.npv-cv .np-cvw{width:216px;height:288px;filter:none}.npv-cv .np-cvw .bcv{transform:scale(1.8)}
+.npv-cv .npv-gl{border-radius:10px 22px 22px 10px}
+.npv-pk{position:relative;display:grid;place-items:center}.npv-pk .pack{width:min(46vw,176px);filter:drop-shadow(0 24px 34px rgba(0,0,0,.6))}
+.npv-pk em{position:absolute;right:-18px;bottom:6px;font:800 28px var(--f-display);font-style:normal;color:#fff;text-shadow:0 3px 10px #000,0 0 16px var(--npc)}
+.npv-d{position:relative;display:grid;place-items:center;gap:4px}.npv-d .dusti{font-size:128px;color:#ffd76a;filter:drop-shadow(0 0 24px rgba(255,200,90,.8))}.npv-d.big .dusti{color:#ffe9a8;filter:drop-shadow(0 0 30px rgba(255,160,220,.9))}
+.npv-d b{font:800 38px var(--f-display);color:#ffe7b0;text-shadow:0 0 20px rgba(255,200,120,.7)}
+.npv-ring{position:absolute;left:50%;top:42%;width:210px;height:210px;margin:-105px 0 0 -105px;animation:npspin 9s linear infinite}
+.npv-ring i{position:absolute;left:50%;top:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#fff;box-shadow:0 0 10px #ffd76a,0 0 20px #ff9ad9;transform-origin:4px 105px}
+.npv-ring i:nth-child(2){transform:rotate(60deg)}.npv-ring i:nth-child(3){transform:rotate(120deg);width:5px;height:5px}.npv-ring i:nth-child(4){transform:rotate(180deg)}.npv-ring i:nth-child(5){transform:rotate(240deg);width:5px;height:5px}.npv-ring i:nth-child(6){transform:rotate(300deg)}
+.npv-nav{position:absolute;top:50%;z-index:4;width:40px;height:40px;margin-top:-20px;border-radius:50%;display:grid;place-items:center;font:700 26px/1 var(--f-body);color:#fff;background:rgba(10,8,34,.6);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.npv-prv{left:6px}.npv-nxt{right:6px}.npv-nav:disabled{opacity:0;pointer-events:none}
+/* the sleeve as it looks in your hand in battle */
+.npv-fan{display:flex;flex-direction:column;align-items:center;gap:2px;min-height:0}
+.npv-fan:empty{display:none}.npv-fan span{font:700 9.5px var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:#8f88c4}
+.npv-hand{display:flex;justify-content:center;height:58px;padding-top:2px;margin-bottom:12px}
+.npv-hand .cb{width:38px;height:53px;margin:0 -6px;border-width:2px;border-radius:6px;outline:2px solid var(--slr);outline-offset:1px;box-shadow:0 6px 12px rgba(0,0,0,.5)}
+.npv-hand .cb:nth-child(1){transform:rotate(-16deg) translateY(8px)}.npv-hand .cb:nth-child(2){transform:rotate(-8deg) translateY(2px)}.npv-hand .cb:nth-child(4){transform:rotate(8deg) translateY(2px)}.npv-hand .cb:nth-child(5){transform:rotate(16deg) translateY(8px)}
+.npv-info h3{margin:2px 0 4px;font:800 22px var(--f-display);color:#fff}
+.npv-info p{margin:0 auto;max-width:360px;font-size:13.5px;line-height:1.45;color:#d6cff5}.npv-info .npv-sm{margin-top:4px;font-size:11.5px;color:#8f88c4}
+.npv-k{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.npv-tr,.npv-ex{font:800 10px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;border-radius:99px}
+.npv-tr.f{color:#bfe0ff;background:rgba(80,140,255,.14);border:1px solid rgba(120,180,255,.3)}.npv-tr.p{color:#ffc8ee;background:rgba(255,100,200,.14);border:1px solid rgba(255,140,220,.35)}.npv-tr.h{color:#ffe2a0;background:rgba(255,180,90,.14);border:1px solid rgba(255,200,120,.4)}
+.npv-ex{color:#2a1400;background:linear-gradient(90deg,#ffe08a,#ffb0d8)}
+.npv-a{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:8px;width:100%}.npv-a .btn2{min-width:180px}.npv-a .buy{min-width:230px}
+.npv-ok{font:800 14px var(--f-mono);color:#7dffc4}.npv-lk{font:600 12.5px var(--f-mono);color:#bdb5ec}
+@media (max-width:420px){.npv-box{padding:12px 12px 16px}.npv-stage{height:min(44vh,330px)}.npv-info h3{font-size:19px}.npv-info p{font-size:13px}}
+@media (max-height:700px){.npv-stage{height:min(40vh,300px);min-height:220px}.npv-sl{width:min(44vw,170px)}.npv-cv,.npv-cv .np-cvw{width:180px;height:240px}.npv-cv .np-cvw .bcv{transform:scale(1.5)}}
+@media (prefers-reduced-motion:reduce){.npv-burst,.npv-fl,.npv-tilt,.npv-ring,.npv-sp i,.npv-gl{animation:none!important}}
 </style>
 
 <canvas id="bg" aria-hidden="true"></canvas>
@@ -1897,7 +1965,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.6.0';
+const CC_VERSION='1.6.1';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -5321,6 +5389,11 @@ function initTutorial(){
    before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
    Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
 const CHANGELOG=[
+  {v:'1.6.1',d:'2 Nov 2026',items:[
+    'Nova Pass: tap any reward for a close-up. Sleeves show their full animation (plus how they look in your hand), covers shimmer, packs appear in their real design, and you can drag to tilt, swipe between levels and claim or equip right there.',
+    'The level line is one smooth glowing rail that fills to exactly where you are, and the next level pulses gently instead of flickering.',
+    'On phones the pass shows exactly three whole levels at a time, with every reward centred and every tile the same height.',
+    'Claiming a reward no longer redraws the whole pass, so nothing blinks.']},
   {v:'1.6.0',d:'1 Nov 2026',items:[
     'The Nova Pass, Season 1: First Light. A new Pass tab with 50 levels of rewards: Stardust, packs and season-exclusive sleeves and binder covers you can’t buy in the shop.',
     'Earn Starlight by playing: your first visit each day, opening packs, new cards, battles (win or lose), daily challenges, achievements and completing a series. Every 500 Starlight is a level, about a month of regular play to reach level 50.',
@@ -5570,43 +5643,53 @@ function npBuy(btn){const P=npS();if(P.prem)return;
   const back=npLevel();toast(back?`Supernova unlocked! ${back} premium reward${back>1?'s are':' is'} ready to claim.`:'Supernova unlocked! Premium rewards arrive as you level up.',3600);
   if(view==='pass')renderPass();if(view==='shop')renderShop()}
 /* ── page ── */
-function npIcon(r,size){
-  if(r.t==='dust')return `<div class="npi dust${r.n>=700?' big':r.n>=400?' mid':''}">${DUSTI}</div>`;
-  if(r.t==='pack')return `<div class="npi pack k-${r.k}">${r.n>1?'<div class="mpk bk2"></div>':''}<div class="mpk"><i></i></div>${r.n>1?`<em>×${r.n}</em>`:''}</div>`;
-  if(r.t==='sleeve')return `<div class="npi sleeve"><div class="slv-prev sl-${r.id}"><div class="cb"></div></div></div>`;
-  if(r.t==='cover'){const c=npCover(r.id);return `<div class="npi cover"><div class="np-cvw">${c?coverPrev(c,c.set):''}</div></div>`}
+function npIcon(r){
+  if(r.t==='dust')return `<div class="npi npi-d${r.n>=700?' big':r.n>=400?' mid':''}">${DUSTI}</div>`;
+  if(r.t==='pack')return `<div class="npi npi-pk k-${r.k}"><div class="mpk-s${r.n>1?' two':''}">${r.n>1?'<div class="mpk bk2"></div>':''}<div class="mpk fr"><i></i></div></div>${r.n>1?`<em>×${r.n}</em>`:''}</div>`;
+  if(r.t==='sleeve')return `<div class="npi npi-sl"><div class="slv-prev sl-${r.id}"><div class="cb"></div></div></div>`;
+  if(r.t==='cover'){const c=npCover(r.id);return `<div class="npi npi-cv"><div class="np-cvw">${c?coverPrev(c,c.set):''}</div></div>`}
   return ''}
-function npTile(track,lv){const P=npS(),l=npLevel(),r=(track==='p'?NP_PREM:NP_FREE)[lv],claimed=!!(track==='p'?P.cp:P.cf)[lv],lockP=track==='p'&&!P.prem,reach=lv<=l;
-  const st=claimed?'done':reach&&!lockP?'ready':reach&&lockP?'plock':'lock';
+const npRew=(t,lv)=>t==='h'?{t:'sleeve',id:'starforged'}:(t==='p'?NP_PREM:NP_FREE)[lv];
+function npState(t,lv){const P=npS();if(t==='h')return sl().own.includes('starforged')?'done':'lock';
+  const claimed=!!(t==='p'?P.cp:P.cf)[lv],reach=lv<=npLevel();return claimed?'done':reach&&(t==='f'||P.prem)?'ready':reach?'plock':'lock'}
+function npTile(track,lv){const r=npRew(track,lv),st=npState(track,lv);
   let act='';if(st==='ready')act=`<button class="np-claim" data-t="${track}" data-l="${lv}">Claim</button>`;
   else if(st==='done'){if(r.t==='sleeve'){const eq=sl().eq===r.id;act=eq?'<span class="np-eq">Equipped ✓</span>':`<button class="np-use" data-sl="${r.id}">Equip</button>`}
     else if(r.t==='cover'){const c=npCover(r.id),eq=c&&bnd().eq[c.set]===r.id;act=eq?'<span class="np-eq">Equipped ✓</span>':`<button class="np-use" data-cv="${r.id}">Equip</button>`}else act='<span class="np-ok">✓</span>'}
   else if(st==='plock')act='<span class="np-lk">🔒 Supernova</span>';
-  return `<div class="np-tile ${st} t-${r.t}${track==='p'?' prem':''}" title="${npName(r)}">${npIcon(r)}<div class="np-n">${npName(r)}</div>${act}</div>`}
+  return `<div class="np-tile ${st} t-${r.t}${track==='p'?' prem':''}" data-t="${track}" data-l="${lv}" role="button" tabindex="0" aria-label="Preview ${npName(r)}">${npIcon(r)}<div class="np-n">${npName(r)}</div>${act}</div>`}
+/* replace an element's HTML only when it changed, so untouched parts keep their animations (no blinking on claim) */
+function npSet(e,h){if(!e||e._h===h)return false;e._h=h;e.innerHTML=h;fillCoverArt(e);return true}
+const npRef=id=>{if(id==='starforged')return['h',10];for(let i=1;i<=NP.MAX;i++){if(NP_FREE[i].id===id)return['f',i];if(NP_PREM[i].id===id)return['p',i]}return null};
 function renderPass(){const el=$('#viewPass');if(!el)return;const P=npS(),l=npLevel(),h=npHyper(),pr=npProg(),pct=Math.min(100,pr.into/pr.need*100),claim=npClaimable();
   const total=NP.MAX*NP.LV,allPct=Math.min(100,P.xp/total*100);
-  const cols=[];for(let i=1;i<=NP.MAX;i++)cols.push(`<div class="np-col${i<=l?' got':''}${i===l+1?' next':''}${NP_MILE(i)?' mile':''}${i===NP.MAX?' last':''}" data-l="${i}">${npTile('f',i)}<div class="np-node"><b>${i}</b></div>${npTile('p',i)}</div>`);
-  const hpend=Math.max(0,h-P.hx),nextH=h+1;
-  cols.push(`<div class="np-col hyper"><div class="np-hx"><div class="np-hx-k">Beyond level ${NP.MAX}</div><div class="np-hx-t">HYPERNOVA</div><div class="np-hx-s">${h?`★ ${h}`:'★ —'}</div>
-    <p>Every ${fmt(NP.HXP)} Starlight after level ${NP.MAX}: <b>+${fmt(NP.HX_FREE)}</b> Stardust, <b>+${fmt(NP.HX_FREE+NP.HX_PREM)}</b> with Supernova. Every 5th star pays double. ★10 unlocks the <b>Starforged</b> sleeves.</p>
-    ${l>=NP.MAX?`<div class="np-hx-bar"><i style="width:${pr.hyper?pct:0}%"></i></div><div class="np-hx-m">${fmt(pr.hyper?pr.into:0)} / ${fmt(NP.HXP)} to ★${nextH} · next: +${fmt(npHxReward(nextH,P.prem))}</div>`:`<div class="np-hx-m">Reach level ${NP.MAX} to start.</div>`}
-    ${hpend?`<button class="np-claim big" data-hx="1">Claim ${hpend} star${hpend>1?'s':''}</button>`:''}</div></div>`);
-  const nextR=l<NP.MAX?NP_FREE[l+1]:null,nextP=l<NP.MAX?NP_PREM[l+1]:null;
-  const exSl=SLEEVES.filter(s=>s.pass),exCv=Object.entries(BCOVERS).flatMap(([set,a])=>a.filter(c=>c.pass).map(c=>Object.assign({set},c)));
-  const oldT=$('#npTrack'),sx=oldT?oldT.scrollLeft:0;
-  el.innerHTML=`<div class="np-hero"><div class="np-sky" aria-hidden="true"><i class="np-st a"></i><i class="np-st b"></i><i class="np-neb"></i><i class="np-dawn"></i><i class="np-planet"></i><i class="np-ray"></i></div>
+  if(el.dataset.np!==NP.id){el.dataset.np=NP.id;renderPass.scrolled=0;
+    const cols=[];for(let i=1;i<=NP.MAX;i++)cols.push(`<div class="np-col" data-l="${i}"><div class="np-slot"></div><div class="np-node"><b>${i}</b></div><div class="np-slot"></div></div>`);
+    el.innerHTML=`<div class="np-hero"><div class="np-sky" aria-hidden="true"><i class="np-st a"></i><i class="np-st b"></i><i class="np-neb"></i><i class="np-dawn"></i><i class="np-planet"></i><i class="np-ray"></i></div>
     <div class="np-hd"><div class="np-s">Season ${NP.season} · ${NP.name}</div><h1 class="np-logo"><span class="nv">NOVA</span> <span class="ps">PASS</span></h1>
       <p class="np-sub">Earn Starlight by playing. Every 500 Starlight is a level: ${NP.MAX} levels of Stardust, packs and season-exclusive sleeves and covers you can't buy in the shop.</p></div>
-    <div class="np-stat"><div class="np-orb" style="--p:${pct}"><div class="np-orb-in"><span>${pr.hyper?'Hypernova':'Level'}</span><b>${pr.hyper?'★'+h:l}</b><em>${pr.hyper?'':'of '+NP.MAX}</em></div></div>
+    <div class="np-stat" id="npStat"></div></div>
+  <div class="np-bar2" id="npBar2"></div>
+  <div class="np-trk"><div class="np-track" id="npTrack"><div class="np-rail" aria-hidden="true"><i></i></div>${cols.join('')}<div class="np-col hyper" id="npHx"></div></div></div>
+  <div class="np-grid"><div class="np-card" id="npEarn"></div><div class="np-card" id="npEx"></div></div>`;
+    const t=$('#npTrack');if(window.ResizeObserver)new ResizeObserver(()=>npRail()).observe(t);t.addEventListener('scroll',()=>{},{passive:true})}
+  const nextR=l<NP.MAX?NP_FREE[l+1]:null,nextP=l<NP.MAX?NP_PREM[l+1]:null;
+  npSet($('#npStat'),`<div class="np-orb" style="--p:${pct}"><div class="np-orb-in"><span>${pr.hyper?'Hypernova':'Level'}</span><b>${pr.hyper?'★'+h:l}</b><em>${pr.hyper?'':'of '+NP.MAX}</em></div></div>
       <div class="np-xp"><div class="np-xp-t"><b>✧ ${fmt(pr.into)}</b> / ${fmt(pr.need)} Starlight <span>to ${pr.hyper?'★'+(h+1):'level '+(l+1)}</span></div><div class="np-bar"><i style="width:${pct}%"></i></div>
         <div class="np-xp-m">${l>=NP.MAX?'Season complete ✓ · Starlight now earns Hypernova stars':`Season ${allPct.toFixed(0)}% · ${fmt(P.xp)} / ${fmt(total)}`}</div>
-        ${nextR?`<div class="np-next"><span>Next</span>${npIcon(nextR)}<b>${npName(nextR)}</b>${P.prem?`<i>+</i>${npIcon(nextP)}<b>${npName(nextP)}</b>`:''}</div>`:''}</div>
+        ${nextR?`<div class="np-next"><span>Next</span><button class="np-nx" data-t="f" data-l="${l+1}" aria-label="Preview">${npIcon(nextR)}<b>${npName(nextR)}</b></button>${P.prem?`<i>+</i><button class="np-nx" data-t="p" data-l="${l+1}" aria-label="Preview">${npIcon(nextP)}<b>${npName(nextP)}</b></button>`:''}</div>`:''}</div>
       <div class="np-prem${P.prem?' on':''}">${P.prem?`<div class="np-pb">SUPERNOVA</div><b>Premium track unlocked</b><span>Every level now pays out on both tracks.</span>`:
-        `<div class="np-pb">SUPERNOVA</div><b>Unlock the premium track</b><span>Double rewards on every level: Collector packs, big Stardust drops, 4 exclusive sleeves and 4 First Light binder covers. Rewards you've already reached unlock at once.</span><button class="buy np-buy${S.dust<NP.PRICE?' poor':''}">Unlock <span class="pr">${DUSTI}${fmt(NP.PRICE)}</span></button>`}</div></div></div>
-  <div class="np-bar2"><div class="np-tl"><span class="np-tag f">NOVA <em>free</em></span><span class="np-tag p">SUPERNOVA <em>premium</em></span></div><div class="np-acts">${claim?`<button class="btn2 primary np-all">Claim all <b>${claim}</b></button>`:''}<button class="ghost np-jump">${l>=NP.MAX?'Jump to Hypernova':`Jump to level ${l+1}`}</button></div></div>
-  <div class="np-track" id="npTrack" style="--lv:${l};--fr:${pr.hyper?0:pct/100}">${cols.join('')}</div>
-  <div class="np-grid">
-    <div class="np-card"><h3>Earn Starlight</h3><ul class="np-earn">
+        `<div class="np-pb">SUPERNOVA</div><b>Unlock the premium track</b><span>Double rewards on every level: Collector packs, big Stardust drops, 4 exclusive sleeves and 4 First Light binder covers. Rewards you've already reached unlock at once.</span><button class="buy np-buy${S.dust<NP.PRICE?' poor':''}">Unlock <span class="pr">${DUSTI}${fmt(NP.PRICE)}</span></button>`}</div>`);
+  npSet($('#npBar2'),`<div class="np-tl"><span class="np-tag f">NOVA <em>free</em></span><span class="np-tag p">SUPERNOVA <em>premium</em></span><span class="np-hint">Tap any reward for a closer look</span></div><div class="np-acts">${claim?`<button class="btn2 primary np-all">Claim all <b>${claim}</b></button>`:''}<button class="ghost np-jump">${l>=NP.MAX?'Jump to Hypernova':`Jump to level ${l+1}`}</button></div>`);
+  const t=$('#npTrack');
+  t.querySelectorAll('.np-col[data-l]').forEach(c=>{const i=+c.dataset.l,cls=`np-col${i<=l?' got':''}${i===l+1?' next':''}${NP_MILE(i)?' mile':''}${i===NP.MAX?' last':''}`;if(c.className!==cls)c.className=cls;
+    const s=c.querySelectorAll('.np-slot');npSet(s[0],npTile('f',i));npSet(s[1],npTile('p',i))});
+  const hpend=Math.max(0,h-P.hx),nextH=h+1;
+  npSet($('#npHx'),`<div class="np-hx"><div class="np-hx-k">Beyond level ${NP.MAX}</div><div class="np-hx-t">HYPERNOVA</div><div class="np-hx-s">${h?`★ ${h}`:'★ —'}</div>
+    <p>Every ${fmt(NP.HXP)} Starlight after level ${NP.MAX}: <b>+${fmt(NP.HX_FREE)}</b> Stardust, <b>+${fmt(NP.HX_FREE+NP.HX_PREM)}</b> with Supernova. Every 5th star pays double. ★10 unlocks the <b>Starforged</b> sleeves.</p>
+    ${l>=NP.MAX?`<div class="np-hx-bar"><i style="width:${pr.hyper?pct:0}%"></i></div><div class="np-hx-m">${fmt(pr.hyper?pr.into:0)} / ${fmt(NP.HXP)} to ★${nextH} · next: +${fmt(npHxReward(nextH,P.prem))}</div>`:`<div class="np-hx-m">Reach level ${NP.MAX} to start.</div>`}
+    ${hpend?`<button class="np-claim big" data-hx="1">Claim ${hpend} star${hpend>1?'s':''}</button>`:''}</div>`);
+  npSet($('#npEarn'),`<h3>Earn Starlight</h3><ul class="np-earn">
       <li><span>First visit each day</span><b>+${NP_XP.day}</b>${P.hd===todayKey()?'<em>✓ today</em>':''}</li>
       <li><span>Open a pack · Standard / Boosted / Collector</span><b>+${NP_XP.std} / ${NP_XP.prem} / ${NP_XP.col}</b></li>
       <li><span>New card for your collection · new Shiny</span><b>+${NP_XP.newCard} · +${NP_XP.newShiny}</b></li>
@@ -5616,15 +5699,91 @@ function renderPass(){const el=$('#viewPass');if(!el)return;const P=npS(),l=npLe
       <li><span>Claim a daily challenge</span><b>+${NP_XP.daily}</b></li>
       <li><span>Claim an achievement</span><b>+${NP_XP.ach}</b></li>
       <li><span>Complete a series for the first time</span><b>+${NP_XP.series}</b></li></ul>
-      <p class="np-note">${NP.MAX} levels take about a month of regular play. Starlight keeps counting after level ${NP.MAX} for Hypernova stars.</p></div>
-    <div class="np-card"><h3>Season exclusives</h3><p class="np-note">Only in the Nova Pass. Never sold in the shop.</p><div class="np-ex">
-      ${exSl.map(s=>{const own=sl().own.includes(s.id);return `<div class="np-exi${own?' own':''}"><div class="slv-prev sl-${s.id}"><div class="cb"></div></div><b>${s.n}</b><span>${own?'Unlocked':npWhere(s.id)}</span></div>`}).join('')}
-      ${exCv.map(c=>{const own=bnd().own.includes(c.id);return `<div class="np-exi npcv${own?' own':''}"><div class="np-cvw">${coverPrev(c,c.set)}</div><b>${c.n}</b><span>${own?'Unlocked':npWhere(c.id)}</span></div>`}).join('')}</div></div></div>`;
-  fillCoverArt(el);paintPassBadge();
-  if(renderPass.scrolled)$('#npTrack').scrollLeft=sx;
-  else{renderPass.scrolled=1;requestAnimationFrame(()=>npJump(false))}}
+      <p class="np-note">${NP.MAX} levels take about a month of regular play. Starlight keeps counting after level ${NP.MAX} for Hypernova stars.</p>`);
+  const exSl=SLEEVES.filter(s=>s.pass),exCv=Object.entries(BCOVERS).flatMap(([set,a])=>a.filter(c=>c.pass).map(c=>Object.assign({set},c)));
+  npSet($('#npEx'),`<h3>Season exclusives</h3><p class="np-note">Only in the Nova Pass. Never sold in the shop. Tap one for a closer look.</p><div class="np-ex">
+      ${exSl.map(s=>{const own=sl().own.includes(s.id),rf=npRef(s.id);return `<button class="np-exi${own?' own':''}" data-t="${rf[0]}" data-l="${rf[1]}"><div class="slv-prev sl-${s.id}"><div class="cb"></div></div><b>${s.n}</b><span>${own?'Unlocked':npWhere(s.id)}</span></button>`}).join('')}
+      ${exCv.map(c=>{const own=bnd().own.includes(c.id),rf=npRef(c.id);return `<button class="np-exi npcv${own?' own':''}" data-t="${rf[0]}" data-l="${rf[1]}"><div class="np-cvw">${coverPrev(c,c.set)}</div><b>${c.n}</b><span>${own?'Unlocked':npWhere(c.id)}</span></button>`}).join('')}</div>`);
+  paintPassBadge();
+  if(!renderPass.scrolled){renderPass.scrolled=1;requestAnimationFrame(()=>{npRail(true);npJump(false)})}else npRail();
+  if(NPV.open)npPvPaint()}
+/* one continuous progress rail behind the level nodes, filled up to the exact Starlight position */
+function npRail(instant){const t=$('#npTrack');if(!t||!t.offsetParent)return;const r=t.querySelector('.np-rail'),f=r&&r.firstElementChild;if(!f)return;
+  const tr=t.getBoundingClientRect(),node=n=>t.querySelector(`.np-col[data-l="${n}"] .np-node b`),X=n=>{const q=node(n).getBoundingClientRect();return q.left-tr.left+t.scrollLeft+q.width/2};
+  const c1=t.querySelector('.np-col[data-l="1"]').getBoundingClientRect(),x0=c1.left-tr.left+t.scrollLeft,q1=node(1).getBoundingClientRect(),y=q1.top-tr.top+q1.height/2;
+  const l=npLevel(),pr=npProg(),fr=l>=NP.MAX?1:Math.min(1,pr.into/pr.need),xe=X(NP.MAX);
+  const w=l>=NP.MAX?xe-x0:l===0?(X(1)-x0)*fr:X(l)-x0+(X(l+1)-X(l))*fr;
+  if(instant)f.style.transition='none';r.style.left=x0+'px';r.style.top=(y-2)+'px';r.style.width=(xe-x0)+'px';r.style.setProperty('--rw',(xe-x0)+'px');f.style.width=Math.max(0,w)+'px';
+  if(instant){void f.offsetWidth;f.style.transition=''}}
 function npJump(smooth){const t=$('#npTrack');if(!t)return;const l=npLevel(),c=l>=NP.MAX?t.querySelector('.np-col.hyper'):t.querySelector(`.np-col[data-l="${l+1}"]`);if(!c)return;
   t.scrollTo({left:Math.max(0,c.offsetLeft-t.clientWidth/2+c.offsetWidth/2),behavior:smooth?'smooth':'auto'})}
+/* ── zoomed preview: tap a reward to see it big, with its animation, a tilt you can drag, glare and a starburst ── */
+const NPV={open:false,t:'f',l:1};
+const NP_DESC={comet:'A bright comet streaks across the back of every card, its tail trailing through the stars.',
+  pulsar:'A spinning neutron star sweeps twin beams of light across your card backs, round and round.',
+  wormhole:'A tunnel through spacetime: rings of light swirl forever into a black core.',
+  eclipse:'The Moon covers the Sun: a black disc, a glowing corona and the diamond ring.',
+  firstlight:'The emblem of Season 1: sunrise over a planet’s edge, with slowly turning rays.',
+  hypernova:'A star tearing itself apart in a slowly spinning burst of light and shock waves.',
+  starforged:'Forged gold with a light that sweeps across it. Only for Hypernova ★10.'};
+const npTypeName=r=>r.t==='dust'?'Stardust':r.t==='pack'?'Pack':r.t==='sleeve'?'Card sleeves':'Binder cover';
+function npColor(r){if(r.t==='sleeve'){const s=npSleeve(r.id);return s&&s.rim||'#ffd27a'}if(r.t==='cover')return '#ffd9a0';if(r.t==='pack')return r.k==='col'?'#ffe08a':r.k==='prem'?'#ff8ad8':'#8fa8ff';return '#ffd76a'}
+function npPvStage(r){
+  if(r.t==='sleeve')return `<div class="npv-sl sl-${r.id}"><div class="cb"></div><i class="npv-gl"></i></div>`;
+  if(r.t==='cover'){const c=npCover(r.id);return `<div class="npv-cv"><div class="np-cvw">${c?coverPrev(c,c.set):''}</div><i class="npv-gl"></i></div>`}
+  if(r.t==='pack'){const id=SETS[S.cur]&&!SETS[S.cur].shop?S.cur:'cosmos',set=SETS[id];return `<div class="npv-pk">${packHTML(set,r.k,set[r.k].pals[0])}${r.n>1?`<em>×${r.n}</em>`:''}</div>`}
+  return `<div class="npv-d${r.n>=700?' big':''}"><div class="npv-ring"><i></i><i></i><i></i><i></i><i></i><i></i></div>${DUSTI}<b>+${fmt(r.n)}</b></div>`}
+function npPvInfo(r,t,lv){const where=t==='h'?'Hypernova · ★10':`${t==='p'?'Supernova':'Nova'} · Level ${lv}`;
+  let d='';if(r.t==='sleeve')d=NP_DESC[r.id]||'';
+  else if(r.t==='cover'){const c=npCover(r.id),cd=c&&cardOf(c.set,c.art);d=c?`Your ${SETS[c.set].tab} binder in the Shiny art of ${cd.name}, with a moving shimmer.`:''}
+  else if(r.t==='pack'){d=`${r.n>1?r.n+' '+TIERN[r.k]+' packs':'A '+TIERN[r.k]+' pack'} for any series: ${r.n>1?'they go':'it goes'} into your pack stock and ${r.n>1?'open':'opens'} in whichever series you choose. ${ODDS[r.k]}.`}
+  else d='Spend Stardust in the Shop on packs, exclusive cards, sleeves and covers.';
+  const ex=r.t==='sleeve'||r.t==='cover';
+  return `<div class="npv-k"><span class="npv-tr ${t}">${where}</span>${ex?'<span class="npv-ex">Season exclusive</span>':''}</div><h3>${npName(r)}</h3><p>${d}</p>${r.t==='pack'?`<p class="npv-sm">Shown in the ${SETS[SETS[S.cur]&&!SETS[S.cur].shop?S.cur:'cosmos'].tab} design.</p>`:''}`}
+function npPvAct(r,t,lv){const st=npState(t,lv),P=npS();
+  if(st==='ready')return `<button class="btn2 primary npv-claim">Claim</button>`;
+  if(st==='done'){if(r.t==='sleeve')return sl().eq===r.id?'<span class="npv-ok">Equipped ✓</span>':'<button class="btn2 primary npv-eq">Equip</button>';
+    if(r.t==='cover'){const c=npCover(r.id);return c&&bnd().eq[c.set]===r.id?'<span class="npv-ok">Equipped ✓</span>':'<button class="btn2 primary npv-eq">Equip</button>'}return '<span class="npv-ok">Claimed ✓</span>'}
+  if(st==='plock')return `<span class="npv-lk">Reached · needs Supernova</span><button class="buy np-buy${S.dust<NP.PRICE?' poor':''}">Unlock Supernova <span class="pr">${DUSTI}${fmt(NP.PRICE)}</span></button>`;
+  if(t==='h'){const h=npHyper();return `<span class="npv-lk">${npLevel()<NP.MAX?`Reach level ${NP.MAX}, then earn 10 Hypernova stars`:`★${h} of ★10 · ${fmt((10-h)*NP.HXP-npProg().into)} Starlight to go`}</span>`}
+  return `<span class="npv-lk">Reach level ${lv} · ${fmt(Math.max(0,lv*NP.LV-P.xp))} Starlight to go${t==='p'&&!P.prem?' · Supernova':''}</span>`}
+function npPvPaint(full){const box=$('#npPv');if(!box||!NPV.open)return;const {t,l}=NPV,r=npRew(t,l);
+  box.style.setProperty('--npc',npColor(r));
+  if(full||box.dataset.k!==t+l){box.dataset.k=t+l;const st=box.querySelector('.npv-it');st.innerHTML=npPvStage(r);st.className='npv-it t-'+r.t;fillCoverArt(st);if(r.t==='pack'&&typeof fillArt==='function')fillArt(st);
+    st.style.animation='none';void st.offsetWidth;st.style.animation='';
+    box.querySelector('.npv-fan').innerHTML=r.t==='sleeve'?`<div class="npv-hand sl-${r.id}">${'<div class="cb"></div>'.repeat(5)}</div><span>In battle</span>`:'';
+    box.querySelector('.npv-prv').disabled=t==='h'||l<=1;box.querySelector('.npv-nxt').disabled=t==='h'||l>=NP.MAX}
+  npSet(box.querySelector('.npv-info'),npPvInfo(r,t,l));npSet(box.querySelector('.npv-a'),npPvAct(r,t,l))}
+function npPreview(t,lv){const box=$('#npPv');if(!box)return;NPV.open=true;NPV.t=t;NPV.l=lv;box.hidden=false;document.body.classList.add('npv-on');Snd.init();Snd.swoosh?Snd.swoosh():Snd.click();
+  npPvPaint(true);requestAnimationFrame(()=>box.classList.add('on'))}
+function npPvClose(){const box=$('#npPv');if(!box||!NPV.open)return;NPV.open=false;box.classList.remove('on');document.body.classList.remove('npv-on');setTimeout(()=>{if(!NPV.open){box.hidden=true;box.querySelector('.npv-it').innerHTML='';box.dataset.k=''}},220)}
+function npPvStep(d){if(NPV.t==='h')return;const n=Math.max(1,Math.min(NP.MAX,NPV.l+d));if(n===NPV.l)return;NPV.l=n;Snd.click();npPvPaint();
+  const it=$('#npPv .npv-it');it.classList.add(d>0?'in-r':'in-l')}
+function npPvInit(){const box=document.createElement('div');box.className='xfer np-pv';box.id='npPv';box.hidden=true;
+  box.innerHTML=`<div class="npv-box" role="dialog" aria-modal="true" aria-label="Reward preview"><button class="is-x npv-x" aria-label="Close">✕</button>
+    <div class="npv-stage"><div class="npv-burst" aria-hidden="true"></div><div class="npv-halo" aria-hidden="true"></div><div class="npv-sp" aria-hidden="true">${Array.from({length:16},(_,i)=>`<i style="--x:${(i*37+11)%100}%;--y:${(i*53+7)%100}%;--d:${(i*0.37%2).toFixed(2)}s;--s:${2+i%3}px"></i>`).join('')}</div>
+      <div class="npv-fl"><div class="npv-tilt"><div class="npv-it"></div></div></div>
+      <button class="npv-nav npv-prv" aria-label="Previous level">‹</button><button class="npv-nav npv-nxt" aria-label="Next level">›</button></div>
+    <div class="npv-fan"></div><div class="npv-info"></div><div class="npv-a"></div></div>`;
+  document.body.appendChild(box);
+  const stage=box.querySelector('.npv-stage'),tilt=box.querySelector('.npv-tilt');let down=null;
+  const aim=e=>{const q=stage.getBoundingClientRect(),x=(e.clientX-q.left)/q.width,y=(e.clientY-q.top)/q.height;tilt.style.setProperty('--ry',((x-.5)*34).toFixed(1)+'deg');tilt.style.setProperty('--rx',((.5-y)*26).toFixed(1)+'deg');tilt.style.setProperty('--gx',(x*100).toFixed(0)+'%');tilt.style.setProperty('--gy',(y*100).toFixed(0)+'%');tilt.classList.add('aim')};
+  const rest=()=>{tilt.classList.remove('aim');['--rx','--ry'].forEach(k=>tilt.style.setProperty(k,'0deg'))};
+  stage.addEventListener('pointerdown',e=>{if(e.target.closest('.npv-nav'))return;down={x:e.clientX,y:e.clientY,t:performance.now()};aim(e)});
+  stage.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||down)aim(e)});
+  stage.addEventListener('pointerup',e=>{if(down){const dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.abs(dx)>55&&Math.abs(dy)<60&&performance.now()-down.t<700)npPvStep(dx<0?1:-1)}down=null;if(e.pointerType!=='mouse')rest()});
+  stage.addEventListener('pointerleave',()=>{down=null;rest()});stage.addEventListener('pointercancel',()=>{down=null;rest()});
+  box.querySelector('.npv-it').addEventListener('animationend',e=>{if(e.target.classList.contains('npv-it'))e.target.classList.remove('in-l','in-r')});
+  box.addEventListener('click',e=>{const t=e.target;
+    if(t===box||t.closest('.npv-x')){npPvClose();return}
+    if(t.closest('.npv-prv')){npPvStep(-1);return}if(t.closest('.npv-nxt')){npPvStep(1);return}
+    const r=npRew(NPV.t,NPV.l);
+    if(t.closest('.npv-claim')){const b=t.closest('.npv-claim');npClaim(NPV.t,NPV.l,b);renderPass();npPvPaint();
+      const it=box.querySelector('.npv-it');it.classList.remove('pop');void it.offsetWidth;it.classList.add('pop');return}
+    if(t.closest('.npv-eq')){if(r.t==='sleeve'&&sl().own.includes(r.id)){sl().eq=r.id;save();Snd.init();Snd.click();toast(`${npSleeve(r.id).n} sleeves equipped.`,1600)}
+      else if(r.t==='cover'){const c=npCover(r.id);if(c){equipCover(c.set,c.id);toast(`${c.n} cover on your ${SETS[c.set].tab} binder.`,1800)}}renderPass();npPvPaint();return}
+    if(t.closest('.np-buy')){npBuy(t.closest('.np-buy'));if(npS().prem)npPvPaint();return}});
+  addEventListener('keydown',e=>{if(!NPV.open)return;if(e.key==='Escape')npPvClose();else if(e.key==='ArrowLeft')npPvStep(-1);else if(e.key==='ArrowRight')npPvStep(1)})}
 /* Shop page: the Supernova offer */
 function passShopHTML(){const P=npS(),l=npLevel();return `<div class="np-shop${P.prem?' on':''}"><div class="np-sky" aria-hidden="true"><i class="np-st a"></i><i class="np-neb"></i><i class="np-dawn"></i><i class="np-planet"></i></div>
   <div class="nps-in"><div class="np-s">Season ${NP.season} · ${NP.name}</div><h2 class="np-logo"><span class="nv">SUPERNOVA</span> <span class="ps">PASS</span></h2>
@@ -5632,13 +5791,16 @@ function passShopHTML(){const P=npS(),l=npLevel();return `<div class="np-shop${P
   ${P.prem?`<div class="nps-on">✓ Supernova unlocked · You're on level ${l}</div><button class="btn2 primary nps-go">Open the Nova Pass</button>`:`<button class="buy np-buy big${S.dust<NP.PRICE?' poor':''}">Unlock Supernova <span class="pr">${DUSTI}${fmt(NP.PRICE)}</span></button><button class="ghost nps-go">See every reward</button>`}</div></div>`}
 function initPass(){
   const tab=$('#tabPass');if(tab)tab.onclick=()=>{if(typeof placing!=='undefined'&&(placing||celebrating))return;Snd.init();setView('pass')};
+  npPvInit();
   const v=$('#viewPass');v.addEventListener('click',e=>{const t=e.target;
     const c=t.closest('.np-claim');if(c){if(c.dataset.hx){npClaimHyper(c);renderPass();return}npClaim(c.dataset.t,+c.dataset.l,c);renderPass();return}
     if(t.closest('.np-all')){npClaimAll(t.closest('.np-all'));return}
     if(t.closest('.np-buy')){npBuy(t.closest('.np-buy'));return}
     if(t.closest('.np-jump')){Snd.init();Snd.click();npJump(true);return}
     const u=t.closest('.np-use');if(u){if(u.dataset.sl){const L=sl();if(L.own.includes(u.dataset.sl)){L.eq=u.dataset.sl;save();Snd.init();Snd.click();toast(`${npSleeve(u.dataset.sl).n} sleeves equipped.`,1600)}}
-      else if(u.dataset.cv){const cv=npCover(u.dataset.cv);if(cv){equipCover(cv.set,cv.id);toast(`${cv.n} cover on your ${SETS[cv.set].tab} binder.`,1800)}}renderPass();return}});
+      else if(u.dataset.cv){const cv=npCover(u.dataset.cv);if(cv){equipCover(cv.set,cv.id);toast(`${cv.n} cover on your ${SETS[cv.set].tab} binder.`,1800)}}renderPass();return}
+    const pv=t.closest('.np-tile,.np-exi,.np-nx');if(pv){npPreview(pv.dataset.t,+pv.dataset.l);return}});
+  v.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('np-tile')){e.preventDefault();npPreview(e.target.dataset.t,+e.target.dataset.l)}});
   $('#viewShop').addEventListener('click',e=>{const b=e.target.closest('.np-buy');if(b){e.stopImmediatePropagation();npBuy(b);return}if(e.target.closest('.nps-go,.nplock')){e.stopImmediatePropagation();Snd.init();Snd.click();setView('pass')}},true);
   const pop=$('#npPop');if(pop)pop.onclick=()=>{pop.classList.remove('on');pop.hidden=true;setView('pass')};
   passDaily();paintPassBadge();setInterval(()=>{if(NPQ.xp)passFlush()},1500);

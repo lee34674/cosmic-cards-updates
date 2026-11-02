@@ -1,11 +1,11 @@
 {
-  "version": "1.6.0",
+  "version": "1.6.1",
   "game": {
-    "file": "game-1.6.0.html",
-    "sha256": "bdc9a5bb49d086da274c1ee92162713944acb72385c7c20b363d2d6e6bf95bbc",
-    "size": 6084675
+    "file": "game-1.6.1.html",
+    "sha256": "16a42b7d8cdd4a5833550d808c642e3ea96f7eba76d49908dab415f585c56f18",
+    "size": 6106848
   },
-  "notes": "Season 1 of the Nova Pass: a new Pass tab with 50 levels of Stardust, packs and exclusive sleeves and covers. Earn Starlight by playing; Supernova premium track for 4,000 Stardust; Hypernova stars after level 50.",
-  "date": "2026-11-02T00:04:22.750Z",
-  "sig": "pj0P+iNUG7ktmCDFTU/eWXVa5ZZpYDA4aLm+kJ5NkeOyAiZ6dmQ9hWUZh4G2tbl0VCDSQOA/VnI9zFEJ50nwBw=="
+  "notes": "Nova Pass: tap any reward for a close-up preview, a smooth level rail, and a cleaner centred layout on phones.",
+  "date": "2026-11-02T23:41:10.432Z",
+  "sig": "PEnuMU746tOhl0JgxfgaZS2BW+eu+PkNyU39HutOj4QHUxQ1gGAGOxOq8XViSQP8mxOKFV+K5XgQIyLxNBXnDA=="
 }
