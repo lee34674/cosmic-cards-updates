@@ -1485,6 +1485,180 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 @keyframes orbspin{to{transform:rotate(360deg)}}
 .arena.fast .ar-sky{display:none}
 @media (prefers-reduced-motion:reduce){.ar-sky i,.core .orb::before,.core .orb::after{animation:none!important}.tsweep{display:none}}
+
+/* ───────────── Nova Pass · Season 1: First Light ───────────── */
+:root{--sllogo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.7'%3E%3Ccircle cx='50' cy='50' r='13' stroke-width='1.4'/%3E%3Cellipse cx='50' cy='50' rx='30' ry='8' transform='rotate(-24 50 50)' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E")}
+@keyframes npfoil{to{background-position:-200% 0}}
+@keyframes npdrift{to{background-position:-260px 110px}}
+@keyframes npdrift2{to{background-position:-400px 170px}}
+@keyframes npneb{0%{transform:translate3d(-2%,0,0) scale(1)}100%{transform:translate3d(2%,-2%,0) scale(1.08)}}
+@keyframes npdawn{0%{opacity:.75}100%{opacity:1}}
+@keyframes npflare{0%,100%{opacity:.75;transform:scaleX(.9)}50%{opacity:1;transform:scaleX(1.12)}}
+@keyframes npglow{0%,100%{box-shadow:0 0 0 1px rgba(255,215,120,.55),0 0 14px rgba(255,200,100,.35)}50%{box-shadow:0 0 0 1px rgba(255,230,150,.9),0 0 26px rgba(255,200,100,.7)}}
+@keyframes npring{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+@keyframes npspin{to{transform:rotate(360deg)}}
+@keyframes npsheen{0%,30%{background-position:160% 0}70%,100%{background-position:-60% 0}}
+@keyframes nptw{0%,100%{opacity:.35}50%{opacity:1}}
+#viewPass{padding-bottom:34px}
+.np-hero{position:relative;overflow:hidden;isolation:isolate;border-radius:26px;border:1px solid rgba(255,214,150,.22);background:#04031a;padding:26px 26px 64px;margin-top:4px;box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.07)}
+.np-sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.np-sky i{position:absolute;inset:0;display:block}
+.np-st{background-image:radial-gradient(1.3px 1.3px at 8% 14%,#fff 60%,transparent),radial-gradient(1px 1px at 22% 62%,#fff 60%,transparent),radial-gradient(1.6px 1.6px at 37% 28%,#ffe9c8 60%,transparent),radial-gradient(1px 1px at 51% 80%,#fff 60%,transparent),radial-gradient(1.2px 1.2px at 64% 12%,#cfe6ff 60%,transparent),radial-gradient(1px 1px at 78% 48%,#fff 60%,transparent),radial-gradient(1.5px 1.5px at 90% 22%,#fff 60%,transparent),radial-gradient(1px 1px at 95% 74%,#ffd6f2 60%,transparent);background-size:260px 220px;animation:npdrift 70s linear infinite}
+.np-st.b{background-size:400px 340px;opacity:.55;animation:npdrift2 130s linear infinite;filter:blur(.3px)}
+.np-neb{inset:-10%!important;background:radial-gradient(42% 38% at 18% 22%,rgba(122,92,255,.42),transparent 70%),radial-gradient(38% 34% at 86% 18%,rgba(255,90,190,.3),transparent 70%),radial-gradient(55% 32% at 62% 58%,rgba(60,150,255,.2),transparent 70%);filter:blur(6px);animation:npneb 16s ease-in-out infinite alternate}
+.np-dawn{background:radial-gradient(75% 60% at 50% 108%,rgba(255,214,130,.7),rgba(255,120,160,.38) 38%,rgba(120,80,255,.14) 62%,transparent 80%);animation:npdawn 5s ease-in-out infinite alternate}
+.np-planet{inset:auto!important;left:-35%!important;width:170%;aspect-ratio:1;top:calc(100% - 42px)!important;border-radius:50%;background:radial-gradient(70% 12% at 50% 0,#2a1d52,#0a0720 60%),#06051a;box-shadow:0 -1.5px 0 rgba(255,244,210,.95),0 -5px 16px rgba(255,210,130,.85),0 -26px 70px rgba(255,140,130,.45)}
+.np-ray{background:radial-gradient(circle at 50% calc(100% - 42px),#fff 0,rgba(255,244,214,.95) 1.1%,rgba(255,214,140,.45) 3.2%,transparent 7%),linear-gradient(90deg,transparent 10%,rgba(255,232,190,.55) 50%,transparent 90%) 50% calc(100% - 41px)/100% 2px no-repeat;animation:npflare 4s ease-in-out infinite;transform-origin:50% calc(100% - 42px)}
+.np-hero>.np-hd,.np-hero>.np-stat{position:relative}
+.np-s{font:700 11px var(--f-mono);letter-spacing:.26em;text-transform:uppercase;color:#ffd9a0;text-shadow:0 0 12px rgba(255,190,110,.5)}
+.np-logo{font:800 clamp(36px,8.6vw,68px)/.95 var(--f-display);letter-spacing:.02em;margin:8px 0 10px}
+.np-logo .nv{background:linear-gradient(100deg,#fff6d8,#ffd27a 22%,#ff9ad9 45%,#9ad0ff 68%,#fff6d8 90%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:npfoil 7s linear infinite;filter:drop-shadow(0 0 22px rgba(255,190,140,.35))}
+.np-logo .ps{color:transparent;-webkit-text-stroke:1.6px rgba(255,238,206,.92);text-shadow:0 0 24px rgba(255,200,150,.25)}
+.np-sub{margin:0;max-width:560px;color:#d3ccf5;font-size:14.5px;line-height:1.5}
+.np-stat{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(250px,320px);gap:22px;align-items:center;margin-top:22px}
+.np-orb{--p:0;position:relative;width:136px;aspect-ratio:1;border-radius:50%;background:conic-gradient(#ffd27a 0,#ff9ad9 calc(var(--p)*1%),rgba(255,255,255,.08) calc(var(--p)*1%));box-shadow:0 0 44px rgba(255,190,130,.32),inset 0 0 0 1px rgba(255,255,255,.08)}
+.np-orb::before{content:"";position:absolute;inset:-7px;border-radius:50%;background:repeating-conic-gradient(rgba(255,236,200,.55) 0 1.5deg,transparent 1.5deg 12deg);-webkit-mask:radial-gradient(circle,transparent 66%,#000 67%,#000 70%,transparent 71%);mask:radial-gradient(circle,transparent 66%,#000 67%,#000 70%,transparent 71%);animation:npspin 40s linear infinite}
+.np-orb-in{position:absolute;inset:9px;border-radius:50%;background:radial-gradient(circle at 50% 28%,#2d2368,#0a0826 70%);display:grid;place-content:center;text-align:center;box-shadow:inset 0 2px 10px rgba(0,0,0,.6)}
+.np-orb-in span{font:700 9.5px var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:#bdb5ec}.np-orb-in b{font:800 44px/1 var(--f-display);color:#fff6e0;text-shadow:0 0 18px rgba(255,200,140,.6);margin:2px 0}.np-orb-in em{font:600 10.5px var(--f-mono);font-style:normal;color:#8f88c4}
+.np-xp{min-width:0}.np-xp-t{font:500 13.5px var(--f-body);color:#cdc6f2;margin-bottom:8px}.np-xp-t b{font:800 18px var(--f-display);color:#ffe7b0}.np-xp-t span{color:#968fc8}
+.np-bar{height:12px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.55)}
+.np-bar i{position:relative;display:block;height:100%;min-width:12px;border-radius:inherit;background:linear-gradient(90deg,#ffd27a,#ff9ad9 60%,#9ad0ff);box-shadow:0 0 14px rgba(255,170,200,.65);transition:width .6s cubic-bezier(.2,.9,.3,1)}
+.np-bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%) 0 0/250% 100%;animation:npsheen 2.8s ease-in-out infinite;border-radius:inherit}
+.np-xp-m{margin-top:8px;font:600 11px var(--f-mono);letter-spacing:.06em;color:#8f88c4}
+.np-next{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:#d8d2ff}.np-next>span{font:700 10px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:#ffd9a0}.np-next>i{font-style:normal;color:#968fc8}
+.np-next .npi{height:30px;width:auto;transform:none}.np-next .npi .dusti{font-size:20px}.np-next .npi .mpk{width:18px;height:26px;border-radius:3px}.np-next .npi .mpk.bk2,.np-next .npi em{display:none}.np-next .npi.sleeve .slv-prev{width:21px}.np-next .npi.sleeve .cb{border-width:1.5px;border-radius:4px}.np-next .npi.cover{width:22px;height:30px}.np-next .np-cvw{width:22px;height:29px}.np-next .np-cvw .bcv{transform:scale(.1834)}
+.np-prem{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:18px;background:linear-gradient(160deg,rgba(255,110,200,.18),rgba(120,80,255,.16) 50%,rgba(255,200,120,.12)),rgba(14,10,40,.78);border:1px solid rgba(255,160,220,.38);box-shadow:0 12px 34px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.np-prem b{font:800 16px var(--f-display);color:#fff}.np-prem>span{font-size:12.5px;line-height:1.45;color:#d6cff5}
+.np-pb{align-self:flex-start;font:800 10px var(--f-mono);letter-spacing:.24em;padding:4px 9px;border-radius:99px;color:#2a0a24;background:linear-gradient(90deg,#ffd27a,#ff9ad9,#9ad0ff,#ffd27a);background-size:200% 100%;animation:npfoil 5s linear infinite}
+.np-prem .np-buy{margin-top:6px}.np-prem.on{border-color:rgba(255,215,120,.55);background:linear-gradient(160deg,rgba(255,200,110,.22),rgba(255,110,200,.16)),rgba(14,10,40,.78)}
+.np-bar2{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:22px 2px 6px}
+.np-tl{display:flex;gap:8px;flex-wrap:wrap}.np-tag{font:800 10.5px var(--f-mono);letter-spacing:.18em;padding:5px 10px;border-radius:99px;border:1px solid var(--line)}.np-tag em{font-style:normal;font-weight:500;letter-spacing:.04em;color:var(--muted);margin-left:4px;text-transform:none}
+.np-tag.f{color:#bfe0ff;background:rgba(80,140,255,.12);border-color:rgba(120,180,255,.3)}.np-tag.p{color:#ffc8ee;background:rgba(255,100,200,.12);border-color:rgba(255,140,220,.35)}
+.np-acts{display:flex;gap:8px;align-items:center}.np-acts .btn2{padding:10px 16px;font-size:14px}.np-acts .btn2 b{display:inline-block;min-width:20px;margin-left:6px;padding:0 6px;border-radius:99px;background:rgba(42,22,0,.2);font:800 12px/20px var(--f-mono)}
+.np-acts .ghost{white-space:nowrap}
+.np-track{position:relative;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:12px 6px 18px;margin:0 -6px;scrollbar-width:thin;scrollbar-color:rgba(255,210,150,.35) transparent;-webkit-mask:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent);mask:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent)}
+.np-col{flex:none;width:122px;display:grid;grid-template-rows:176px 48px 176px;gap:8px;scroll-snap-align:center}
+.np-node{position:relative;display:grid;place-items:center;isolation:isolate}
+.np-node::before{content:"";position:absolute;left:-5px;right:-5px;top:50%;height:4px;transform:translateY(-50%);background:rgba(255,255,255,.1);z-index:-1}
+.np-col:first-child .np-node::before{left:50%}.np-col.last .np-node::before{right:-5px}
+.np-col.got .np-node::before{background:linear-gradient(90deg,#ffd27a,#ff9ad9);box-shadow:0 0 10px rgba(255,180,170,.6)}
+.np-col.next .np-node::before{background:linear-gradient(90deg,#ffd27a,#ff9ad9 calc(var(--fr)*100%),rgba(255,255,255,.1) calc(var(--fr)*100%))}
+.np-node b{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:800 14px var(--f-display);color:#8f88c4;background:#151140;border:2px solid rgba(255,255,255,.16)}
+.np-col.mile .np-node b{width:44px;height:44px;font-size:15px;border-color:rgba(255,214,150,.4);color:#cfc6ff}
+.np-col.got .np-node b{color:#2a1400;background:radial-gradient(circle at 40% 30%,#fff3c8,#ffd27a 45%,#ff9ad9);border-color:#fff2c8;box-shadow:0 0 16px rgba(255,190,140,.7)}
+.np-col.next .np-node b{color:#fff;border-color:#ffd27a;background:#241b5a}
+.np-col.next .np-node b::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,214,140,.8);animation:npring 1.8s ease-out infinite}
+.np-tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:6px;padding:12px 8px 10px;border-radius:16px;text-align:center;background:linear-gradient(180deg,rgba(54,64,150,.42),rgba(12,12,44,.9));border:1px solid rgba(140,170,255,.22);transition:transform .15s}
+.np-tile.prem{background:linear-gradient(180deg,rgba(140,46,128,.45),rgba(30,8,40,.92));border-color:rgba(255,140,220,.28)}
+.np-col.mile .np-tile{border-color:rgba(255,214,150,.4);box-shadow:inset 0 0 22px rgba(255,200,120,.08)}
+.np-tile.t-sleeve,.np-tile.t-cover{background:linear-gradient(180deg,rgba(255,200,110,.2),rgba(30,12,44,.92));border-color:rgba(255,214,150,.5)}
+.np-tile.t-sleeve::before,.np-tile.t-cover::before{content:"EXCLUSIVE";position:absolute;top:-8px;left:50%;transform:translateX(-50%);font:800 8.5px var(--f-mono);letter-spacing:.18em;padding:3px 7px;border-radius:99px;color:#2a1400;background:linear-gradient(90deg,#ffe08a,#ffb0d8);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.np-n{display:flex;align-items:center;justify-content:center;min-height:30px;font:600 12px/1.2 var(--f-body);color:#dcd6ff}
+.np-tile.lock .npi,.np-tile.plock .npi{opacity:.62;filter:saturate(.7)}.np-tile.lock .np-n{color:#9a94c8}
+.np-tile.ready{border-color:rgba(255,220,140,.8);animation:npglow 1.6s ease-in-out infinite}
+.np-tile.done .npi{opacity:.8}.np-tile.done{border-color:rgba(77,255,160,.28)}
+.np-claim{font:800 12.5px var(--f-body);padding:7px 16px;border-radius:99px;color:#2a1a00;background:linear-gradient(180deg,#ffe08a,#ffb83a);box-shadow:0 3px 0 #a8701a,0 0 16px rgba(255,200,90,.45)}
+.np-claim:active{transform:translateY(2px);box-shadow:0 1px 0 #a8701a}
+.np-claim.big{padding:11px 22px;font-size:14px;margin-top:6px}
+.np-use{font:700 12px var(--f-body);padding:6px 14px;border-radius:99px;color:#e9e6ff;background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.np-ok,.np-eq{font:800 12px var(--f-mono);color:#7dffc4;padding:6px 0}.np-lk{font:700 10.5px var(--f-mono);letter-spacing:.04em;color:#ffb0e0;padding:6px 0}
+.npi{position:relative;display:grid;place-items:center;height:96px;width:100%}
+.npi.dust .dusti{font-size:44px;color:#ffd76a;filter:drop-shadow(0 0 10px rgba(255,200,90,.6))}.npi.dust.mid .dusti{font-size:52px}.npi.dust.big .dusti{font-size:60px;color:#ffe9a8;filter:drop-shadow(0 0 14px rgba(255,170,220,.75))}
+.mpk{position:relative;width:52px;height:74px;border-radius:6px;overflow:hidden;background:var(--mpb);box-shadow:0 8px 16px rgba(0,0,0,.5),inset 0 0 0 1.5px var(--mpr)}
+.mpk::before{content:"";position:absolute;inset:0;background:var(--sllogo) 50% 45%/70% no-repeat,linear-gradient(180deg,rgba(255,255,255,.25),transparent 18%,transparent 82%,rgba(0,0,0,.3))}
+.mpk i{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%) 0 0/250% 100%;animation:npsheen 3.6s ease-in-out infinite}
+.mpk.bk2{position:absolute;transform:translate(9px,-5px) rotate(9deg);opacity:.75}
+.npi.pack .mpk:not(.bk2){transform:rotate(-4deg)}
+.k-std{--mpb:linear-gradient(160deg,#5a6cff,#2a2a8a 55%,#14123f);--mpr:rgba(170,190,255,.7)}
+.k-prem{--mpb:linear-gradient(160deg,#ff7ad0,#8a2a9a 55%,#2a0f3f);--mpr:rgba(255,190,240,.8)}
+.k-col{--mpb:conic-gradient(from 210deg,#fff3c4,#c99a2e,#ffe08a,#8a5a12,#fff0b8,#b07a1c,#fff3c4);--mpr:rgba(255,240,200,.95)}
+.npi.pack em{position:absolute;right:6px;bottom:4px;font:800 13px var(--f-display);font-style:normal;color:#fff;text-shadow:0 2px 6px #000,0 0 10px rgba(255,200,120,.7)}
+.npi.sleeve .slv-prev{width:60px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}.npi.sleeve .cb{border-width:2.5px;border-radius:7px}
+.np-cvw{position:relative;flex:none;width:60px;height:80px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}.np-cvw .bcv{position:absolute;left:0;top:0;width:120px;transform-origin:0 0;transform:scale(.5)}
+.npi.cover .np-cvw{width:66px;height:88px}.npi.cover .np-cvw .bcv{transform:scale(.55)}
+.np-col.hyper{width:290px;grid-template-rows:1fr}
+.np-hx{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 18px;border-radius:20px;text-align:center;border:1px solid rgba(255,160,230,.45);background:radial-gradient(circle at 50% 30%,rgba(255,240,210,.35),transparent 30%),radial-gradient(circle at 50% 30%,rgba(255,90,190,.35),transparent 60%),linear-gradient(180deg,#2a0a40,#0a0420)}
+.np-hx::before{content:"";position:absolute;left:50%;top:30%;width:520px;height:520px;margin:-260px 0 0 -260px;z-index:-1;background:repeating-conic-gradient(rgba(255,230,180,.16) 0 3deg,transparent 3deg 14deg);animation:npspin 50s linear infinite;-webkit-mask:radial-gradient(circle,#000 10%,transparent 60%);mask:radial-gradient(circle,#000 10%,transparent 60%)}
+.np-hx-k{font:700 10px var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:#ffc8ee}.np-hx-t{font:800 26px var(--f-display);letter-spacing:.06em;background:linear-gradient(100deg,#fff6d8,#ff9ad9,#ffd27a,#fff6d8);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:npfoil 5s linear infinite}
+.np-hx-s{font:800 34px var(--f-display);color:#fff;text-shadow:0 0 24px rgba(255,150,220,.8)}
+.np-hx p{margin:2px 0 4px;font-size:12.5px;line-height:1.45;color:#e2d8f8}.np-hx p b{color:#ffe7b0}
+.np-hx-bar{width:100%;height:10px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}.np-hx-bar i{display:block;height:100%;background:linear-gradient(90deg,#ff9ad9,#ffd27a);box-shadow:0 0 12px rgba(255,150,220,.8)}
+.np-hx-m{font:600 11px var(--f-mono);color:#d6c8ef}
+.np-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;margin-top:18px}
+.np-card{padding:18px;border-radius:20px;background:rgba(20,17,58,.72);border:1px solid var(--line)}
+.np-card h3{margin:0 0 10px;font:800 18px var(--f-display)}
+.np-earn{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.np-earn li{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid rgba(190,180,255,.08);font-size:13.5px;color:#d8d2ff}.np-earn li:last-child{border:0}
+.np-earn li span{flex:1;min-width:0}.np-earn li b{font:800 13px var(--f-mono);color:#ffe2a0;white-space:nowrap}.np-earn li b::before{content:"✧ ";color:#ffd27a}.np-earn li em{font:700 11px var(--f-mono);font-style:normal;color:#7dffc4;white-space:nowrap}
+.np-note{margin:10px 0 0;font-size:12.5px;line-height:1.45;color:var(--muted)}.np-card h3+.np-note{margin:-4px 0 12px}
+.np-ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px}
+.np-exi{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,214,150,.18);text-align:center}
+.np-exi .slv-prev{width:50px}.np-exi .slv-prev .cb{border-width:2px;border-radius:6px}
+.np-exi .np-cvw{width:52px;height:70px}.np-exi .np-cvw .bcv{transform:scale(.4334)}
+.np-exi b{font:700 12px/1.15 var(--f-display);color:#fff}.np-exi span{font:600 9.5px var(--f-mono);letter-spacing:.04em;color:#bdb5ec}
+.np-exi.own{border-color:rgba(77,255,160,.35)}.np-exi.own span{color:#7dffc4}
+/* the earned-Starlight pop under the top bar */
+.np-pop{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:84;transform:translate(-50%,-16px);opacity:0;transition:opacity .35s,transform .45s cubic-bezier(.2,1.3,.4,1);display:flex;align-items:center;gap:9px;padding:8px 14px 8px 12px;border-radius:99px;background:rgba(16,12,48,.94);border:1px solid rgba(255,214,150,.45);box-shadow:0 12px 34px rgba(0,0,0,.5),0 0 22px rgba(255,190,140,.25);cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.np-pop.on{opacity:1;transform:translate(-50%,0)}
+.npp-x{font:800 15px var(--f-display);color:#ffe2a0}.npp-t{font:600 12px var(--f-body);color:#cfc8f5}
+.npp-bar{width:74px;height:6px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}.npp-bar i{display:block;height:100%;background:linear-gradient(90deg,#ffd27a,#ff9ad9)}
+.npp-lv{font:800 11px var(--f-mono);color:#fff}
+.np-pop.up{flex-direction:column;gap:2px;padding:14px 26px;border-radius:22px;white-space:normal;text-align:center;min-width:240px;border-color:rgba(255,200,230,.7);background:radial-gradient(120% 140% at 50% 120%,rgba(255,200,120,.5),transparent 60%),linear-gradient(160deg,#3a1460,#140c3a);box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 46px rgba(255,150,210,.45)}
+.npp-k{font:700 10px var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:#ffd9a0}.npp-l{font:800 28px var(--f-display);background:linear-gradient(100deg,#fff6d8,#ffd27a,#ff9ad9,#fff6d8);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:npfoil 3s linear infinite}.npp-s{font:600 12px var(--f-body);color:#e6dcff}
+/* lines on the pack summary and the battle results */
+.npline{margin:2px 0 0;display:flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--f-body);color:#ffd2ee}.npline b{font:800 17px var(--f-display);color:#ffe2a0}.npline span{color:var(--muted);font-weight:500}
+.be-np{margin:4px auto 2px;font:600 13px var(--f-body);color:#ffd2ee}.be-np b{font:800 16px var(--f-display);color:#ffe2a0}.be-np span{color:#b5aee0}
+/* shop: the Supernova offer + locked pass items */
+.np-shop{position:relative;overflow:hidden;isolation:isolate;max-width:860px;margin:0 auto;border-radius:24px;border:1px solid rgba(255,160,220,.38);background:#05031a;padding:30px 24px 66px;text-align:center}
+.nps-in{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}.nps-in .np-logo{font-size:clamp(30px,7vw,54px);margin:4px 0}.nps-in p{margin:0;max-width:560px;color:#d8d0f5;font-size:14px;line-height:1.5}
+.nps-in .np-buy.big{padding:13px 22px;font-size:16px;gap:14px;margin-top:6px}.nps-in .ghost{margin-top:2px}
+.nps-on{font:800 14px var(--f-mono);color:#7dffc4}
+.shnav .sm{display:none}.shnav .np-nav{color:#ffd9a0}.shnav .np-nav[aria-checked="true"]{background:linear-gradient(90deg,#ffd27a,#ff9ad9);color:#2a0a24}
+@media (max-width:480px){.shnav .lg{display:none}.shnav .sm{display:inline}}
+.buy.nplock{justify-content:center;font-size:11.5px;color:#ffe6f6;background:linear-gradient(180deg,#5a3aa0,#33226e);box-shadow:0 4px 0 #1a1340;white-space:nowrap}
+.slv-item.np-x,.bcv-item.np-x{position:relative;border-color:rgba(255,214,150,.38);background:linear-gradient(180deg,rgba(70,34,96,.7),rgba(20,17,58,.75))}
+.slv-item.np-x::before,.bcv-item.np-x::before{content:"NOVA PASS";position:absolute;top:-7px;right:10px;font:800 8.5px var(--f-mono);letter-spacing:.16em;padding:3px 7px;border-radius:99px;color:#2a1400;background:linear-gradient(90deg,#ffe08a,#ffb0d8);z-index:2}
+.bcv-row{grid-template-columns:repeat(3,minmax(0,200px))}
+@media (max-width:560px){.bcv-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.bcv-row .bcv-item{padding:8px;gap:6px}.bcv-row .bcv b{font-size:10.5px}.bcv-row .bcv span{font-size:8px;letter-spacing:.08em}.bcv-row .bcv-n{font-size:12px}.bcv-row .buy{font-size:11.5px;padding:8px 6px}.bcv-row .buy.nplock{font-size:9.5px;letter-spacing:-.01em}}
+/* First Light covers shimmer */
+.bcv.pass::before,.cover.skin.pass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(255,236,200,.38) 48%,rgba(255,170,230,.22) 54%,transparent 64%) 0 0/250% 100%;mix-blend-mode:screen;animation:npsheen 5s ease-in-out infinite;z-index:1}
+/* pass-exclusive sleeves */
+.sl-comet{--slr:#8fe3ff;--slb:radial-gradient(circle at 70% 24%,#fff 0,rgba(210,245,255,.95) 2.5%,rgba(120,210,255,.55) 6%,transparent 13%),radial-gradient(circle at 70% 24%,transparent 0,transparent 16%,rgba(3,8,26,.88) 78%),conic-gradient(from 214deg at 70% 24%,transparent 0deg,rgba(120,210,255,.5) 7deg,rgba(255,255,255,.75) 10deg,rgba(150,120,255,.45) 14deg,transparent 22deg),radial-gradient(1px 1px at 20% 70%,#fff,transparent),radial-gradient(1px 1px at 82% 80%,#fff,transparent),radial-gradient(1.2px 1.2px at 30% 20%,#cfe6ff,transparent),linear-gradient(160deg,#0c2050,#050a20)}
+.sl-eclipse{--slr:#ffe3b0;--slb:radial-gradient(circle at 63% 33%,#fff 0,rgba(255,255,255,.9) 1.4%,transparent 5%),radial-gradient(circle at 50% 46%,#000 0 21%,#fffaf0 22.4%,rgba(255,236,200,.9) 24%,rgba(255,196,140,.45) 30%,transparent 46%),repeating-conic-gradient(from 8deg at 50% 46%,rgba(255,230,190,.14) 0 3deg,transparent 3deg 10deg),radial-gradient(circle at 50% 46%,#1c1226,#050308 70%)}
+.sl-firstlight{--slr:#ffd27a;--slb:radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%),repeating-conic-gradient(from 0deg at 50% 92%,rgba(255,220,150,.16) 0 5deg,transparent 5deg 14deg),linear-gradient(#0a0a30,#2b1652 62%,#6a2e62)}
+.sl-pulsar{--slr:#7ab8ff;--slb:radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%),conic-gradient(transparent 0 80deg,rgba(150,200,255,.75) 88deg,transparent 96deg 260deg,rgba(150,200,255,.75) 268deg,transparent 276deg),repeating-radial-gradient(circle,rgba(120,170,255,.22) 0 2px,transparent 2px 12px),radial-gradient(#0e1a48,#040818)}
+.sl-wormhole{--slr:#6ff0ff;--slb:radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%),repeating-conic-gradient(rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg),repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)}
+.sl-hypernova{--slr:#ff7ad0;--slb:radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%),repeating-conic-gradient(rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg),radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)}
+.sl-starforged{--slr:#ffd76a;--slb:radial-gradient(1.6px 1.6px at 22% 24%,#fff,transparent),radial-gradient(1.4px 1.4px at 76% 70%,#fff,transparent),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)}
+.sl-firstlight .cb,.cb.sl-firstlight{background:var(--sllogo) center 40%/56% no-repeat,radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%),repeating-conic-gradient(from var(--slang) at 50% 92%,rgba(255,220,150,.16) 0 5deg,transparent 5deg 14deg),linear-gradient(#0a0a30,#2b1652 62%,#6a2e62)!important;animation:slang 40s linear infinite}
+.sl-firstlight .hb,.sb.sl-firstlight .pile.deck .pc{background:radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%),repeating-conic-gradient(from var(--slang) at 50% 92%,rgba(255,220,150,.16) 0 5deg,transparent 5deg 14deg),linear-gradient(#0a0a30,#2b1652 62%,#6a2e62)!important;animation:slang 40s linear infinite}
+.sl-pulsar .cb,.cb.sl-pulsar{background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%),conic-gradient(from var(--slang),transparent 0 80deg,rgba(150,200,255,.75) 88deg,transparent 96deg 260deg,rgba(150,200,255,.75) 268deg,transparent 276deg),repeating-radial-gradient(circle,rgba(120,170,255,.22) 0 2px,transparent 2px 12px),radial-gradient(#0e1a48,#040818)!important;animation:slang 3.2s linear infinite}
+.sl-pulsar .hb,.sb.sl-pulsar .pile.deck .pc{background:radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%),conic-gradient(from var(--slang),transparent 0 80deg,rgba(150,200,255,.75) 88deg,transparent 96deg 260deg,rgba(150,200,255,.75) 268deg,transparent 276deg),repeating-radial-gradient(circle,rgba(120,170,255,.22) 0 2px,transparent 2px 12px),radial-gradient(#0e1a48,#040818)!important;animation:slang 3.2s linear infinite}
+.sl-wormhole .cb,.cb.sl-wormhole{background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%),repeating-conic-gradient(from var(--slang),rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg),repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)!important;animation:slang 12s linear infinite}
+.sl-wormhole .hb,.sb.sl-wormhole .pile.deck .pc{background:radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%),repeating-conic-gradient(from var(--slang),rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg),repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)!important;animation:slang 12s linear infinite}
+.sl-hypernova .cb,.cb.sl-hypernova{background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%),repeating-conic-gradient(from var(--slang),rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg),radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)!important;animation:slang 16s linear infinite}
+.sl-hypernova .hb,.sb.sl-hypernova .pile.deck .pc{background:radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%),repeating-conic-gradient(from var(--slang),rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg),radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)!important;animation:slang 16s linear infinite}
+.sl-starforged .cb,.cb.sl-starforged{background:var(--sllogo) center/56% no-repeat,linear-gradient(115deg,transparent calc(var(--slsh) - 14%),rgba(255,255,255,.95) var(--slsh),transparent calc(var(--slsh) + 14%)),radial-gradient(1.6px 1.6px at 22% 24%,#fff,transparent),radial-gradient(1.4px 1.4px at 76% 70%,#fff,transparent),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)!important;animation:slsh 3s cubic-bezier(.45,0,.25,1) infinite}
+.sl-starforged .hb,.sb.sl-starforged .pile.deck .pc{background:linear-gradient(115deg,transparent calc(var(--slsh) - 14%),rgba(255,255,255,.95) var(--slsh),transparent calc(var(--slsh) + 14%)),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)!important;animation:slsh 3s cubic-bezier(.45,0,.25,1) infinite}
+/* phones */
+@media (max-width:760px){
+  .np-hero{padding:20px 16px 58px;border-radius:22px}
+  .np-stat{grid-template-columns:auto minmax(0,1fr);gap:16px;margin-top:16px}
+  .np-prem{grid-column:1/-1}
+  .np-orb{width:108px}.np-orb-in b{font-size:36px}.np-orb-in{inset:8px}
+  .np-grid{grid-template-columns:1fr}
+  .np-sub{font-size:13.5px}
+}
+@media (max-width:420px){
+  .np-hero{padding:18px 14px 54px}.np-logo{margin:6px 0 8px}.np-sub{font-size:13px}
+  .np-stat{gap:14px}.np-orb{width:96px}.np-orb-in{inset:7px}.np-orb-in b{font-size:32px}.np-orb-in span{font-size:8.5px}.np-orb-in em{font-size:9.5px}
+  .np-xp-t{font-size:12.5px}.np-xp-t b{font-size:16px}.np-xp-t span{display:block}.np-xp-m{font-size:10px}
+  .np-prem{padding:14px}
+  .np-col{width:112px;grid-template-rows:166px 46px 166px}.npi{height:88px}
+  .np-bar2{justify-content:center}.np-acts .btn2,.np-acts .ghost{padding:9px 13px;font-size:13px}
+  .np-pop{top:calc(env(safe-area-inset-top,0px) + 62px)}
+}
+@media (prefers-reduced-motion:reduce){.np-sky i,.np-orb::before,.np-hx::before,.mpk i,.np-bar i::after,.np-tile.ready,.bcv.pass::before,.cover.skin.pass::after{animation:none!important}}
 </style>
 
 <canvas id="bg" aria-hidden="true"></canvas>
@@ -1547,6 +1721,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
     <button id="tabPacks" aria-current="true">Packs</button>
     <button id="tabBinder" aria-current="false">Binder<span class="tbadge" id="tabBadge" hidden></span></button>
     <button id="tabBattle" aria-current="false">Battle<span class="tbadge gold" id="tabBattleBadge" hidden></span></button>
+    <button id="tabPass" aria-current="false">Pass<span class="tbadge gold" id="tabPassBadge" hidden></span></button>
     <button id="tabShop" aria-current="false">Shop<span class="tdust" id="tabDust"></span></button>
   </nav>
   <button class="pill pc dustpill" id="dustPill" title="Stardust · open the shop"></button>
@@ -1646,12 +1821,13 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
       <details class="odds bt-panel" style="padding:4px 16px"><summary>Keywords</summary><div class="kwl" id="kwList"></div></details>
     </div>
   </section>
+  <section id="viewPass" hidden></section>
   <section id="viewShop" hidden>
     <div class="sh-hero"><div class="series">Stardust Shop · Packs, exclusive cards and more</div><h1>The <span>Stardust</span> Vault</h1>
       <div class="dustbal"><svg class="dusti" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2l1.9 5.6L18.5 9.5l-5.6 1.9L11 17l-1.9-5.6L3.5 9.5l5.6-1.9z" fill="currentColor"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/><circle cx="5" cy="19.5" r="1.3" fill="currentColor"/></svg><b id="dustBal">0</b><span>Stardust</span></div>
       <p class="sub">Every duplicate you pull melts into Stardust, and rarer duplicates give more. Battles and challenges earn it too. Spend it on packs, on exclusive cards you can't pull, and on sleeves. <span class="muted">Lifetime earned: <b id="dustEarned">0</b></span></p>
       <div class="chips dustrates" id="dustRates"></div></div>
-    <div class="seg shnav" id="shNav" role="radiogroup" aria-label="Shop pages"><button role="radio" data-p="packs">Packs</button><button role="radio" data-p="cards">Exclusive cards</button><button role="radio" data-p="style">Sleeves &amp; covers</button></div>
+    <div class="seg shnav" id="shNav" role="radiogroup" aria-label="Shop pages"><button role="radio" data-p="packs">Packs</button><button role="radio" data-p="cards"><span class="lg">Exclusive cards</span><span class="sm">Exclusives</span></button><button role="radio" data-p="style"><span class="lg">Sleeves &amp; covers</span><span class="sm">Style</span></button><button role="radio" data-p="pass" class="np-nav">✧ <span class="lg">Nova Pass</span><span class="sm">Pass</span></button></div>
     <div class="shp" data-p="packs">
       <div class="sh-row"><h3>Packs</h3><span class="dk-m">Each series has its own packs. Bigger bundles cost less per pack.</span></div>
       <div id="shPacks"></div>
@@ -1664,12 +1840,14 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
     <div class="shp" data-p="style" hidden>
       <div class="sh-row"><h3>Card sleeves</h3><span class="dk-m">Cosmetic. Your sleeves show on your deck, hand and units in battle, and online opponents see them too.</span></div>
       <div id="shSleeves"></div>
-      <div class="sh-row"><h3>Binder covers</h3><span class="dk-m">Two covers for each series, made from its own card art. Buy once, then switch covers any time.</span></div>
+      <div class="sh-row"><h3>Binder covers</h3><span class="dk-m">Two covers for each series, made from its own card art, plus a First Light cover from the Nova Pass. Buy once, then switch covers any time.</span></div>
       <div id="shCovers"></div>
     </div>
+    <div class="shp" data-p="pass" hidden><div id="shPass"></div></div>
   </section>
 </main>
 
+<div id="npPop" class="np-pop" hidden role="status"></div>
 <div id="open" class="overlay" hidden>
   <div class="halo" id="halo"></div>
   <div class="rays" id="rays"></div>
@@ -1719,7 +1897,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.5.0';
+const CC_VERSION='1.6.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -2723,7 +2901,7 @@ const fmt=n=>Math.round(n).toLocaleString('en-US');
 /* v1 saves held one set. Oort Cloud was inserted as #18, so older numbers shift up by one. */
 function migrate(d){
   const out=fresh0();if(!d||typeof d!=='object')return out;
-  if(d.sets){out.cur=SETS[d.cur]&&!SETS[d.cur].shop?d.cur:'cosmos';SETIDS.forEach(id=>Object.assign(out.sets[id],d.sets[id]||{}));Object.assign(out.battle,d.battle||{});out.dust=d.dust||0;out.dustInit=!!d.dustInit;out.dustEarned=d.dustEarned||0;if(d.chal&&d.chal.done)out.chal={done:d.chal.done||{},claimed:d.chal.claimed||{},daily:d.chal.daily&&d.chal.daily.p?d.chal.daily:{d:'',p:{},c:{}}};if(d.sl&&Array.isArray(d.sl.own))out.sl={own:[...new Set(['classic',...d.sl.own])],eq:d.sl.own.includes(d.sl.eq)||d.sl.eq==='classic'?d.sl.eq:'classic'};if(d.inv&&typeof d.inv==='object'){const I={},cl=t=>({std:Math.max(0,(t&&t.std)|0),prem:Math.max(0,(t&&t.prem)|0),col:Math.max(0,(t&&t.col)|0)});if(typeof d.inv.std==='number'||typeof d.inv.prem==='number'||typeof d.inv.col==='number')I.any=cl(d.inv);else for(const k in d.inv)if(k==='any'||(SETS[k]&&!SETS[k].shop))I[k]=cl(d.inv[k]);if(!I.any)I.any=cl({});out.inv=I}if(d.bnd&&Array.isArray(d.bnd.own)){const own=d.bnd.own.filter(x=>typeof x==='string'),eq={};for(const k in (d.bnd.eq||{}))if(own.includes(d.bnd.eq[k]))eq[k]=d.bnd.eq[k];out.bnd={own,eq}}out.nick=typeof d.nick==='string'?d.nick:'';out.freeDay=typeof d.freeDay==='string'?d.freeDay:'';out.econ=!!d.econ;out.gifts=Array.isArray(d.gifts)?d.gifts.filter(x=>typeof x==='string'):[];return out}
+  if(d.sets){out.cur=SETS[d.cur]&&!SETS[d.cur].shop?d.cur:'cosmos';SETIDS.forEach(id=>Object.assign(out.sets[id],d.sets[id]||{}));Object.assign(out.battle,d.battle||{});out.dust=d.dust||0;out.dustInit=!!d.dustInit;out.dustEarned=d.dustEarned||0;if(d.chal&&d.chal.done)out.chal={done:d.chal.done||{},claimed:d.chal.claimed||{},daily:d.chal.daily&&d.chal.daily.p?d.chal.daily:{d:'',p:{},c:{}}};if(d.sl&&Array.isArray(d.sl.own))out.sl={own:[...new Set(['classic',...d.sl.own])],eq:d.sl.own.includes(d.sl.eq)||d.sl.eq==='classic'?d.sl.eq:'classic'};if(d.inv&&typeof d.inv==='object'){const I={},cl=t=>({std:Math.max(0,(t&&t.std)|0),prem:Math.max(0,(t&&t.prem)|0),col:Math.max(0,(t&&t.col)|0)});if(typeof d.inv.std==='number'||typeof d.inv.prem==='number'||typeof d.inv.col==='number')I.any=cl(d.inv);else for(const k in d.inv)if(k==='any'||(SETS[k]&&!SETS[k].shop))I[k]=cl(d.inv[k]);if(!I.any)I.any=cl({});out.inv=I}if(d.bnd&&Array.isArray(d.bnd.own)){const own=d.bnd.own.filter(x=>typeof x==='string'),eq={};for(const k in (d.bnd.eq||{}))if(own.includes(d.bnd.eq[k]))eq[k]=d.bnd.eq[k];out.bnd={own,eq}}out.nick=typeof d.nick==='string'?d.nick:'';out.freeDay=typeof d.freeDay==='string'?d.freeDay:'';out.econ=!!d.econ;out.gifts=Array.isArray(d.gifts)?d.gifts.filter(x=>typeof x==='string'):[];if(d.pass&&typeof d.pass==='object')out.pass=d.pass;return out}
   const sh=n=>n>=18?n+1:n,o=out.sets.cosmos;
   o.owned=[...new Set((d.owned||[]).map(sh))].sort(num);o.fresh=(d.fresh||[]).map(sh).filter(n=>o.owned.includes(n));
   o.packs=d.packs||0;o.dupes=d.dupes||0;o.best=d.best||0;o.bestN=d.bestN?sh(d.bestN):0;return out;
@@ -2761,7 +2939,7 @@ async function initCloud(){
         a.fresh=[...new Set([...a.fresh,...(b.fresh||[])])].filter(n=>a.owned.includes(n));
         a.celebrated=a.celebrated||!!b.celebrated;S.dust=Math.max(S.dust,d.dust||0);S.dustEarned=Math.max(S.dustEarned||0,d.dustEarned||0);S.dustInit=S.dustInit||d.dustInit;a.shiny=[...new Set([...(a.shiny||[]),...(b.shiny||[])])].sort(num);a.sfresh=[...new Set([...(a.sfresh||[]),...(b.sfresh||[])])].filter(n=>a.shiny.includes(n));a.celebratedShiny=a.celebratedShiny||!!b.celebratedShiny});
       const C1=chal(),C2=d.chal;Object.assign(C1.done,C2.done);Object.assign(C1.claimed,C2.claimed);if(C2.daily&&C2.daily.d===C1.daily.d){for(const k in C2.daily.p)C1.daily.p[k]=Math.max(C1.daily.p[k]||0,C2.daily.p[k]);Object.assign(C1.daily.c,C2.daily.c)}
-      const L1=sl();L1.own=[...new Set([...L1.own,...d.sl.own])];if(d.inv){const A=inv(),B=migrate({sets:{},inv:d.inv}).inv||{};for(const k in B){A[k]=A[k]||{std:0,prem:0,col:0};for(const t of ['std','prem','col'])A[k][t]=Math.max(A[k][t]|0,B[k][t]|0)}}if(d.bnd){const B=S.bnd=S.bnd||{own:[],eq:{}};B.own=[...new Set([...(B.own||[]),...d.bnd.own])];B.eq=Object.assign({},d.bnd.eq||{},B.eq||{})}if(!S.nick&&d.nick)S.nick=d.nick;S.econ=S.econ||!!d.econ;if((d.freeDay||'')===todayKey())S.freeDay=d.freeDay;
+      const L1=sl();L1.own=[...new Set([...L1.own,...d.sl.own])];if(d.inv){const A=inv(),B=migrate({sets:{},inv:d.inv}).inv||{};for(const k in B){A[k]=A[k]||{std:0,prem:0,col:0};for(const t of ['std','prem','col'])A[k][t]=Math.max(A[k][t]|0,B[k][t]|0)}}if(d.bnd){const B=S.bnd=S.bnd||{own:[],eq:{}};B.own=[...new Set([...(B.own||[]),...d.bnd.own])];B.eq=Object.assign({},d.bnd.eq||{},B.eq||{})}if(!S.nick&&d.nick)S.nick=d.nick;S.econ=S.econ||!!d.econ;if(d.pass)passMerge(d.pass);if((d.freeDay||'')===todayKey())S.freeDay=d.freeDay;
       const A=S.battle,Bb=d.battle;A.wins=Math.max(A.wins,Bb.wins||0);A.losses=Math.max(A.losses,Bb.losses||0);A.best=Math.max(A.best,Bb.best||0);if(!A.deck.length&&Bb.deck&&Bb.deck.length)A.deck=Bb.deck.slice();
       S.gifts=[...new Set([...(S.gifts||[]),...(d.gifts||[])])];
     }
@@ -3292,7 +3470,7 @@ async function startPack(kind,nOverride){
   /* paint art that is not cached yet while the pack shakes: the first pack now, the others one after another */
   document.body.classList.add('opening');
   O.warm=[];let chain=warmPack(packs[0]);O.warm[0]=chain;for(let i=1;i<n;i++){const pl=packs[i];chain=chain.then(()=>warmPack(pl));O.warm[i]=chain}const warmP=O.warm[0];
-  O.dust0=S.dust;O.dust=packs.reduce((a,pl)=>a+absorbPack(pl,X),0);S.dust+=O.dust;S.dustEarned=(S.dustEarned||0)+O.dust;
+  O.dust0=S.dust;O.dust=packs.reduce((a,pl)=>a+absorbPack(pl,X),0);S.dust+=O.dust;S.dustEarned=(S.dustEarned||0)+O.dust;O.passXP=passPack(kind,packs);
   save();refreshAll();
   const pulls=packs.flat();O.packs=packs;O.pulls=packs[0];O.cur=0;O.mode='idle';O.lock=true;
   const pal=pickPal(set,kind);$('#combo').hidden=true;
@@ -3347,7 +3525,7 @@ function showSummary(){
   const sum=$('#oSum');
   const score=O.pulls.reduce((a,c)=>a+POINTS[c.r]+(c.shiny?60:0),0),nsh=O.pulls.filter(c=>c.shiny).length;$('#combo').hidden=true;
   const complete=X.owned.length===total&&!X.celebrated;
-  sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2><div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
+  sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2><div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${O.passXP?`<p class="npline">✧ <b>+${fmt(O.passXP)}</b> Starlight <span>· Nova Pass ${npHyper()?'Hypernova ★'+npHyper():'level '+npLevel()}</span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
    O.pulls.map((c,i)=>`<div class="sc${c._new||c._snew?'':' dupe'}${c.shiny?' shy':''}" data-n="${c.n}" data-shiny="${c.shiny?1:''}" style="animation-delay:${i*60}ms">${cardHTML(c)}<span class="badge ${c._snew?'shiny':c._new?'new':'dupe'}">${c._snew?'✦ Shiny':c._new?'New':c.shiny?'Shiny dupe':'Duplicate'}</span></div>`).join('')+
    `</div><div class="actions"><button class="btn2 primary" id="again">${NP>1?`Open ${NP} more`:'Open another pack'}</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="closeSum">Close</button></div>`;
   sum.hidden=false;sum.scrollTop=0;runScore(score);if(O.dust)dustCount(O.dust,O.dust0);$('#skip').hidden=true;$('#skipLow').hidden=true;$('#flipAll').hidden=true;$('#counter').textContent='';
@@ -3358,7 +3536,7 @@ function showSummary(){
 function dustCount(gain,from){const g=$('#dustGain'),n=$('#dustNow'),t0=performance.now(),dur=REDUCED?10:1300;let lk=0;
   const step=now=>{const k=Math.min(1,(now-t0-500)/dur);if(k<0){requestAnimationFrame(step);return}const e=1-Math.pow(1-k,3),v=Math.round(gain*e);if(g)g.textContent='+'+fmt(v);if(n)n.textContent=fmt(from+v);if(now-lk>70&&k<1){Snd.tick(10+(k*14|0));lk=now}if(k<1)requestAnimationFrame(step);else{paintDust();if(g){g.parentNode.classList.add('pop');burst(...ctr2(g),{count:24,colors:['#ffd76a','#fff2c0','#ffffff'],speed:4,life:.8,size:3,ring:0})}}};requestAnimationFrame(step)}
 const ctr2=el=>{const b=el.getBoundingClientRect();return[b.left+b.width/2,b.top+b.height/2]};
-function closeOpen(){const sc=$('#showc');if(sc)sc.remove();SP.close=null;Snd.duck(false);document.body.classList.remove('opening');clearOfx();oEl.classList.remove('vault');oEl.hidden=true;O.mode='idle';O.busy=false;resetHalo();oEl.classList.remove('shake-s')}
+function closeOpen(){setTimeout(passFlush,450);const sc=$('#showc');if(sc)sc.remove();SP.close=null;Snd.duck(false);document.body.classList.remove('opening');clearOfx();oEl.classList.remove('vault');oEl.hidden=true;O.mode='idle';O.busy=false;resetHalo();oEl.classList.remove('shake-s')}
 
 /* ───────────── binder ───────────── */
 const PER_PAGE=9,BK=Object.fromEntries(SETIDS.map(id=>[id,{open:false,page:0,mode:'std'}]));
@@ -3522,6 +3700,7 @@ async function celebrate(replay,mode){
     await new Promise(res=>{$('#doneBtn').onclick=()=>res();o.onkeydown=e=>{if(e.key==='Escape'||e.key==='Enter')res()};$('#doneBtn').focus({preventScroll:true})});
     document.body.classList.remove('finon');o.classList.remove('on');await sleep(REDUCED?0:450);o.hidden=true;o.innerHTML='';
     if(sh){if(!X.celebratedShiny){X.celebratedShiny=true;save()}}else if(!X.celebrated){X.celebrated=true;save()}
+    if(!sh&&!set.shop)passSeries(set.id);
     renderBinder();renderSetBar();
   }finally{celebrating=false;navLock=false;updateNav();document.body.classList.remove('finon');const bk2=$('#book');if(bk2)bk2.classList.remove('celebrating')}
 }
@@ -3538,7 +3717,7 @@ function closeZoom(){$('#zoom').hidden=true;activeCard=null}
 /* ───────────── views + wiring ───────────── */
 function setView(v){
   if(v!=='binder'&&cs().shop){S.cur='cosmos';save()}
-  view=v;$('#viewPacks').hidden=v!=='packs';$('#viewBinder').hidden=v!=='binder';$('#viewBattle').hidden=v!=='battle';$('#viewShop').hidden=v!=='shop';$('#setBar').hidden=v==='battle'||v==='shop';$('#tabBattle').setAttribute('aria-current',v==='battle');$('#tabShop').setAttribute('aria-current',v==='shop');$('#pillCount').style.visibility=v==='battle'||v==='shop'?'hidden':'';refreshAll();if(v==='battle')renderBattleHome();if(v==='shop')renderShop();
+  view=v;$('#viewPacks').hidden=v!=='packs';$('#viewBinder').hidden=v!=='binder';$('#viewBattle').hidden=v!=='battle';$('#viewShop').hidden=v!=='shop';$('#viewPass').hidden=v!=='pass';$('#setBar').hidden=v==='battle'||v==='shop'||v==='pass';$('#tabBattle').setAttribute('aria-current',v==='battle');$('#tabShop').setAttribute('aria-current',v==='shop');$('#tabPass').setAttribute('aria-current',v==='pass');$('#pillCount').style.visibility=v==='battle'||v==='shop'||v==='pass'?'hidden':'';refreshAll();if(v==='battle')renderBattleHome();if(v==='shop')renderShop();if(v==='pass'){renderPass.scrolled=0;renderPass()}
   $('#tabPacks').setAttribute('aria-current',v==='packs');$('#tabBinder').setAttribute('aria-current',v==='binder');
   window.scrollTo(0,0);if(v==='binder')enterBinder();
 }
@@ -3581,7 +3760,7 @@ function init(){
     if(!oEl.hidden){if(e.key===' '||e.key==='Enter'||e.key==='ArrowRight'){if(e.target.closest&&e.target.closest('button'))return;e.preventDefault();onTap()}return}
     if(view==='binder'&&bk().open&&!navLock){if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1)}
   });
-  initMenu();initShopExtras();initWhatsNew();
+  initMenu();initShopExtras();initPass();initWhatsNew();
   /* how many packs to open at a time */
   const paintQty=()=>document.querySelectorAll('#qtyOpt button').forEach(b=>b.setAttribute('aria-checked',+b.dataset.n===packN));paintQty();
   $('#qtyOpt').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;packN=+b.dataset.n;try{localStorage.setItem('cc-packn',String(packN))}catch(x){}paintQty();Snd.init();Snd.click();refreshHome()});
@@ -3828,6 +4007,7 @@ function renderShop(){
   const d=CARDS4[dealIdx()];$('#shFeat').innerHTML=shopItem(d,true);
   $('#shGrid').innerHTML=CARDS4.filter(c=>c!==d).slice().sort((a,b)=>a.r-b.r||a.n-b.n).map(c=>shopItem(c)).join('');
   $('#shOwned').textContent=`${X.owned.length} / ${CARDS4.length} owned · ${X.shiny.length} shiny`;
+  const sp=$('#shPass');if(sp)sp.innerHTML=passShopHTML();
   $('#shSleeves').innerHTML=sleeveShop();renderPackShop();$('#shCovers').innerHTML=coverShop();fillCoverArt($('#shCovers'));
 }
 let buyBusy=false;
@@ -3916,25 +4096,32 @@ async function buyBundle(set,k,n,p,btn){
 /* ── binder covers ── */
 const BCOVERS={
   cosmos:[{id:'cos-spiral',n:'Galactic Spiral',art:32,p:3000,ink:'#ffe6b0',rim:'rgba(255,210,140,.75)',pg:['#24164f','#0e0a2c']},
-          {id:'cos-horizon',n:'Event Horizon',art:33,p:5000,ink:'#ffc27a',rim:'rgba(255,150,60,.75)',pg:['#1d0f20','#08050d']}],
+          {id:'cos-horizon',n:'Event Horizon',art:33,p:5000,ink:'#ffc27a',rim:'rgba(255,150,60,.75)',pg:['#1d0f20','#08050d']},
+          {id:'fl-cosmos',n:'Quasar Dawn',art:30,sh:1,pass:1,p:0,ink:'#fff0c8',rim:'rgba(255,215,120,.9)',pg:['#2a1648','#0c0820']}],
   const:[{id:'con-hunter',n:'Hunter’s Chart',art:36,p:3000,ink:'#d4f6ff',rim:'rgba(150,225,255,.75)',pg:['#0f2a55','#061430']},
-         {id:'con-scorpion',n:'Scorpion’s Heart',art:8,p:5000,ink:'#ffd0c0',rim:'rgba(255,140,120,.7)',pg:['#2a1236','#100718']}],
+         {id:'con-scorpion',n:'Scorpion’s Heart',art:8,p:5000,ink:'#ffd0c0',rim:'rgba(255,140,120,.7)',pg:['#2a1236','#100718']},
+         {id:'fl-const',n:'Serpent Bearer',art:35,sh:1,pass:1,p:0,ink:'#e6f4ff',rim:'rgba(170,220,255,.9)',pg:['#13244e','#070d24']}],
   explore:[{id:'exp-moonshot',n:'Moonshot',art:9,p:3000,ink:'#ffe2c8',rim:'rgba(255,190,140,.7)',pg:['#232a3c','#0e111b']},
-           {id:'exp-deepfield',n:'Deep Field',art:34,p:5000,ink:'#ffd88a',rim:'rgba(255,205,110,.75)',pg:['#1a1838','#090818']}],
+           {id:'exp-deepfield',n:'Deep Field',art:34,p:5000,ink:'#ffd88a',rim:'rgba(255,205,110,.75)',pg:['#1a1838','#090818']},
+           {id:'fl-explore',n:'Interstellar',art:14,sh:1,pass:1,p:0,ink:'#ffe9c8',rim:'rgba(255,200,130,.9)',pg:['#1c1a3a','#0a0918']}],
   vistas:[{id:'vis-ringed',n:'Ringed Sky',art:33,p:3000,ink:'#ffe3c8',rim:'rgba(255,200,150,.7)',pg:['#2a1a2e','#110a14']},
-          {id:'vis-twinsuns',n:'Twin Suns',art:35,p:5000,ink:'#ffd2a8',rim:'rgba(255,160,100,.75)',pg:['#2e1620','#12080c']}]};
+          {id:'vis-twinsuns',n:'Twin Suns',art:35,p:5000,ink:'#ffd2a8',rim:'rgba(255,160,100,.75)',pg:['#2e1620','#12080c']},
+          {id:'fl-vistas',n:'Corona',art:34,sh:1,pass:1,p:0,ink:'#fff2d8',rim:'rgba(255,230,170,.9)',pg:['#24142a','#0c060f']}]};
+/* pass covers (pass:1) come only from the Nova Pass and use the card's Shiny art (sh:1) */
 const coverById=id=>{for(const s in BCOVERS){const c=BCOVERS[s].find(x=>x.id===id);if(c)return Object.assign({set:s},c)}return null};
 const bnd=()=>{if(!S.bnd)S.bnd={own:[],eq:{}};if(!S.bnd.eq)S.bnd.eq={};return S.bnd};
-const coverArt=(cv,set)=>{const c=cardOf(cv.set||set,cv.art),k=artKey(c);return artCache[k]||(typeof BAKED!=='undefined'&&BAKED[k])?`url("${artURL(c)}")`:'none'};
+const cvKey=(cv,set)=>`${cv.set||set}:${cv.art}${cv.sh?':s':''}`;
+const cvCard=key=>{const [set,n,s]=key.split(':'),c=cardOf(set,+n);return s?Object.assign({},c,{shiny:true}):c};
+const coverArt=(cv,set)=>{const c=cvCard(cvKey(cv,set)),k=artKey(c);return artCache[k]||(typeof BAKED!=='undefined'&&BAKED[k])?`url('${artURL(c)}')`:'none'};
 /* art painted in the background: fill each cover in when it is ready */
-function fillCoverArt(root){(root||document).querySelectorAll('[data-cvart]').forEach(el=>{const [set,n]=el.dataset.cvart.split(':');const key=el.dataset.cvart;artAsync(cardOf(set,+n)).then(u=>{if(u&&el.dataset.cvart===key)el.style.setProperty('--cart',`url("${u}")`)})})}
-function coverPrev(cv,set){const s=SETS[set];return `<div class="bcv${cv?' skin':''} s-${set}"${cv?` data-cvart="${set}:${cv.art}" style="--cart:${coverArt(cv,set)};--cink:${cv.ink};--crim:${cv.rim}"`:''}><i class="bcv-sp"></i>${glyph(set,s.cover.c1,s.cover.c2)}<b>${s.cover.title}</b><span>${cv?cv.n:'Classic'}</span></div>`}
+function fillCoverArt(root){(root||document).querySelectorAll('[data-cvart]').forEach(el=>{const key=el.dataset.cvart;artAsync(cvCard(key)).then(u=>{if(u&&el.dataset.cvart===key)el.style.setProperty('--cart',`url("${u}")`)})})}
+function coverPrev(cv,set){const s=SETS[set];return `<div class="bcv${cv?' skin':''}${cv&&cv.pass?' pass':''} s-${set}"${cv?` data-cvart="${cvKey(cv,set)}" style="--cart:${coverArt(cv,set)};--cink:${cv.ink};--crim:${cv.rim}"`:''}><i class="bcv-sp"></i>${glyph(set,s.cover.c1,s.cover.c2)}<b>${s.cover.title}</b><span>${cv?cv.n:'Classic'}</span></div>`}
 function coverShop(){const B=bnd();
   return Object.keys(BCOVERS).map(set=>{const s=SETS[set],eq=B.eq[set]||null;
     const item=cv=>{const own=B.own.includes(cv.id),on=eq===cv.id;
-      return `<div class="bcv-item${on?' eq':''}">${coverPrev(cv,set)}<b class="bcv-n">${cv.n}</b>`+(on?`<button class="buy owned" disabled>Equipped ✓</button>`:own?`<button class="buy cveq" data-cv="${cv.id}">Equip</button>`:`<button class="buy cvb${S.dust<cv.p?' poor':''}" data-cv="${cv.id}" data-p="${cv.p}">Buy <span class="pr">${DUSTI}${fmt(cv.p)}</span></button>`)+`</div>`};
+      return `<div class="bcv-item${on?' eq':''}${cv.pass?' np-x':''}">${coverPrev(cv,set)}<b class="bcv-n">${cv.n}</b>`+(on?`<button class="buy owned" disabled>Equipped ✓</button>`:own?`<button class="buy cveq" data-cv="${cv.id}">Equip</button>`:cv.pass?`<button class="buy nplock" data-go="pass">✧ ${npWhere(cv.id)}</button>`:`<button class="buy cvb${S.dust<cv.p?' poor':''}" data-cv="${cv.id}" data-p="${cv.p}">Buy <span class="pr">${DUSTI}${fmt(cv.p)}</span></button>`)+`</div>`};
     return `<div class="bcv-set"><div class="bcv-hd"><b>${s.tab}</b><span>${s.series} · ${s.name}</span>${eq?`<button class="ghost cvclassic" data-set="${set}">Use the classic cover</button>`:'<span class="muted">Classic cover in use</span>'}</div><div class="bcv-row">${BCOVERS[set].map(item).join('')}</div></div>`}).join('')}
-async function buyCover(id,btn){const cv=coverById(id),B=bnd();if(!cv||B.own.includes(id))return;
+async function buyCover(id,btn){const cv=coverById(id),B=bnd();if(!cv||cv.pass||B.own.includes(id))return;
   if(S.dust<cv.p){toast(`You need ${fmt(cv.p-S.dust)} more Stardust.`,2200);Snd.deal();return}
   if(!btn.dataset.arm){armBtn(btn);return}
   S.dust-=cv.p;B.own=[...B.own,id];B.eq[cv.set]=id;save();paintDust();Snd.init();Snd.reveal(cv.p>=5000?4:3);
@@ -3944,8 +4131,8 @@ function equipCover(set,id){const B=bnd();if(id&&!B.own.includes(id))return;if(i
 const applyCoverSoon=id=>setTimeout(()=>applyCover(id),0);
 /* binder: put the equipped cover (art, frame, page tint) on the book */
 function applyCover(set){const c=$('#cover'),b=$('#book');if(!c||!b)return;const cv=coverById((S.bnd&&S.bnd.eq||{})[set]);
-  c.classList.toggle('skin',!!cv);b.classList.toggle('skin',!!cv);
-  if(cv){c.style.setProperty('--cart',coverArt(cv));c.dataset.cvart=cv.set+':'+cv.art;fillCoverArt(c.parentNode);c.style.setProperty('--cink',cv.ink);c.style.setProperty('--crim',cv.rim);b.style.setProperty('--pg1',cv.pg[0]);b.style.setProperty('--pg2',cv.pg[1])}
+  c.classList.toggle('skin',!!cv);b.classList.toggle('skin',!!cv);c.classList.toggle('pass',!!(cv&&cv.pass));
+  if(cv){c.style.setProperty('--cart',coverArt(cv));c.dataset.cvart=cvKey(cv);fillCoverArt(c.parentNode);c.style.setProperty('--cink',cv.ink);c.style.setProperty('--crim',cv.rim);b.style.setProperty('--pg1',cv.pg[0]);b.style.setProperty('--pg2',cv.pg[1])}
   else{delete c.dataset.cvart;['--cart','--cink','--crim'].forEach(k=>c.style.removeProperty(k));['--pg1','--pg2'].forEach(k=>b.style.removeProperty(k))}
 }
 function initShopExtras(){
@@ -4021,12 +4208,13 @@ function battleResult(win,forfeit){
   const C=chal(),newly=[];
   if(!forfeit||win)ACH.forEach(a=>{if(!C.done[a.id]&&a.t(r)){C.done[a.id]=Date.now();newly.push(a.n)}});
   dailyToday().forEach(d=>{const was=(C.daily.p[d.id]||0)>=d.goal;C.daily.p[d.id]=Math.min(d.goal,(C.daily.p[d.id]||0)+(d.p(r)||0));if(!was&&C.daily.p[d.id]>=d.goal)newly.push(d.n)});
+  const px=passBattle(r);
   save();paintDust();paintBattleBadge();
-  return{dust,parts,newly}}
+  return{dust,parts,newly,px}}
 function claimChal(kind,id,btn){const C=chal();let amt=0;
   if(kind==='a'){const a=ACH.find(x=>x.id===id);if(!a||!C.done[id]||C.claimed[id])return;C.claimed[id]=Date.now();amt=a.r}
   else{const d=dailyToday().find(x=>x.id===id);if(!d||(C.daily.p[id]||0)<d.goal||C.daily.c[id])return;C.daily.c[id]=1;amt=d.r}
-  S.dust+=amt;S.dustEarned=(S.dustEarned||0)+amt;save();Snd.init();Snd.reveal(3);
+  S.dust+=amt;S.dustEarned=(S.dustEarned||0)+amt;const px=passChal(kind);save();Snd.init();Snd.reveal(3);
   if(btn){const r=btn.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,{count:40,colors:['#ffd76a','#fff2c0','#ffffff'],speed:5,life:.8,size:3,ring:0})}
   toast(`+${fmt(amt)} Stardust`,1600);paintDust();paintBattleBadge();renderChallenges()}
 function renderChallenges(){const el=$('#btChal');if(!el)return;const C=chal(),tab=renderChallenges.tab||'daily';
@@ -4049,14 +4237,22 @@ const SLEEVES=[
   {id:'galaxy',n:'Spiral Galaxy',p:2500,rim:'#c8a8ff'},
   {id:'chrome',n:'Chrome',p:4000,rim:'#e8ecf5'},
   {id:'prism',n:'Prismatic',p:8000,rim:'#ffffff'},
+  /* Nova Pass · Season 1 exclusives (pass:1): never sold, unlocked by levelling the pass */
+  {id:'comet',n:'Comet Tail',p:0,rim:'#8fe3ff',pass:1},
+  {id:'pulsar',n:'Pulsar',p:0,rim:'#7ab8ff',pass:1},
+  {id:'wormhole',n:'Wormhole',p:0,rim:'#6ff0ff',pass:1},
+  {id:'eclipse',n:'Eclipse',p:0,rim:'#ffe3b0',pass:1},
+  {id:'firstlight',n:'First Light',p:0,rim:'#ffd27a',pass:1},
+  {id:'hypernova',n:'Hypernova',p:0,rim:'#ff7ad0',pass:1},
+  {id:'starforged',n:'Starforged',p:0,rim:'#ffd76a',pass:1},
 ];
 function sl(){if(!S.sl)S.sl={own:['classic'],eq:'classic'};return S.sl}
 const mySleeve=()=>sl().eq||'classic';
 function slOf(side){if(side==='me')return mySleeve();return BT.online&&BT.online.oppSl&&SLEEVES.some(s=>s.id===BT.online.oppSl)?BT.online.oppSl:(BT.g&&BT.g.botSl)||'classic'}
 function sleeveShop(){const L=sl();return `<div class="slv-grid">`+SLEEVES.map(s=>{const own=L.own.includes(s.id),eq=L.eq===s.id;
-  return `<div class="slv-item${eq?' eq':''}"><div class="slv-prev sl-${s.id}"><div class="cb"></div></div><b>${s.n}</b>`+
-   (eq?`<button class="buy owned" disabled>Equipped ✓</button>`:own?`<button class="buy eqb" data-sl="${s.id}">Equip</button>`:`<button class="buy slb${S.dust<s.p?' poor':''}" data-sl="${s.id}" data-p="${s.p}">Buy <span class="pr">${DUSTI}${fmt(s.p)}</span></button>`)+`</div>`}).join('')+`</div>`}
-async function buySleeve(id,btn){const s=SLEEVES.find(x=>x.id===id),L=sl();if(!s||L.own.includes(id))return;
+  return `<div class="slv-item${eq?' eq':''}${s.pass?' np-x':''}"><div class="slv-prev sl-${s.id}"><div class="cb"></div></div><b>${s.n}</b>`+
+   (eq?`<button class="buy owned" disabled>Equipped ✓</button>`:own?`<button class="buy eqb" data-sl="${s.id}">Equip</button>`:s.pass?`<button class="buy nplock" data-go="pass">✧ ${npWhere(s.id)}</button>`:`<button class="buy slb${S.dust<s.p?' poor':''}" data-sl="${s.id}" data-p="${s.p}">Buy <span class="pr">${DUSTI}${fmt(s.p)}</span></button>`)+`</div>`}).join('')+`</div>`}
+async function buySleeve(id,btn){const s=SLEEVES.find(x=>x.id===id),L=sl();if(!s||s.pass||L.own.includes(id))return;
   if(S.dust<s.p){toast(`You need ${fmt(s.p-S.dust)} more Stardust.`,2200);Snd.deal();return}
   if(!btn.dataset.arm){armBtn(btn);return}
   S.dust-=s.p;L.own=[...L.own,id];L.eq=id;save();paintDust();Snd.init();Snd.reveal(Math.min(5,2+SLEEVES.indexOf(s)/2|0));
@@ -4581,6 +4777,7 @@ function endBattle(res,forfeit,note){
     o.innerHTML=`<div class="be-in"><div class="be-k">${note||(forfeit?(win?'Your opponent forfeited':'Forfeit'):win?'The enemy Core collapses':'Your Core is destroyed')}</div><h2>${win?'Victory':'Defeat'}</h2>`+
      `<p>${turns} turn${turns===1?'':'s'} · You lost ${g.me.lost} unit${g.me.lost===1?'':'s'} · Destroyed ${g.ai.lost}</p>`+
      (rw.dust?`<div class="be-dust">${DUSTI}<b id="beDust">+0</b><span>Stardust</span></div><div class="be-parts">${rw.parts.map(([t,v])=>`<span>${t} <b>+${v}</b></span>`).join('')}</div>`:'')+
+     (rw.px?`<div class="be-np">✧ <b>+${rw.px}</b> Starlight <span>· Nova Pass ${npHyper()?'Hypernova ★'+npHyper():'level '+npLevel()}</span></div>`:'')+
      (rw.newly.length?`<div class="be-ch">✓ Challenge complete: ${rw.newly.join(' · ')}<br><small>Claim your reward in Challenges.</small></div>`:'')+
      (tut?`<p class="be-r">${forfeit?'Tutorial ended.':`Tutorial complete${win?'. Nicely done, Commander!':'. The Cadet got lucky this time.'}`} Practice battles don't count in your record.</p>`:`<p class="be-r">${online?`Online record ${B.ow||0}W – ${B.ol||0}L`:`Record ${B.wins}W – ${B.losses}L${B.streak>1?` · ${B.streak} win streak`:''}`}</p>`)+
      `<div class="actions">${online?'<button class="btn2 primary" id="beBack">Back to battle menu</button>':tut?'<button class="btn2 primary" id="beBack">Back to battle menu</button><button class="btn2" id="beTut">Replay tutorial</button>':'<button class="btn2 primary" id="beAgain">Play again</button><button class="btn2" id="beBack">Back to decks</button>'}</div></div>`;
@@ -5124,6 +5321,11 @@ function initTutorial(){
    before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
    Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
 const CHANGELOG=[
+  {v:'1.6.0',d:'1 Nov 2026',items:[
+    'The Nova Pass, Season 1: First Light. A new Pass tab with 50 levels of rewards: Stardust, packs and season-exclusive sleeves and binder covers you can’t buy in the shop.',
+    'Earn Starlight by playing: your first visit each day, opening packs, new cards, battles (win or lose), daily challenges, achievements and completing a series. Every 500 Starlight is a level, about a month of regular play to reach level 50.',
+    'Supernova: unlock the premium track for 4,000 Stardust in the Shop or on the Pass page. It adds a second reward on every level, including Collector packs, four exclusive sleeves and four First Light covers made from Shiny card art. Levels you’ve already reached pay out at once.',
+    'Hypernova: past level 50, every 1,000 Starlight earns a star worth 500 Stardust (1,000 with Supernova). Every 5th star pays double, and the 10th unlocks the Starforged sleeves.']},
   {v:'1.5.0',d:'1 Nov 2026',items:[
     'Series 3 (Space Exploration) is fully re-rendered: more detailed spacecraft, realistic foil, panels and solar cells, real reflections, and sharper art at 1.5× the resolution. The spacewalk card now shows Leonov in his suit beside Voskhod 2.',
     'Alien Horizons: Comet 67P is coal-black like the real comet, and Europa’s chaos terrain now shows its tilted blocks of ice.',
@@ -5273,6 +5475,174 @@ function titleShow(){
   el.addEventListener('click',e=>{if(gone)return;if(chipState==='wait'||chipState===''){Snd.musicStart();setTimeout(paintChip,80);return}go(e)});
   el.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target!==chip)go(e)});
 }
+/* ───────────── Nova Pass · Season 1: First Light ─────────────
+   A season pass with its own page (tab "Pass", #viewPass).
+   - Starlight (✧) is earned by playing (see NP_XP); every 500 Starlight is one level, 50 levels in all
+     (25,000 Starlight, about a month of regular play).
+   - Two tracks: Nova (free, everyone) and Supernova (premium, bought once for Stardust in the Shop or on the
+     pass page; buying unlocks every premium reward already reached). Rewards are claimed by tapping.
+   - Rewards: Stardust, packs (go into the any-series pack stock), and pass-exclusive sleeves and binder covers
+     that the shop never sells.
+   - Hypernova: after level 50 every 1,000 Starlight is a prestige level (★) worth a lot of Stardust,
+     double with Supernova; every 5th is doubled again, and ★10 unlocks the Starforged sleeve.
+   State: S.pass = {s, xp, prem, cf:{lv:1}, cp:{lv:1}, hx, hd, done:{}, seen} (merged with the cloud save in initCloud). */
+const NP={id:'s1',season:1,name:'First Light',title:'Nova Pass',LV:500,MAX:50,HXP:1000,PRICE:4000,
+  HX_FREE:500,HX_PREM:500};
+/* how Starlight is earned */
+const NP_XP={day:100,std:30,prem:60,col:120,newCard:10,newShiny:30,win:[80,100,120],loss:30,owin:150,oloss:60,daily:150,ach:150,series:500};
+/* rewards: d=Stardust, k=pack tier (+n), sl=sleeve, cv=cover */
+const [NP_FREE,NP_PREM]=(()=>{const D=n=>({t:'dust',n}),PK=(k,n)=>({t:'pack',k,n:n||1}),SLV=id=>({t:'sleeve',id}),CVR=id=>({t:'cover',id});
+return [[null,
+  D(100),D(100),D(150),D(100),PK('std'),D(150),D(100),D(200),D(150),PK('prem'),
+  D(150),D(200),D(150),D(200),SLV('comet'),D(200),D(150),D(250),D(200),PK('std',2),
+  D(200),D(250),D(200),D(250),PK('prem'),D(250),D(200),D(300),D(250),D(500),
+  D(250),D(300),D(250),D(300),PK('std',3),D(300),D(250),D(350),D(300),PK('prem',2),
+  D(300),D(350),D(300),D(400),PK('col'),D(350),D(400),D(450),D(500),SLV('firstlight')],
+[null,
+  D(300),PK('prem'),D(300),D(300),PK('prem'),D(400),D(300),SLV('pulsar'),D(400),PK('col'),
+  D(400),CVR('fl-cosmos'),D(400),D(500),PK('prem',2),D(400),D(500),CVR('fl-const'),D(500),PK('col'),
+  D(500),SLV('wormhole'),D(500),D(600),PK('prem',2),D(500),D(600),CVR('fl-explore'),D(600),PK('col'),
+  D(600),D(700),D(600),D(700),SLV('eclipse'),D(700),D(600),CVR('fl-vistas'),D(700),PK('col'),
+  D(700),D(800),D(700),D(800),PK('col',2),D(800),D(900),D(900),D(1000),SLV('hypernova')]]})();
+const NP_MILE=l=>l%5===0;
+/* where a pass-exclusive cosmetic is unlocked, for the pass page and the shop */
+function npWhere(id){if(id==='starforged')return 'Hypernova ★10';for(let i=1;i<=NP.MAX;i++){if(NP_FREE[i].id===id)return `Nova Pass · Lv ${i}`;if(NP_PREM[i].id===id)return `Supernova · Lv ${i}`}return 'Nova Pass'}
+/* ── state ── */
+function npS(){let P=S.pass;if(!P||typeof P!=='object'||P.s!==NP.id)P=S.pass={s:NP.id,xp:0,prem:false,cf:{},cp:{},hx:0,hd:'',done:{},seen:0};
+  P.cf=P.cf||{};P.cp=P.cp||{};P.done=P.done||{};P.xp=Math.max(0,P.xp|0);P.hx=P.hx|0;return P}
+const npLevel=(xp)=>Math.min(NP.MAX,Math.floor((xp==null?npS().xp:xp)/NP.LV));
+const npHyper=(xp)=>{xp=xp==null?npS().xp:xp;return Math.max(0,Math.floor((xp-NP.MAX*NP.LV)/NP.HXP))};
+function npProg(){const P=npS(),l=npLevel();if(l<NP.MAX)return{l,into:P.xp-l*NP.LV,need:NP.LV,hyper:false};const into=P.xp-NP.MAX*NP.LV-npHyper()*NP.HXP;return{l,into,need:NP.HXP,hyper:true}}
+const npHxReward=(k,prem)=>{const m=k%5===0?2:1;return (NP.HX_FREE+(prem?NP.HX_PREM:0))*m};
+function npClaimable(){const P=npS(),l=npLevel();let n=0;for(let i=1;i<=l;i++){if(!P.cf[i])n++;if(P.prem&&!P.cp[i])n++}return n+Math.max(0,npHyper()-P.hx)}
+/* cloud merge (called from initCloud with the cloud copy) */
+function passMerge(b){if(!b||typeof b!=='object'||b.s!==NP.id)return;const P=npS();P.xp=Math.max(P.xp,b.xp|0);P.prem=P.prem||!!b.prem;
+  Object.assign(P.cf,b.cf||{});Object.assign(P.cp,b.cp||{});P.hx=Math.max(P.hx,b.hx|0);if((b.hd||'')>(P.hd||''))P.hd=b.hd;Object.assign(P.done,b.done||{});P.seen=Math.max(P.seen|0,b.seen|0)}
+/* ── earning ── */
+const NPQ={xp:0,why:[],lv0:null};
+function passGain(n,why){n=Math.round(n)|0;if(n<=0)return 0;const P=npS();if(NPQ.lv0==null)NPQ.lv0={l:npLevel(),h:npHyper()};P.xp+=n;NPQ.xp+=n;if(why)NPQ.why.push(why);save();paintPassBadge();return n}
+function passPack(kind,packs){let n=0,nc=0,ns=0;(packs||[]).forEach(pl=>{n+=NP_XP[kind]||0;pl.forEach(c=>{if(c._new)nc++;if(c._snew)ns++})});n+=nc*NP_XP.newCard+ns*NP_XP.newShiny;return passGain(n,'packs')}
+function passBattle(r){if(!r)return 0;let n=0;if(r.online)n=r.win?NP_XP.owin:(r.forfeit&&r.turns<3?0:NP_XP.oloss);else if(r.win)n=NP_XP.win[r.diff|0]||NP_XP.win[0];else if(!r.forfeit||r.turns>=4)n=NP_XP.loss;return passGain(n,'battle')}
+function passChal(kind){return passGain(kind==='a'?NP_XP.ach:NP_XP.daily,'challenge')}
+function passSeries(id){const P=npS();if(P.done[id])return 0;P.done[id]=1;return passGain(NP_XP.series,'series')}
+function passDaily(){const P=npS(),k=todayKey();if(P.hd===k)return 0;P.hd=k;return passGain(NP_XP.day,'daily')}
+/* show what was earned (a small pop under the top bar; a bigger one for level-ups), when nothing is in the way */
+function npBlocked(){if(document.body.classList.contains('titling')||document.querySelector('.xfer:not([hidden])'))return true;if(typeof O!=='undefined'&&(O.busy||(oEl&&!oEl.hidden&&$('#oSum').hidden)))return true;
+  const ar=$('#arena');if(ar&&!ar.hidden)return true;return false}
+function passFlush(){if(!NPQ.xp||npBlocked())return;const was=NPQ.lv0||{l:npLevel(),h:npHyper()},n=NPQ.xp;NPQ.xp=0;NPQ.why=[];NPQ.lv0=null;
+  const l=npLevel(),h=npHyper(),up=l>was.l||h>was.h,pr=npProg();
+  const el=$('#npPop');if(!el)return;
+  el.className='np-pop'+(up?' up':'');
+  el.innerHTML=up?`<div class="npp-k">${NP.title} · Season ${NP.season}</div><div class="npp-l">${h>was.h?`Hypernova ★${h}`:`Level ${l}`}</div><div class="npp-s">✧ +${fmt(n)} Starlight · rewards ready to claim</div>`
+    :`<span class="npp-x">✧ +${fmt(n)}</span><span class="npp-t">Starlight</span><span class="npp-bar"><i style="width:${Math.min(100,pr.into/pr.need*100)}%"></i></span><span class="npp-lv">${pr.hyper?'★'+h:'Lv '+l}</span>`;
+  el.hidden=false;void el.offsetWidth;el.classList.add('on');
+  if(up){Snd.init();Snd.reveal(h>was.h||l%10===0?4:3);const r=el.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,{count:90,colors:['#ffd76a','#ff9ad9','#9ad0ff','#ffffff'],speed:7,life:1,size:3.4,ring:220})}
+  clearTimeout(passFlush.t);passFlush.t=setTimeout(()=>{el.classList.remove('on');setTimeout(()=>{if(!el.classList.contains('on'))el.hidden=true},400)},up?3600:2200);
+  if(view==='pass')renderPass()}
+function paintPassBadge(){const b=$('#tabPassBadge');if(!b)return;const n=npClaimable();b.textContent=n>99?'99+':n;b.hidden=!n}
+/* ── rewards ── */
+const npSleeve=id=>SLEEVES.find(s=>s.id===id),npCover=id=>coverById(id);
+function npName(r){if(r.t==='dust')return `${fmt(r.n)} Stardust`;if(r.t==='pack')return `${r.n>1?r.n+' ':''}${TIERN[r.k]} pack${r.n>1?'s':''}`;if(r.t==='sleeve'){const s=npSleeve(r.id);return `${s?s.n:'Sleeve'} sleeves`}if(r.t==='cover'){const c=npCover(r.id);return `${c?c.n:'Binder'} cover`}return ''}
+function npGrant(r){
+  if(r.t==='dust'){S.dust+=r.n;S.dustEarned=(S.dustEarned||0)+r.n}
+  else if(r.t==='pack'){const I=inv();I.any[r.k]=(I.any[r.k]|0)+r.n}
+  else if(r.t==='sleeve'){const L=sl();if(!L.own.includes(r.id))L.own=[...L.own,r.id]}
+  else if(r.t==='cover'){const B=bnd();if(!B.own.includes(r.id))B.own=[...B.own,r.id]}}
+const npTier=r=>r.t==='sleeve'||r.t==='cover'?4:r.t==='pack'?(r.k==='col'?4:r.k==='prem'?3:2):r.n>=700?3:2;
+function npClaim(track,lv,btn,quiet){const P=npS(),l=npLevel();if(lv>l)return false;const map=track==='p'?P.cp:P.cf,r=(track==='p'?NP_PREM:NP_FREE)[lv];if(!r||map[lv])return false;if(track==='p'&&!P.prem)return false;
+  map[lv]=Date.now();npGrant(r);save();paintDust();paintPassBadge();
+  if(!quiet){Snd.init();Snd.reveal(npTier(r));if(btn){const b=btn.getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2,{count:r.t==='dust'?40:80,colors:r.t==='dust'?['#ffd76a','#fff2c0','#ffffff']:['#ff9ad9','#9ad0ff','#ffd76a','#ffffff'],speed:6,life:.9,size:3.2,ring:0})}
+    toast(r.t==='pack'?`${npName(r)} added to your pack stock. Open ${r.n>1?'them':'it'} from the Packs tab in any series.`:r.t==='sleeve'?`${npName(r)} unlocked. Equip them here or in the Shop.`:r.t==='cover'?`${npName(r)} unlocked. Equip it here or in the Shop.`:`+${npName(r)}`,2600)}
+  return true}
+function npClaimHyper(btn,quiet){const P=npS(),h=npHyper();if(P.hx>=h)return 0;let tot=0;while(P.hx<h){P.hx++;const v=npHxReward(P.hx,P.prem);tot+=v;S.dust+=v;S.dustEarned=(S.dustEarned||0)+v;
+    if(P.hx>=10){const L=sl();if(!L.own.includes('starforged'))L.own=[...L.own,'starforged']}}
+  save();paintDust();paintPassBadge();if(!quiet){Snd.init();Snd.reveal(5);if(btn){const b=btn.getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2,Object.assign({},FXSET[5]))}toast(`Hypernova: +${fmt(tot)} Stardust`,2400)}return tot}
+function npClaimAll(btn){const P=npS(),l=npLevel();let n=0,dust=0,best=2;for(let i=1;i<=l;i++){for(const t of ['f','p']){const r=(t==='p'?NP_PREM:NP_FREE)[i];if(npClaim(t,i,null,true)){n++;if(r.t==='dust')dust+=r.n;best=Math.max(best,npTier(r))}}}
+  const hd=npClaimHyper(null,true);if(hd){n++;dust+=hd;best=5}
+  if(!n)return;Snd.init();Snd.reveal(best);Snd.fanfare&&best>=4&&Snd.fanfare();
+  if(btn){const b=btn.getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2,Object.assign({},FXSET[Math.min(5,best)]))}
+  toast(`Claimed ${n} reward${n>1?'s':''}${dust?` · +${fmt(dust)} Stardust`:''}`,2600);renderPass()}
+function npBuy(btn){const P=npS();if(P.prem)return;
+  if(S.dust<NP.PRICE){toast(`The Supernova Pass costs ${fmt(NP.PRICE)} Stardust. You need ${fmt(NP.PRICE-S.dust)} more.`,2800);Snd.deal();return}
+  if(!btn.dataset.arm){armBtn(btn);return}
+  S.dust-=NP.PRICE;P.prem=true;save();paintDust();paintPassBadge();Snd.init();Snd.reveal(5);Snd.fanfare&&Snd.fanfare();
+  const b=btn.getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2,Object.assign({},FXSET[5],{count:160}));
+  const back=npLevel();toast(back?`Supernova unlocked! ${back} premium reward${back>1?'s are':' is'} ready to claim.`:'Supernova unlocked! Premium rewards arrive as you level up.',3600);
+  if(view==='pass')renderPass();if(view==='shop')renderShop()}
+/* ── page ── */
+function npIcon(r,size){
+  if(r.t==='dust')return `<div class="npi dust${r.n>=700?' big':r.n>=400?' mid':''}">${DUSTI}</div>`;
+  if(r.t==='pack')return `<div class="npi pack k-${r.k}">${r.n>1?'<div class="mpk bk2"></div>':''}<div class="mpk"><i></i></div>${r.n>1?`<em>×${r.n}</em>`:''}</div>`;
+  if(r.t==='sleeve')return `<div class="npi sleeve"><div class="slv-prev sl-${r.id}"><div class="cb"></div></div></div>`;
+  if(r.t==='cover'){const c=npCover(r.id);return `<div class="npi cover"><div class="np-cvw">${c?coverPrev(c,c.set):''}</div></div>`}
+  return ''}
+function npTile(track,lv){const P=npS(),l=npLevel(),r=(track==='p'?NP_PREM:NP_FREE)[lv],claimed=!!(track==='p'?P.cp:P.cf)[lv],lockP=track==='p'&&!P.prem,reach=lv<=l;
+  const st=claimed?'done':reach&&!lockP?'ready':reach&&lockP?'plock':'lock';
+  let act='';if(st==='ready')act=`<button class="np-claim" data-t="${track}" data-l="${lv}">Claim</button>`;
+  else if(st==='done'){if(r.t==='sleeve'){const eq=sl().eq===r.id;act=eq?'<span class="np-eq">Equipped ✓</span>':`<button class="np-use" data-sl="${r.id}">Equip</button>`}
+    else if(r.t==='cover'){const c=npCover(r.id),eq=c&&bnd().eq[c.set]===r.id;act=eq?'<span class="np-eq">Equipped ✓</span>':`<button class="np-use" data-cv="${r.id}">Equip</button>`}else act='<span class="np-ok">✓</span>'}
+  else if(st==='plock')act='<span class="np-lk">🔒 Supernova</span>';
+  return `<div class="np-tile ${st} t-${r.t}${track==='p'?' prem':''}" title="${npName(r)}">${npIcon(r)}<div class="np-n">${npName(r)}</div>${act}</div>`}
+function renderPass(){const el=$('#viewPass');if(!el)return;const P=npS(),l=npLevel(),h=npHyper(),pr=npProg(),pct=Math.min(100,pr.into/pr.need*100),claim=npClaimable();
+  const total=NP.MAX*NP.LV,allPct=Math.min(100,P.xp/total*100);
+  const cols=[];for(let i=1;i<=NP.MAX;i++)cols.push(`<div class="np-col${i<=l?' got':''}${i===l+1?' next':''}${NP_MILE(i)?' mile':''}${i===NP.MAX?' last':''}" data-l="${i}">${npTile('f',i)}<div class="np-node"><b>${i}</b></div>${npTile('p',i)}</div>`);
+  const hpend=Math.max(0,h-P.hx),nextH=h+1;
+  cols.push(`<div class="np-col hyper"><div class="np-hx"><div class="np-hx-k">Beyond level ${NP.MAX}</div><div class="np-hx-t">HYPERNOVA</div><div class="np-hx-s">${h?`★ ${h}`:'★ —'}</div>
+    <p>Every ${fmt(NP.HXP)} Starlight after level ${NP.MAX}: <b>+${fmt(NP.HX_FREE)}</b> Stardust, <b>+${fmt(NP.HX_FREE+NP.HX_PREM)}</b> with Supernova. Every 5th star pays double. ★10 unlocks the <b>Starforged</b> sleeves.</p>
+    ${l>=NP.MAX?`<div class="np-hx-bar"><i style="width:${pr.hyper?pct:0}%"></i></div><div class="np-hx-m">${fmt(pr.hyper?pr.into:0)} / ${fmt(NP.HXP)} to ★${nextH} · next: +${fmt(npHxReward(nextH,P.prem))}</div>`:`<div class="np-hx-m">Reach level ${NP.MAX} to start.</div>`}
+    ${hpend?`<button class="np-claim big" data-hx="1">Claim ${hpend} star${hpend>1?'s':''}</button>`:''}</div></div>`);
+  const nextR=l<NP.MAX?NP_FREE[l+1]:null,nextP=l<NP.MAX?NP_PREM[l+1]:null;
+  const exSl=SLEEVES.filter(s=>s.pass),exCv=Object.entries(BCOVERS).flatMap(([set,a])=>a.filter(c=>c.pass).map(c=>Object.assign({set},c)));
+  const oldT=$('#npTrack'),sx=oldT?oldT.scrollLeft:0;
+  el.innerHTML=`<div class="np-hero"><div class="np-sky" aria-hidden="true"><i class="np-st a"></i><i class="np-st b"></i><i class="np-neb"></i><i class="np-dawn"></i><i class="np-planet"></i><i class="np-ray"></i></div>
+    <div class="np-hd"><div class="np-s">Season ${NP.season} · ${NP.name}</div><h1 class="np-logo"><span class="nv">NOVA</span> <span class="ps">PASS</span></h1>
+      <p class="np-sub">Earn Starlight by playing. Every 500 Starlight is a level: ${NP.MAX} levels of Stardust, packs and season-exclusive sleeves and covers you can't buy in the shop.</p></div>
+    <div class="np-stat"><div class="np-orb" style="--p:${pct}"><div class="np-orb-in"><span>${pr.hyper?'Hypernova':'Level'}</span><b>${pr.hyper?'★'+h:l}</b><em>${pr.hyper?'':'of '+NP.MAX}</em></div></div>
+      <div class="np-xp"><div class="np-xp-t"><b>✧ ${fmt(pr.into)}</b> / ${fmt(pr.need)} Starlight <span>to ${pr.hyper?'★'+(h+1):'level '+(l+1)}</span></div><div class="np-bar"><i style="width:${pct}%"></i></div>
+        <div class="np-xp-m">${l>=NP.MAX?'Season complete ✓ · Starlight now earns Hypernova stars':`Season ${allPct.toFixed(0)}% · ${fmt(P.xp)} / ${fmt(total)}`}</div>
+        ${nextR?`<div class="np-next"><span>Next</span>${npIcon(nextR)}<b>${npName(nextR)}</b>${P.prem?`<i>+</i>${npIcon(nextP)}<b>${npName(nextP)}</b>`:''}</div>`:''}</div>
+      <div class="np-prem${P.prem?' on':''}">${P.prem?`<div class="np-pb">SUPERNOVA</div><b>Premium track unlocked</b><span>Every level now pays out on both tracks.</span>`:
+        `<div class="np-pb">SUPERNOVA</div><b>Unlock the premium track</b><span>Double rewards on every level: Collector packs, big Stardust drops, 4 exclusive sleeves and 4 First Light binder covers. Rewards you've already reached unlock at once.</span><button class="buy np-buy${S.dust<NP.PRICE?' poor':''}">Unlock <span class="pr">${DUSTI}${fmt(NP.PRICE)}</span></button>`}</div></div></div>
+  <div class="np-bar2"><div class="np-tl"><span class="np-tag f">NOVA <em>free</em></span><span class="np-tag p">SUPERNOVA <em>premium</em></span></div><div class="np-acts">${claim?`<button class="btn2 primary np-all">Claim all <b>${claim}</b></button>`:''}<button class="ghost np-jump">${l>=NP.MAX?'Jump to Hypernova':`Jump to level ${l+1}`}</button></div></div>
+  <div class="np-track" id="npTrack" style="--lv:${l};--fr:${pr.hyper?0:pct/100}">${cols.join('')}</div>
+  <div class="np-grid">
+    <div class="np-card"><h3>Earn Starlight</h3><ul class="np-earn">
+      <li><span>First visit each day</span><b>+${NP_XP.day}</b>${P.hd===todayKey()?'<em>✓ today</em>':''}</li>
+      <li><span>Open a pack · Standard / Boosted / Collector</span><b>+${NP_XP.std} / ${NP_XP.prem} / ${NP_XP.col}</b></li>
+      <li><span>New card for your collection · new Shiny</span><b>+${NP_XP.newCard} · +${NP_XP.newShiny}</b></li>
+      <li><span>Win a battle · Cadet / Captain / Admiral</span><b>+${NP_XP.win.join(' / ')}</b></li>
+      <li><span>Lose a battle you played out</span><b>+${NP_XP.loss}</b></li>
+      <li><span>Online match · win / loss</span><b>+${NP_XP.owin} / ${NP_XP.oloss}</b></li>
+      <li><span>Claim a daily challenge</span><b>+${NP_XP.daily}</b></li>
+      <li><span>Claim an achievement</span><b>+${NP_XP.ach}</b></li>
+      <li><span>Complete a series for the first time</span><b>+${NP_XP.series}</b></li></ul>
+      <p class="np-note">${NP.MAX} levels take about a month of regular play. Starlight keeps counting after level ${NP.MAX} for Hypernova stars.</p></div>
+    <div class="np-card"><h3>Season exclusives</h3><p class="np-note">Only in the Nova Pass. Never sold in the shop.</p><div class="np-ex">
+      ${exSl.map(s=>{const own=sl().own.includes(s.id);return `<div class="np-exi${own?' own':''}"><div class="slv-prev sl-${s.id}"><div class="cb"></div></div><b>${s.n}</b><span>${own?'Unlocked':npWhere(s.id)}</span></div>`}).join('')}
+      ${exCv.map(c=>{const own=bnd().own.includes(c.id);return `<div class="np-exi npcv${own?' own':''}"><div class="np-cvw">${coverPrev(c,c.set)}</div><b>${c.n}</b><span>${own?'Unlocked':npWhere(c.id)}</span></div>`}).join('')}</div></div></div>`;
+  fillCoverArt(el);paintPassBadge();
+  if(renderPass.scrolled)$('#npTrack').scrollLeft=sx;
+  else{renderPass.scrolled=1;requestAnimationFrame(()=>npJump(false))}}
+function npJump(smooth){const t=$('#npTrack');if(!t)return;const l=npLevel(),c=l>=NP.MAX?t.querySelector('.np-col.hyper'):t.querySelector(`.np-col[data-l="${l+1}"]`);if(!c)return;
+  t.scrollTo({left:Math.max(0,c.offsetLeft-t.clientWidth/2+c.offsetWidth/2),behavior:smooth?'smooth':'auto'})}
+/* Shop page: the Supernova offer */
+function passShopHTML(){const P=npS(),l=npLevel();return `<div class="np-shop${P.prem?' on':''}"><div class="np-sky" aria-hidden="true"><i class="np-st a"></i><i class="np-neb"></i><i class="np-dawn"></i><i class="np-planet"></i></div>
+  <div class="nps-in"><div class="np-s">Season ${NP.season} · ${NP.name}</div><h2 class="np-logo"><span class="nv">SUPERNOVA</span> <span class="ps">PASS</span></h2>
+  <p>The premium track of the Nova Pass: ${NP.MAX} extra rewards worth far more than its price. 6 Collector packs, 6 Boosted packs, 19,200 Stardust, the Pulsar, Wormhole, Eclipse and Hypernova sleeves and four First Light binder covers. Hypernova stars pay double.</p>
+  ${P.prem?`<div class="nps-on">✓ Supernova unlocked · You're on level ${l}</div><button class="btn2 primary nps-go">Open the Nova Pass</button>`:`<button class="buy np-buy big${S.dust<NP.PRICE?' poor':''}">Unlock Supernova <span class="pr">${DUSTI}${fmt(NP.PRICE)}</span></button><button class="ghost nps-go">See every reward</button>`}</div></div>`}
+function initPass(){
+  const tab=$('#tabPass');if(tab)tab.onclick=()=>{if(typeof placing!=='undefined'&&(placing||celebrating))return;Snd.init();setView('pass')};
+  const v=$('#viewPass');v.addEventListener('click',e=>{const t=e.target;
+    const c=t.closest('.np-claim');if(c){if(c.dataset.hx){npClaimHyper(c);renderPass();return}npClaim(c.dataset.t,+c.dataset.l,c);renderPass();return}
+    if(t.closest('.np-all')){npClaimAll(t.closest('.np-all'));return}
+    if(t.closest('.np-buy')){npBuy(t.closest('.np-buy'));return}
+    if(t.closest('.np-jump')){Snd.init();Snd.click();npJump(true);return}
+    const u=t.closest('.np-use');if(u){if(u.dataset.sl){const L=sl();if(L.own.includes(u.dataset.sl)){L.eq=u.dataset.sl;save();Snd.init();Snd.click();toast(`${npSleeve(u.dataset.sl).n} sleeves equipped.`,1600)}}
+      else if(u.dataset.cv){const cv=npCover(u.dataset.cv);if(cv){equipCover(cv.set,cv.id);toast(`${cv.n} cover on your ${SETS[cv.set].tab} binder.`,1800)}}renderPass();return}});
+  $('#viewShop').addEventListener('click',e=>{const b=e.target.closest('.np-buy');if(b){e.stopImmediatePropagation();npBuy(b);return}if(e.target.closest('.nps-go,.nplock')){e.stopImmediatePropagation();Snd.init();Snd.click();setView('pass')}},true);
+  const pop=$('#npPop');if(pop)pop.onclick=()=>{pop.classList.remove('on');pop.hidden=true;setView('pass')};
+  passDaily();paintPassBadge();setInterval(()=>{if(NPQ.xp)passFlush()},1500);
+}
 /* ───────────── Developer Mode ─────────────
    Tap the Cosmic Cards logo 5 times quickly, then enter the code. Only a hash of the code
    is stored here. Unlocking lasts until the page is reloaded. Battle cheats are disabled in online matches. */
@@ -5288,7 +5658,7 @@ function devGate(){
   devModal(`<h3>Developer Mode</h3><p class="sub">Enter the access code.</p><form id="dvForm" class="xf-row" autocomplete="off"><input id="dvCode" type="password" inputmode="text" autocapitalize="off" spellcheck="false" placeholder="Code" aria-label="Access code"><button class="btn2 primary" type="submit">Unlock</button></form><p class="xf-msg" id="dvMsg"></p>`);
   const f=$('#dvForm'),i=$('#dvCode');setTimeout(()=>i.focus(),50);
   f.onsubmit=e=>{e.preventDefault();if(devHash(i.value)===DEV.H){DEV.on=true;document.body.classList.add('devon');Snd.init();Snd.click();openDev()}else{$('#dvMsg').textContent='Wrong code.';i.value='';Snd.init();Snd.deal&&Snd.deal();const b=$('.dev-box');b.classList.remove('nope');void b.offsetWidth;b.classList.add('nope')}}}
-function devRefresh(){save();try{cloudSave&&cloudSave()}catch(e){}refreshAll();if(view==='binder')renderBinder();if(typeof paintDust==='function')paintDust();if(typeof paintBattleBadge==='function')paintBattleBadge();if(view==='battle'&&typeof renderBattleHome==='function')renderBattleHome()}
+function devRefresh(){save();try{cloudSave&&cloudSave()}catch(e){}refreshAll();if(view==='binder')renderBinder();if(typeof paintDust==='function')paintDust();if(typeof paintBattleBadge==='function')paintBattleBadge();if(view==='battle'&&typeof renderBattleHome==='function')renderBattleHome();if(typeof paintPassBadge==='function')paintPassBadge();if(view==='pass')renderPass()}
 function devUnlock(ids,shiny){ids.forEach(id=>{const X=st(id),all=SETS[id].cards.map(c=>c.n);X.owned=[...new Set([...X.owned,...all])].sort(num);if(shiny)X.shiny=[...new Set([...(X.shiny||[]),...all])].sort(num)})}
 function openDev(){
   const set=cs(),inBattle=!$('#arena').hidden&&BT.g&&!BT.g.over,online=!!BT.online,tog=(k,l)=>`<button class="dv-t${DEV[k]?' on':''}" data-dv="t:${k}" aria-pressed="${DEV[k]}">${l}</button>`;
@@ -5301,12 +5671,18 @@ function openDev(){
    <div class="dv-g">${tog('free','Free packs')}${tog('forceUR','Ultra Rare in every pack')}${tog('allShiny','All cards Shiny')}<button data-dv="daily">Reset free daily pack</button></div>
    <h4>Battle ${online?'<span class="muted">off during online matches</span>':inBattle?'':'<span class="muted">start a bot battle to use these</span>'}</h4>
    <div class="dv-g"><button data-dv="win"${inBattle&&!online?'':' disabled'}>Win this battle</button><button data-dv="energy"${inBattle&&!online?'':' disabled'}>Max Energy + draw 3</button><button data-dv="ready"${inBattle&&!online?'':' disabled'}>Ready all my units</button><button data-dv="wipe"${inBattle&&!online?'':' disabled'}>Clear enemy board</button><button data-dv="core1"${inBattle&&!online?'':' disabled'}>Enemy Core to 1</button><button data-dv="heal"${inBattle&&!online?'':' disabled'}>Refill my Core</button><button data-dv="lose"${inBattle&&!online?'':' disabled'}>Lose this battle</button><button data-dv="chal">Complete all challenges</button><button data-dv="chalR">Reset challenges</button></div>
+   <h4>Nova Pass <span class="muted">Level ${npLevel()}${npHyper()?' · ★'+npHyper():''} · ${fmt(npS().xp)} Starlight${npS().prem?' · Supernova':''}</span></h4>
+   <div class="dv-g"><button data-dv="np:500">+1 level</button><button data-dv="np:5000">+10 levels</button><button data-dv="npmax">To level 50</button><button data-dv="np:1000">+1,000 Starlight</button><button data-dv="npprem">${npS().prem?'Remove':'Give'} Supernova</button><button data-dv="npreset" class="dv-warn">Reset pass</button></div>
    <h4>Danger zone</h4>
    <div class="dv-g"><button data-dv="reset" class="dv-warn">Reset entire save</button><button data-dv="exit">Exit Developer Mode</button></div>
    <p class="xf-msg" id="dvMsg"></p>`,devClick)}
 async function devClick(e){const b=e.target.closest('[data-dv]');if(!b||b.disabled)return;const a=b.dataset.dv,msg=t=>{const m=$('#dvMsg');if(m)m.textContent=t};Snd.click();
   if(a.startsWith('dust:')){const n=+a.slice(5);S.dust+=n;devRefresh();openDev();msg(`+${fmt(n)} Stardust`);return}
   if(a==='dust0'){S.dust=0;devRefresh();openDev();msg('Stardust set to 0');return}
+  if(a.startsWith('np:')){passGain(+a.slice(3),'dev');devRefresh();openDev();msg(`Nova Pass level ${npLevel()}`);return}
+  if(a==='npmax'){const P=npS(),need=NP.MAX*NP.LV-P.xp;if(need>0)passGain(need,'dev');devRefresh();openDev();msg('Nova Pass at level 50');return}
+  if(a==='npprem'){const P=npS();P.prem=!P.prem;save();devRefresh();openDev();msg(P.prem?'Supernova on':'Supernova off');return}
+  if(a==='npreset'){S.pass=null;npS();NPQ.xp=0;NPQ.lv0=null;save();devRefresh();openDev();msg('Nova Pass reset');return}
   if(a==='own'||a==='ownS'){devUnlock([S.cur],a==='ownS');devRefresh();openDev();msg(a==='ownS'?'Series unlocked, Shiny included':'Series unlocked');return}
   if(a==='ownAll'){devUnlock(SETIDS,false);devRefresh();openDev();msg('Every series unlocked');return}
   if(a==='clear'){if(!b.dataset.arm){b.dataset.arm='1';b.textContent='Tap again to clear';return}Object.assign(S.sets[S.cur],setBlank());devRefresh();openDev();msg('Series cleared on this device. Your cloud save may restore cards on next load.');return}

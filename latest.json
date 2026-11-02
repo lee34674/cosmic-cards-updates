@@ -1,11 +1,11 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "game": {
-    "file": "game-1.5.0.html",
-    "sha256": "da477865904862ecc7e17d0218ed6fe5514b2851424b2067ff9516ab7b193475",
-    "size": 6028461
+    "file": "game-1.6.0.html",
+    "sha256": "bdc9a5bb49d086da274c1ee92162713944acb72385c7c20b363d2d6e6bf95bbc",
+    "size": 6084675
   },
-  "notes": "Series 3 re-rendered with more realism, coal-black Comet 67P, Europa chaos terrain, sharper pack art, phone pack row fix, battle Developer Mode via the top-left corner.",
-  "date": "2026-11-01T16:34:11.016Z",
-  "sig": "8FL+2W02Sy4eXf2Di5JmRMhB6271JpPm3KyJkcYbFM1r8P3PqTGAxQatCK/rAtVIc30YXIXfFyoMlRdoVoVpBw=="
+  "notes": "Season 1 of the Nova Pass: a new Pass tab with 50 levels of Stardust, packs and exclusive sleeves and covers. Earn Starlight by playing; Supernova premium track for 4,000 Stardust; Hypernova stars after level 50.",
+  "date": "2026-11-02T00:04:22.750Z",
+  "sig": "pj0P+iNUG7ktmCDFTU/eWXVa5ZZpYDA4aLm+kJ5NkeOyAiZ6dmQ9hWUZh4G2tbl0VCDSQOA/VnI9zFEJ50nwBw=="
 }
