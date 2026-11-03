@@ -1,11 +1,11 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "game": {
-    "file": "game-1.7.0.html",
-    "sha256": "d35108f859daf31900ba95bdd42c9314b8b9b2d8acedc710010a966bca3e7908",
-    "size": 6140213
+    "file": "game-1.8.0.html",
+    "sha256": "341fe68e5f14c30c00a376f18c79c054454da8b9f867332d97d8c8cb9d983d62",
+    "size": 6151905
   },
-  "notes": "Realistic binder page turns you can drag, harder-hitting battle animations, and pack openings that flow from rip to reveal.",
-  "date": "2026-11-03T15:13:31.504Z",
-  "sig": "bqGAcY4Rb2aQIP+F7xyTE8194Hr4kVTq8bX+nYuCFrwFW7l1NEkqKuYxTZT62O5sB1AEwinYRAeJGru3xctMCA=="
+  "notes": "v1.8.0: silky binder page turns, smooth hand draws, smoother animations everywhere, and a new orchestral soundtrack",
+  "date": "2026-11-03T16:29:34.768Z",
+  "sig": "6YasVE91fYnTt0WU/SmKfIV5eJVl0c0CO65gKAv6FGqw29xDzMelX5IFIXFscxKR5azHTCH/aIkZNy9jAJBgBQ=="
 }

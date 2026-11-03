@@ -850,13 +850,7 @@ body[data-set="promo"] .bar i{background:linear-gradient(90deg,#ffe08a,#ffb83a)}
 @property --slsh{syntax:'<percentage>';inherits:false;initial-value:-40%}
 @keyframes slang{to{--slang:360deg}}
 @keyframes slsh{0%{--slsh:-40%}55%,100%{--slsh:140%}}
-.sl-prism .cb,.cb.sl-prism{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.7'%3E%3Ccircle cx='50' cy='50' r='13' stroke-width='1.4'/%3E%3Cellipse cx='50' cy='50' rx='30' ry='8' transform='rotate(-24 50 50)' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") center/56% no-repeat,radial-gradient(70% 55% at 50% 45%,rgba(255,255,255,.5),transparent 70%),conic-gradient(from var(--slang) at 50% 50%,#ff5ab4,#ffb25a,#fff15a,#5affa0,#5ad2ff,#8a6bff,#ff5ab4)!important;animation:slang 6s linear infinite}
-.sl-prism .hb,.sb.sl-prism .pile.deck .pc{background:radial-gradient(70% 55% at 50% 45%,rgba(255,255,255,.5),transparent 70%),conic-gradient(from var(--slang) at 50% 50%,#ff5ab4,#ffb25a,#fff15a,#5affa0,#5ad2ff,#8a6bff,#ff5ab4)!important;animation:slang 6s linear infinite}
-.sl-galaxy .cb,.cb.sl-galaxy{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.7'%3E%3Ccircle cx='50' cy='50' r='13' stroke-width='1.4'/%3E%3Cellipse cx='50' cy='50' rx='30' ry='8' transform='rotate(-24 50 50)' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") center/56% no-repeat,radial-gradient(circle at 50% 50%,#fff6e0 0,rgba(255,220,170,.8) 8%,transparent 26%),conic-gradient(from var(--slang) at 50% 50%,rgba(120,90,255,.9),rgba(255,110,210,.75),rgba(60,200,255,.8),rgba(120,90,255,.9),rgba(255,110,210,.75),rgba(60,200,255,.8),rgba(120,90,255,.9)),#0a0620!important;animation:slang 18s linear infinite}
-.sl-galaxy .hb,.sb.sl-galaxy .pile.deck .pc{background:radial-gradient(circle at 50% 50%,#fff6e0 0,rgba(255,220,170,.8) 8%,transparent 26%),conic-gradient(from var(--slang) at 50% 50%,rgba(120,90,255,.9),rgba(255,110,210,.75),rgba(60,200,255,.8),rgba(120,90,255,.9),rgba(255,110,210,.75),rgba(60,200,255,.8),rgba(120,90,255,.9)),#0a0620!important;animation:slang 18s linear infinite}
-.sl-chrome .cb,.cb.sl-chrome{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.7'%3E%3Ccircle cx='50' cy='50' r='13' stroke-width='1.4'/%3E%3Cellipse cx='50' cy='50' rx='30' ry='8' transform='rotate(-24 50 50)' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") center/56% no-repeat,linear-gradient(115deg,transparent calc(var(--slsh) - 16%),rgba(255,255,255,.9) var(--slsh),transparent calc(var(--slsh) + 16%)),linear-gradient(135deg,#dfe4ee,#6a7385 28%,#f6f8fc 48%,#566073 70%,#c9ced8 88%,#8a92a3)!important;animation:slsh 3.4s cubic-bezier(.45,0,.25,1) infinite}
-.sl-chrome .hb,.sb.sl-chrome .pile.deck .pc{background:linear-gradient(115deg,transparent calc(var(--slsh) - 16%),rgba(255,255,255,.9) var(--slsh),transparent calc(var(--slsh) + 16%)),linear-gradient(135deg,#dfe4ee,#6a7385 28%,#f6f8fc 48%,#566073 70%,#c9ced8 88%,#8a92a3)!important;animation:slsh 3.4s cubic-bezier(.45,0,.25,1) infinite}
-@media (prefers-reduced-motion:reduce){.cb,.hb,.sb .pile.deck .pc{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.cb::before,.hb::before,.sb .pile.deck .pc::before{animation:none!important}}
 .hand[class*="sl-"]:not(.sl-classic) .hc,.board[class*="sl-"]:not(.sl-classic) .u{outline:2px solid var(--slr);outline-offset:2px}
 .slv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;max-width:1100px;margin:0 auto}
 .slv-item{display:flex;flex-direction:column;gap:8px;align-items:stretch;padding:14px;border-radius:16px;background:rgba(20,17,58,.7);border:1px solid var(--line);text-align:center}
@@ -1644,16 +1638,6 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .sl-wormhole{--slr:#6ff0ff;--slb:radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%),repeating-conic-gradient(rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg),repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)}
 .sl-hypernova{--slr:#ff7ad0;--slb:radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%),repeating-conic-gradient(rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg),radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)}
 .sl-starforged{--slr:#ffd76a;--slb:radial-gradient(1.6px 1.6px at 22% 24%,#fff,transparent),radial-gradient(1.4px 1.4px at 76% 70%,#fff,transparent),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)}
-.sl-firstlight .cb,.cb.sl-firstlight{background:var(--sllogo) center 40%/56% no-repeat,radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%),repeating-conic-gradient(from var(--slang) at 50% 92%,rgba(255,220,150,.16) 0 5deg,transparent 5deg 14deg),linear-gradient(#0a0a30,#2b1652 62%,#6a2e62)!important;animation:slang 40s linear infinite}
-.sl-firstlight .hb,.sb.sl-firstlight .pile.deck .pc{background:radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%),repeating-conic-gradient(from var(--slang) at 50% 92%,rgba(255,220,150,.16) 0 5deg,transparent 5deg 14deg),linear-gradient(#0a0a30,#2b1652 62%,#6a2e62)!important;animation:slang 40s linear infinite}
-.sl-pulsar .cb,.cb.sl-pulsar{background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%),conic-gradient(from var(--slang),transparent 0 80deg,rgba(150,200,255,.75) 88deg,transparent 96deg 260deg,rgba(150,200,255,.75) 268deg,transparent 276deg),repeating-radial-gradient(circle,rgba(120,170,255,.22) 0 2px,transparent 2px 12px),radial-gradient(#0e1a48,#040818)!important;animation:slang 3.2s linear infinite}
-.sl-pulsar .hb,.sb.sl-pulsar .pile.deck .pc{background:radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%),conic-gradient(from var(--slang),transparent 0 80deg,rgba(150,200,255,.75) 88deg,transparent 96deg 260deg,rgba(150,200,255,.75) 268deg,transparent 276deg),repeating-radial-gradient(circle,rgba(120,170,255,.22) 0 2px,transparent 2px 12px),radial-gradient(#0e1a48,#040818)!important;animation:slang 3.2s linear infinite}
-.sl-wormhole .cb,.cb.sl-wormhole{background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%),repeating-conic-gradient(from var(--slang),rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg),repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)!important;animation:slang 12s linear infinite}
-.sl-wormhole .hb,.sb.sl-wormhole .pile.deck .pc{background:radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%),repeating-conic-gradient(from var(--slang),rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg),repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)!important;animation:slang 12s linear infinite}
-.sl-hypernova .cb,.cb.sl-hypernova{background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%),repeating-conic-gradient(from var(--slang),rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg),radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)!important;animation:slang 16s linear infinite}
-.sl-hypernova .hb,.sb.sl-hypernova .pile.deck .pc{background:radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%),repeating-conic-gradient(from var(--slang),rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg),radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)!important;animation:slang 16s linear infinite}
-.sl-starforged .cb,.cb.sl-starforged{background:var(--sllogo) center/56% no-repeat,linear-gradient(115deg,transparent calc(var(--slsh) - 14%),rgba(255,255,255,.95) var(--slsh),transparent calc(var(--slsh) + 14%)),radial-gradient(1.6px 1.6px at 22% 24%,#fff,transparent),radial-gradient(1.4px 1.4px at 76% 70%,#fff,transparent),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)!important;animation:slsh 3s cubic-bezier(.45,0,.25,1) infinite}
-.sl-starforged .hb,.sb.sl-starforged .pile.deck .pc{background:linear-gradient(115deg,transparent calc(var(--slsh) - 14%),rgba(255,255,255,.95) var(--slsh),transparent calc(var(--slsh) + 14%)),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)!important;animation:slsh 3s cubic-bezier(.45,0,.25,1) infinite}
 /* phones */
 @media (max-width:760px){
   .np-hero{padding:20px 16px 58px;border-radius:22px}
@@ -1751,7 +1735,7 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .energy.fill .pips i.on{animation:pipon .42s cubic-bezier(.3,1.6,.5,1) backwards;animation-delay:calc(var(--k)*55ms)}
 @keyframes pipon{0%{transform:skewX(-12deg) scale(.2);filter:brightness(3);opacity:.2}60%{transform:skewX(-12deg) scale(1.35);filter:brightness(1.8)}100%{transform:skewX(-12deg) scale(1)}}
 /* the hand re-fans smoothly when cards come and go */
-.hand .hc{transition:transform .28s cubic-bezier(.3,1.3,.5,1),margin .28s cubic-bezier(.3,1,.5,1),box-shadow .2s}
+.hand .hc{transition:transform .28s cubic-bezier(.3,1.3,.5,1),box-shadow .2s}
 @media (prefers-reduced-motion:reduce){.hflash,.streak,.pillar,.vign,.whiteout,.energy.fill .pips i.on{animation-duration:.01s!important}}
 /* ───────────── binder page turn (v1.7.0, binder_turn.js) ───────────── */
 #pages{touch-action:pan-y}
@@ -1763,16 +1747,19 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 .pt.two .pt-f,.pt.two .pt-b{border-radius:0 14px 14px 0}
 .pt .pt-f{box-shadow:0 0 0 1px var(--line)}
 .pt-mir{position:relative;width:100%;height:100%;transform:scaleX(-1)}
-.pt-fs,.pt-bs,.pt-us{position:absolute;left:0;top:0;height:var(--D);transform-origin:0 0;pointer-events:none;z-index:9}
-.pt-fs{width:70px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.12) 55%,rgba(0,0,0,.34))}
-.pt-bs{width:85%;background:linear-gradient(90deg,rgba(255,255,255,.42) 0,rgba(255,255,255,.16) 3%,rgba(255,255,255,.04) 9%,rgba(0,0,0,.26) 30%,rgba(0,0,0,.1) 60%,rgba(0,0,0,0) 100%)}
-.pt-us{width:55%;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.22) 22%,rgba(0,0,0,.06) 55%,transparent);z-index:1}
+.pt-fs,.pt-bs,.pt-us{position:absolute;left:0;top:0;width:32px;height:32px;transform-origin:0 0;pointer-events:none;z-index:9;will-change:transform,opacity}
+.pt-fs{background:linear-gradient(90deg,transparent,rgba(0,0,0,.12) 55%,rgba(0,0,0,.34))}
+.pt-bs{background:linear-gradient(90deg,rgba(255,255,255,.42) 0,rgba(255,255,255,.16) 3%,rgba(255,255,255,.04) 9%,rgba(0,0,0,.26) 30%,rgba(0,0,0,.1) 60%,rgba(0,0,0,0) 100%)}
+.pt-us{background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.22) 22%,rgba(0,0,0,.06) 55%,transparent);z-index:1}
 /* the back of a page on phones: the backs of the cards in their pockets, through clear plastic */
 .pt-back1{background:linear-gradient(160deg,#141040,#0a0826 70%)!important}
 .pt-back1 .pt-cb .cb{filter:brightness(.88) saturate(.9);border-radius:6.5%/4.64%}
 .pt-back1 .pt-e{border:1px dashed rgba(190,180,255,.14);background:rgba(255,255,255,.02)}
 .pt-back1::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.07),transparent 35%,transparent 65%,rgba(255,255,255,.05))}
 .pt .slot.filled:hover{transform:none}
+/* while a page turns, the cards' own effects hold still so nothing has to be repainted mid-turn */
+.book.pturn .card,.book.pturn .card *,.book.pturn .slot{animation-play-state:paused!important;transition:none!important}
+.book.pturn .pages{pointer-events:none}
 /* ───────────── pack opening flow (v1.7.0) ───────────── */
 .pstack{position:fixed;pointer-events:none;animation:psrise .62s cubic-bezier(.2,.9,.3,1.06) forwards}
 .pstack::before{content:"";position:absolute;inset:-18%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--lk) 55%,transparent),transparent 65%);filter:blur(6px);opacity:.9}
@@ -1790,6 +1777,65 @@ body.titling>.top,body.titling>.setbar,body.titling>main{visibility:hidden}
 /* every button gives a little under your finger */
 button:not(:disabled):active{transition:transform .06s}
 .btn2:not(:disabled):active,.ghost:not(:disabled):active,.tabs button:active,.np-claim:active,.endturn:not(:disabled):active{transform:scale(.95)}
+
+/* ── animated sleeves (v1.8.0): the moving part is its own layer that rotates or slides, so the GPU moves it
+   instead of repainting the gradient every frame. Layers: element background (under) → ::before (moving) → ::after (top + logo) ── */
+.sla-host{}
+@keyframes slrot{to{rotate:360deg}}@keyframes slsweep{0%,12%{translate:-110% 0}62%,100%{translate:110% 0}}
+.sl-prism .cb,.cb.sl-prism,.sl-prism .hb,.sb.sl-prism .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:#120a2a!important}
+.sl-prism .cb::before,.cb.sl-prism::before,.sl-prism .hb::before,.sb.sl-prism .pile.deck .pc::before{content:"";position:absolute;left:50%;top:50%;width:300%;aspect-ratio:1;translate:-50% -50%;background:conic-gradient(#ff5ab4,#ffb25a,#fff15a,#5affa0,#5ad2ff,#8a6bff,#ff5ab4);animation:slrot 6s linear infinite;will-change:rotate;pointer-events:none}
+.sl-prism .cb::after,.cb.sl-prism::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat,radial-gradient(70% 55% at 50% 45%,rgba(255,255,255,.5),transparent 70%);pointer-events:none}
+.sl-prism .hb::after,.sb.sl-prism .pile.deck .pc::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 55% at 50% 45%,rgba(255,255,255,.5),transparent 70%);pointer-events:none}
+.sl-galaxy .cb,.cb.sl-galaxy,.sl-galaxy .hb,.sb.sl-galaxy .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:#0a0620!important}
+.sl-galaxy .cb::before,.cb.sl-galaxy::before,.sl-galaxy .hb::before,.sb.sl-galaxy .pile.deck .pc::before{content:"";position:absolute;left:50%;top:50%;width:300%;aspect-ratio:1;translate:-50% -50%;background:conic-gradient(from 30deg,rgba(120,90,255,.9),rgba(255,110,210,.75),rgba(60,200,255,.8),rgba(120,90,255,.9),rgba(255,110,210,.75),rgba(60,200,255,.8),rgba(120,90,255,.9));animation:slrot 18s linear infinite;will-change:rotate;pointer-events:none}
+.sl-galaxy .cb::after,.cb.sl-galaxy::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat,radial-gradient(circle at 50% 50%,#fff6e0 0,rgba(255,220,170,.8) 8%,transparent 26%);pointer-events:none}
+.sl-galaxy .hb::after,.sb.sl-galaxy .pile.deck .pc::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#fff6e0 0,rgba(255,220,170,.8) 8%,transparent 26%);pointer-events:none}
+.sl-chrome .cb,.cb.sl-chrome,.sl-chrome .hb,.sb.sl-chrome .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#dfe4ee,#6a7385 28%,#f6f8fc 48%,#566073 70%,#c9ced8 88%,#8a92a3)!important}
+.sl-chrome .cb::before,.cb.sl-chrome::before,.sl-chrome .hb::before,.sb.sl-chrome .pile.deck .pc::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.9) 50%,transparent 66%);animation:slsweep 3.4s cubic-bezier(.45,0,.25,1) infinite;will-change:translate;pointer-events:none}
+.sl-chrome .cb::after,.cb.sl-chrome::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat;pointer-events:none}
+.sl-firstlight .cb,.cb.sl-firstlight,.sl-firstlight .hb,.sb.sl-firstlight .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(#0a0a30,#2b1652 62%,#6a2e62)!important}
+.sl-firstlight .cb::before,.cb.sl-firstlight::before,.sl-firstlight .hb::before,.sb.sl-firstlight .pile.deck .pc::before{content:"";position:absolute;left:50%;top:92%;width:300%;aspect-ratio:1;translate:-50% -50%;background:repeating-conic-gradient(rgba(255,220,150,.16) 0 5deg,transparent 5deg 14deg);animation:slrot 40s linear infinite;will-change:rotate;pointer-events:none}
+.sl-firstlight .cb::after,.cb.sl-firstlight::after{content:"";position:absolute;inset:0;background:var(--sllogo) center 40%/56% no-repeat,radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%);pointer-events:none}
+.sl-firstlight .hb::after,.sb.sl-firstlight .pile.deck .pc::after{content:"";position:absolute;inset:0;background:radial-gradient(130% 62% at 50% 116%,#05040e 58%,#fff1c8 59.4%,#ffd27a 60.6%,rgba(255,140,120,.6) 64%,rgba(255,110,200,.22) 72%,transparent 82%);pointer-events:none}
+.sl-pulsar .cb,.cb.sl-pulsar,.sl-pulsar .hb,.sb.sl-pulsar .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:repeating-radial-gradient(circle,rgba(120,170,255,.22) 0 2px,transparent 2px 12px),radial-gradient(#0e1a48,#040818)!important}
+.sl-pulsar .cb::before,.cb.sl-pulsar::before,.sl-pulsar .hb::before,.sb.sl-pulsar .pile.deck .pc::before{content:"";position:absolute;left:50%;top:50%;width:300%;aspect-ratio:1;translate:-50% -50%;background:conic-gradient(transparent 0 80deg,rgba(150,200,255,.75) 88deg,transparent 96deg 260deg,rgba(150,200,255,.75) 268deg,transparent 276deg);animation:slrot 3.2s linear infinite;will-change:rotate;pointer-events:none}
+.sl-pulsar .cb::after,.cb.sl-pulsar::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%);pointer-events:none}
+.sl-pulsar .hb::after,.sb.sl-pulsar .pile.deck .pc::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#fff 0,#cfe6ff 4%,rgba(120,170,255,.6) 9%,transparent 20%);pointer-events:none}
+.sl-wormhole .cb,.cb.sl-wormhole,.sl-wormhole .hb,.sb.sl-wormhole .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:repeating-radial-gradient(circle,transparent 0 6px,rgba(6,0,24,.62) 6px 12px),radial-gradient(#1a0a40,#03010c)!important}
+.sl-wormhole .cb::before,.cb.sl-wormhole::before,.sl-wormhole .hb::before,.sb.sl-wormhole .pile.deck .pc::before{content:"";position:absolute;left:50%;top:50%;width:300%;aspect-ratio:1;translate:-50% -50%;background:repeating-conic-gradient(rgba(90,240,255,.28) 0 10deg,rgba(180,90,255,.28) 10deg 20deg);animation:slrot 12s linear infinite;will-change:rotate;pointer-events:none}
+.sl-wormhole .cb::after,.cb.sl-wormhole::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%);pointer-events:none}
+.sl-wormhole .hb::after,.sb.sl-wormhole .pile.deck .pc::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#000 0 9%,rgba(255,255,255,.9) 10.5%,rgba(110,240,255,.5) 13%,transparent 18%);pointer-events:none}
+.sl-hypernova .cb,.cb.sl-hypernova,.sl-hypernova .hb,.sb.sl-hypernova .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(circle,transparent 38%,rgba(140,90,255,.55) 44%,transparent 52%),radial-gradient(#2a0838,#08020f)!important}
+.sl-hypernova .cb::before,.cb.sl-hypernova::before,.sl-hypernova .hb::before,.sb.sl-hypernova .pile.deck .pc::before{content:"";position:absolute;left:50%;top:50%;width:300%;aspect-ratio:1;translate:-50% -50%;background:repeating-conic-gradient(rgba(255,230,160,.45) 0 2deg,transparent 2deg 11deg);animation:slrot 16s linear infinite;will-change:rotate;pointer-events:none}
+.sl-hypernova .cb::after,.cb.sl-hypernova::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat,radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%);pointer-events:none}
+.sl-hypernova .hb::after,.sb.sl-hypernova .pile.deck .pc::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#fff 0,#fff5d0 5%,rgba(255,180,90,.9) 12%,rgba(255,60,160,.55) 26%,transparent 46%);pointer-events:none}
+.sl-starforged .cb,.cb.sl-starforged,.sl-starforged .hb,.sb.sl-starforged .pile.deck .pc{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(1.6px 1.6px at 22% 24%,#fff,transparent),radial-gradient(1.4px 1.4px at 76% 70%,#fff,transparent),conic-gradient(from 200deg at 50% 50%,#fff3c4,#c99a2e,#fff0b8,#8a5a12,#ffe08a,#b07a1c,#fff3c4)!important}
+.sl-starforged .cb::before,.cb.sl-starforged::before,.sl-starforged .hb::before,.sb.sl-starforged .pile.deck .pc::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 36%,rgba(255,255,255,.95) 50%,transparent 64%);animation:slsweep 3s cubic-bezier(.45,0,.25,1) infinite;will-change:translate;pointer-events:none}
+.sl-starforged .cb::after,.cb.sl-starforged::after{content:"";position:absolute;inset:0;background:var(--sllogo) center/56% no-repeat;pointer-events:none}
+/* ───────────── v1.8.0: no per-frame repaints. Pulses fade a layer, targets breathe with `scale`,
+   sweeps and starfields slide a layer: all things the GPU can do on its own. ───────────── */
+.cta.prem,.btn2.glow,.endturn.nudge,.buy.arm,.ch-claim{animation:none;position:relative}
+.cta.prem::after,.btn2.glow::after,.endturn.nudge::after,.buy.arm::after,.ch-claim::after{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(255,255,255,.2);opacity:0;pointer-events:none;animation:glowpulse 2.4s ease-in-out infinite}
+.btn2.glow::after{animation-duration:1.8s}.endturn.nudge::after{animation-duration:1.2s}.buy.arm::after{animation-duration:.8s}.ch-claim::after{animation-duration:1.6s}
+@keyframes glowpulse{50%{opacity:1}}
+.core.tgt,.u.tgt,.tslot.open{animation:tgtpulse 1s ease-in-out infinite}
+@keyframes tgtpulse{50%{scale:1.045}}
+.sp.hint-5,.dc.hint-5{animation:none;isolation:isolate}
+.sp.hint-shiny,.dc.hint-shiny{animation:none;isolation:isolate;filter:drop-shadow(0 0 10px rgba(255,154,217,.8))}
+.sp.hint-5::before,.dc.hint-5::before,.sp.hint-shiny::before,.dc.hint-shiny::before{content:"";position:absolute;inset:-9%;border-radius:16%;pointer-events:none;z-index:-1;will-change:opacity,scale}
+.sp.hint-5::before,.dc.hint-5::before{background:radial-gradient(closest-side,rgba(255,106,213,.8),rgba(255,106,213,.25) 70%,transparent);opacity:.35;animation:hintglow 1s ease-in-out infinite alternate}
+.sp.hint-shiny::before,.dc.hint-shiny::before{inset:-14%;border-radius:50%;background:conic-gradient(#ff9ad9,#ffe27a,#8dffc0,#8fd8ff,#caa0ff,#ff9ad9);filter:blur(12px);opacity:.75;animation:hintspin 2.4s linear infinite}
+@keyframes hintglow{to{opacity:1;scale:1.07}}@keyframes hintspin{to{rotate:360deg}}
+.intro .in-stars{bottom:-220px;animation:infade 2s ease .6s forwards,stdrift 30s linear infinite}@keyframes stdrift{to{translate:0 -220px}}
+.np-sky .np-st{inset:-220px -260px 0 0!important;animation:npdriftT 140s linear infinite}.np-sky .np-st.b{inset:-340px -400px 0 0!important;animation:npdriftT2 260s linear infinite}
+@keyframes npdriftT{to{translate:-260px 220px}}@keyframes npdriftT2{to{translate:-400px 340px}}
+.mpk i{background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.55) 50%,transparent 66%);animation:slsweep 3.6s ease-in-out infinite}
+.np-bar i{overflow:hidden}.np-bar i::after{background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);animation:slsweep 2.8s ease-in-out infinite}
+.bcv.pass::before{background:linear-gradient(115deg,transparent 38%,rgba(255,236,200,.38) 48%,rgba(255,170,230,.22) 54%,transparent 64%);animation:slsweep 5s ease-in-out infinite}
+.sheen{background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 47%,rgba(255,255,255,.85) 50%,rgba(255,255,255,.55) 53%,transparent 70%);animation:sheenT .8s cubic-bezier(.3,.6,.3,1) forwards}
+.sheen.r3,.sheen.r4,.sheen.r5{background:linear-gradient(110deg,transparent 28%,rgba(255,240,200,.6) 45%,#fff 50%,rgba(255,200,240,.6) 55%,transparent 72%)}
+@keyframes sheenT{0%{translate:-110% 0}100%{translate:110% 0}}
+@media (prefers-reduced-motion:reduce){.cta.prem::after,.btn2.glow::after,.endturn.nudge::after,.buy.arm::after,.ch-claim::after,.sp::before,.dc::before,.core.tgt,.u.tgt,.tslot.open{animation:none!important}}
 </style>
 
 <canvas id="bg" aria-hidden="true"></canvas>
@@ -2028,7 +2074,7 @@ button:not(:disabled):active{transition:transform .06s}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.7.0';
+const CC_VERSION='1.8.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -3122,179 +3168,205 @@ const Snd=(()=>{
   /* ── music: generative, synthesized live, on its own bus so it has its own switch ── */
   let mbus,msend,mOn=true,mWant=null,mTrack=null,mNext=0,mStep=0,mTimer=0,mDuck=1,mGen=0,MVOL=.62*musLv;
   try{mOn=localStorage.getItem('cc-music')!=='0'}catch(e){}
-  function initMusic(){if(mbus||!ctx)return;mbus=ctx.createGain();mbus.gain.value=0;mbus.connect(comp);const v=ctx.createConvolver();v.buffer=impulse(3.4,2.2);msend=ctx.createGain();msend.gain.value=.55;msend.connect(v);const vo=ctx.createGain();vo.gain.value=.7;v.connect(vo);vo.connect(mbus);initInst()}
+  function initMusic(){if(mbus||!ctx)return;mbus=ctx.createGain();mbus.gain.value=0;
+    /* a touch of warmth and a softer top on the whole orchestra, then the shared compressor */
+    const lo=bq('lowshelf',160,null,.5),hi=bq('highshelf',9000,null,-2.5);mbus.connect(lo);lo.connect(hi);hi.connect(comp);
+    const v=ctx.createConvolver();v.buffer=hallIR(2.8);msend=ctx.createGain();msend.gain.value=.5;msend.connect(v);const vo=ctx.createGain();vo.gain.value=.62;v.connect(vo);vo.connect(mbus);initInst()}
   const mt=o=>tone(Object.assign(o,{dest:mbus,sendTo:msend})),mn=o=>noise(Object.assign(o,{dest:mbus,sendTo:msend}));
   const mbell=(f,at,g)=>{mt({f,at,dur:2.6,g,rev:.9});mt({f:f*2.01,at,dur:1.6,g:g*.35,rev:.9});mt({f:f*3.01,at,dur:.9,g:g*.12,rev:.9})};
-  /* ── the band and the orchestra: synthesized instruments on shared buses (built once, with the music bus) ──
-     gDist: distorted electric guitar (drive into a tanh waveshaper, then a speaker-cabinet EQ)
-     gClean: clean electric guitar with a light drive and a dotted echo
-     strB: string section body (warm low resonance, bright "bridge" presence, no harsh top), lots of hall reverb */
-  let gDist,gClean,strB;
+  /* ── the orchestra (v1.8.0): every instrument is synthesized live, on section buses that share a concert-hall reverb ──
+     strB strings (body EQ: warm low resonance, bright bridge presence, no harsh top)
+     brB  brass (horns, trumpets, trombones)   wwB woodwinds (flute, oboe, clarinet)   chB choir
+     percussion, harp, celesta and glockenspiel go straight to the music bus. */
+  let strB,brB,wwB,chB;
   const bq=(type,f,q,g)=>{const b=ctx.createBiquadFilter();b.type=type;b.frequency.value=f;if(q!=null)b.Q.value=q;if(g!=null)b.gain.value=g;return b};
   const wire=a=>{for(let i=0;i<a.length-1;i++)a[i].connect(a[i+1]);return a[0]};
-  const tanhCurve=k=>{const n=2048,c=new Float32Array(n);for(let i=0;i<n;i++){const x=i/(n-1)*2-1;c[i]=Math.tanh(k*x)/Math.tanh(k)}return c};
   const gn=v=>{const g=ctx.createGain();g.gain.value=v;return g};
-  function initInst(){if(gDist||!ctx||!mbus)return;
-    {const ws=ctx.createWaveShaper();ws.curve=tanhCurve(10);ws.oversample='4x';const out=gn(.042),rs=gn(.18);
-     gDist=wire([gn(1),bq('highpass',110,.7),bq('peaking',850,.9,7),ws,bq('highpass',85,.7),bq('peaking',1600,1.1,4),bq('peaking',3000,1.4,-3),bq('lowpass',4300,.8),bq('lowpass',5400,.6),out]);out.connect(mbus);out.connect(rs);rs.connect(msend)}
-    {const ws=ctx.createWaveShaper();ws.curve=tanhCurve(1.6);const out=gn(.22),dl=ctx.createDelay(1),fb=gn(.34),wet=gn(.32),dlp=bq('lowpass',2600,.6),rs=gn(.45);
-     gClean=wire([gn(1),bq('highpass',140,.7),ws,bq('peaking',2400,1,3),bq('lowpass',5200,.7),out]);out.connect(mbus);out.connect(rs);rs.connect(msend);
-     dl.delayTime.value=.36;out.connect(dl);dl.connect(dlp);dlp.connect(fb);fb.connect(dl);dlp.connect(wet);wet.connect(mbus)}
-    {const out=gn(.9),rs=gn(.75);strB=wire([gn(1),bq('highpass',62,.7),bq('peaking',290,1,3),bq('peaking',1250,1.2,-2.5),bq('peaking',2900,1.1,4),bq('lowpass',6800,.6),out]);out.connect(mbus);out.connect(rs);rs.connect(msend)}}
-  /* a bowed string: saw ensemble with delayed vibrato, bow attack noise and a swell. o:{f,at,dur,g,a,n(players),vib(cents),lp,stac} */
+  /* concert hall: a short pre-delay, a few early reflections, then a tail that gets darker as it dies away */
+  function hallIR(sec){const sr=ctx.sampleRate,n=sr*sec|0,b=ctx.createBuffer(2,n,sr),pre=.016*sr|0;
+    for(let c=0;c<2;c++){const d=b.getChannelData(c);let lp=0;
+      for(let i=pre;i<n;i++){const t=(i-pre)/sr,k=Math.min(.93,.18+t/sec*1.25);lp+=(Math.random()*2-1-lp)*(1-k);d[i]=lp*Math.pow(1-i/n,2)*(1.6+k*2.2)}
+      [[.019,.42],[.027,.3],[.038,.26],[.052,.2],[.067,.15],[.083,.12]].forEach(([t,g])=>{const j=((t+(c?.0037:0))*sr)|0;if(j<n)d[j]+=g*(c?-1:1)})}
+    return b}
+  function initInst(){if(strB||!ctx||!mbus)return;
+    const sec=(chain,dry,wet)=>{const out=gn(dry),rs=gn(wet);const head=wire([gn(1),...chain,out]);out.connect(mbus);out.connect(rs);rs.connect(msend);return head};
+    strB=sec([bq('highpass',55,.7),bq('peaking',260,1,2.5),bq('peaking',1250,1.2,-2.5),bq('peaking',3000,1.1,3),bq('lowpass',7200,.6)],.9,.72);
+    brB=sec([bq('highpass',70,.7),bq('peaking',520,1,1.5),bq('peaking',1400,1.1,2.5),bq('lowpass',7800,.6)],.85,.62);
+    wwB=sec([bq('highpass',180,.7),bq('peaking',2200,1,1.5),bq('lowpass',8500,.6)],.85,.7);
+    chB=sec([bq('highpass',120,.7),bq('peaking',2800,1.2,-2),bq('lowpass',6500,.6)],.8,1)}
+  /* a bowed string section: one sawtooth per player, each with its own vibrato and a slight detune, bow noise at the
+     start, a swell. o:{f,at,dur,g,a,n(players),vib(cents),lp,stac,trem} */
   function bow(o){if(!ctx||asleep||!strB)return;const t0=o.at,dur=o.dur,a=o.a||.09,n=o.n||1,g=o.g/Math.sqrt(n);
-    const env=ctx.createGain(),lp=bq('lowpass',o.lp||Math.min(7000,o.f*7),.5),end=t0+dur;
+    const env=ctx.createGain(),lp=bq('lowpass',o.lp||Math.min(7000,o.f*7),.5),end=t0+dur,tc=Math.min(.12,dur*.12),off=end+Math.min(.4,tc*6+.03);
     env.gain.setValueAtTime(.0001,t0);env.gain.exponentialRampToValueAtTime(g*(o.stac?1:.75),t0+a);if(!o.stac)env.gain.linearRampToValueAtTime(g,t0+Math.max(a+.01,dur*.6));
-    env.gain.setTargetAtTime(.0001,end-Math.min(.35,dur*.3),Math.min(.12,dur*.12));
-    const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=5.2+Math.random()*.8;lg.gain.setValueAtTime(0,t0);
-    if(!o.stac&&dur>.3){lg.gain.setValueAtTime(0,t0+.16);lg.gain.linearRampToValueAtTime(o.vib||14,t0+Math.min(.6,dur*.5))}lfo.connect(lg);
-    for(let i=0;i<n;i++){const osc=ctx.createOscillator();osc.type='sawtooth';osc.frequency.value=o.f;osc.detune.value=n>1?(i-(n-1)/2)*7+Math.random()*3:0;lg.connect(osc.detune);osc.connect(lp);osc.start(t0);osc.stop(end+.4)}
-    lp.connect(env);env.connect(strB);lfo.start(t0);lfo.stop(end+.4);
-    noise({type:'bandpass',f:Math.min(7000,o.f*5),q:1.5,at:t0,dur:Math.min(o.stac?.06:.22,dur),a:.02,g:o.g*(o.stac?.5:.22),dest:strB,sendTo:msend})}
-  const vln=(f,at,dur,g,x)=>bow(Object.assign({f,at,dur,g,n:3,vib:13},x||{}));
+    env.gain.setTargetAtTime(.0001,end-Math.min(.35,dur*.3),tc);
+    let head=lp;if(o.trem){const tg=gn(.55),lf=ctx.createOscillator(),lg=gn(.45);lf.frequency.value=o.trem;lf.connect(lg);lg.connect(tg.gain);lp.connect(tg);head=tg;lf.start(t0);lf.stop(off)}
+    for(let i=0;i<n;i++){const osc=ctx.createOscillator();osc.type='sawtooth';osc.frequency.value=o.f;osc.detune.value=n>1?(i-(n-1)/2)*(n>2?6:9)+Math.random()*4-2:0;
+      if(!o.stac&&dur>.3){const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.frequency.value=4.8+Math.random()*1.3;lg.gain.setValueAtTime(0,t0);lg.gain.setValueAtTime(0,t0+.14+Math.random()*.1);lg.gain.linearRampToValueAtTime(o.vib||12,t0+Math.min(.65,dur*.5));lfo.connect(lg);lg.connect(osc.detune);lfo.start(t0);lfo.stop(off)}
+      osc.connect(lp);osc.start(t0);osc.stop(off)}
+    head.connect(env);env.connect(strB);
+    if(o.stac||a<.2)noise({type:'bandpass',f:Math.min(7000,o.f*5),q:1.5,at:t0,dur:Math.min(o.stac?.05:.2,dur),a:.015,g:o.g*(o.stac?.4:.16),dest:strB,sendTo:msend})}
+  const vln=(f,at,dur,g,x)=>bow(Object.assign({f,at,dur,g,n:2,vib:12},x||{}));
+  const vla=(f,at,dur,g,x)=>bow(Object.assign({f,at,dur,g,n:2,vib:10,lp:Math.min(4200,f*5.5),a:.12},x||{}));
   const cello=(f,at,dur,g,x)=>bow(Object.assign({f,at,dur,g,n:2,vib:9,lp:Math.min(2600,f*6),a:.14},x||{}));
+  const cbass=(f,at,dur,g,x)=>bow(Object.assign({f,at,dur,g,n:2,vib:6,lp:Math.min(1200,f*5),a:.16},x||{}));
   const pizz=(f,at,g)=>{if(!strB)return;tone({f,at,dur:.55,a:.003,g,type:'triangle',dest:strB,sendTo:msend,rev:.5});tone({f:f*2,at,dur:.18,a:.002,g:g*.35,type:'sawtooth',lp:2400,dest:strB})};
-  /* electric guitar: power chord (root, fifth, octave) into the drive; mute = palm-muted chug */
-  function gtr(f,at,dur,g,mute){if(!ctx||asleep||!gDist)return;const env=ctx.createGain(),lp=bq('lowpass',mute?720:3400,.7);
-    env.gain.setValueAtTime(.0001,at);env.gain.exponentialRampToValueAtTime(g,at+.004);if(mute)env.gain.setTargetAtTime(.0001,at+.02,.045);else{env.gain.setTargetAtTime(g*.6,at+.05,.25);env.gain.setTargetAtTime(.0001,at+dur-.06,.05)}
-    [1,1.4983,2].forEach((m,i)=>{const o=ctx.createOscillator();o.type='sawtooth';o.frequency.value=f*m;o.detune.value=[-6,4,9][i];o.connect(lp);o.start(at);o.stop(at+dur+.3)});lp.connect(env);env.connect(gDist)}
-  /* lead guitar: one string, bends up into the note, then vibrato */
-  function glead(f,at,dur,g,bend){if(!ctx||asleep||!gDist)return;const o=ctx.createOscillator(),o2=ctx.createOscillator(),env=ctx.createGain(),lp=bq('lowpass',3800,.8),lfo=ctx.createOscillator(),lg=ctx.createGain();
-    o.type='sawtooth';o2.type='square';o2.detune.value=1205;
-    if(bend){o.frequency.setValueAtTime(f*.891,at);o.frequency.exponentialRampToValueAtTime(f,at+.09);o2.frequency.setValueAtTime(f*.891,at);o2.frequency.exponentialRampToValueAtTime(f,at+.09)}else{o.frequency.value=f;o2.frequency.value=f}
-    lfo.frequency.value=5.8;lg.gain.setValueAtTime(0,at);if(dur>.3){lg.gain.setValueAtTime(0,at+.2);lg.gain.linearRampToValueAtTime(22,at+Math.min(.55,dur*.6))}lfo.connect(lg);lg.connect(o.detune);lg.connect(o2.detune);
-    const m2=gn(.25);o.connect(lp);o2.connect(m2);m2.connect(lp);lp.connect(env);env.connect(gDist);
-    env.gain.setValueAtTime(.0001,at);env.gain.exponentialRampToValueAtTime(g,at+.006);env.gain.setTargetAtTime(g*.7,at+.08,.3);env.gain.setTargetAtTime(.0001,at+dur-.04,.05);
-    [o,o2,lfo].forEach(x=>{x.start(at);x.stop(at+dur+.3)})}
-  /* clean guitar pluck (through the echo) */
-  const gcl=(f,at,g)=>{if(!gClean)return;tone({f,at,dur:1.4,a:.003,g,type:'triangle',dest:gClean});tone({f,at,dur:.35,a:.002,g:g*.45,type:'sawtooth',lp:2200,dest:gClean});tone({f:f*2,at,dur:.6,a:.002,g:g*.25,type:'sine',dest:gClean})};
-  /* harp: bright pluck with a soft ringing tail */
+  /* a held string chord across the sections: basses and cellos on the root, violas and violins on the chord tones */
+  function strChord(ch,root,at,dur,g,x){x=x||{};const lp=x.mute?.72:1;
+    if(root!=null){cello(N(root+12),at,dur,g*1.2,{a:x.a||.4,trem:x.trem});if(!x.light)cbass(N(root),at,dur,g*1.1,{a:x.a||.5})}
+    ch.forEach((n,i)=>{const f=N(n+(i<2?0:0)),hi=n>=7;(hi?vln:vla)(f,at,dur,g*(hi?.8:.9),{a:x.a||.45,trem:x.trem,lp:Math.min(hi?6000:4200,f*(hi?7:5.5))*lp})})}
+  /* brass: sawtooth players through a filter that opens as the note speaks, a small pitch scoop, then vibrato.
+     bright: 1 = French horn (round), ~1.5 = trombone, ~2.6 = trumpet (bright, a little square for edge). stab = short accent */
+  function brass(o){if(!ctx||asleep||!brB)return;const t0=o.at,dur=o.dur,end=t0+dur,br=o.bright||1,a=o.a||(.03+.035/br),n=o.n||2;
+    const env=ctx.createGain(),lp=bq('lowpass',o.f*1.2,.8),peak=Math.min(9000,o.f*(2.2+br*2.4));
+    lp.frequency.setValueAtTime(o.f*1.1,t0);lp.frequency.exponentialRampToValueAtTime(peak,t0+a+.04);lp.frequency.setTargetAtTime(peak*(o.stab?.4:.6),t0+a+.06,o.stab?.08:.4);
+    env.gain.setValueAtTime(.0001,t0);env.gain.exponentialRampToValueAtTime(o.g,t0+a);env.gain.setTargetAtTime(o.g*(o.stab?.08:.78),t0+a,o.stab?.1:.6);env.gain.setTargetAtTime(.0001,end-Math.min(.12,dur*.3),.05);
+    const lfo=ctx.createOscillator(),lg=gn(0);lfo.frequency.value=5+Math.random()*.6;if(dur>.45){lg.gain.setValueAtTime(0,t0+.22);lg.gain.linearRampToValueAtTime(o.vib||7,t0+Math.min(.7,dur*.6))}lfo.connect(lg);lfo.start(t0);lfo.stop(end+.3);
+    for(let i=0;i<n;i++){const os=ctx.createOscillator();os.type='sawtooth';os.frequency.setValueAtTime(o.f*.985,t0);os.frequency.exponentialRampToValueAtTime(o.f,t0+.045);os.detune.value=(i-(n-1)/2)*7;lg.connect(os.detune);os.connect(lp);os.start(t0);os.stop(end+.3)}
+    if(br>=2){const sq=ctx.createOscillator(),sg=gn(.22);sq.type='square';sq.frequency.value=o.f;sq.connect(sg);sg.connect(lp);sq.start(t0);sq.stop(end+.3)}
+    lp.connect(env);env.connect(brB);noise({type:'bandpass',f:Math.min(6000,o.f*3),q:2,at:t0,dur:.06,a:.008,g:o.g*.12,dest:brB,sendTo:msend})}
+  const horn=(f,at,dur,g,x)=>brass(Object.assign({f,at,dur,g,bright:1,n:3},x||{}));
+  const trpt=(f,at,dur,g,x)=>brass(Object.assign({f,at,dur,g,bright:2.6,n:2,a:.022},x||{}));
+  const tbone=(f,at,dur,g,x)=>brass(Object.assign({f,at,dur,g,bright:1.5,n:2,a:.045},x||{}));
+  /* woodwinds: flute (pure with breath), oboe (reedy, nasal formants), clarinet (hollow, odd harmonics) */
+  function wind(o){if(!ctx||asleep||!wwB)return;const t0=o.at,dur=o.dur,end=t0+dur,env=ctx.createGain(),out=bq('lowpass',o.lp||Math.min(8000,o.f*6),.7);
+    env.gain.setValueAtTime(.0001,t0);env.gain.exponentialRampToValueAtTime(o.g,t0+(o.a||.07));env.gain.setTargetAtTime(o.g*.85,t0+(o.a||.07),.5);env.gain.setTargetAtTime(.0001,end-Math.min(.15,dur*.3),.06);
+    const os=ctx.createOscillator();os.type=o.type||'sine';os.frequency.value=o.f;const lfo=ctx.createOscillator(),lg=gn(0);lfo.frequency.value=5.2;if(dur>.4){lg.gain.setValueAtTime(0,t0+.25);lg.gain.linearRampToValueAtTime(o.vib||11,t0+Math.min(.8,dur*.6))}lfo.connect(lg);lg.connect(os.detune);
+    let h=os;if(o.formant){const f1=bq('peaking',1350,3,9),f2=bq('peaking',2900,3,5);os.connect(f1);f1.connect(f2);h=f2}
+    h.connect(out);if(o.type2){const o2=ctx.createOscillator(),g2=gn(o.mix2||.35);o2.type=o.type2;o2.frequency.value=o.f*(o.mul2||1);lg.connect(o2.detune);o2.connect(g2);g2.connect(out);o2.start(t0);o2.stop(end+.3)}
+    out.connect(env);env.connect(wwB);[os,lfo].forEach(x=>{x.start(t0);x.stop(end+.3)});
+    if(o.breath)noise({type:'bandpass',f:Math.min(7000,o.f*2.2),q:1.4,at:t0,dur,a:.05,g:o.g*o.breath,dest:wwB,sendTo:msend})}
+  const flute=(f,at,dur,g)=>wind({f,at,dur,g,type:'sine',type2:'triangle',mix2:.3,breath:.1,vib:12,lp:Math.min(7000,f*4)});
+  const oboe=(f,at,dur,g)=>wind({f,at,dur,g,type:'sawtooth',formant:1,vib:9,a:.05,lp:Math.min(7000,f*7),breath:.03});
+  const clar=(f,at,dur,g)=>wind({f,at,dur,g,type:'square',vib:6,a:.06,lp:Math.min(4800,f*3.6),breath:.04});
+  /* choir: three voices per note, each with its own vibrato, through vowel formants ('a' = aah, 'o' = oh, 'u' = ooh) */
+  const VOW={a:[[730,1],[1090,.55],[2440,.22]],o:[[480,1],[860,.4],[2500,.12]],u:[[320,1],[800,.28],[2300,.08]]};
+  function choir(f,at,dur,g,v){if(!ctx||asleep||!chB)return;const t0=at,end=at+dur,env=ctx.createGain(),sum=gn(1),F=VOW[v||'a'];
+    env.gain.setValueAtTime(.0001,t0);env.gain.exponentialRampToValueAtTime(g,t0+Math.min(.9,dur*.4));env.gain.setTargetAtTime(.0001,end-Math.min(.6,dur*.35),.2);
+    for(let i=0;i<3;i++){const o=ctx.createOscillator();o.type='sawtooth';o.frequency.value=f;o.detune.value=(i-1)*8+Math.random()*4-2;
+      const l=ctx.createOscillator(),lg=gn(0);l.frequency.value=4.6+Math.random()*1.1;lg.gain.setValueAtTime(0,t0+.2);lg.gain.linearRampToValueAtTime(11,t0+.9);l.connect(lg);lg.connect(o.detune);o.connect(sum);o.start(t0);o.stop(end+.7);l.start(t0);l.stop(end+.7)}
+    F.forEach(([ff,gg])=>{const b=bq('bandpass',ff*(f>330?1.08:1),ff/85),fg=gn(gg*5);sum.connect(b);b.connect(fg);fg.connect(env)});
+    env.connect(chB);noise({type:'highpass',f:5200,at:t0,dur,a:dur*.3,g:g*.06,dest:chB,sendTo:msend})}
+  const choirCh=(ch,at,dur,g,v)=>ch.forEach(n=>choir(N(n),at,dur,g,v));
+  /* harp, celesta, glockenspiel */
   const harp=(f,at,g)=>{mt({f,at,dur:1.9,a:.002,g,type:'triangle',rev:.75});mt({f:f*2,at,dur:.9,a:.002,g:g*.4,type:'sine',rev:.75});mt({f:f*3,at,dur:.35,a:.002,g:g*.18,type:'sine'})};
   const gliss=(notes,at,step,g)=>notes.forEach((n,i)=>harp(N(n),at+i*step,g*(.7+.3*i/notes.length)));
-  /* timpani: tuned drum with a mallet thump and a slightly sinking pitch; roll = quick soft strokes swelling up */
+  const cel=(f,at,g)=>{mt({f,at,dur:1.7,a:.003,g,type:'sine',rev:.85});mt({f:f*2,at,dur:.8,a:.003,g:g*.22,type:'triangle',rev:.8});mt({f:f*4.01,at,dur:.3,a:.002,g:g*.12,rev:.7})};
+  const glock=(f,at,g)=>{mt({f,at,dur:1.3,a:.002,g,rev:.8});mt({f:f*2.76,at,dur:.45,a:.002,g:g*.28,rev:.7})};
+  /* percussion: timpani, concert bass drum, taiko-like low drums, snare, cymbals */
   const timp=(f,at,g)=>{mt({f,f2:f*.965,at,dur:1.7,a:.004,g,rev:.5});mt({f:f*1.505,at,dur:.7,a:.004,g:g*.32,rev:.4});mt({f:f*1.99,at,dur:.35,a:.003,g:g*.12});mn({type:'lowpass',f:260,at,dur:.18,a:.003,g:g*.9,q:.7})};
   const troll=(f,at,len,g)=>{const k=Math.max(4,Math.round(len/.07));for(let i=0;i<k;i++)timp(f,at+i*len/k,g*(.25+.75*i/k))};
-  /* brass (horns): saw with a filter that opens as the note speaks */
-  function horn(f,at,dur,g){if(!ctx||asleep||!mbus)return;const env=ctx.createGain(),lp=ctx.createBiquadFilter();lp.type='lowpass';lp.Q.value=1.2;lp.frequency.setValueAtTime(f*1.2,at);lp.frequency.exponentialRampToValueAtTime(Math.min(5000,f*5.5),at+.09);lp.frequency.setTargetAtTime(f*3,at+.15,.4);
-    env.gain.setValueAtTime(.0001,at);env.gain.exponentialRampToValueAtTime(g,at+.05);env.gain.setTargetAtTime(.0001,at+dur-.08,.07);
-    [-5,5].forEach(d=>{const o=ctx.createOscillator();o.type='sawtooth';o.frequency.value=f;o.detune.value=d;o.connect(lp);o.start(at);o.stop(at+dur+.4)});lp.connect(env);env.connect(mbus);const r=gn(.5);env.connect(r);r.connect(msend)}
+  const bdrum=(at,g)=>{mt({f:64,f2:41,at,dur:1.2,a:.004,g,rev:.55});mn({type:'lowpass',f:150,at,dur:.32,a:.003,g:g*.7,q:.6,rev:.5})};
+  const tom=(f,at,g)=>{mt({f,f2:f*.62,at,dur:.5,a:.003,g,rev:.45});mn({type:'bandpass',f:f*3.2,q:1.1,at,dur:.11,a:.002,g:g*.5,rev:.3})};
+  const snare=(at,g)=>{mn({type:'bandpass',f:2300,q:.8,at,dur:.15,a:.002,g,rev:.35});mn({type:'highpass',f:5200,at,dur:.08,a:.002,g:g*.5});mt({f:205,f2:165,at,dur:.07,g:g*.45,type:'triangle'})};
+  const sroll=(at,len,g,cr)=>{const k=Math.max(6,Math.round(len/.046));for(let i=0;i<k;i++)snare(at+i*len/k,g*(cr?(.22+.78*i/k):1)*(i%2?.78:1))};
+  const cym=(at,g,len)=>{len=len||2.8;mn({type:'highpass',f:3400,at,dur:len,a:.004,g,rev:.75});mn({type:'bandpass',f:8200,q:.5,at,dur:len*.6,a:.003,g:g*.55,rev:.6})};
+  const swell=(at,len,g)=>mn({type:'highpass',f:2600,f2:6500,at,dur:len,a:len*.93,g,rev:.85});
   const TR={
-    menu:{bpm:64,lv:.88,chords:[[0,4,7,11,14],[-3,0,4,7,12],[-7,-3,0,4,9],[-5,-1,2,7,11]],
-      play(step,t,sd){const bar=step>>4,s=step&15,ci=(bar>>1)%4,ch=this.chords[ci];
-        if(s===0&&bar%2===0){const dur=sd*32;ch.forEach((n,i)=>mt({f:N(n-12),at:t,dur:dur+2,a:2.6,g:.038,type:i%2?'triangle':'sine',lp:1400,detune:i%2?7:-7,rev:.8}));mt({f:N(ch[0]-24),at:t,dur:dur+1.5,a:2,g:.09,type:'sine'});mn({type:'lowpass',f:500,f2:900,at:t,dur:dur,a:dur*.5,g:.02,q:.4})}
-        if(s%2===0&&Math.random()<.18){const n=ch[Math.random()*ch.length|0]+12+(Math.random()<.35?12:0);mbell(N(n),t,.04)}
-        if(s===12&&bar%4===3)for(let k=0;k<5;k++)mt({f:N(36+[0,4,7,11,14][k]),at:t+k*.09,dur:.9,g:.012,rev:1})
-        /* orchestra & guitar: cello under every chord, harp rolling the chord, a solo violin line,
-           and a clean guitar with echo answering it */
-        const sec=(bar>>3)%4;
-        if(s===0&&bar%2===0)cello(N(ch[0]-12),t,sd*31,.05);
-        if(s===8&&bar%2===1)gliss(ch.map(n=>n+12).concat(ch.map(n=>n+24)),t,.07,.03);
-        if(sec>=1&&(bar%8>=4)&&s%2===0){const n=ch[[0,2,1,3,4,2,3,1][s/2]%ch.length]+12;harp(N(n),t,.024)}
-        if(sec!==1&&(s===0||s===8)&&(bar%4!==3||s===0)){const m=this.vl[(bar%8)*2+(s>>3)];if(m!=null)vln(N(m),t,sd*(s===0&&bar%4===3?16:8)*.98,.034,{n:1,vib:16,a:.35})}
-        if(sec>=2&&s%4===2&&Math.random()<.4)gcl(N(ch[Math.random()*ch.length|0]+12),t,.05)},
+    /* MENU: a calm, warm nocturne. Muted string chords, an 'ooh' choir, harp rolls, a flute line answered by a solo
+       violin, celesta sparkles, and a soft timpani roll every 8 bars. */
+    menu:{bpm:64,lv:.69,chords:[[0,4,7,11,14],[-3,0,4,7,12],[-7,-3,0,4,9],[-5,-1,2,7,11]],roots:[-24,-27,-31,-29],
+      play(step,t,sd){const bar=step>>4,s=step&15,ci=(bar>>1)%4,ch=this.chords[ci],root=this.roots[ci],sec=(bar>>3)%4;
+        if(s===0&&bar%2===0){const dur=sd*32+.6;strChord(ch.slice(1,4),root,t,dur,.032,{mute:1,a:1.4});if(sec>=1)choirCh(ch.slice(0,3).map(n=>n+12),t+.2,dur,.018,'u');
+          mn({type:'lowpass',f:500,f2:900,at:t,dur,a:dur*.5,g:.012,q:.4})}
+        if(s%2===0&&(sec!==0||bar%2===1)){const n=ch[[0,1,2,3,4,3,2,1][(s>>1)%8]%ch.length]+12+(s>=8?12:0);harp(N(n),t,.02)}
+        if(s===8&&bar%4===3)gliss(ch.map(n=>n+12).concat(ch.map(n=>n+24)),t,.07,.026);
+        if(s%4===2&&Math.random()<.2)cel(N(ch[Math.random()*ch.length|0]+24),t,.03);
+        if((s===0||s===8)&&(bar%4!==3||s===0)){const m=this.vl[(bar%8)*2+(s>>3)];if(m!=null){const d=sd*(s===0&&bar%4===3?16:8)*.98;
+          if(sec%2===0)flute(N(m+12),t,d,.036);else vln(N(m),t,d,.032,{n:1,vib:16,a:.35})}}
+        if(bar%8===7&&s===0){troll(N(root+12),t+sd*8,sd*8,.05);swell(t+sd*4,sd*12,.035)}},
       vl:[16,14,12,null,11,12,14,null, 12,11,9,null,7,9,11,null]},
-    battle:{bpm:138,lv:.8,
-      /* tempo breathes: a slow drift of ±2%, and every 32 bars it eases down to ~80% for a few half-time bars
-         (lighter hats), then pushes back up a touch past full speed before settling. Smoothstep curves keep it natural. */
+    /* BATTLE: an action cue. Spiccato strings drive 16ths, cellos and basses dig in on the root, trombones punch the
+       chord changes, horns answer, taiko-style drums and snare keep it moving. Horns take the melody; on the second pass
+       trumpets join an octave up with violins on top. Every 32 bars the tempo broadens into a half-time chorale (choir,
+       big string swells, horns), then a timpani roll drives back to full speed. */
+    battle:{bpm:138,lv:.61,
       tempo(step){const b=step/16,c=b%32,ss=x=>x<=0?0:x>=1?1:x*x*(3-2*x);let k=1;
         if(c>=22&&c<24)k=1-.2*ss((c-22)/2);else if(c>=24&&c<29)k=.8;else if(c>=29&&c<31)k=.8+.24*ss((c-29)/2);else if(c>=31)k=1.04-.04*ss(c-31);
         this.slow=k<.9;return this.bpm*k*(1+.02*Math.sin(b/12*Math.PI*2))},chords:[[2,5,9],[-2,2,5],[5,9,12],[0,4,7]],roots:[-22,-26,-19,-24],
-      arp:[0,1,2,1,0,2,1,2],
+      arp:[0,1,2,1,0,2,1,2],ost:[0,0,12,0,0,12,0,7],
       mel:[14,null,17,null,21,null,19,17,14,null,12,null,14,null,null,null, 10,null,14,null,17,null,19,null,17,null,14,null,12,null,null,null,
            17,null,21,null,24,null,21,null,19,null,17,null,19,null,21,null, 19,null,17,null,16,null,12,null,14,null,null,null,null,null,null,null],
-      play(step,t,sd){const bar=step>>4,s=step&15,ci=(bar>>1)%4,ch=this.chords[ci],root=this.roots[ci],ph=bar%16,intro=bar<2,lead=ph>=8;
-        // drums
-        if(s%4===0||(s===14&&bar%2===1))mt({f:160,f2:40,at:t,dur:.2,g:.36});
-        if(!intro&&(s===4||s===12)){mn({type:'bandpass',f:1700,q:.8,at:t,dur:.18,g:.17});mn({type:'highpass',f:4000,at:t,dur:.08,g:.06});mt({f:190,f2:130,at:t,dur:.1,g:.08,type:'triangle'})}
-        if(s%4===2)mn({type:'highpass',f:6500,at:t,dur:.14,g:.05});else if(!this.slow)mn({type:'highpass',f:9000,at:t,dur:.03,g:s%2?.02:.035});
-        if(bar%8===7&&s>=12){mt({f:[220,180,150,120][s-12],f2:[150,120,100,80][s-12],at:t,dur:.16,g:.16,type:'sine'})}
-        // galloping bass
-        if(!intro||s<8)mt({f:N(root+(s%4===3?12:0)+(s%8===6?7:0)),at:t,dur:sd*.9,a:.004,g:.08,type:'sawtooth',lp:620+(ph%4)*60});
-        // plucked arp
-        if(!intro){const i=this.arp[s%8],n=ch[i]+12+(s>=8?12:0);mt({f:N(n),at:t,dur:sd*1.4,a:.003,g:.022,type:'triangle',rev:.25});if(s%2===0)mt({f:N(n+12),at:t,dur:sd*.6,a:.003,g:.008,type:'square',lp:3200})}
-        // pad
-        if(s===0&&bar%2===0)ch.forEach((n,i)=>mt({f:N(n),at:t,dur:sd*30,a:.5,g:.014,type:'sawtooth',lp:1100,detune:i%2?8:-8,rev:.5}));
-        // lead
-        if(lead&&s%2===0){const m=this.mel[((ph-8)*8+s/2)%64],k=(bar>>4)%2?.45:1;if(m!=null){mt({f:N(m),at:t,dur:sd*3.2,a:.012,g:.04*k,type:'sawtooth',lp:2600,detune:-6,rev:.35});mt({f:N(m),at:t,dur:sd*3.2,a:.012,g:.028*k,type:'square',lp:2000,detune:7,rev:.35})}}
-        if(ph===15&&s===8)mn({type:'highpass',f:1200,f2:9000,at:t,dur:sd*8,a:sd*7,g:.09});
-        // band: palm-muted chugs with open power chords on the changes (resting in the slow bars)
-        const c=bar%32,gr=N(root+12);
-        if(!intro&&!this.slow){if(s===0&&bar%2===0)gtr(gr,t,sd*3.6,.5);else if(s===6||s===12&&bar%2)gtr(N(root+(s===6?17:15)),t,sd*1.8,.42);else if(s%2===0)gtr(gr,t,sd,.5,1)}
-        // orchestra: timpani on the downbeats, spiccato violins before the lead comes in
-        if(!intro&&bar%4===0&&s===0)timp(gr,t,.16);
-        if(!intro&&!this.slow&&ph>=4&&ph<8&&s%2===0){const n=ch[this.arp[(s>>1)%8]]+24;vln(N(n),t,sd*.85,.022,{stac:1,a:.008})}
-        // the half-time bars: big string swells, cellos on the root, a timpani roll back into full speed
-        if(c>=22&&c<29&&s===0&&bar%2===0){ch.forEach((n,i)=>vln(N(n+12+(i===0?12:0)),t,sd*31,.026,{a:sd*6}));cello(N(root+12),t,sd*31,.05);cello(N(root+24),t,sd*31,.03)}
-        if(c===28&&s===0)troll(gr,t,sd*16*2.4,.11);
-        if(c===31&&s===0){timp(gr,t,.22);gtr(gr,t,sd*8,.55)}
-        // lead line: violins double it; every other pass an electric guitar takes the solo
-        if(lead&&s%2===0){const m=this.mel[((ph-8)*8+s/2)%64];if(m!=null){const solo=(bar>>4)%2===1;
-          if(solo)glead(N(m),t,sd*3.1,.5,Math.random()<.35);else vln(N(m+12),t,sd*3.2,.02,{a:.04,n:3})}}}},
-    victory:{bpm:104,lv:.62,chords:[[0,4,7],[5,9,12],[7,11,14],[0,4,7],[-3,0,4],[5,9,12],[7,11,14],[0,4,7,12]],roots:[-24,-19,-17,-24,-27,-19,-17,-24],
+      play(step,t,sd){const bar=step>>4,s=step&15,ci=(bar>>1)%4,ch=this.chords[ci],root=this.roots[ci],ph=bar%16,intro=bar<2,lead=ph>=8,c=bar%32,slow=this.slow,chg=s===0&&bar%2===0;
+        if(intro){if(s===0&&bar===0){strChord(ch,root,t,sd*32,.03,{trem:13,a:sd*12});troll(N(root+12),t+sd*16,sd*16,.1);swell(t+sd*20,sd*12,.05)}return}
+        // percussion
+        if(!slow){if(s===0||s===8)bdrum(t,s?.15:.21);if(s===3||s===6||s===11||s===14)tom(s===6||s===14?110:92,t,s===14?.2:.14);if(s===4||s===12)snare(t,.07);if(s===15&&bar%2)snare(t,.05)}
+        else if(s===0)bdrum(t,.16);
+        if(bar%8===7&&s>=8&&!slow)tom([150,130,112,98,150,130,112,98][s-8],t,.12+(s-8)*.012);
+        if(chg&&bar%2===0&&!slow)timp(N(root+12),t,.16);
+        if(bar%8===0&&s===0){cym(t,.07);bdrum(t,.24)}
+        if(bar%8===7&&s===4)swell(t,sd*12,.05);
+        // strings: spiccato 16ths, cellos and basses on a driving 8th-note pattern
+        if(!slow){const n=ch[this.arp[s%8]]+12+(s>=8?12:0);vla(N(n),t,sd*.8,.026,{stac:1,a:.006,n:2});
+          if(s%2===0){const o=this.ost[(s>>1)%8];cello(N(root+12+o),t,sd*1.6,.05,{stac:1,a:.008,n:2});if(o===0)cbass(N(root),t,sd*1.7,.045,{stac:1,a:.01})}}
+        // brass: trombones punch the chord change, horns answer da-da-DA
+        if(chg&&!slow){tbone(N(root+12),t,sd*3,.08,{stab:1});tbone(N(root+19),t,sd*3,.06,{stab:1})}
+        if(bar%2===1&&(s===10||s===12||s===14)&&!slow&&!lead)horn(N(ch[s===14?2:1]+12),t,sd*(s===14?3:1.6),.06,{stab:s!==14});
+        // sustained violins under the verse
+        if(!lead&&chg&&!slow)ch.forEach(n=>vln(N(n+24),t,sd*31,.014,{a:sd*4}));
+        // melody: horns; the second pass adds trumpets an octave up and violins on top
+        if(lead&&s%2===0&&!slow){const m=this.mel[((ph-8)*8+s/2)%64];if(m!=null){let k=1;while(k<8&&this.mel[((ph-8)*8+s/2+k)%64]==null&&(s/2+k)<8)k++;const d=sd*2*k*.95,big=(bar>>4)%2===1;
+          horn(N(m),t,d,.075);if(big){trpt(N(m+12),t,d,.05);vln(N(m+12),t,d,.022,{a:.04})}else vln(N(m+12),t,d,.016,{a:.05})}}
+        if(lead&&chg&&!slow)strChord(ch,null,t,sd*31,.016,{a:.3});
+        // the half-time chorale
+        if(c>=22&&c<29&&chg){choirCh(ch.map(n=>n+12),t,sd*31,.032,'a');strChord(ch.map(n=>n+12),root,t,sd*31,.034,{a:sd*5});horn(N(ch[0]+12),t,sd*30,.05);horn(N(ch[2]),t,sd*30,.04)}
+        if(c===28&&s===0){troll(N(root+12),t,sd*16*2.4,.12);swell(t,sd*16*2.2,.05)}
+        if(c===31&&s===0){timp(N(root+12),t,.24);cym(t,.08);bdrum(t,.26)}}},
+    /* VICTORY: a fanfare. Trumpets lead with horns underneath, a marching snare, timpani and bass drum, cymbal crashes,
+       violin runs into each phrase, harp glissandi, glockenspiel on the tune, and the choir crowns every 8 bars. */
+    victory:{bpm:104,lv:.44,chords:[[0,4,7],[5,9,12],[7,11,14],[0,4,7],[-3,0,4],[5,9,12],[7,11,14],[0,4,7,12]],roots:[-24,-19,-17,-24,-27,-19,-17,-24],
       mel:[7,null,null,12,16,null,19,null, 21,null,19,null,16,null,12,null, 14,null,16,null,17,null,19,null, 24,null,null,null,19,null,null,null,
            16,null,19,null,21,null,24,null, 21,null,17,null,21,null,24,null, 26,null,24,null,23,null,26,null, 24,null,null,null,null,null,null,null],
       play(step,t,sd){const bar=step>>4,s=step&15,ci=bar%8,ch=this.chords[ci],root=this.roots[ci];
-        if(s===0){mt({f:N(root),at:t,dur:.9,g:.32,type:'sine'});mn({type:'lowpass',f:180,at:t,dur:.5,g:.22,q:.6});ch.forEach((n,i)=>{mt({f:N(n),at:t,dur:sd*7,a:.02,g:.03,type:'sawtooth',lp:2200,detune:i%2?9:-9,rev:.5});mt({f:N(n-12),at:t,dur:sd*7,a:.02,g:.02,type:'sawtooth',lp:1500,rev:.5})})}
-        if(s===6||s===10)ch.forEach(n=>mt({f:N(n),at:t,dur:sd*1.6,a:.01,g:.022,type:'sawtooth',lp:2400,rev:.4}));
-        if(s===8)mt({f:N(root+7),at:t,dur:.5,g:.18,type:'sine'});
-        if(s%2===0)mn({type:'bandpass',f:2400,q:1.2,at:t,dur:.06,g:s%4===0?.05:.025});
-        if(bar%4===3&&s>=12)mn({type:'bandpass',f:2000,q:1,at:t,dur:.05,g:.06});
-        if(s%2===0){const m=this.mel[(bar%4)*8+s/2+((bar>>2)%2)*32];if(m!=null){mt({f:N(m),at:t,dur:sd*3.6,a:.015,g:.045,type:'sawtooth',lp:2400,rev:.4});mt({f:N(m),at:t,dur:sd*3.6,a:.015,g:.04,type:'triangle',rev:.4})}}
-        if(s===12&&bar%2===1)for(let k=0;k<4;k++)mbell(N(24+ch[k%ch.length]+12),t+k*sd*.5,.03);
-        if(s===0){timp(N(root+12),t,.2);gtr(N(root+12),t,sd*5.5,.5)}
-        if(s===8)timp(N(root+19),t,.12);
-        if(s===6||s===10)gtr(N(root+12),t,sd*1.5,.45);
-        if(s===0&&bar%2===0)cello(N(root+12),t,sd*31,.04);
-        if(s%2===0){const m=this.mel[(bar%4)*8+s/2+((bar>>2)%2)*32];if(m!=null){horn(N(m-12),t,sd*3.4,.05);if(bar>=4)vln(N(m+12),t,sd*3.4,.018,{a:.04})}}
-        if(bar%4===3&&s===8)gliss(ch.map(n=>n+12).concat(ch.map(n=>n+24),[ch[0]+36]),t,.045,.03)}},
-    /* title theme: punchy and celestial. Hits on the first beat (the title screen is short-lived),
-       2-bar intro with a riser, then a looping 16-bar hook section: four-on-the-floor kick, claps,
-       pumping pads, offbeat bass, a bell arpeggio high up and a lead hook doubled with bells. */
-    title:{bpm:124,lv:.8,chords:[[-3,0,4,11],[-7,-3,0,4],[0,4,7,14],[-5,-1,2,4]],roots:[-15,-19,-24,-17],
-      arp:[0,1,2,3,4,3,2,1],
+        if(s===0){bdrum(t,.26);timp(N(root+12),t,.2);if(bar%4===0)cym(t,.07);tbone(N(root+12),t,sd*7,.07);horn(N(ch[1]),t,sd*7,.045);cbass(N(root),t,sd*15,.05,{a:.05});cello(N(root+12),t,sd*15,.045,{a:.08})}
+        if(s===8){bdrum(t,.16);timp(N(root+19),t,.12)}
+        if([0,3,4,6,8,10,11,12].includes(s))snare(t,s%4===0?.085:.05);
+        if(bar%4===3&&s===12)sroll(t,sd*4,.06,1);
+        if(s%2===0){const idx=(bar%4)*8+s/2+((bar>>2)%2)*32,m=this.mel[idx];if(m!=null){let k=1;while(k<8&&this.mel[idx+k]==null&&(s/2+k)<8)k++;const d=sd*2*k*.94;
+          trpt(N(m),t,d,.06);horn(N(m-12),t,d,.05);if(bar>=4){vln(N(m+12),t,d,.02,{a:.03});glock(N(m+24),t,.03)}}}
+        if(s===6||s===10)ch.forEach(n=>horn(N(n),t,sd*1.4,.035,{stab:1}));
+        if(bar%4===3&&s>=8&&s<16){const sc=[0,2,4,5,7,9,11,12];vln(N(this.roots[(ci+1)%8]+36+sc[s-8]),t,sd*.9,.022,{stac:1,a:.006})}
+        if(bar%4===3&&s===8)gliss(ch.map(n=>n+12).concat(ch.map(n=>n+24),[ch[0]+36]),t,.045,.028);
+        if(bar%8===7&&s===0){choirCh(ch.map(n=>n+12),t,sd*16,.04,'a');strChord(ch.map(n=>n+12),null,t,sd*16,.03,{a:.2})}}},
+    /* TITLE: the main theme, big and celestial. One hit on the very first beat (the title screen is short-lived), a
+       2-bar tremolo swell, then a 16-bar loop: low strings and taiko drums drive it, horns carry the hook; in the second
+       half trumpets, violins, choir and glockenspiel lift it into the sky, with a snare roll back into the top. */
+    title:{bpm:124,lv:.69,chords:[[-3,0,4,11],[-7,-3,0,4],[0,4,7,14],[-5,-1,2,4]],roots:[-15,-19,-24,-17],
+      arp:[0,1,2,3,4,3,2,1],ost:[0,0,12,0,7,0,12,7],
       mel:[16,null,16,14,16,null,19,21, 21,null,19,null,16,null,14,12, 14,null,16,null,19,null,16,14, 14,null,null,null,11,null,14,16,
            16,null,16,14,16,null,19,21, 24,null,23,null,21,null,19,null, 19,null,21,null,23,null,24,null, 26,null,null,null,23,null,null,null],
-      play(step,t,sd){const bar=step>>4,s=step&15,intro=bar<2,L=bar-2,ph=intro?-1:L%16,ci=intro?bar%4:L%4,ch=this.chords[ci],root=this.roots[ci],build=ph===15&&s>=8;
-        // impacts: the very first beat, and every 16 bars
-        if((bar===0||ph===0)&&s===0){mn({type:'highpass',f:4200,at:t,dur:2.4,a:.004,g:.09,rev:.7});mt({f:90,f2:28,at:t,dur:1.1,g:.34});ch.forEach(n=>mbell(N(n+12),t,.035));
-          timp(N(root+12),t,.22);gtr(N(root+12),t,sd*14,.55);ch.forEach(n=>vln(N(n+12),t,sd*6,.02,{stac:1,a:.01}))}
-        // band & orchestra
-        if(!intro&&!build&&ph!==0){const r=N(root+12);
-          if(ph<8){if(s===0)gtr(r,t,sd*5.6,.5);else if(s===8||s===10||s===14)gtr(r,t,sd,.5,1)}
-          else if(s%2===0)gtr(r,t,s===0||s===6?sd*1.8:sd,.5,!(s===0||s===6))}
-        if(intro&&s===0)ch.forEach(n=>vln(N(n+12),t,sd*16,.016,{a:sd*10}));
-        if(bar===1&&s>=8&&s%2===0)troll(N(root+12),t,sd*2,.07);
-        if(!intro&&ph%4===0&&s===0&&ph)timp(N(root+12),t,.16);
-        if(!intro&&(ph%8>=4)&&!build){const n=ch[[0,1,2,3,2,1,0,1][(s>>1)%8]%ch.length]+12;if(s%2===0)vln(N(n),t,sd*.9,.026,{stac:1,a:.008})}
-        if(!intro&&ph<8&&s===0)cello(N(root+24),t,sd*15,.034);
-        // drums
-        const kick=intro?(bar===0?s%8===0:s%4===0&&s<8):!build&&s%4===0;
-        if(kick){mt({f:155,f2:45,at:t,dur:.24,g:.42});mt({f:2600,f2:700,at:t,dur:.014,g:.05,type:'triangle'})}
-        if(!intro&&(s===4||s===12)){[0,.011,.023].forEach(d=>mn({type:'bandpass',f:1500,q:1.1,at:t+d,dur:.09,g:.1}));mn({type:'bandpass',f:1300,q:.7,at:t+.03,dur:.28,g:.045,rev:.6})}
-        if(!intro&&!build){if(s%4===2)mn({type:'highpass',f:7000,at:t,dur:.13,g:.055});else if(s%2)mn({type:'highpass',f:9500,at:t,dur:.025,g:.022})}
-        if((bar===1||ph===15)&&s>=8)mn({type:'bandpass',f:1700+(s-8)*120,q:.9,at:t,dur:.08,g:.03+(s-8)*.011});
-        if((bar===1||ph===15)&&s===0)mn({type:'highpass',f:700,f2:9000,at:t,dur:sd*16,a:sd*15,g:.085});
-        // bass: offbeat pump with a sub underneath, octave pickup at the end of the bar
-        if(!intro&&!build&&(s%4===2||s===15)){const o=s===15?12:0;mt({f:N(root+o),at:t,dur:sd*1.7,a:.004,g:.085,type:'sawtooth',lp:850});mt({f:N(root+o),at:t,dur:sd*1.7,a:.004,g:.11,type:'sine'})}
-        // pads: long swell in the intro, side-chain style pumping afterwards
-        if(intro&&s===0)ch.forEach((n,i)=>mt({f:N(n),at:t,dur:sd*16,a:.6,g:.015,type:'sawtooth',lp:1500,detune:i%2?9:-9,rev:.6}));
-        if(!intro&&s%4===0)ch.forEach((n,i)=>mt({f:N(n),at:t+.03,dur:sd*3.8,a:sd*1.6,g:.013,type:'sawtooth',lp:1900,detune:i%2?9:-9,rev:.5}));
-        // celestial arpeggio, two octaves up
-        {const i=this.arp[s%8],n=(i<4?ch[i]:ch[0]+12)+24;mt({f:N(n),at:t,dur:sd*2.2,a:.003,g:intro?.008+bar*.006:.016,type:'triangle',rev:.55});if(s%4===0)mt({f:N(n+12),at:t,dur:sd*1.4,a:.003,g:.007,type:'sine',rev:.8})}
-        if(s%2&&Math.random()<.12)mt({f:N(ch[Math.random()*ch.length|0]+36),at:t,dur:.9,g:.011,rev:1});
-        // lead hook (the second half of every 16 bars adds an octave layer)
-        if(!intro&&s%2===0){const idx=(ph%8)*8+s/2,m=this.mel[idx];if(m!=null){let k=1;while(k<8&&idx+k<64&&this.mel[idx+k]==null&&(idx+k)%8)k++;const d=sd*2*k*.92;
-          mt({f:N(m),at:t,dur:d,a:.01,g:.034,type:'sawtooth',lp:3200,detune:-8,rev:.35});mt({f:N(m),at:t,dur:d,a:.01,g:.03,type:'sawtooth',lp:3200,detune:8,rev:.35});mt({f:N(m),at:t,dur:d,a:.01,g:.028,type:'triangle',rev:.35});
-          mbell(N(m+12),t,.02);if(ph>=8){mt({f:N(m+12),at:t,dur:d*.8,a:.01,g:.008,type:'square',lp:4200,rev:.4});glead(N(m),t,d,.5,k>=2);vln(N(m+12),t,d,.016,{a:.05})}}}}},
-    defeat:{bpm:62,lv:.88,chords:[[-3,0,4],[-7,-3,0],[-12,-5,0,4],[-8,-4,-1]],roots:[-27,-31,-24,-32],
+      play(step,t,sd){const bar=step>>4,s=step&15,intro=bar<2,L=bar-2,ph=intro?-1:L%16,ci=intro?bar%4:L%4,ch=this.chords[ci],root=this.roots[ci],build=ph===15&&s>=8,B=ph>=8,
+          r=N(root+12),chg=s===0;
+        // the impacts: the very first beat, and the top of every 16 bars
+        if((bar===0||ph===0)&&s===0){bdrum(t,.3);timp(r,t,.26);cym(t,.09,3.2);mt({f:90,f2:28,at:t,dur:1.1,g:.15});
+          tbone(r,t,sd*6,.09,{stab:1});tbone(N(root+19),t,sd*6,.07,{stab:1});horn(N(ch[1]+12),t,sd*6,.06,{stab:1});trpt(N(ch[2]+12),t,sd*6,.045,{stab:1});choirCh(ch.slice(0,3).map(n=>n+12),t,sd*8,.03,'a')}
+        if(intro){if(bar===0&&s===0)strChord(ch,root,t,sd*32,.03,{trem:14,a:sd*14});
+          if(bar===1&&s===0){troll(r,t+sd*8,sd*8,.09);swell(t,sd*16,.055)}if(bar===1&&s===8)gliss(ch.map(n=>n+12).concat(ch.map(n=>n+24),ch.map(n=>n+36)),t,.05,.028);return}
+        // percussion: taiko groove, snare in the second half, a roll into the loop
+        if(!build){if(s===0||s===10)bdrum(t,s?.13:.19);if(s===6||s===14)tom(s===6?118:96,t,.15);if(s===3||s===11)tom(140,t,.08);if(B&&(s===4||s===12))snare(t,.07)}
+        if(ph%4===0&&chg&&ph)timp(r,t,.16);
+        if(ph===8&&chg){cym(t,.08);bdrum(t,.24)}
+        if(build&&s===8){sroll(t,sd*8,.08,1);swell(t,sd*8,.06);[0,2,4,6].forEach(k=>tom([150,130,112,96][k/2],t+sd*k,.14))}
+        // strings: cellos/basses ostinato, violas spiccato in the second half, violins hold the chords
+        if(!build&&s%2===0){const o=this.ost[(s>>1)%8];cello(N(root+12+o),t,sd*1.7,.05,{stac:1,a:.008,n:2});if(o===0)cbass(N(root),t,sd*1.8,.055,{stac:1,a:.01})}
+        if(B&&!build){const n=ch[[0,1,2,3,2,1,0,1][(s>>1)%8]%ch.length]+24;if(s%2===0)vla(N(n),t,sd*.85,.024,{stac:1,a:.006,n:2})}
+        if(chg&&!build)ch.forEach(n=>vln(N(n+12+(B?12:0)),t,sd*15.5,B?.013:.017,{a:sd*3}));
+        // celestial harp in the first half, celesta high in the second
+        if(!B&&s%2===0){const i=this.arp[(s>>1)%8],n=(i<4?ch[i]:ch[0]+12)+24;harp(N(n),t,.018)}
+        if(B&&s%4===2){const i=this.arp[(s>>2)%8],n=(i<4?ch[i]:ch[0]+12)+36;cel(N(n),t,.022)}
+        if(B&&chg&&!build)choirCh(ch.slice(0,3).map(n=>n+12),t,sd*15.5,.026,'a');
+        // the hook: horns, then trumpets + violins + glockenspiel an octave up in the second half
+        if(s%2===0){const idx=(ph%8)*8+s/2,m=this.mel[idx];if(m!=null){let k=1;while(k<8&&idx+k<64&&this.mel[idx+k]==null&&(idx+k)%8)k++;const d=sd*2*k*.93;
+          horn(N(m-12),t,d,.075);if(B){trpt(N(m),t,d,.05);vln(N(m+12),t,d,.018,{a:.04});glock(N(m+24),t,.025)}else flute(N(m+12),t,d,.022)}}}},
+    /* DEFEAT: an elegy. Low strings and an 'ooh' choir, a solo oboe, then a cello taking the line, harp and celesta. */
+    defeat:{bpm:62,lv:.49,chords:[[-3,0,4],[-7,-3,0],[-12,-5,0,4],[-8,-4,-1]],roots:[-27,-31,-24,-32],
       mel:[16,null,15,12,null,null,11,null, 12,null,9,null,7,null,null,null, 9,null,7,4,null,null,7,null, 8,null,null,null,4,null,null,null],
       play(step,t,sd){const bar=step>>4,s=step&15,ci=(bar>>1)%4,ch=this.chords[ci],root=this.roots[ci];
-        if(s===0&&bar%2===0){const dur=sd*32;ch.forEach((n,i)=>mt({f:N(n),at:t,dur:dur+1.5,a:2.2,g:.03,type:i%2?'triangle':'sine',lp:1200,detune:i%2?6:-6,rev:.9}));mt({f:N(root),at:t,dur:dur+1,a:1.6,g:.11,type:'sine'});mn({type:'lowpass',f:380,f2:220,at:t,dur:dur,a:dur*.5,g:.03,q:.5})}
-        if(s===0||s===3)mt({f:55,f2:40,at:t,dur:.25,g:s?.1:.16,type:'sine'});
-        if(s%2===0){const m=this.mel[(bar%4)*8+s/2];if(m!=null&&bar>=1){mbell(N(m),t,.025);let k=1;while(k<8&&this.mel[(bar%4)*8+s/2+k]==null&&(s/2+k)<8)k++;vln(N(m),t,sd*2*k*.96,.04,{n:1,vib:18,a:.25})}}
-        if(s===0&&bar%2===0)cello(N(root+12),t,sd*31,.045);
-        if(s===8)harp(N(ch[bar%ch.length]+12),t,.03);
-        if(s===12&&bar%2===1)gcl(N(ch[ch.length-1]+12),t,.035)}}};
+        if(s===0&&bar%2===0){const dur=sd*32+.6;strChord(ch,root,t,dur,.03,{mute:1,a:1.2});choirCh(ch.map(n=>n+12),t+.3,dur,.016,'u');if(bar%4===0)timp(N(root+12),t,.07)}
+        if(s%2===0){const m=this.mel[(bar%4)*8+s/2];if(m!=null&&bar>=1){let k=1;while(k<8&&this.mel[(bar%4)*8+s/2+k]==null&&(s/2+k)<8)k++;const d=sd*2*k*.96;
+          if((bar>>2)%2===0)oboe(N(m),t,d,.04);else cello(N(m-12),t,d,.05,{n:1,vib:14,a:.25})}}
+        if(s===8)harp(N(ch[bar%ch.length]+12),t,.026);
+        if(s===12&&bar%2===1)cel(N(ch[ch.length-1]+24),t,.026)}}};
   function mTick(){if(!ctx||!mTrack)return;const tr=TR[mTrack];while(mNext<ctx.currentTime+.25){const sd=60/(tr.tempo?tr.tempo(mStep):tr.bpm)/4;tr.play(mStep,mNext,sd);mNext+=sd;mStep++}}
   /* each track has a trim (lv) so the fuller arrangements sit at the same loudness as before */
   function mLevel(){const tr=TR[mTrack||mWant];return mOn&&!document.hidden?MVOL*mDuck*(tr&&tr.lv||1):0}
@@ -3929,7 +4001,7 @@ function init(){
   initCloud();
   if(typeof titleShow==='function')titleShow();
 }
-/* ───────────── Binder: realistic page turns (v1.7.0) ─────────────
+/* ───────────── Binder: realistic page turns (v1.7.0, compositor playback v1.8.0) ─────────────
    The turning page folds along a straight line like real paper: the part past the fold flips over and shows its
    back, with a highlight on the fold, shading under the curl and a shadow cast on the page underneath.
    Geometry: in the leaf's own frame the spine is x=0 and the page is W×H. The lifted corner C is (W,H) (or (W,0)
@@ -3949,9 +4021,9 @@ function ptBacksHTML(pi){const set=cs(),X=st(),sh=shm(),OW=ownL(X,sh),total=set.
   return h+'</div>'}
 /* build the fold layers over the leaf; returns a controller */
 function ptMake(two,backHTML,frontNodes,backNodes){const book=$('#book'),pg=$('#pages'),ref=two?pg.children[1]:pg.children[0];
-  const br=book.getBoundingClientRect(),r=ref.getBoundingClientRect(),W=r.width,H=r.height,D=Math.ceil(2.4*Math.hypot(W,H));
+  const br=book.getBoundingClientRect(),r=ref.getBoundingClientRect(),W=r.width,H=r.height,D=Math.ceil(2.2*Math.hypot(W,H));
   const el=document.createElement('div');el.className='pt'+(two?' two':' one');el.style.cssText=`left:${r.left-br.left}px;top:${r.top-br.top}px;width:${W}px;height:${H}px;--D:${D}px`;
-  el.innerHTML=`<div class="pt-clip"><div class="pt-us"></div><div class="pt-w pt-w1"><div class="page pt-f"><i class="pt-fs"></i></div></div></div>`+
+  el.innerHTML=`<div class="pt-clip"><i class="pt-us"></i><div class="pt-w pt-w1"><div class="page pt-f"><i class="pt-fs"></i></div></div></div>`+
     `<div class="pt-flapc"><div class="pt-w pt-w2"><div class="page pt-b${two?'':' pt-back1'}">${two?'<div class="pt-mir"></div>':backHTML}<i class="pt-bs"></i></div></div></div>`;
   book.appendChild(el);
   const T={el,W,H,D,two,w1:el.querySelector('.pt-w1'),w2:el.querySelector('.pt-w2'),f:el.querySelector('.pt-f'),b:el.querySelector('.pt-b'),fs:el.querySelector('.pt-fs'),bs:el.querySelector('.pt-bs'),us:el.querySelector('.pt-us'),C:[W,H],lift:.2};
@@ -3961,25 +4033,37 @@ function ptMake(two,backHTML,frontNodes,backNodes){const book=$('#book'),pg=$('#
 function ptConstrain(T,P){const {W,H,C}=T;let [x,y]=P;const s1=[0,C[1]],s2=[0,H-C[1]],R2=Math.hypot(W,H);
   let dx=x-s1[0],dy=y-s1[1],d=Math.hypot(dx,dy);if(d>W){x=s1[0]+dx/d*W;y=s1[1]+dy/d*W}
   dx=x-s2[0];dy=y-s2[1];d=Math.hypot(dx,dy);if(d>R2){x=s2[0]+dx/d*R2;y=s2[1]+dy/d*R2}return[x,y]}
-function ptSet(T,P){const {W,D,C}=T;P=ptConstrain(T,P);T.P=P;let dx=C[0]-P[0],dy=C[1]-P[1],L=Math.hypot(dx,dy);if(L<1){dx=1;dy=0;L=1}
-  const nx=dx/L,ny=dy/L,Mx=C[0]-dx/2,My=C[1]-dy/2,ph=Math.atan2(ny,nx);
-  const wf=`translate(${Mx.toFixed(2)}px,${My.toFixed(2)}px) rotate(${ph.toFixed(5)}rad) translate(${-D}px,${-D/2}px)`;
-  T.w1.style.transform=wf;T.w2.style.transform=wf;
-  const inv=`rotate(${(-ph).toFixed(5)}rad) translate(${(-Mx).toFixed(2)}px,${(-My).toFixed(2)}px)`;
-  T.f.style.transform=`translate(${D}px,${D/2}px) ${inv}`;T.b.style.transform=`translate(${D}px,${D/2}px) scale(-1,1) ${inv}`;
-  const st=`translate(${Mx.toFixed(2)}px,${My.toFixed(2)}px) rotate(${ph.toFixed(5)}rad)`;
-  T.fs.style.transform=`${st} translate(-70px,${-D/2}px)`;T.bs.style.transform=`${st} translate(0,${-D/2}px)`;T.us.style.transform=`${st} translate(0,${-D/2}px)`;
-  const pr=Math.max(0,Math.min(1,(C[0]-P[0])/(2*W)));T.pr=pr;
-  T.us.style.opacity=(Math.min(1,pr*7)*(.45+.55*(1-pr))).toFixed(3);T.fs.style.opacity=Math.min(1,pr*6).toFixed(3);T.bs.style.opacity=(.65+.35*Math.sin(Math.PI*pr)).toFixed(3)}
+/* the pose for one corner position: a transform for every layer and the shading strengths. Every transform keeps the
+   same list of functions, so the browser can interpolate between sampled poses on the compositor.
+   The shading strips are tiny 32×32 gradient tiles scaled up (instead of page-sized textures). */
+const PT_S=32;
+function ptPose(T,P){const {W,D,C}=T;P=ptConstrain(T,P);let dx=C[0]-P[0],dy=C[1]-P[1],L=Math.hypot(dx,dy);if(L<1){dx=1;dy=0;L=1}
+  const Mx=(C[0]-dx/2).toFixed(2),My=(C[1]-dy/2).toFixed(2),ph=Math.atan2(dy/L,dx/L),pr=Math.max(0,Math.min(1,(C[0]-P[0])/(2*W))),a=ph.toFixed(5),na=(-ph).toFixed(5);
+  const st=`translate(${Mx}px,${My}px) rotate(${a}rad)`,sc=w=>`scale(${(w/PT_S).toFixed(4)},${(D/PT_S).toFixed(4)})`;
+  return{P,pr,w:`${st} translate(${-D}px,${-D/2}px)`,
+    f:`translate(${D}px,${D/2}px) scale(1,1) rotate(${na}rad) translate(${-Mx}px,${-My}px)`,b:`translate(${D}px,${D/2}px) scale(-1,1) rotate(${na}rad) translate(${-Mx}px,${-My}px)`,
+    fs:`${st} translate(-70px,${-D/2}px) ${sc(70)}`,bs:`${st} translate(0px,${-D/2}px) ${sc(W*.85)}`,us:`${st} translate(0px,${-D/2}px) ${sc(W*.55)}`,
+    ou:Math.min(1,pr*7)*(.45+.55*(1-pr)),of:Math.min(1,pr*6),ob:.65+.35*Math.sin(Math.PI*pr)}}
+function ptApply(T,q){T.P=q.P;T.pr=q.pr;T.w1.style.transform=q.w;T.w2.style.transform=q.w;T.f.style.transform=q.f;T.b.style.transform=q.b;
+  T.fs.style.transform=q.fs;T.bs.style.transform=q.bs;T.us.style.transform=q.us;T.us.style.opacity=q.ou.toFixed(3);T.fs.style.opacity=q.of.toFixed(3);T.bs.style.opacity=q.ob.toFixed(3)}
+function ptSet(T,P){ptApply(T,ptPose(T,P))}
+/* play a sampled path of corner positions as compositor animations (smooth even when the main thread is busy) */
+function ptPlay(T,pts,dur){return new Promise(res=>{if(T.anims)T.anims.forEach(a=>a.cancel());
+  const qs=pts.map(P=>ptPose(T,P)),off=i=>i/(qs.length-1),kf=(fn)=>qs.map((q,i)=>Object.assign({offset:off(i)},fn(q))),o={duration:dur,easing:'linear',fill:'forwards'};
+  T.anims=[T.w1.animate(kf(q=>({transform:q.w})),o),T.w2.animate(kf(q=>({transform:q.w})),o),T.f.animate(kf(q=>({transform:q.f})),o),T.b.animate(kf(q=>({transform:q.b})),o),
+    T.fs.animate(kf(q=>({transform:q.fs,opacity:q.of})),o),T.bs.animate(kf(q=>({transform:q.bs,opacity:q.ob})),o),T.us.animate(kf(q=>({transform:q.us,opacity:q.ou})),o)];
+  T.anims[0].finished.then(()=>{const last=qs[qs.length-1];ptApply(T,last);T.anims.forEach(a=>a.cancel());T.anims=null;res()}).catch(()=>res())})}
 /* the corner's path for an automatic turn: an arc around the spine, lifting as it goes */
 function ptPath(T,p){const a=p*Math.PI,up=T.C[1]>T.H/2?-1:1;return[T.W*Math.cos(a),T.C[1]+up*T.W*Math.sin(a)*T.lift]}
 /* starts moving at once (a page lifts quickly), sweeps through the middle, settles softly */
 const ptEase=t=>{const s=.5-.5*Math.cos(Math.PI*t);return s*.82+(1-Math.pow(1-t,2))*.18};
-function ptAnim(T,from,to,dur){return new Promise(res=>{const t0=performance.now();
-  const step=now=>{const k=Math.min(1,(now-t0)/dur),e=ptEase(k);ptSet(T,ptPath(T,from+(to-from)*e));if(k<1)requestAnimationFrame(step);else res()};requestAnimationFrame(step)})}
+const PT_N=48;
+function ptAnim(T,from,to,dur){const pts=[];for(let i=0;i<=PT_N;i++){const e=ptEase(i/PT_N);pts.push(ptPath(T,from+(to-from)*e))}return ptPlay(T,pts,dur)}
 /* from wherever the corner is (after a drag) to the end or back to the start */
-function ptSettle(T,toEnd,dur){return new Promise(res=>{const t0=performance.now(),P0=T.P.slice(),Pt=toEnd?ptPath(T,1):[T.W,T.C[1]],up=T.C[1]>T.H/2?-1:1;
-  const step=now=>{const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);ptSet(T,[P0[0]+(Pt[0]-P0[0])*e,P0[1]+(Pt[1]-P0[1])*e+up*T.W*.1*Math.sin(Math.PI*e)*(toEnd?1:.5)]);if(k<1)requestAnimationFrame(step);else res()};requestAnimationFrame(step)})}
+function ptSettle(T,toEnd,dur){const P0=T.P.slice(),Pt=toEnd?ptPath(T,1):[T.W,T.C[1]],up=T.C[1]>T.H/2?-1:1,pts=[],n=Math.max(12,Math.round(PT_N*dur/700));
+  for(let i=0;i<=n;i++){const k=i/n,e=1-Math.pow(1-k,3);pts.push([P0[0]+(Pt[0]-P0[0])*e,P0[1]+(Pt[1]-P0[1])*e+up*T.W*.1*Math.sin(Math.PI*e)*(toEnd?1:.5)])}
+  return ptPlay(T,pts,dur)}
+const ptFrames=n=>new Promise(r=>{const f=()=>--n<=0?r():requestAnimationFrame(f);requestAnimationFrame(f)});
 /* set up a turn from view v to n: moves the real (already decoded) page nodes into place; returns {T,done(ok)} */
 async function ptPrepare(v,n){const set=cs(),two=per()===2,pg=$('#pages'),dir=n>v?1:-1;
   const built=await buildPages(set,pagesOf(n));let T,done;
@@ -3993,8 +4077,9 @@ async function ptPrepare(v,n){const set=cs(),two=per()===2,pg=$('#pages'),dir=n>
       done=ok=>{if(!ok)P0.replaceChildren(...[...T.f.childNodes].filter(x=>!x.classList||!x.classList.contains('pt-fs')))}}
     else{T=ptMake(false,ptBacksHTML(pagesOf(n)[0]),[...nb.childNodes]);
       done=ok=>{if(ok)P0.replaceChildren(...[...T.f.childNodes].filter(x=>!x.classList||!x.classList.contains('pt-fs')))}}}
-  T.dir=dir;ptSet(T,dir>0?[T.W,T.C[1]]:ptPath(T,1));
-  return{T,done:ok=>{done(ok);T.el.remove()}}}
+  T.dir=dir;ptSet(T,dir>0?[T.W,T.C[1]]:ptPath(T,1));$('#book').classList.add('pturn');
+  await ptFrames(2);
+  return{T,done:ok=>{if(T.anims)T.anims.forEach(a=>a.cancel());done(ok);T.el.remove();$('#book').classList.remove('pturn')}}}
 /* drag a page with a finger: horizontal drags turn, vertical ones scroll as usual */
 function ptInit(){const pg=$('#pages');if(!pg)return;
   pg.addEventListener('pointerdown',e=>{if(e.button>0||PT.drag||turning||placing||celebrating||navLock||!bk().open||REDUCED)return;
@@ -4012,10 +4097,10 @@ async function ptMove(e){const D=PT.drag;if(!D||e.pointerId!==D.id)return;const 
   if(D.pending||!D.R)return;e.preventDefault();const T=D.R.T,now=performance.now();
   D.vx=D.vx*.6+((e.clientX-D.lx)/Math.max(1,now-D.lt))*.4;D.lx=e.clientX;D.lt=now;
   const mx=e.clientX-D.x0,my=e.clientY-D.y0,base=[D.P0[0]+mx*1.25,D.P0[1]+my*.55],pr=Math.max(0,Math.min(1,(T.W-base[0])/(2*T.W))),up=T.C[1]>T.H/2?-1:1;
-  ptSet(T,[base[0],base[1]+up*T.W*.16*Math.sin(Math.PI*pr)])}
+  D.want=[base[0],base[1]+up*T.W*.16*Math.sin(Math.PI*pr)];if(!D.raf)D.raf=requestAnimationFrame(()=>{D.raf=0;if(D.want&&PT.drag===D)ptSet(T,D.want)})}
 function ptOff(){removeEventListener('pointermove',ptMove);removeEventListener('pointerup',ptUp);removeEventListener('pointercancel',ptUp);PT.drag=null}
 async function ptUp(e){const D=PT.drag;if(!D||e.pointerId!==D.id)return;ptOff();if(!D.on)return;PT.eat=performance.now();
-  while(D.pending)await sleep(16);const R=D.R;if(!R){turning=false;return}const T=R.T,fwd=T.dir>0;
+  while(D.pending)await sleep(16);const R=D.R;if(!R){turning=false;return}const T=R.T,fwd=T.dir>0;cancelAnimationFrame(D.raf);if(D.want)ptSet(T,D.want);
   const ok=fwd?(T.pr>.33||D.vx<-.45)&&D.vx<.35:(T.pr<.67||D.vx>.45)&&D.vx>-.35;
   const dist=ok?(fwd?1-T.pr:T.pr):(fwd?T.pr:1-T.pr);
   await ptSettle(T,fwd?ok:!ok,Math.max(180,Math.min(520,dist*640)));
@@ -4152,7 +4237,7 @@ function skipToSummary(){if(['spread','show','done'].includes(O.mode)){const s=$
 function flipLift(el,t,k){if(REDUCED||!el)return;k=k||1;const up=(10+t*3)*k,s=1+(.1+t*.025)*k;
   el.animate([{transform:'none'},{transform:`translateY(${-up}px) scale(${s}) rotate(${(Math.random()-.5)*6*k}deg)`,offset:.4},{transform:`translateY(${up*.12}px) scale(${1-.02*k})`,offset:.78},{transform:'none'}],{duration:620,easing:'cubic-bezier(.3,.7,.3,1)'})}
 /* once face up, a band of light sweeps across the card (brighter for rarer cards) */
-function sheen(el,t){if(REDUCED||!el)return;const c=el.querySelector('.card');if(!c)return;const s=document.createElement('i');s.className='sheen r'+t;c.appendChild(s);setTimeout(()=>s.remove(),900)}
+function sheen(el,t){if(REDUCED||!el)return;const c=el.querySelector('.card .front')||el.querySelector('.card');if(!c)return;const s=document.createElement('i');s.className='sheen r'+t;c.appendChild(s);setTimeout(()=>s.remove(),900)}
 /* while you choose, rare cards that are still face down shed a few sparkles (stronger for rarer ones) */
 function spGlint(){clearInterval(SP.gl);if(REDUCED)return;SP.gl=setInterval(()=>{if(oEl.hidden||!document.getElementById('spread')){clearInterval(SP.gl);return}
   if(O.mode!=='spread')return;document.querySelectorAll('#spread .sp[class*="hint-"]').forEach(el=>{const m=el.className.match(/hint-(\d|shiny)/);if(!m)return;const t=m[1]==='shiny'?5:+m[1];if(Math.random()>.25+t*.12)return;
@@ -4751,6 +4836,7 @@ function morphKids(par,tpl){
 function arPatch(el,html){MORPH_TPL.innerHTML=html;morphKids(el,MORPH_TPL.content);MORPH_TPL.innerHTML=''}
 function renderArena(){
   const g=BT.g;if(!g)return;const me=g.me,s=BT.sel;BT.pvCur=g.over?null:pvNow();
+  const hd0=document.getElementById('hand'),was=new Map();if(hd0&&!BT.fast)for(const c of hd0.children)was.set(c.dataset.hid,c.offsetLeft);
   const n=me.hand.length;
   arPatch($('#arBody'),
    `<div class="ar-top"><button class="ghost" id="arQuit">${BT.quitArm?'Tap again to forfeit':'Forfeit'}</button>${BT.online?'<span class="ol-t" id="olTimer"></span>':''}<span class="ar-tr">${DEV.on?'<button class="ghost devbtn" id="arDev" title="Developer Mode">DEV</button>':''}<span class="ar-t" id="arTurn">Turn ${Math.max(1,Math.ceil(g.turnNo/2))}</span></span></div>`+
@@ -4759,7 +4845,7 @@ function renderArena(){
    boardHTML('me')+sideHTML('me')+
    `<div class="hand sl-${slOf('me')}" id="hand" style="--n:${n}">`+me.hand.map((h,i)=>{const ok=g.turn==='me'&&!BT.busy&&canPlay(me,h.d);
      return hcHTML(h.d,{uid:h.uid,cls:(ok?' ok':'')+(s&&s.hid===h.uid?' sel':'')+(h.inc?' inc':''),style:`--i:${i - (n-1)/2}`})}).join('')+`</div>`);
-  layoutHand();if(BT.online)paintOnlineBar();statDiff();
+  layoutHand();handFlip(was);if(BT.online)paintOnlineBar();statDiff();
   /* backdrop follows the turn (the Core auras keep their phase across re-renders via --ph: a negative delay, all periods divide 60s) */
   const A=$('#arena'),tm=g.turn==='me'&&!g.over,ta=g.turn!=='me'&&!g.over;if(A.classList.contains('t-me')!==tm)A.classList.toggle('t-me',tm);if(A.classList.contains('t-ai')!==ta)A.classList.toggle('t-ai',ta);if(A.classList.contains('fast')!==!!BT.fast)A.classList.toggle('fast',!!BT.fast);/* simulations (tests) skip the moving backdrop */
 }
@@ -4772,6 +4858,11 @@ function statDiff(){const g=BT.g;if(!g||BT.fast)return;if(BT.stG!==g){BT.stG=g;B
     P.set(u.uid,[a,h])});
   for(const k of [...P.keys()])if(!seen.has(k))P.delete(k)}
 function statUp(el,n){if(!el)return;floatAt(el,'+'+n,'up');el.classList.add('bump')}
+/* the hand re-fans smoothly: each card slides from its old place to its new one with the independent `translate`
+   property (transform keeps the fan rotation), so layout is never animated and positions are final at once */
+function handFlip(was){if(BT.fast||REDUCED||!was.size)return;const hd=$('#hand');if(!hd)return;
+  for(const c of hd.children){const o=was.get(c.dataset.hid);if(o==null)continue;const dx=o-c.offsetLeft;
+    if(Math.abs(dx)>.5)c.animate([{translate:`${dx}px 0`},{translate:'0 0'}],{duration:320,easing:'cubic-bezier(.25,1,.4,1)',composite:'add'})}}
 function layoutHand(){const hd=$('#hand');if(!hd)return;const cs=[...hd.children];if(!cs.length)return;const w=cs[0].offsetWidth,W=hd.clientWidth-8,n=cs.length;
   const ml=n>1?Math.min(8,(W-n*w)/(n-1)):0;cs.forEach((c,i)=>{c.style.marginLeft=i?ml+'px':'0'})}
 function canAct(){const g=BT.g,me=g.me;return me.hand.some(h=>canPlay(me,h.d))||me.board.some(u=>u&&u.ready&&uAtk('me',u)>0)}
@@ -4803,10 +4894,15 @@ async function drawCard(side,quick){
   const d=p.deck.pop();
   if(p.hand.length>=HANDMAX){p.discard.push(d);renderArena();floatAt(elPile('disc',side),'Hand full: burned','dmg');Snd.deal();await bsleep(500);return}
   const h={uid:++BT.uid,d,inc:true};p.hand.push(h);renderArena();
-  const from=rc(elPile('deck',side)),toEl=elH(h.uid),to=rc(toEl);Snd.deal();
-  if(!BT.fast){if(side==='me'){const f=flyer(`<div class="fl3"><div class="ff">${hcHTML(d)}</div><div class="fb cb sl-${slOf(side)}"></div></div>`,to);f.style.transform='';
-      const [fx,fy]=ctr(from),[tx,ty]=ctr(to),s=from.width/to.width;
-      await f.animate([{transform:`translate(${fx-tx}px,${fy-ty}px) scale(${s}) rotateY(180deg)`},{transform:`translate(${(fx-tx)*.4}px,${(fy-ty)*.4-50}px) scale(1.15) rotateY(90deg)`,offset:.45},{transform:'translate(0,0) scale(1) rotateY(0deg)'}],{duration:quick?380:560,easing:'cubic-bezier(.3,.7,.3,1)',fill:'forwards'}).finished;f.remove()}
+  const from=rc(elPile('deck',side)),toEl=elH(h.uid),to=rc(toEl);Snd.deal();if(!toEl&&side==='me'){h.inc=false;renderArena();return}
+  if(!BT.fast){if(side==='me'){
+      /* the card's own box without its fan tilt, and the tilt itself, so the flyer ends exactly on top of it */
+      toEl.style.transition='none';toEl.style.transform='none';const box=toEl.getBoundingClientRect();toEl.style.transform='';
+      const k=parseFloat(toEl.style.getPropertyValue('--i'))||0,ra=k*2.2,ty0=k*k*1.3;
+      const f=flyer(`<div class="fl3"><div class="ff">${hcHTML(d)}</div><div class="fb cb sl-${slOf(side)}"></div></div>`,box);f.style.transformOrigin='50% 120%';
+      const [fx,fy]=ctr(from),[tx,ty]=ctr(box),s=from.width/box.width,K=(x,y,sc,ry,r,t2)=>`translate(${x}px,${y}px) scale(${sc}) rotateY(${ry}deg) rotate(${r}deg) translateY(${t2}px)`;
+      await f.animate([{transform:K(fx-tx,fy-ty,s,180,0,0)},{transform:K((fx-tx)*.4,(fy-ty)*.4-50,1.15,90,ra*.5,ty0*.5),offset:.45},{transform:K(0,0,1,0,ra,ty0)}],{duration:quick?380:560,easing:'cubic-bezier(.3,.7,.3,1)',fill:'forwards'}).finished;
+      h.inc=false;renderArena();f.remove()}
     else await flyTo(flyer(`<div class="cb sl-${slOf(side)}"></div>`,from),from,to,{dur:quick?320:440,arc:20})}
   h.inc=false;renderArena();
 }
@@ -5676,6 +5772,11 @@ function initTutorial(){
    before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
    Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
 const CHANGELOG=[
+  {v:'1.8.0',d:'3 Nov 2026',items:[
+    'A new orchestral soundtrack. Every track is now played live by a synthesized orchestra in a concert hall: strings, horns, trumpets and trombones, flute, oboe, a choir, harp, celesta, glockenspiel and timpani. The title has a big celestial main theme, menus get a calm nocturne, battles get a driving action cue that broadens into a choral climax, victories get a fanfare and defeats an elegy.',
+    'Binder pages turn smooth as silk. The whole page curl now runs on the graphics chip instead of being redrawn every frame, the light and shadow along the fold are far lighter to draw, and card shimmer pauses while a page is moving, so turns no longer step or stutter.',
+    'Cards drawn into your hand fly to exactly where they land, already tilted to match the fan, and the rest of your hand slides over smoothly to make room, with no jump at the end.',
+    'Smoother everywhere: animated sleeves, glowing buttons, target highlights, pass bars, card hints and starfields were rebuilt to move without repainting the screen, so they stay fluid on phones.']},
   {v:'1.7.0',d:'3 Nov 2026',items:[
     'Binder pages turn like real paper: the page folds over with light along the fold and a shadow on the page below, and on phones you see the backs of your cards (in your sleeves) through the back of the page. Drag a page with your finger to turn it; let go early and it falls back. Phones get the page turn too (pages used to slide).',
     'Battles hit harder: attacks wind up, lunge and freeze for a split second on impact; hits flash, knock the target back and throw sparks, and big ones shake the screen. Destroyed units shatter into shards of their art. Units land with a slam, Legendaries with a pillar of light. Your Core pulses the screen red when it is hit, and the winning blow plays in slow motion.',
