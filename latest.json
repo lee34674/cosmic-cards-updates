@@ -1,11 +1,11 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "game": {
-    "file": "game-1.8.0.html",
-    "sha256": "341fe68e5f14c30c00a376f18c79c054454da8b9f867332d97d8c8cb9d983d62",
-    "size": 6151905
+    "file": "game-1.9.0.html",
+    "sha256": "6147ef3659d968262c1a8f45aa2ece72cb57a9d0a4a0a9ca396765fe5c4e8a20",
+    "size": 6812948
   },
-  "notes": "v1.8.0: silky binder page turns, smooth hand draws, smoother animations everywhere, and a new orchestral soundtrack",
-  "date": "2026-11-03T16:29:34.768Z",
-  "sig": "6YasVE91fYnTt0WU/SmKfIV5eJVl0c0CO65gKAv6FGqw29xDzMelX5IFIXFscxKR5azHTCH/aIkZNy9jAJBgBQ=="
+  "notes": "v1.9.0: packs tear open like real foil, the orchestra plays in stereo with new harmony parts, a new battle arena backdrop, smoother menus and sharper Alien Horizons art",
+  "date": "2026-11-12T12:43:41.791Z",
+  "sig": "4MgUfcjaTLvneRr+tzjGZy/ry2M1hn97hfhnqj5BINwx0pJ5wdu66pWw/SvyJaDEuueFvo+AyP34UGjLgmK9AA=="
 }
