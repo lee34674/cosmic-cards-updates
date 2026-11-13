@@ -1,11 +1,11 @@
 {
-  "version": "1.10.0",
+  "version": "1.11.0",
   "game": {
-    "file": "game-1.10.0.html",
-    "sha256": "97118730d7a9157271beb790a83d9c7a5c09f496f67359d9fdc0e60925d81ce3",
-    "size": 11189249
+    "file": "game-1.11.0.html",
+    "sha256": "e7b915fff8aafee9bcf911ce0e377890c05bc01fb059b74c0fa273b0b939e9cf",
+    "size": 11189860
   },
-  "notes": "v1.10.0: a real orchestra. Every theme is now a recording played with real sampled instruments (strings, brass, woodwinds, harp, timpani and percussion), looping seamlessly; the synthesized score remains as a fallback",
-  "date": "2026-11-13T00:49:33.091Z",
-  "sig": "glTaJzl3q1UZ0pnZt90bh6VQNrmI8/rBUhOxIhTiGC+AqGMApXN7dpAYxvxB7l2AXxVMflAm3XpMRD17ln8cBg=="
+  "notes": "v1.11.0: the game is now Astrodex, by Crymsin Comet Studios. New name on the title screen, intro, Series 01 pack and binder; saves are untouched",
+  "date": "2026-11-13T20:12:13.112Z",
+  "sig": "cKWaAP9Hzlfsaq5YkAVV71nQ9xeaATpn00+obiE+XZnj2DFGXhDPsikRhKoh/Mr0ocgCnBr6wydrw/5PqfV8Aw=="
 }
