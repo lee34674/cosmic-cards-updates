@@ -1,11 +1,11 @@
 {
-  "version": "1.9.0",
+  "version": "1.10.0",
   "game": {
-    "file": "game-1.9.0.html",
-    "sha256": "6147ef3659d968262c1a8f45aa2ece72cb57a9d0a4a0a9ca396765fe5c4e8a20",
-    "size": 6812948
+    "file": "game-1.10.0.html",
+    "sha256": "97118730d7a9157271beb790a83d9c7a5c09f496f67359d9fdc0e60925d81ce3",
+    "size": 11189249
   },
-  "notes": "v1.9.0: packs tear open like real foil, the orchestra plays in stereo with new harmony parts, a new battle arena backdrop, smoother menus and sharper Alien Horizons art",
-  "date": "2026-11-12T12:43:41.791Z",
-  "sig": "4MgUfcjaTLvneRr+tzjGZy/ry2M1hn97hfhnqj5BINwx0pJ5wdu66pWw/SvyJaDEuueFvo+AyP34UGjLgmK9AA=="
+  "notes": "v1.10.0: a real orchestra. Every theme is now a recording played with real sampled instruments (strings, brass, woodwinds, harp, timpani and percussion), looping seamlessly; the synthesized score remains as a fallback",
+  "date": "2026-11-13T00:49:33.091Z",
+  "sig": "glTaJzl3q1UZ0pnZt90bh6VQNrmI8/rBUhOxIhTiGC+AqGMApXN7dpAYxvxB7l2AXxVMflAm3XpMRD17ln8cBg=="
 }
