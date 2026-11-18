@@ -1,11 +1,11 @@
 {
-  "version": "1.11.0",
+  "version": "1.12.0",
   "game": {
-    "file": "game-1.11.0.html",
-    "sha256": "e7b915fff8aafee9bcf911ce0e377890c05bc01fb059b74c0fa273b0b939e9cf",
-    "size": 11189860
+    "file": "game-1.12.0.html",
+    "sha256": "62e553c6b36e0436d1caa5546ddfa8a809b4ba5202102f9e410c6166ea7f8fad",
+    "size": 11191904
   },
-  "notes": "v1.11.0: the game is now Astrodex, by Crymsin Comet Studios. New name on the title screen, intro, Series 01 pack and binder; saves are untouched",
-  "date": "2026-11-13T20:12:13.112Z",
-  "sig": "cKWaAP9Hzlfsaq5YkAVV71nQ9xeaATpn00+obiE+XZnj2DFGXhDPsikRhKoh/Mr0ocgCnBr6wydrw/5PqfV8Aw=="
+  "notes": "v1.12.0: smoother holographic stars on Epic, Legendary, Ultra Rare and Shiny cards (soft glow, slow drift, gentle fades, tilt parallax)",
+  "date": "2026-11-18T02:01:39.720Z",
+  "sig": "mI9oFjDFucnpTeF6jEYq4MDogILB/iuWP3wOOi92XVtrGLv4+u7kJOo7HwOfKEsEzVebab3y1ktyM18AMgOfAw=="
 }

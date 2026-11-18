@@ -173,18 +173,27 @@ details.odds summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--m
 .r-rare .art::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(115deg,transparent 32%,rgba(120,200,255,.22) 44%,rgba(255,255,255,.38) 50%,rgba(120,200,255,.22) 56%,transparent 68%);background-size:260% 260%;background-position:calc(var(--mx)*1%) calc(var(--my)*1%)}
 .r-rare .front{box-shadow:0 0 3.2cqw -.3cqw color-mix(in srgb,var(--c) 75%,transparent)}
 .r-epic .holo{display:block;z-index:4;opacity:.15;transition:opacity .25s;mix-blend-mode:color-dodge;filter:saturate(1.1);background:repeating-linear-gradient(120deg,#ff5fb7 0%,#ffd75f 4%,#5fffb0 8%,#5fc8ff 12%,#b05fff 16%,#ff5fb7 20%);background-size:200% 200%;background-position:calc(var(--mx)*1%) calc(var(--my)*1%)}
-.r-epic .spark,.r-legendary .spark,.r-ultra .spark{display:block;z-index:4;background-image:var(--sparkle);background-size:90px 90px;mix-blend-mode:color-dodge;opacity:.55;animation:twinkle 2.6s steps(1) infinite alternate}
-.r-epic .spark.s2,.r-legendary .spark.s2,.r-ultra .spark.s2{background-size:63px 63px;background-position:30px 12px;animation-delay:-1.3s;opacity:.4}
-@keyframes twinkle{0%{opacity:.15}30%{opacity:.7}60%{opacity:.3}100%{opacity:.75}}
+.r-epic .spark,.r-legendary .spark,.r-ultra .spark{display:block;z-index:4;mix-blend-mode:color-dodge;--so:.55}
+.r-epic .spark.s2,.r-legendary .spark.s2,.r-ultra .spark.s2{--so:.42}
+/* v1.12.0 flowing stars: each layer is a field of soft stars that drifts slowly (transform on ::before, so it stays on the
+   compositor), shifts against the tilt for depth, and breathes in and out out of phase with the other layer */
+.spark{overflow:hidden;opacity:var(--so);animation:sparkBreath 4.8s ease-in-out infinite alternate}
+.spark.s2{animation-duration:6.2s;animation-delay:-3.1s}
+.spark::before{content:'';position:absolute;inset:-14px -104px -104px -14px;background:var(--sparkle) 0 0/90px 90px;will-change:transform;
+  translate:calc((var(--mx,50) - 50) * -.22px) calc((var(--my,50) - 50) * -.22px);animation:sparkFlow 16s linear infinite}
+.spark.s2::before{inset:-28px -28px -92px -92px;background:var(--sparkle2) 0 0/64px 64px;translate:calc((var(--mx,50) - 50) * -.5px) calc((var(--my,50) - 50) * -.5px);animation:sparkFlow2 11s linear infinite}
+@keyframes sparkBreath{0%{opacity:calc(var(--so) * .35)}55%{opacity:calc(var(--so) * .9)}100%{opacity:var(--so)}}
+@keyframes sparkFlow{from{transform:translate3d(0,0,0)}to{transform:translate3d(-90px,-90px,0)}}
+@keyframes sparkFlow2{from{transform:translate3d(0,0,0)}to{transform:translate3d(64px,-64px,0)}}
 .r-legendary .holo{display:block;z-index:4;opacity:.38;transition:opacity .25s;mix-blend-mode:color-dodge;background:linear-gradient(115deg,#6b5a2a 0%,#ffe08a 16%,#fff6d0 24%,#ffc247 38%,#6b5a2a 52%,#ffe08a 68%,#fff6d0 76%,#6b5a2a 100%);background-size:240% 240%;background-position:calc(var(--mx)*1%) calc(var(--my)*1%)}
 .card.active.r-epic .holo{opacity:.55}.card.active.r-legendary .holo{opacity:.6}.card.active.r-ultra .holo{opacity:.8}
 .o-stage .r-epic .holo,.zoom .r-epic .holo,.sgrid .r-epic .holo{opacity:.26}.o-stage .r-legendary .holo,.zoom .r-legendary .holo,.sgrid .r-legendary .holo{opacity:.46}.o-stage .r-ultra .holo,.zoom .r-ultra .holo,.sgrid .r-ultra .holo{opacity:.56}
 .r-legendary .front{box-shadow:0 0 4.4cqw -.1cqw rgba(255,194,71,.7)}
-.r-legendary .spark{opacity:.5;mix-blend-mode:screen}
+.r-legendary .spark{--so:.5;mix-blend-mode:screen}
 .r-ultra .front{background:linear-gradient(165deg,#1d1046,#0a0621 58%,#210f40) padding-box,conic-gradient(from var(--ang),#ff3b9a,#ffb13b,#fff23b,#3bff8a,#3bd2ff,#7a3bff,#ff3b9a) border-box;animation:spin 5s linear infinite;box-shadow:0 0 5.4cqw 0 rgba(255,106,213,.75)}
 @keyframes spin{to{--ang:360deg}}
 .r-ultra .holo{display:block;z-index:4;opacity:.55;transition:opacity .25s;mix-blend-mode:color-dodge;filter:saturate(1.25);background:conic-gradient(from calc(var(--mx)*3.6deg) at calc(var(--mx)*1%) calc(var(--my)*1%),#ff3b9a,#ffd23b,#3bff8a,#3bd2ff,#7a3bff,#ff3b9a)}
-.r-ultra .spark{opacity:.9;mix-blend-mode:screen}
+.r-ultra .spark{--so:.8;mix-blend-mode:screen}
 .r-ultra .art img{transform:scale(1.14) translate(calc((var(--mx) - 50)*.12%),calc((var(--my) - 50)*.12%))}
 .r-ultra .nm{background:linear-gradient(90deg,#ff9ad9,#ffe27a,#8dffc0,#8fd8ff,#caa0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 @keyframes idle{0%,100%{--mx:22;--my:30}50%{--mx:78;--my:70}}
@@ -315,7 +324,7 @@ details.odds summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--m
 .slot.wave::before{content:"";position:absolute;inset:-2px;border-radius:6.5cqw;border:2px solid rgba(255,214,120,.95);box-shadow:0 0 24px rgba(255,200,90,.75);opacity:0;z-index:7;pointer-events:none;will-change:opacity;animation:wavering 1s ease-in-out var(--w,0ms) both}
 @keyframes wavering{35%{opacity:1}100%{opacity:0}}
 /* while celebrating, the cards' own shimmer loops pause so the wave and ceremony get the frames */
-.book.celebrating .card .tilt,.book.celebrating .card .front,.book.celebrating .card .spark,.book.celebrating .card .holo{animation-play-state:paused!important}
+.book.celebrating .card .tilt,.book.celebrating .card .front,.book.celebrating .card .spark,.book.celebrating .card .spark::before,.book.celebrating .card .holo{animation-play-state:paused!important}
 /* the ceremony covers the whole screen: stop painting what is underneath */
 body.finon>main,body.finon>.top,body.finon>.setbar,body.finon>#bg{visibility:hidden}
 .d-rays,.d-seal,.d-card{will-change:transform}
@@ -387,7 +396,7 @@ body.finon>main,body.finon>.top,body.finon>.setbar,body.finon>#bg{visibility:hid
 @media (prefers-reduced-motion:reduce){
   .d-rays,.d-seal,.cseal,.btn2.glow{animation:none!important}
   .stagePack .pack,.p-shine::before,.rays,.o-hint,.cover .co{animation:none!important}
-  .card .tilt,.card .front,.card .spark{animation:none!important}
+  .card .tilt,.card .front,.card .spark,.card .spark::before{animation:none!important}
   .shake-s,.pack.shake{animation:none!important}
 }
 
@@ -621,8 +630,8 @@ body.noscroll{overflow:hidden}
 .card.shiny .front{background:linear-gradient(165deg,#28194f,#0d0b2a 58%,#2a1440) padding-box,conic-gradient(from var(--ang),#ffffff,#ff9ad9 50deg,#ffe27a 100deg,#8dffc0 160deg,#8fd8ff 220deg,#caa0ff 290deg,#ffffff) border-box;animation:spin 4s linear infinite;box-shadow:0 0 4.6cqw .2cqw rgba(255,170,235,.6)}
 .card.shiny .foil{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:inherit;mix-blend-mode:color-dodge;opacity:.17;background:repeating-linear-gradient(115deg,#ff5fb7 0%,#ffd75f 5%,#5fffb0 10%,#5fc8ff 15%,#b05fff 20%,#ff5fb7 25%);background-size:300% 300%;background-position:calc(var(--mx)*1%) calc(var(--my)*1%)}
 .card.shiny.active .foil{opacity:.42}
-.card.shiny .spark{display:block;z-index:4;background-image:var(--sparkle);background-size:96px 96px;mix-blend-mode:screen;opacity:.42;animation:twinkle 2s steps(1) infinite alternate}
-.card.shiny .spark.s2{background-size:70px 70px;opacity:.3;background-position:20px 9px;animation-delay:-1s}
+.card.shiny .spark{display:block;z-index:4;mix-blend-mode:screen;--so:.42}
+.card.shiny .spark.s2{--so:.3}
 .card.shiny .nm{background:linear-gradient(90deg,#ffffff,#ffd6f2 30%,#fff2c0 55%,#d6f0ff 80%,#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .card.shiny .ty{color:#ffd6f2}.card.shiny .ft .st{color:#ffe27a}
 .no .sh{font-weight:800;color:#ffd6f2;letter-spacing:.08em}
@@ -723,7 +732,7 @@ body[data-set="vistas"] .cover .cs{color:#c8b8d8}
 .card.shiny .seal{position:absolute;right:3.4cqw;top:3.2cqw;z-index:6;width:10cqw;height:10cqw;border-radius:50%;display:grid;place-items:center;font:800 5.6cqw/1 var(--f-display);font-style:normal;color:#2a0c36;background:conic-gradient(from var(--ang),#ffffff,#ff9ad9,#ffe27a,#8dffc0,#8fd8ff,#caa0ff,#ffffff);box-shadow:0 0 3.2cqw rgba(255,190,240,.9),inset 0 0 0 .5cqw rgba(255,255,255,.6);animation:spin 3s linear infinite}
 .card.shiny .front::after{content:"";position:absolute;inset:-40% -60%;z-index:7;pointer-events:none;background:linear-gradient(100deg,transparent 45%,rgba(255,255,255,.55) 50%,transparent 55%);transform:translateX(-60%);animation:sglint 5s ease-in-out infinite;mix-blend-mode:overlay}
 @keyframes sglint{0%,60%{transform:translateX(-60%)}82%,100%{transform:translateX(60%)}}
-.card.shiny .spark{opacity:.32}.card.shiny .spark.s2{opacity:.22}
+.card.shiny .spark{--so:.32}.card.shiny .spark.s2{--so:.22}
 .overlay.sdim::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 50% 42%,transparent 0 16%,rgba(0,0,0,.85) 46%);animation:fadein .5s}
 .dc.prism .card .back::after{content:"";position:absolute;inset:0;border-radius:inherit;background:conic-gradient(from var(--ang),#ff5fb7,#ffd75f,#5fffb0,#5fc8ff,#b05fff,#ff5fb7);mix-blend-mode:color-dodge;opacity:.8;animation:spin 1.1s linear infinite}
 .dc.prism{filter:drop-shadow(0 0 16px #ff9ad9) drop-shadow(0 0 30px #8fd8ff)}
@@ -1027,9 +1036,9 @@ body[data-set="promo"] .bar i{background:linear-gradient(90deg,#ffe08a,#ffb83a)}
 body.opening>main,body.opening>header{visibility:hidden}
 .rays,.halo{will-change:transform,opacity}
 .rays.rainbow{animation:rot 24s linear infinite;background:repeating-conic-gradient(from 0deg,transparent 0 6deg,rgba(255,120,220,.5) 6deg 9deg,rgba(255,230,120,.5) 9deg 11deg,rgba(120,220,255,.5) 11deg 14deg)}
-.dc .card.down .front,.dc .card.down .front *,.dc.far *,.dc.out *{animation:none!important}
+.dc .card.down .front,.dc .card.down .front *,.dc .card.down .front *::before,.dc.far *,.dc.far *::before,.dc.out *,.dc.out *::before{animation:none!important}
 @media (pointer:coarse),(max-width:700px){
-  .overlay .card .tilt,.o-sum .card .tilt,.overlay .spark,.o-sum .spark{animation:none!important}
+  .overlay .card .tilt,.o-sum .card .tilt,.overlay .spark,.o-sum .spark,.overlay .spark::before,.o-sum .spark::before{animation:none!important}
   .overlay .spark,.o-sum .spark{display:none}
   .overlay .card.shiny .front,.overlay .r-legendary .front,.overlay .r-rare .front{box-shadow:none}
   .o-sum .card .front,.o-sum .card *{animation:none!important}
@@ -2134,7 +2143,7 @@ button:not(:disabled):active{transition:transform .06s}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.11.0';
+const CC_VERSION='1.12.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -3635,9 +3644,16 @@ function makeEtch(){let s='';for(let i=0;i<6;i++)for(let j=0;j<6;j++){const x=i*
   s+="<g fill='none' stroke='white' stroke-width='.7'><circle cx='60' cy='60' r='22'/><circle cx='60' cy='60' r='44'/><circle cx='0' cy='0' r='30'/><circle cx='120' cy='120' r='30'/><circle cx='120' cy='0' r='30'/><circle cx='0' cy='120' r='30'/><path d='M0 60H120M60 0V120' stroke-dasharray='2 5'/></g>";
   document.documentElement.style.setProperty('--etch',`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>${s}</svg>`)}")`)}
 function makeSparkle(){
-  const r=rng(5);let s='';for(let i=0;i<16;i++){const x=r()*100,y=r()*100,z=1.2+r()*2.2;
-    s+=r()<.5?`<circle cx='${x.toFixed(1)}' cy='${y.toFixed(1)}' r='${(z*.55).toFixed(1)}' fill='white'/>`:`<path d='M${x.toFixed(1)} ${(y-z*2.2).toFixed(1)} L${(x+z*.5).toFixed(1)} ${(y-z*.5).toFixed(1)} L${(x+z*2.2).toFixed(1)} ${y.toFixed(1)} L${(x+z*.5).toFixed(1)} ${(y+z*.5).toFixed(1)} L${x.toFixed(1)} ${(y+z*2.2).toFixed(1)} L${(x-z*.5).toFixed(1)} ${(y+z*.5).toFixed(1)} L${(x-z*2.2).toFixed(1)} ${y.toFixed(1)} L${(x-z*.5).toFixed(1)} ${(y-z*.5).toFixed(1)}Z' fill='white'/>`}
-  document.documentElement.style.setProperty('--sparkle',`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>${s}</svg>`)}")`);
+  /* v1.12.0: soft, glowing stars on two tiles (--sparkle, --sparkle2). Stars near an edge are drawn again on the far side,
+     so the tile repeats with no cut-off half stars. The CSS drifts both layers slowly and fades them in and out of phase. */
+  const tile=(seed,n)=>{const r=rng(seed);let s=`<defs><radialGradient id='g'><stop offset='0' stop-color='#fff'/><stop offset='.3' stop-color='#fff' stop-opacity='.4'/><stop offset='1' stop-color='#fff' stop-opacity='0'/></radialGradient></defs>`;
+    for(let i=0;i<n;i++){const x=r()*100,y=r()*100,big=r()<.3,z=big?1.3+r()*.9:.45+r()*.7,arm=z*(2.3+r()*.9),w=z*.14;
+      const one=(X,Y)=>{let t=`<circle cx='${X.toFixed(1)}' cy='${Y.toFixed(1)}' r='${(z*(big?1.25:1.6)).toFixed(2)}' fill='url(#g)'/>`;
+        if(big)t+=`<path d='M${X.toFixed(1)} ${(Y-arm).toFixed(1)}Q${(X+w).toFixed(2)} ${(Y-w).toFixed(2)} ${(X+arm).toFixed(1)} ${Y.toFixed(1)}Q${(X+w).toFixed(2)} ${(Y+w).toFixed(2)} ${X.toFixed(1)} ${(Y+arm).toFixed(1)}Q${(X-w).toFixed(2)} ${(Y+w).toFixed(2)} ${(X-arm).toFixed(1)} ${Y.toFixed(1)}Q${(X-w).toFixed(2)} ${(Y-w).toFixed(2)} ${X.toFixed(1)} ${(Y-arm).toFixed(1)}Z' fill='#fff' opacity='.85'/>`;
+        return t};
+      const m=arm+2;for(const dx of [0,-100,100])for(const dy of [0,-100,100]){const X=x+dx,Y=y+dy;if(X>-m&&X<100+m&&Y>-m&&Y<100+m)s+=one(X,Y)}}
+    return `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>${s}</svg>`)}")`};
+  const st=document.documentElement.style;st.setProperty('--sparkle',tile(5,14));st.setProperty('--sparkle2',tile(11,11));
 }
 
 /* ───────────── card markup + tilt ───────────── */
@@ -5903,6 +5919,9 @@ function initTutorial(){
    before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
    Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
 const CHANGELOG=[
+  {v:'1.12.0',d:'17 Nov 2026',items:[
+    'Smoother holographic stars. On Epic, Legendary, Ultra Rare and Shiny cards the stars now glow softly, drift slowly across the card in two layers, fade in and out gently, and shift as you tilt the card, instead of blinking on and off.',
+    'No more half stars cut off at the edges of the pattern.']},
   {v:'1.11.0',d:'13 Nov 2026',items:[
     'A new name: the game is now Astrodex, by Crymsin Comet Studios. The title screen, the intro, the Series 01 pack and binder, and the menu all carry the new names.',
     'Nothing else changes. Your collection, Stardust, decks and battle record are exactly where you left them.']},
