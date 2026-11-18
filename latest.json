@@ -1,11 +1,11 @@
 {
-  "version": "1.12.0",
+  "version": "1.13.0",
   "game": {
-    "file": "game-1.12.0.html",
-    "sha256": "62e553c6b36e0436d1caa5546ddfa8a809b4ba5202102f9e410c6166ea7f8fad",
-    "size": 11191904
+    "file": "game-1.13.0.html",
+    "sha256": "c98423208ef1e1fb0a0f843f16d4ffaaffa9a72607aa7160c09c8dabb674ea03",
+    "size": 11198066
   },
-  "notes": "v1.12.0: smoother holographic stars on Epic, Legendary, Ultra Rare and Shiny cards (soft glow, slow drift, gentle fades, tilt parallax)",
-  "date": "2026-11-18T02:01:39.720Z",
-  "sig": "mI9oFjDFucnpTeF6jEYq4MDogILB/iuWP3wOOi92XVtrGLv4+u7kJOo7HwOfKEsEzVebab3y1ktyM18AMgOfAw=="
+  "notes": "v1.13.0: crafting missing cards from the binder with Stardust, and an Ultra Rare meter that guarantees one when full",
+  "date": "2026-11-18T02:31:10.594Z",
+  "sig": "nJLdBfhfj9JWhwtd58GPmaeb2ARiLxqua0D9ASUba1D1O7udd2FahZLEyk13mKA/bH8Ey9O7chFAk76FBjVoBA=="
 }

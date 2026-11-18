@@ -308,6 +308,23 @@ details.odds summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--m
 .slot.empty{display:grid;place-content:center;text-align:center;border-style:dashed;border-color:rgba(190,180,255,.2)}
 .slot.empty .sn{font:700 clamp(14px,2.6vw,22px) var(--f-mono);color:rgba(190,180,255,.4)}
 .slot.empty .sq{font:500 10px var(--f-mono);letter-spacing:.2em;color:rgba(190,180,255,.28);text-transform:uppercase}
+/* v1.13.0 crafting: empty slots in normal mode are buttons */
+.slot.empty.craft{cursor:pointer;font:inherit;color:inherit;background:transparent;transition:border-color .2s,background .2s}
+.slot.empty.craft .cr{display:inline-flex;align-items:center;justify-content:center;gap:3px;margin-top:6px;padding:3px 8px;border-radius:99px;font:600 10px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,215,140,.55);background:rgba(255,200,110,.07)}
+.slot.empty.craft .cr .dusti{width:11px;height:11px}
+@media (hover:hover){.slot.empty.craft:hover{border-color:rgba(255,205,120,.5);background:rgba(255,200,110,.05)}.slot.empty.craft:hover .cr{color:#ffd88a;background:rgba(255,200,110,.16)}}
+.slot.empty.craft:focus-visible{outline:2px solid #ffd88a;outline-offset:2px}
+/* v1.13.0 Ultra Rare meter on the pack page */
+.pity{width:min(820px,100%);box-sizing:border-box;background:rgba(20,17,58,.7);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.pity .pt-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pity .pt-h b{font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.pity .pt-h span{font:600 13.5px var(--f-body)}
+.pity .pt-bar{height:8px;margin:8px 0 6px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.pity .pt-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#b673ff,#ff6ad5);box-shadow:0 0 10px rgba(255,106,213,.6);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.pity .pt-n{margin:0;font-size:12px;color:var(--muted)}
+.pity.full{border-color:rgba(255,106,213,.55);box-shadow:0 0 22px -6px rgba(255,106,213,.6)}.pity.full .pt-h span{color:#ff9ae6}
+.pity.full .pt-bar i{animation:ptGlow 1.6s ease-in-out infinite alternate}@keyframes ptGlow{to{filter:brightness(1.35)}}
+.pityNote{margin:-4px 0 6px;font:700 13px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#ff9ae6;text-shadow:0 0 12px rgba(255,106,213,.7)}
+@media (prefers-reduced-motion:reduce){.pity.full .pt-bar i{animation:none}}
 .slot .gh{position:absolute;inset:0;border-radius:6.5cqw;border:1px dashed rgba(190,180,255,.3);display:grid;place-content:center;z-index:0;background:rgba(255,255,255,.03)}
 .slot .gh .sn{font:700 clamp(14px,2.6vw,22px) var(--f-mono);color:rgba(190,180,255,.45)}
 .slot.pending .card{opacity:0}.slot.pending::after{opacity:0}
@@ -1335,6 +1352,7 @@ body.dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}body.dra
 .cfm{z-index:86}
 .cf-box{position:relative;width:min(400px,100%);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:26px 22px 22px;border-radius:20px;background:linear-gradient(160deg,#2a1240,#120a26);border:1px solid rgba(255,90,122,.45);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(255,90,122,.15);animation:zin .35s cubic-bezier(.2,1.1,.3,1.1)}
 .cf-ic{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(255,90,122,.16);color:#ff8aa0}.cf-ic svg{width:28px;height:28px}
+.cf-craft .cf-ic{background:rgba(255,200,110,.16);color:#ffd27a}
 .cf-box h3{margin:0;font:800 20px var(--f-display)}
 .cf-box .cf-m{margin:0;font:600 15.5px/1.45 var(--f-body);color:var(--text)}
 .cf-box .cf-d{margin:0;font-size:13px;line-height:1.45;color:var(--muted)}
@@ -1998,6 +2016,7 @@ button:not(:disabled):active{transition:transform .06s}
       <div class="stat"><b id="stShiny" class="shtxt">0</b><span>✦ Shinies</span></div>
       <div class="stat"><b id="stBest" style="font-size:15px;line-height:1.7">None yet</b><span>Rarest pull</span></div>
     </div>
+    <div class="pity" id="pity" hidden></div>
     <details class="odds"><summary>Pull rates</summary><div id="oddsBody"></div></details>
   </section>
 
@@ -2143,7 +2162,7 @@ button:not(:disabled):active{transition:transform .06s}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.12.0';
+const CC_VERSION='1.13.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -3143,7 +3162,7 @@ const SETS={
 const PACKSETS=()=>SETIDS.filter(id=>!SETS[id].shop);
 const SETIDS=Object.keys(SETS);
 const KEY='cosmic-cards-v2',OLDKEY='cosmic-cards-v1';
-const setBlank=()=>({owned:[],fresh:[],packs:0,dupes:0,best:0,bestN:0,celebrated:false,shiny:[],sfresh:[],celebratedShiny:false});
+const setBlank=()=>({owned:[],fresh:[],packs:0,dupes:0,best:0,bestN:0,celebrated:false,shiny:[],sfresh:[],celebratedShiny:false,pity:0,crafted:0});
 const SHINY_RATE={std:1/70,prem:1/24,col:1/10};
 const PACK_PRICE={std:250,prem:900,col:2500},ECON_GRANT=1000;
 const freeAvail=()=>S.freeDay!==todayKey();
@@ -3151,6 +3170,15 @@ const battle0=()=>({deck:[],starter:false,wins:0,losses:0,streak:0,best:0,diff:1
 const fresh0=()=>({v:2,cur:'cosmos',sets:Object.fromEntries(SETIDS.map(id=>[id,setBlank()])),battle:battle0(),dust:0,dustInit:false,dustEarned:0,chal:{done:{},claimed:{},daily:{d:'',p:{},c:{}}},sl:{own:['classic'],eq:'classic'},nick:'',freeDay:'',econ:false,gifts:[],inv:{any:{std:0,prem:0,col:0}},bnd:{own:[],eq:{}}});
 /* Stardust: duplicates are melted down; rarer duplicates give more, shiny duplicates four times as much */
 const DUST=[5,12,30,80,200,1000],DUST_SHINY=4,PRICE=[100,250,400,1000,2500,6000],PRICE_SHINY=3;
+/* v1.13.0 crafting: a missing card from a pack series costs 8x what a duplicate of its rarity pays out */
+const CRAFT=[40,100,250,650,1600,8000];
+/* v1.13.0 Ultra Rare meter (pity): per series, Standard packs add 1, Boosted 3, Collector 8. At PITY_MAX the next pack's
+   best card becomes an Ultra Rare. Any Ultra Rare pulled in that series resets it. */
+const PITY_MAX=60,PITY_W={std:1,prem:3,col:8};
+function pityApply(pl,setId,kind,X){
+  if(!pl.some(c=>c.r===5)&&(X.pity||0)>=PITY_MAX){let hi=0;pl.forEach((c,i)=>{if(c.r>=pl[hi].r)hi=i});
+    pl[hi]=Object.assign({},pullCard(setId,5),{shiny:pl[hi].shiny,_pity:true});pl.sort((a,b)=>a.r-b.r||a.n-b.n)}
+  X.pity=pl.some(c=>c.r===5)?0:Math.min(PITY_MAX,(X.pity||0)+(PITY_W[kind]||1));return pl.some(c=>c._pity)}
 const DUSTI='<svg class="dusti" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2l1.9 5.6L18.5 9.5l-5.6 1.9L11 17l-1.9-5.6L3.5 9.5l5.6-1.9z" fill="currentColor"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" fill="currentColor"/><circle cx="5" cy="19.5" r="1.3" fill="currentColor"/></svg>';
 const fmt=n=>Math.round(n).toLocaleString('en-US');
 /* v1 saves held one set. Oort Cloud was inserted as #18, so older numbers shift up by one. */
@@ -3754,8 +3782,11 @@ function refreshHome(){
   $('#stPacks').textContent=X.packs;$('#stCards').textContent=n+'/'+t;$('#stDupes').textContent=X.dupes;$('#stShiny').textContent=X.shiny.length+'/'+t;
   $('#pillCount').innerHTML='<b>'+n+'</b> / '+t;
   const b=X.best?cardOf(set.id,X.bestN):null;$('#stBest').textContent=b?b.name+' · '+RAR[b.r].name:'None yet';
-  buildOdds();fillArt($('#viewPacks'));
+  buildOdds();paintPity();fillArt($('#viewPacks'));
 }
+function paintPity(){const el=$('#pity');if(!el)return;const set=cs();if(set.shop||!set.cards.some(c=>c.r===5)){el.hidden=true;return}el.hidden=false;
+  const p=Math.min(PITY_MAX,st().pity||0),full=p>=PITY_MAX,left=PITY_MAX-p;el.classList.toggle('full',full);
+  el.innerHTML=`<div class="pt-h"><b>Ultra Rare meter</b><span>${full?'Next pack: Ultra Rare guaranteed!':`Guaranteed within ${left} Standard pack${left===1?'':'s'}`}</span></div><div class="pt-bar"><i style="width:${p/PITY_MAX*100}%"></i></div><p class="pt-n">Boosted packs fill it 3× faster, Collector packs 8×. Pulling any Ultra Rare resets it.</p>`}
 function paintPackBtn(b,set,k){const dv=typeof DEV!=='undefined'&&DEV.on&&DEV.free,free=!dv&&k==='std'&&freeAvail(),pr=PACK_PRICE[k],el=$(b),stk=dv?0:invOf(set.id,k),N=packN,plan=packPlan(set.id,k,N);
   const nm=set[k].name,m=/^(.*?)( pack)$/i.exec(nm);
   const cp=dv?'<b class="free">Dev · free</b>':plan.cost?DUSTI+fmt(plan.cost):plan.free&&!plan.stock?'<b class="free">Free today</b>':plan.free?'<b class="free">Free + stock</b>':`<b class="free stk">${N>1?'From stock':stk+' in stock'}</b>`;
@@ -3804,6 +3835,7 @@ async function startPack(kind,nOverride){
   if(plan.free)S.freeDay=todayKey();if(plan.stock)takeInv(set.id,kind,plan.stock);S.dust-=plan.cost;
   O.cost=plan.cost;O.free=!!plan.free;O.stock=plan.stock;O.plan=plan;O.n=n;O.pi=0;O.busy=true;Snd.duck(true);O.kind=kind;O.set=set.id;O.combo=0;Snd.init();Snd.click();if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
   const packs=[];for(let i=0;i<n;i++)packs.push(typeof devPack==='function'?devPack(takePack(set.id,kind),set.id):takePack(set.id,kind));
+  O.pityHit=packs.map(pl=>pityApply(pl,set.id,kind,X)).some(Boolean);
   /* paint art that is not cached yet while the pack shakes: the first pack now, the others one after another */
   document.body.classList.add('opening');
   O.warm=[];let chain=warmPack(packs[0]);O.warm[0]=chain;for(let i=1;i<n;i++){const pl=packs[i];chain=chain.then(()=>warmPack(pl));O.warm[i]=chain}const warmP=O.warm[0];
@@ -3868,7 +3900,7 @@ function showSummary(){
   const sum=$('#oSum');
   const score=O.pulls.reduce((a,c)=>a+POINTS[c.r]+(c.shiny?60:0),0),nsh=O.pulls.filter(c=>c.shiny).length;$('#combo').hidden=true;
   const complete=X.owned.length===total&&!X.celebrated;
-  sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2><div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${O.passXP?`<p class="npline">✧ <b>+${fmt(O.passXP)}</b> Starlight <span>· Nova Pass ${npHyper()?'Hypernova ★'+npHyper():'level '+npLevel()}</span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
+  sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2>${O.pityHit?'<p class="pityNote">✦ Ultra Rare meter paid out ✦</p>':''}<div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${O.passXP?`<p class="npline">✧ <b>+${fmt(O.passXP)}</b> Starlight <span>· Nova Pass ${npHyper()?'Hypernova ★'+npHyper():'level '+npLevel()}</span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
    O.pulls.map((c,i)=>`<div class="sc${c._new||c._snew?'':' dupe'}${c.shiny?' shy':''}" data-n="${c.n}" data-shiny="${c.shiny?1:''}" style="animation-delay:${i*60}ms">${cardHTML(c)}<span class="badge ${c._snew?'shiny':c._new?'new':'dupe'}">${c._snew?'✦ Shiny':c._new?'New':c.shiny?'Shiny dupe':'Duplicate'}</span></div>`).join('')+
    `</div><div class="actions"><button class="btn2 primary" id="again">${NP>1?`Open ${NP} more`:'Open another pack'}</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="closeSum">Close</button></div>`;
   sum.hidden=false;sum.scrollTop=0;runScore(score);if(O.dust)dustCount(O.dust,O.dust0);$('#skip').hidden=true;$('#skipLow').hidden=true;$('#flipAll').hidden=true;$('#counter').textContent='';
@@ -3899,6 +3931,7 @@ function pageHTML(set,pi){
     const c=cardOf(set.id,n);
     if(OW.includes(n)){const pend=FR.includes(n);
       h+=`<button class="slot filled${pend?' pending':''}" data-n="${n}" style="--rc:${RAR[c.r].col}" aria-label="${c.name}, number ${n}">${pend?`<span class="gh"><span class="sn">${pad(n)}</span></span>`:''}${cardHTML(sh?Object.assign({},c,{shiny:true}):c)}</button>`}
+    else if(!sh&&!set.shop)h+=`<button class="slot empty craft" data-craft="${n}" aria-label="Empty slot ${n}. Tap to craft it with Stardust"><span class="sn">${pad(n)}</span><span class="sq">Empty</span><span class="cr">${DUSTI} Craft</span></button>`;
     else h+=`<div class="slot empty"><span class="sn">${sh?'✦':''}${pad(n)}</span><span class="sq">${sh?'Shiny':'Empty'}</span></div>`;
   }
   return h+'</div>';
@@ -4087,7 +4120,7 @@ function init(){
   $('#closeBook').onclick=closeBook;$('#prev').onclick=()=>turn(-1);$('#next').onclick=()=>turn(1);
   $('#replay').onclick=async()=>{if(celebrating||placing)return;if(!bk().open){await openBook();return}celebrate(true)};
   $('#bMode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||placing||celebrating||turning)return;Snd.init();setMode(b.dataset.m,true)});
-  $('#pages').addEventListener('click',e=>{const s=e.target.closest('.slot.filled');if(s&&!s.classList.contains('pending'))openZoom(S.cur,+s.dataset.n,shm())});
+  $('#pages').addEventListener('click',e=>{const s=e.target.closest('.slot.filled');if(s&&!s.classList.contains('pending'))openZoom(S.cur,+s.dataset.n,shm());const c=e.target.closest('.slot.craft');if(c)craftCard(+c.dataset.craft)});
   $('#zoom').addEventListener('click',e=>{if(!e.target.closest('.card')&&!e.target.closest('.zlore'))closeZoom()});$('#zoomX').onclick=closeZoom;
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){if(!$('#zoom').hidden)closeZoom();else if(!oEl.hidden&&!$('#oSum').hidden)closeOpen();return}
@@ -4629,6 +4662,27 @@ function initShopExtras(){
     const cb=t.closest('.cvb');if(cb){e.stopImmediatePropagation();buyCover(cb.dataset.cv,cb);return}
     const ce=t.closest('.cveq');if(ce){e.stopImmediatePropagation();const cv=coverById(ce.dataset.cv);if(cv)equipCover(cv.set,cv.id);return}
     const cc=t.closest('.cvclassic');if(cc){e.stopImmediatePropagation();equipCover(cc.dataset.set,null);return}},true);
+}
+/* ───────────── crafting (v1.13.0) ─────────────
+   Tap an empty slot in a pack series' binder (normal mode) to craft that card with Stardust (CRAFT in engine.js).
+   The dialog names the number and rarity only: the card stays a surprise until it lands in the binder. */
+let crafting=false;
+async function craftCard(n){
+  const set=cs(),X=st();if(crafting||placing||turning||celebrating||set.shop||shm()||X.owned.includes(n))return;
+  const c=cardOf(set.id,n);if(!c)return;const r=RAR[c.r],price=CRAFT[c.r];Snd.init();
+  if(S.dust<price){Snd.deal();toast(`Crafting No.${pad(n)} (${r.name}) costs ${fmt(price)} Stardust. You need ${fmt(price-S.dust)} more.`,3200);return}
+  crafting=true;
+  try{
+    const ok=await confirmBox({kind:'craft',icon:DUSTI,title:`Craft No.${pad(n)}?`,
+      msg:`Spend <b>${fmt(price)} Stardust</b> to add this <b style="color:${r.col}">${r.name}</b> card to your ${set.name} binder.`,
+      detail:`You have ${fmt(S.dust)} Stardust. The card stays a surprise until it lands.`,ok:'Craft it',okClass:'primary',cancel:'Not now'});
+    if(!ok||S.dust<price||X.owned.includes(n))return;
+    S.dust-=price;X.owned=[...X.owned,n].sort(num);X.fresh=[...new Set([...X.fresh,n])];X.crafted=(X.crafted||0)+1;
+    save();paintDust();paintBadge();renderSetBar();Snd.burst&&Snd.burst();
+    const B=bk();B.page=Math.floor((n-1)/PER_PAGE);renderBinder();
+    await afterOpen();
+    toast(`Crafted ${c.name}!`,2200);
+  }finally{crafting=false}
 }
 /* ───────────── Battle rewards, challenges, sleeves ───────────── */
 const WIN_DUST=[40,90,180],ONLINE_WIN=150,ONLINE_LOSS=30,LOSS_DUST=10;
@@ -5807,9 +5861,9 @@ function setUpd(state,x){const b=$('#mnUpdBtn'),m=$('#mnUpdMsg');b.disabled=stat
 let cfResolve=null;
 function confirmBox(o){
   const c=$('#confirm');if(cfResolve)cfResolve(false);
-  c.innerHTML=`<div class="cf-box" role="alertdialog" aria-modal="true" aria-labelledby="cfT" aria-describedby="cfM"><div class="cf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>`+
+  c.innerHTML=`<div class="cf-box${o.kind?' cf-'+o.kind:''}" role="alertdialog" aria-modal="true" aria-labelledby="cfT" aria-describedby="cfM"><div class="cf-ic">${o.icon||`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>`}</div>`+
    `<h3 id="cfT">${o.title}</h3><p class="cf-m" id="cfM">${o.msg}</p>${o.detail?`<p class="cf-d">${o.detail}</p>`:''}`+
-   `<div class="cf-a"><button class="btn2" id="cfNo">${o.cancel||'Cancel'}</button><button class="btn2 danger" id="cfYes">${o.ok||'Continue'}</button></div></div>`;
+   `<div class="cf-a"><button class="btn2" id="cfNo">${o.cancel||'Cancel'}</button><button class="btn2 ${o.okClass||'danger'}" id="cfYes">${o.ok||'Continue'}</button></div></div>`;
   c.hidden=false;Snd.init();Snd.deal();
   try{$('#cfNo').focus({preventScroll:true})}catch(e){}
   return new Promise(res=>{cfResolve=res;
@@ -5919,6 +5973,9 @@ function initTutorial(){
    before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
    Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
 const CHANGELOG=[
+  {v:'1.13.0',d:'17 Nov 2026',items:[
+    'Crafting: tap an empty slot in a binder to craft that card with Stardust. Prices go by rarity, from 40 Stardust for a Common to 8,000 for an Ultra Rare, and the card stays a surprise until it lands in its slot.',
+    'Ultra Rare meter: every pack you open fills it (Boosted packs 3× faster, Collector packs 8×). When it is full, your next pack in that series is guaranteed an Ultra Rare. Pulling any Ultra Rare resets it. You can see the meter on the Packs page.']},
   {v:'1.12.0',d:'17 Nov 2026',items:[
     'Smoother holographic stars. On Epic, Legendary, Ultra Rare and Shiny cards the stars now glow softly, drift slowly across the card in two layers, fade in and out gently, and shift as you tilt the card, instead of blinking on and off.',
     'No more half stars cut off at the edges of the pattern.']},
