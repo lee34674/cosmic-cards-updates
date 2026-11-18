@@ -1922,6 +1922,29 @@ button:not(:disabled):active{transition:transform .06s}
 .np-sky .np-sh{position:absolute;left:8%;top:14%;--r:21deg;width:120px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.95));opacity:0;animation:skss 13s linear -3s infinite;will-change:transform,opacity}
 .np-sky .np-sh::after{content:"";position:absolute;right:-2px;top:-2px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(255,220,190,.9)}
 @media (prefers-reduced-motion:reduce){.np-sky .np-au,.np-sky .np-sh{animation:none}}
+
+/* ── v1.14.0 quick wins ── */
+.mn-gfx{grid-template-columns:auto 1fr}.mn-gfx .seg{justify-self:end}.mn-gfx .seg button{padding:7px 12px;font-size:13px}
+@media (max-width:400px){.mn-gfx{grid-template-columns:1fr}.mn-gfx .seg{justify-self:stretch}.mn-gfx .seg button{flex:1}}
+/* low graphics: fewer particles (JS), still holo, no blur, no ambient motion */
+body.gfx-low .spark,body.gfx-low .spark::before{animation:none!important}body.gfx-low .spark.s2{display:none!important}
+body.gfx-low *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.gfx-low .rays,body.gfx-low .d-rays,body.gfx-low .tt-st,body.gfx-low .ar-sky i,body.gfx-low .np-sky i,body.gfx-low .pity.full .pt-bar i{animation:none!important}
+body.gfx-low .card .holo{filter:none!important}
+/* binder reward line */
+.b-rw{margin:8px 0 0;font:600 12.5px/1.45 var(--f-body);color:var(--muted)}.b-rw .dusti{vertical-align:-2px;margin-right:5px}
+.b-rw b{color:#ffd88a}.b-rw.got{color:#8dffc0}.b-rw .dusti{width:13px;height:13px;color:#ffd88a}
+/* celebration reward chips */
+.d-rw{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:2px 0 6px}
+.d-rw span{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;background:rgba(255,210,120,.14);border:1px solid rgba(255,210,120,.45);font:700 15px var(--f-body);color:#ffe2a0;animation:rwIn .6s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(1.2s + var(--i)*.18s)}
+.d-rw .dusti{width:16px;height:16px}@keyframes rwIn{from{opacity:0;transform:scale(.6) translateY(10px)}}
+/* odds link by the packs */
+.oddsln{margin:-4px 0 4px;text-align:center}.oddsln button{font:600 13px var(--f-body);color:var(--accent);text-decoration:underline;text-underline-offset:3px;background:none;border:0;cursor:pointer;padding:6px}
+/* share-your-pull overlay */
+.share{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:16px;background:rgba(5,3,16,.82)}
+.share .sh-box{width:min(420px,100%);max-height:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+.share img{width:100%;max-height:calc(100vh - 170px);object-fit:contain;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.6);-webkit-touch-callout:default;user-select:auto}
+.share .sh-a{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.share .sh-n{margin:0;font-size:12.5px;color:var(--muted);text-align:center}
 </style>
 
 <canvas id="bg" aria-hidden="true"></canvas>
@@ -2023,7 +2046,7 @@ button:not(:disabled):active{transition:transform .06s}
   <section id="viewBinder" hidden>
     <div class="b-head">
       <div class="b-title"><span class="series" id="bSeries"></span><h2 id="bTitle">Collector's Binder</h2><span class="done-badge" id="doneBadge" hidden>★ Set complete</span></div>
-      <div class="b-prog"><div class="bar"><i id="barFill"></i></div><div class="chips" id="chips"></div></div>
+      <div class="b-prog"><div class="bar"><i id="barFill"></i></div><div class="chips" id="chips"></div><p class="b-rw" id="bReward"></p></div>
       <div class="seg bmode" id="bMode" role="radiogroup" aria-label="Binder side"><button role="radio" data-m="std">Standard <span id="bmStd"></span></button><button role="radio" data-m="shiny">✦ Shiny <span id="bmSh"></span></button></div>
       <div class="b-btns"><button class="ghost" id="replay" hidden>Replay celebration</button><button class="ghost" id="closeBook" hidden>Close binder</button></div>
     </div>
@@ -2122,6 +2145,7 @@ button:not(:disabled):active{transition:transform .06s}
   <div class="o-info" id="oInfo"></div>
   <div class="o-hint" id="oHint"></div>
   <div class="o-sum" id="oSum" hidden></div>
+<div class="share" id="share" hidden></div>
 </div>
 
 <div class="xfer" id="xfer" hidden></div>
@@ -2134,7 +2158,11 @@ button:not(:disabled):active{transition:transform .06s}
       <div class="mn-row"><span class="mn-l">Music<small id="mnMusV"></small></span><input type="range" id="mnMus" min="0" max="100" step="1" aria-label="Music volume"><button class="mn-tg" id="mnMusT" role="switch" aria-label="Music on or off"></button></div>
       <div class="mn-row"><span class="mn-l">Sound effects<small id="mnSfxV"></small></span><input type="range" id="mnSfx" min="0" max="100" step="1" aria-label="Sound effects volume"><button class="mn-tg" id="mnSfxT" role="switch" aria-label="Sound effects on or off"></button></div>
     </section>
-    <section class="mn-s"><h4>Battle</h4>
+    <section class="mn-s"><h4>Display</h4>
+      <div class="mn-row mn-gfx"><span class="mn-l">Graphics<small id="mnGfxV"></small></span><div class="seg" id="mnGfx" role="radiogroup" aria-label="Graphics quality"><button role="radio" data-g="auto">Auto</button><button role="radio" data-g="high">High</button><button role="radio" data-g="low">Low</button></div></div>
+    </section>
+    <section class="mn-s"><h4>Guides</h4>
+      <button class="mn-btn" id="mnTour"><i class="mn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></i><span><b>Game tour</b><span>A quick look at packs, the binder, Stardust and more</span></span></button>
       <button class="mn-btn" id="mnTut"><i class="mn-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5 12 3l10 3.5-10 3.5z"/><path d="M6 8.2V13c0 1.7 2.7 3 6 3s6-1.3 6-3V8.2"/><path d="M22 6.5V12"/></svg></i><span><b>Battle tutorial</b><span>Learn how to play in a guided practice battle</span></span></button>
     </section>
     <section class="mn-s"><h4>Save data</h4>
@@ -2162,7 +2190,7 @@ button:not(:disabled):active{transition:transform .06s}
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
-const CC_VERSION='1.13.0';
+const CC_VERSION='1.14.0';
 /* ───────────── Card sets ───────────── */
 const RAR=[
  {id:'common',name:'Common',stars:1,col:'#a3abd0'},
@@ -3220,7 +3248,7 @@ async function initCloud(){
         a.packs=Math.max(a.packs,b.packs||0);a.dupes=Math.max(a.dupes,b.dupes||0);
         if((b.best||0)>a.best){a.best=b.best;a.bestN=b.bestN}
         a.fresh=[...new Set([...a.fresh,...(b.fresh||[])])].filter(n=>a.owned.includes(n));
-        a.celebrated=a.celebrated||!!b.celebrated;S.dust=Math.max(S.dust,d.dust||0);S.dustEarned=Math.max(S.dustEarned||0,d.dustEarned||0);S.dustInit=S.dustInit||d.dustInit;a.shiny=[...new Set([...(a.shiny||[]),...(b.shiny||[])])].sort(num);a.sfresh=[...new Set([...(a.sfresh||[]),...(b.sfresh||[])])].filter(n=>a.shiny.includes(n));a.celebratedShiny=a.celebratedShiny||!!b.celebratedShiny});
+        a.celebrated=a.celebrated||!!b.celebrated;S.dust=Math.max(S.dust,d.dust||0);S.dustEarned=Math.max(S.dustEarned||0,d.dustEarned||0);S.dustInit=S.dustInit||d.dustInit;a.shiny=[...new Set([...(a.shiny||[]),...(b.shiny||[])])].sort(num);a.sfresh=[...new Set([...(a.sfresh||[]),...(b.sfresh||[])])].filter(n=>a.shiny.includes(n));a.celebratedShiny=a.celebratedShiny||!!b.celebratedShiny;a.rw=a.rw||!!b.rw;a.rwS=a.rwS||!!b.rwS;a.crafted=Math.max(a.crafted||0,b.crafted||0)});
       const C1=chal(),C2=d.chal;Object.assign(C1.done,C2.done);Object.assign(C1.claimed,C2.claimed);if(C2.daily&&C2.daily.d===C1.daily.d){for(const k in C2.daily.p)C1.daily.p[k]=Math.max(C1.daily.p[k]||0,C2.daily.p[k]);Object.assign(C1.daily.c,C2.daily.c)}
       const L1=sl();L1.own=[...new Set([...L1.own,...d.sl.own])];if(d.inv){const A=inv(),B=migrate({sets:{},inv:d.inv}).inv||{};for(const k in B){A[k]=A[k]||{std:0,prem:0,col:0};for(const t of ['std','prem','col'])A[k][t]=Math.max(A[k][t]|0,B[k][t]|0)}}if(d.bnd){const B=S.bnd=S.bnd||{own:[],eq:{}};B.own=[...new Set([...(B.own||[]),...d.bnd.own])];B.eq=Object.assign({},d.bnd.eq||{},B.eq||{})}if(!S.nick&&d.nick)S.nick=d.nick;S.econ=S.econ||!!d.econ;if(d.pass)passMerge(d.pass);if((d.freeDay||'')===todayKey())S.freeDay=d.freeDay;
       const A=S.battle,Bb=d.battle;A.wins=Math.max(A.wins,Bb.wins||0);A.losses=Math.max(A.losses,Bb.losses||0);A.best=Math.max(A.best,Bb.best||0);if(!A.deck.length&&Bb.deck&&Bb.deck.length)A.deck=Bb.deck.slice();
@@ -3797,7 +3825,7 @@ function buildOdds(){
   const set=cs(),f=(w,i)=>{const t=w.reduce((x,y)=>x+y,0);return w[i]?(w[i]/t*100).toFixed(w[i]/t<.01?2:1)+'%':'–'};
   const tbl=(title,cols)=>`<h4 class="oddsH">${title}</h4><div class="tblwrap"><table class="oddsTable"><thead><tr><th>Rarity</th>${cols.map(c=>`<th>${c[0]}</th>`).join('')}</tr></thead><tbody>`+RAR.map((r,i)=>`<tr><td><span class="dot" style="--c:${r.col}"></span>${r.name} <span class="muted">(${set.cards.filter(c=>c.r===i).length})</span></td>${cols.map(c=>`<td>${f(c[1],i)}</td>`).join('')}</tr>`).join('')+'</tbody></table></div>';
   $('#oddsBody').innerHTML=tbl(set.std.name,[['Cards 1–9',W_STD],['10th card',W_BONUS]])+tbl(set.prem.name+' · boosted',[['Cards 1–6',W_P1],['7–9',W_P2],['10th',W_P3]])+tbl('Collector pack · highest odds',[['Cards 1–6',W_C1],['7–9',W_C2],['10th',W_C3]])+
-   `<p class="sub" style="padding-bottom:12px">Standard: the 10th card is always Rare or better. ${set.prem.name}: cards 7–9 are Rare or better and the last is Epic or better. Collector pack: no Commons at all, cards 7–9 are Epic or better and the last card is always Legendary or Ultra Rare.</p><p class="sub" style="padding-bottom:12px"><b class="shtxt">✦ Shiny:</b> 1 in 70 cards in Standard packs, 1 in 24 in ${set.prem.name}s and 1 in 10 in Collector packs.</p>`;
+   `<p class="sub" style="padding-bottom:12px">Standard: the 10th card is always Rare or better. ${set.prem.name}: cards 7–9 are Rare or better and the last is Epic or better. Collector pack: no Commons at all, cards 7–9 are Epic or better and the last card is always Legendary or Ultra Rare.</p><p class="sub" style="padding-bottom:12px"><b class="shtxt">✦ Shiny:</b> 1 in 70 cards in Standard packs, 1 in 24 in ${set.prem.name}s and 1 in 10 in Collector packs.</p><p class="sub" style="padding-bottom:12px"><b>Ultra Rare meter:</b> after ${PITY_MAX} Standard packs (Boosted count ×3, Collector ×8) without an Ultra Rare in this series, the next pack's best card is an Ultra Rare. <b>Crafting:</b> any missing card can be made from Stardust in the binder.</p>`;
 }
 function paintBadge(){const n=SETIDS.reduce((a,id)=>a+st(id).fresh.length+st(id).sfresh.length,0),b=$('#tabBadge');b.textContent=n>99?'99+':n;b.hidden=!n}
 function refreshAll(){paintBadge();renderSetBar();refreshHome();$('#bTitle').textContent=cs().name;$('#bSeries').textContent=cs().series+' · Collector’s Binder'}
@@ -3902,7 +3930,7 @@ function showSummary(){
   const complete=X.owned.length===total&&!X.celebrated;
   sum.innerHTML=`<h2>${NP>1?`${NP} ${set[O.kind].name}s opened`:`${set[O.kind].name} opened`}</h2>${O.pityHit?'<p class="pityNote">✦ Ultra Rare meter paid out ✦</p>':''}<div class="score"><div class="sc-n" id="scNum">0</div><div class="sc-l">${NP>1?`Score for ${NP} packs`:'Pack score'}</div><div class="sc-t" id="scTitle">&nbsp;</div></div><p class="line">${nn} new · ${NC-nn} duplicate${NC-nn===1?'':'s'} removed · Collection ${X.owned.length}/${total}${nsh?` · <b class="shtxt">✦ ${nsh} shiny</b>`:''}</p>${O.cost||O.free||O.stock?`<p class="line paid">${[O.free?(NP>1?'1 free daily pack':'Your free daily pack'):'',O.stock?`${NP>1?O.stock+' ':''}from your pack stock (${invOf(O.set,O.kind)} left)`:'',O.cost?`${NP>1&&(O.free||O.stock)?(O.plan.paid+' bought · '):''}${DUSTI}${fmt(O.cost)}`:''].filter(Boolean).join(' · ')}</p>`:''}${O.dust?`<p class="dustline">${DUSTI}<b id="dustGain">+0</b> Stardust from duplicates <span>· balance <b id="dustNow">${fmt(O.dust0)}</b></span></p>`:''}${O.passXP?`<p class="npline">✧ <b>+${fmt(O.passXP)}</b> Starlight <span>· Nova Pass ${npHyper()?'Hypernova ★'+npHyper():'level '+npLevel()}</span></p>`:''}${complete?'<p class="line gold">Set complete. Place the last cards in your binder to finish it.</p>':''}<div class="sgrid${NC>10?' many':''}">`+
    O.pulls.map((c,i)=>`<div class="sc${c._new||c._snew?'':' dupe'}${c.shiny?' shy':''}" data-n="${c.n}" data-shiny="${c.shiny?1:''}" style="animation-delay:${i*60}ms">${cardHTML(c)}<span class="badge ${c._snew?'shiny':c._new?'new':'dupe'}">${c._snew?'✦ Shiny':c._new?'New':c.shiny?'Shiny dupe':'Duplicate'}</span></div>`).join('')+
-   `</div><div class="actions"><button class="btn2 primary" id="again">${NP>1?`Open ${NP} more`:'Open another pack'}</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="closeSum">Close</button></div>`;
+   `</div><div class="actions"><button class="btn2 primary" id="again">${NP>1?`Open ${NP} more`:'Open another pack'}</button><button class="btn2${complete?' glow':''}" id="toBinder">Place in binder</button><button class="btn2" id="shareSum">Share pull</button><button class="btn2" id="closeSum">Close</button></div>`;
   sum.hidden=false;sum.scrollTop=0;runScore(score);if(O.dust)dustCount(O.dust,O.dust0);$('#skip').hidden=true;$('#skipLow').hidden=true;$('#flipAll').hidden=true;$('#counter').textContent='';
   O.pulls.forEach((c,i)=>setTimeout(()=>Snd.good(c._new),i*60));
   if(complete&&!doneToast[set.id]){doneToast[set.id]=1;setTimeout(()=>{Snd.fanfare();burst(innerWidth/2,innerHeight/2,Object.assign({},FXSET[5]))},700)}
@@ -3911,7 +3939,10 @@ function showSummary(){
 function dustCount(gain,from){const g=$('#dustGain'),n=$('#dustNow'),t0=performance.now(),dur=REDUCED?10:1300;let lk=0;
   const step=now=>{const k=Math.min(1,(now-t0-500)/dur);if(k<0){requestAnimationFrame(step);return}const e=1-Math.pow(1-k,3),v=Math.round(gain*e);if(g)g.textContent='+'+fmt(v);if(n)n.textContent=fmt(from+v);if(now-lk>70&&k<1){Snd.tick(10+(k*14|0));lk=now}if(k<1)requestAnimationFrame(step);else{paintDust();if(g){g.parentNode.classList.add('pop');burst(...ctr2(g),{count:24,colors:['#ffd76a','#fff2c0','#ffffff'],speed:4,life:.8,size:3,ring:0})}}};requestAnimationFrame(step)}
 const ctr2=el=>{const b=el.getBoundingClientRect();return[b.left+b.width/2,b.top+b.height/2]};
-function closeOpen(){setTimeout(passFlush,450);const sc=$('#showc');if(sc)sc.remove();SP.close=null;Snd.duck(false);document.body.classList.remove('opening');clearOfx();oEl.classList.remove('vault');oEl.hidden=true;O.mode='idle';O.busy=false;resetHalo();oEl.classList.remove('shake-s')}
+/* v1.14.0: after the opening overlay closes, nudge the pack shelf to restyle. Chromium sometimes kept a shelf pack
+   hidden (stale inherited visibility from body.opening) for a moment, so a quick tap on it did nothing. */
+function shelfRestyle(){requestAnimationFrame(()=>document.querySelectorAll('#viewPacks .pk').forEach(pk=>{pk.style.visibility='visible';void pk.offsetWidth;pk.style.visibility=''}))}
+function closeOpen(){setTimeout(passFlush,450);shelfRestyle();const sc=$('#showc');if(sc)sc.remove();SP.close=null;Snd.duck(false);document.body.classList.remove('opening');clearOfx();oEl.classList.remove('vault');oEl.hidden=true;O.mode='idle';O.busy=false;resetHalo();oEl.classList.remove('shake-s')}
 
 /* ───────────── binder ───────────── */
 const PER_PAGE=9,BK=Object.fromEntries(SETIDS.map(id=>[id,{open:false,page:0,mode:'std'}]));
@@ -4056,10 +4087,11 @@ async function celebrate(replay,mode){
     slots.forEach(s=>{s.classList.remove('wave');s.style.removeProperty('--w')});
     const fan=set.cards.slice().sort((a,b)=>b.r-a.r||a.n-b.n).slice(0,3).map(c=>sh?Object.assign({},c,{shiny:true}):c);
     const rot=[-9,0,9];
+    const rw=!replay&&!set.shop&&typeof seriesReward==='function'?seriesReward(set.id,sh):null;
     o.innerHTML=`<div class="d-rays"></div><div class="d-in"><div class="d-seal"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".5" stop-color="#ffc247"/><stop offset="1" stop-color="#b8731a"/></linearGradient></defs><circle cx="60" cy="60" r="56" fill="url(#gold)"/><circle cx="60" cy="60" r="47" fill="none" stroke="#7a4708" stroke-opacity=".55" stroke-width="2" stroke-dasharray="3 5"/><path d="M60 24l9.6 21.4 23.4 2.5-17.5 15.8 5 23.1L60 76l-20.5 11.8 5-23.1L27 47.9l23.4-2.5z" fill="#fff8dc" stroke="#7a4708" stroke-opacity=".6" stroke-width="2" stroke-linejoin="round"/></svg></div>`+
       `<div class="d-kick">${set.series} · ${set.name}</div><h2 class="d-title">${(sh?'SHINY SET COMPLETE':'SET COMPLETE').split('').map((ch,i)=>`<span style="--i:${i}">${ch===' '?'&nbsp;':ch}</span>`).join('')}</h2>`+
       `<div class="d-fan">${fan.map((c,i)=>`<div class="d-card" style="--r:${rot[i]}deg;--i:${i}">${cardHTML(c)}</div>`).join('')}</div>`+
-      `<p class="d-line">${set.cards.length} / ${set.cards.length} ${sh?'shiny ':''}cards · ${X.packs} pack${X.packs===1?'':'s'} opened · ${X.dupes} duplicate${X.dupes===1?'':'s'} removed</p><button class="btn2 primary" id="doneBtn">Back to the binder</button></div>`;
+      `<p class="d-line">${set.cards.length} / ${set.cards.length} ${sh?'shiny ':''}cards · ${X.packs} pack${X.packs===1?'':'s'} opened · ${X.dupes} duplicate${X.dupes===1?'':'s'} removed</p>${rw?rewardHTML(rw):''}<button class="btn2 primary" id="doneBtn">Back to the binder</button></div>`;
     o.hidden=false;void o.offsetWidth;o.classList.add('on');setTimeout(()=>{if(!o.hidden)document.body.classList.add('finon')},460);Snd.complete();
     /* fewer, lighter fireworks spread over time: smooth on phones */
     const bursts=REDUCED?3:MOBILE?7:9;
@@ -4152,6 +4184,7 @@ function init(){
   if(econToast)setTimeout(()=>toast(`Packs now cost Stardust. Here's ${fmt(ECON_GRANT)} to get started, plus a free Standard pack every day.`,5200),dustGrant?4600:900);
   initCloud();
   if(typeof titleShow==='function')titleShow();
+  if(typeof quickInit==='function')quickInit();
 }
 /* ───────────── Binder: realistic page turns (v1.7.0, compositor playback v1.8.0) ─────────────
    The turning page folds along a straight line like real paper: the part past the fold flips over and shows its
@@ -5819,6 +5852,8 @@ function initMenu(){
     if(t.closest('#mnMusT')){Snd.musicToggle();if(Snd.musicOn&&Snd.musicLevel===0)Snd.setMusicLevel(.6);if(window.paintMusBtn)paintMusBtn();paintMenu();return}
     if(t.closest('#mnSfxT')){Snd.init();Snd.toggle();if(!Snd.muted&&Snd.sfxLevel===0)Snd.setSfxLevel(.6);if(window.paintMuteBtn)paintMuteBtn();paintMenu();Snd.click();return}
     if(t.closest('#mnTut')){closeMenu();startTutorial();return}
+    if(t.closest('#mnTour')){closeMenu();startTour();return}
+    const gb=t.closest('#mnGfx button');if(gb){setGfx(gb.dataset.g);return}
     if(t.closest('#mnXfer')){closeMenu();openXfer();return}
     if(t.closest('#mnReset')){askReset();return}
   });
@@ -5932,7 +5967,7 @@ function tutTurn(){const g=BT.g;if(!BT.tut||!g||g.over||TUT.skip||g.turnNo<=1||!
 function coach(steps){
   const co=$('#coach'),spot=$('#coSpot'),bub=$('#coBub');let i=0;
   return new Promise(res=>{
-    const place=()=>{const s=steps[i];let el=s.sel?document.querySelector('#arBody '+s.sel):null;
+    const place=()=>{const s=steps[i];let el=s.sel?document.querySelector(s.g?s.sel:'#arBody '+s.sel):null;
       if(el&&!el.getClientRects().length)el=null;
       if(el){try{el.scrollIntoView({block:'nearest',inline:'nearest'})}catch(e){}}
       const vw=innerWidth,vh=innerHeight,bw=bub.offsetWidth,bh=bub.offsetHeight,P=6;
@@ -5943,8 +5978,8 @@ function coach(steps){
         const left=Math.min(Math.max(12,r.left+r.width/2-bw/2),vw-bw-12);Object.assign(bub.style,{left:left+'px',top:top+'px'})}
       else{spot.classList.add('none');Object.assign(spot.style,{left:vw/2+'px',top:vh/2+'px',width:'0px',height:'0px'});Object.assign(bub.style,{left:(vw-bw)/2+'px',top:Math.max(10,(vh-bh)/2)+'px'})}};
     const paint=()=>{const s=steps[i],n=steps.length;
-      bub.innerHTML=`<div class="co-k"><span>${s.one?'Tip':`Tutorial · ${i+1} of ${n}`}</span>${n>1?`<span class="co-dots">${steps.map((_,k)=>`<i class="${k<=i?'on':''}"></i>`).join('')}</span>`:''}</div>`+
-        `<h4>${s.t}</h4><p>${s.x}</p><div class="co-a">${s.one?'<span></span>':'<button class="co-skip" id="coSkip">Skip tutorial</button>'}<button class="btn2 primary" id="coNext">${s.last?(s.one?'Got it':'Let’s play'):'Next'}</button></div>`;
+      bub.innerHTML=`<div class="co-k"><span>${s.one?'Tip':`${steps[0].kick||'Tutorial'} · ${i+1} of ${n}`}</span>${n>1?`<span class="co-dots">${steps.map((_,k)=>`<i class="${k<=i?'on':''}"></i>`).join('')}</span>`:''}</div>`+
+        `<h4>${s.t}</h4><p>${s.x}</p><div class="co-a">${s.one?'<span></span>':`<button class="co-skip" id="coSkip">${steps[0].skip||'Skip tutorial'}</button>`}<button class="btn2 primary" id="coNext">${s.last?(s.one?'Got it':'Let’s play'):'Next'}</button></div>`;
       bub.classList.remove('in');void bub.offsetWidth;bub.classList.add('in');place();
       try{$('#coNext').focus({preventScroll:true})}catch(e){}};
     const end=v=>{co.hidden=true;co.onclick=null;removeEventListener('resize',place);document.removeEventListener('keydown',key,true);res(v)};
@@ -5973,6 +6008,12 @@ function initTutorial(){
    before versions were tracked (cc-ver-from '?') gets the current version's notes with the dot.
    Add an entry at the top of CHANGELOG for every release (newest first), in plain player-facing words. */
 const CHANGELOG=[
+  {v:'1.14.0',d:'17 Nov 2026',items:[
+    'Series rewards: completing a binder now pays 5,000 Stardust and a Collector pack for that series, and completing its Shiny set pays 20,000 Stardust and three Collector packs. The binder shows the reward, and series you finished earlier pay out automatically.',
+    'Share pull: after opening packs, tap Share pull to make an image of your best cards to share or save.',
+    'Graphics setting in the Menu: Auto, High or Low. Low uses fewer particles and lighter card effects for older phones.',
+    'A short game tour for new players, which you can replay any time from the Menu.',
+    'A link by the packs takes you straight to the pull rates, which now also explain the Ultra Rare meter and crafting.']},
   {v:'1.13.0',d:'17 Nov 2026',items:[
     'Crafting: tap an empty slot in a binder to craft that card with Stardust. Prices go by rarity, from 40 Stardust for a Common to 8,000 for an Ultra Rare, and the card stays a surprise until it lands in its slot.',
     'Ultra Rare meter: every pack you open fills it (Boosted packs 3× faster, Collector packs 8×). When it is full, your next pack in that series is guaranteed an Ultra Rare. Pulling any Ultra Rare resets it. You can see the meter on the Packs page.']},
@@ -6422,6 +6463,100 @@ function initPass(){
   const pop=$('#npPop');if(pop)pop.onclick=()=>{pop.classList.remove('on');pop.hidden=true;setView('pass')};
   passDaily();paintPassBadge();setInterval(()=>{if(NPQ.xp)passFlush()},1500);
 }
+/* ───────────── v1.14.0 quick wins ─────────────
+   Graphics setting (Auto / High / Low), series completion rewards, Share pull image, the first-time game tour,
+   and a pull-rates link by the packs. quickInit() runs from init() after the title screen is set up. */
+
+/* ── graphics ── localStorage cc-gfx: auto | high | low. Auto picks Low only on clearly weak devices. */
+const GFX_KEY='cc-gfx';let GFX_LOW=false;
+const gfxPref=()=>{try{const v=localStorage.getItem(GFX_KEY);return ['auto','high','low'].includes(v)?v:'auto'}catch(e){return 'auto'}};
+const gfxWeak=()=>{const m=navigator.deviceMemory,c=navigator.hardwareConcurrency;return (m&&m<=2)||(c&&c<=2)};
+function applyGfx(){const p=gfxPref();GFX_LOW=p==='low'||(p==='auto'&&gfxWeak());document.body.classList.toggle('gfx-low',GFX_LOW);
+  document.querySelectorAll('#mnGfx button').forEach(b=>b.setAttribute('aria-checked',b.dataset.g===p));
+  const v=$('#mnGfxV');if(v)v.textContent=p==='auto'?(GFX_LOW?'Auto: using Low on this device':'Auto: using High on this device'):p==='low'?'Fewer particles, lighter effects':'Every effect on'}
+function setGfx(g){try{localStorage.setItem(GFX_KEY,g)}catch(e){}applyGfx();Snd.click()}
+{const _burst=burst;burst=function(x,y,o){if(GFX_LOW&&o&&o.count)o=Object.assign({},o,{count:Math.max(1,Math.ceil(o.count*.4))});return _burst(x,y,o)}}
+
+/* ── series completion rewards ── once per series: set complete and shiny set complete. Flags X.rw / X.rwS. */
+const SREWARD={std:{dust:5000,col:1},shiny:{dust:20000,col:3}};
+function seriesReward(setId,sh){const X=st(setId),k=sh?'rwS':'rw';if(X[k]||SETS[setId].shop)return null;const r=SREWARD[sh?'shiny':'std'];
+  X[k]=true;S.dust+=r.dust;S.dustEarned=(S.dustEarned||0)+r.dust;inv()[setId].col+=r.col;save();paintDust();return Object.assign({set:setId,sh},r)}
+const rewardHTML=r=>`<div class="d-rw"><span style="--i:0">${DUSTI} +${fmt(r.dust)} Stardust</span><span style="--i:1">+${r.col} Collector pack${r.col>1?'s':''}</span></div>`;
+function paintBReward(){const el=$('#bReward');if(!el)return;const set=cs(),X=st();if(set.shop){el.hidden=true;return}el.hidden=false;
+  const sh=bk().mode==='shiny',got=sh?X.rwS:X.rw,r=SREWARD[sh?'shiny':'std'];el.classList.toggle('got',!!got);
+  el.innerHTML=got?`✓ ${sh?'Shiny set':'Set'} reward claimed`:`${DUSTI}<span>Complete this ${sh?'shiny set':'binder'}: <b>+${fmt(r.dust)} Stardust</b> and <b>${r.col} Collector pack${r.col>1?'s':''}</b></span>`}
+{const _rb=renderBinder;renderBinder=function(o){const v=_rb(o);paintBReward();return v}}
+/* players who completed a series before rewards existed get them on their next load */
+function grantPastRewards(){const got=[];SETIDS.forEach(id=>{if(SETS[id].shop)return;const X=st(id);
+  if(X.celebrated&&!X.rw){seriesReward(id,false);got.push(SETS[id].name)}if(X.celebratedShiny&&!X.rwS){seriesReward(id,true);got.push(SETS[id].name+' (Shiny)')}});
+  if(got.length)toast(`Series rewards for ${got.join(', ')}: Stardust and Collector packs added. Thanks for collecting!`,6000)}
+
+/* ── Share pull: an image of the pack's best cards, to share or save ── */
+const loadImg=u=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=u});
+function rr(x,c,y,w,h,r){x.beginPath();x.moveTo(c+r,y);x.arcTo(c+w,y,c+w,y+h,r);x.arcTo(c+w,y+h,c,y+h,r);x.arcTo(c,y+h,c,y,r);x.arcTo(c,y,c+w,y,r);x.closePath()}
+async function pullImage(){
+  const pulls=O.packs&&O.n>1?O.packs.flat():O.pulls,set=SETS[O.set],NP=O.n||1;
+  const best=pulls.slice().sort((a,b)=>(b.r+(b.shiny?.5:0))-(a.r+(a.shiny?.5:0))||a.n-b.n).filter((c,i,a)=>a.findIndex(d=>d.n===c.n&&!!d.shiny===!!c.shiny)===i).slice(0,5);
+  const score=pulls.reduce((a,c)=>a+POINTS[c.r]*(c.shiny?3:1),0),tr=tier(score/NP)[0];
+  try{await document.fonts.ready}catch(e){}
+  const W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');
+  const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#1c0f3d');g.addColorStop(.55,'#0b0822');g.addColorStop(1,'#120a2a');x.fillStyle=g;x.fillRect(0,0,W,H);
+  const neb=x.createRadialGradient(W*.7,H*.25,20,W*.7,H*.25,W*.7);neb.addColorStop(0,'rgba(182,115,255,.35)');neb.addColorStop(1,'rgba(182,115,255,0)');x.fillStyle=neb;x.fillRect(0,0,W,H);
+  let sd=7;const rnd=()=>(sd=(sd*16807)%2147483647)/2147483647;for(let i=0;i<260;i++){x.globalAlpha=.25+rnd()*.7;x.fillStyle='#fff';x.beginPath();x.arc(rnd()*W,rnd()*H,rnd()*1.8+.3,0,7);x.fill()}x.globalAlpha=1;
+  x.textAlign='center';x.fillStyle='#ffd27a';x.font="800 64px Unbounded, 'Trebuchet MS', sans-serif";x.fillText('ASTRODEX',W/2,118);
+  x.fillStyle='rgba(230,225,255,.75)';x.font="500 26px 'JetBrains Mono', monospace";x.fillText(`${set.series} · ${set.name}`.toUpperCase(),W/2,166);
+  x.fillStyle='#fff';x.font="700 40px Outfit, system-ui, sans-serif";x.fillText(NP>1?`My best pulls from ${NP} ${set[O.kind].name}s`:`My best pulls from a ${set[O.kind].name}`,W/2,238);
+  const n=best.length,cw=n>3?280:320,aw=cw-36,ch=64+aw+92,gap=28,row1=Math.min(n,3),row2=n-row1,top=row2?286:400;
+  const place=(i)=>{const r=i<row1?0:1,k=r?i-row1:i,cnt=r?row2:row1,tot=cnt*cw+(cnt-1)*gap;return [W/2-tot/2+k*(cw+gap),top+r*(ch+36)]};
+  for(let i=0;i<n;i++){const c=best[i],[cx,cy]=place(i),col=RAR[c.r].col,im=await loadImg(artURL(c));
+    x.save();x.shadowColor=col;x.shadowBlur=c.r>=3?46:22;rr(x,cx,cy,cw,ch,22);x.fillStyle='#14102e';x.fill();x.restore();
+    rr(x,cx,cy,cw,ch,22);x.lineWidth=7;x.strokeStyle=c.shiny?(()=>{const s=x.createLinearGradient(cx,cy,cx+cw,cy+ch);['#ff9ad9','#ffe27a','#8dffc0','#8fd8ff','#caa0ff'].forEach((v,j)=>s.addColorStop(j/4,v));return s})():col;x.stroke();
+    if(im){x.save();rr(x,cx+18,cy+64,aw,aw,12);x.clip();const s=Math.max(aw/im.width,aw/im.height);x.drawImage(im,cx+18+(aw-im.width*s)/2,cy+64+(aw-im.height*s)/2,im.width*s,im.height*s);x.restore()}
+    x.textAlign='left';x.fillStyle='#fff';x.font=`700 ${c.name.length>13?26:30}px Outfit, system-ui, sans-serif`;x.fillText(c.name,cx+20,cy+46,cw-40);
+    const by=cy+64+aw;x.fillStyle=col;x.font="700 21px 'JetBrains Mono', monospace";x.fillText((c.shiny?'✦ SHINY ':'')+RAR[c.r].name.toUpperCase(),cx+20,by+38,cw-40);
+    x.fillStyle='rgba(255,255,255,.55)';x.font="500 19px 'JetBrains Mono', monospace";x.fillText('No.'+pad(c.n),cx+20,by+72);
+    x.textAlign='right';x.fillStyle='#ffd27a';x.font="500 22px Outfit, system-ui, sans-serif";x.fillText('★'.repeat(RAR[c.r].stars),cx+cw-20,by+72);x.textAlign='left'}
+  x.textAlign='center';x.fillStyle='#fff';x.font="800 54px Unbounded, 'Trebuchet MS', sans-serif";x.fillText(tr.toUpperCase(),W/2,H-118);
+  x.fillStyle='rgba(230,225,255,.8)';x.font="500 28px Outfit, system-ui, sans-serif";x.fillText(`Pack score ${score} · Crymsin Comet Studios`,W/2,H-66);
+  return cv}
+async function openShare(){
+  const o=$('#share');Snd.init();Snd.click();o.innerHTML='<div class="sh-box"><p class="sh-n">Making your image…</p></div>';o.hidden=false;
+  let cv;try{cv=await pullImage()}catch(e){o.innerHTML='<div class="sh-box"><p class="sh-n">Sorry, the image could not be made here.</p><div class="sh-a"><button class="btn2" id="shClose">Close</button></div></div>';$('#shClose').onclick=()=>{o.hidden=true};return}
+  const url=cv.toDataURL('image/png'),blob=await new Promise(r=>cv.toBlob(r,'image/png')),file=blob&&new File([blob],'astrodex-pull.png',{type:'image/png'});
+  const canShare=!!(file&&navigator.canShare&&navigator.canShare({files:[file]}));
+  o.innerHTML=`<div class="sh-box"><img src="${url}" alt="Your best pulls"><div class="sh-a">${canShare?'<button class="btn2 primary" id="shGo">Share</button>':''}<button class="btn2${canShare?'':' primary'}" id="shSave">Save image</button><button class="btn2" id="shCopy">Copy</button><button class="btn2" id="shClose">Close</button></div><p class="sh-n">If saving doesn't work here, press and hold the image (or right-click it) to save it.</p></div>`;
+  const close=()=>{o.hidden=true;o.innerHTML=''};$('#shClose').onclick=close;o.onclick=e=>{if(e.target===o)close()};
+  if(canShare)$('#shGo').onclick=async()=>{try{await navigator.share({files:[file],title:'Astrodex',text:'My best pulls in Astrodex'})}catch(e){}};
+  $('#shSave').onclick=()=>{try{const a=document.createElement('a');a.href=url;a.download='astrodex-pull.png';document.body.appendChild(a);a.click();a.remove()}catch(e){}};
+  $('#shCopy').onclick=async()=>{try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);toast('Image copied',1800)}catch(e){toast('Copying images isn’t allowed here. Press and hold the image to save it.',3200)}}}
+
+/* ── first-time game tour ── shown once to new players (no packs opened yet) after the title screen.
+   localStorage cc-tour = '1' once seen or skipped. Automated test browsers skip it unless window.CC_TOUR is set. */
+const TOUR_KEY='cc-tour';
+function tourSteps(){const vis=s=>{const e=document.querySelector(s);return e&&e.getClientRects().length?s:null};
+  return [
+  {kick:'Game tour',skip:'Skip tour',t:'Welcome to Astrodex',x:'Collect the universe one pack at a time, fill your binders and battle with the cards you pull. Here’s a quick tour.'},
+  {g:1,sel:'#openBtn',t:'Open packs',x:'Your first <b>Standard pack</b> each day is free. Boosted and Collector packs cost more Stardust but have much better odds.'},
+  {g:1,sel:vis('#dustPill')||vis('#tabDust')||'#tabShop',t:'Stardust',x:'You start with 1,000. Duplicates melt into Stardust, and you earn more from battles and challenges. Spend it on packs, on crafting missing cards and in the Shop.'},
+  {g:1,sel:'#pity',t:'Ultra Rare meter',x:'Every pack fills this up. When it’s full, your next pack in that series is guaranteed an <b>Ultra Rare</b>.'},
+  {g:1,sel:'#tabBinder',t:'Your binder',x:'New cards land in order by number. Tap an empty slot to <b>craft</b> a card you’re missing, and complete a binder for a big Stardust reward.'},
+  {g:1,sel:'#tabBattle',t:'Battle',x:'Build a deck from your collection and battle bots or friends. A practice battle teaches you the rules.'},
+  {g:1,sel:'#tabPass',t:'Nova Pass',x:'Everything you do earns Starlight toward free rewards on the Nova Pass.',last:1}]}
+async function startTour(){if(typeof view!=='undefined'&&view!=='packs')setView('packs');$('#toast').classList.remove('on');clearTimeout(toast.t);await sleep(450);await coach(tourSteps());try{localStorage.setItem(TOUR_KEY,'1')}catch(e){}scrollTo({top:0,behavior:'smooth'})}
+async function maybeTour(){let seen=false;try{seen=localStorage.getItem(TOUR_KEY)==='1'}catch(e){}
+  if(seen||(navigator.webdriver&&!window.CC_TOUR))return;
+  if(SETIDS.some(id=>st(id).packs>0)){try{localStorage.setItem(TOUR_KEY,'1')}catch(e){}return}
+  for(let i=0;i<600&&(document.body.classList.contains('titling')||O.busy);i++)await sleep(200);
+  await sleep(1400);if(O.busy||!$('#coach').hidden)return;startTour()}
+
+/* ── pull rates link by the packs ── */
+function addOddsLink(){if($('#oddsLink'))return;const so=document.querySelector('#viewPacks .skipopt');if(!so)return;const p=document.createElement('p');p.className='oddsln';
+  p.innerHTML='<button id="oddsLink">See the pull rates for every pack</button>';so.parentNode.insertBefore(p,so);
+  $('#oddsLink').onclick=()=>{const d=document.querySelector('details.odds');if(!d)return;d.open=true;d.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'});Snd.click()}}
+
+function quickInit(){applyGfx();addOddsLink();
+  document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#shareSum'))openShare()});
+  setTimeout(grantPastRewards,2500);maybeTour()}
 /* ───────────── v1.9.0 polish: sliding tab highlight, staggered entrances, vault motes ─────────────
    Everything here animates transform / opacity / translate / scale only (see the smoothness rule in HANDOFF §2 v1.8.0). */
 const POL={ind:null};
