@@ -6527,7 +6527,11 @@ async function openShare(){
   o.innerHTML=`<div class="sh-box"><img src="${url}" alt="Your best pulls"><div class="sh-a">${canShare?'<button class="btn2 primary" id="shGo">Share</button>':''}<button class="btn2${canShare?'':' primary'}" id="shSave">Save image</button><button class="btn2" id="shCopy">Copy</button><button class="btn2" id="shClose">Close</button></div><p class="sh-n">If saving doesn't work here, press and hold the image (or right-click it) to save it.</p></div>`;
   const close=()=>{o.hidden=true;o.innerHTML=''};$('#shClose').onclick=close;o.onclick=e=>{if(e.target===o)close()};
   if(canShare)$('#shGo').onclick=async()=>{try{await navigator.share({files:[file],title:'Astrodex',text:'My best pulls in Astrodex'})}catch(e){}};
-  $('#shSave').onclick=()=>{try{const a=document.createElement('a');a.href=url;a.download='astrodex-pull.png';document.body.appendChild(a);a.click();a.remove()}catch(e){}};
+  /* on the claude.ai link a page can't download by itself: it offers the file through the artifact's downloads
+     capability (the viewer confirms). In the phone and Windows apps a plain download link works. */
+  $('#shSave').onclick=async()=>{let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
+    if(dl){try{await dl.save({filename:'astrodex-pull.png',data:blob});toast('Image saved',1800)}catch(e){if(e&&e.code!=='declined')toast('Saving isn’t available here. Press and hold the image to save it.',3200)}return}
+    try{const a=document.createElement('a');a.href=url;a.download='astrodex-pull.png';document.body.appendChild(a);a.click();a.remove()}catch(e){}};
   $('#shCopy').onclick=async()=>{try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);toast('Image copied',1800)}catch(e){toast('Copying images isn’t allowed here. Press and hold the image to save it.',3200)}}}
 
 /* ── first-time game tour ── shown once to new players (no packs opened yet) after the title screen.

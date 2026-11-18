@@ -2,10 +2,10 @@
   "version": "1.14.0",
   "game": {
     "file": "game-1.14.0.html",
-    "sha256": "15c9d4cf2aaffcf23c07b4ebc94005254dc7f6a9c78ddabbea487343b356d650",
-    "size": 11214851
+    "sha256": "d5063eab739cb15b749bc863f3ce2b5228e1c467dced8a1a0020aeb637ae4b9b",
+    "size": 11215400
   },
   "notes": "v1.14.0: series completion rewards, Share pull images, a graphics setting, a game tour for new players, and a pull-rates link by the packs",
-  "date": "2026-11-18T04:46:02.342Z",
-  "sig": "rbTrssKAiw/vmt8SfBU/31+5Mi4YD592zerch1Lia/S6/57P4Xac7kAsSxlOaliEaUeWIwFv8DDs0VWUw0zRAQ=="
+  "date": "2026-11-18T05:13:27.440Z",
+  "sig": "in5erMrvAd78zHRyjnBv308h3qRxVxBCkXC1ms9ZPSElOkpjuJzgktkXzg1P7JwXJe1JcAqaxmZFlVTiBUciCw=="
 }
